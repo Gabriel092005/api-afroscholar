@@ -1,0 +1,11 @@
+build
+node_modules
+src/lib/*.json
+
+# Adicione isso ao final do arquivo .gitignore
+uploads/
+node_modules/
+
+dist/
+.env
+.env.dev

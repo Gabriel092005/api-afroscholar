@@ -1,0 +1,132 @@
+﻿Γ£à [SISTEMA] Pasta de uploads detectada em: C:\Users\User\Videos\schoolar\api\uploads
+Servidor rodando ≡ƒÉ▒ΓÇì≡ƒÅì
+{ password: 'admin123', email: 'admin@schoolar.com' }
+11:49:44 PM [tsx] change in ./src\server.ts Rerunning...
+cΓ£à [SISTEMA] Pasta de uploads detectada em: C:\Users\User\Videos\schoolar\api\uploads
+node.exe : Error: listen EADDRINUSE: address already in use 0.0.0.0:3000
+At C:\Program Files\nodejs\npx.ps1:29 char:3
++   & $NODE_EXE $NPX_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Error: listen E...se 0.0.0.0:3000:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+    at Server.setupListenHandle [as _listen2] (node:net:1912:16)
+    at listenInCluster (node:net:1969:12)
+    at node:net:2178:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 3000
+}
+11:50:53 PM [tsx] change in ./src\Env\index.ts Rerunning...
+cΓ£à [SISTEMA] Pasta de uploads detectada em: C:\Users\User\Videos\schoolar\api\uploads
+Servidor rodando ≡ƒÉ▒ΓÇì≡ƒÅì
+11:52:17 PM [tsx] change in ./src\Env\index.ts Restarting...
+cΓ£à [SISTEMA] Pasta de uploads detectada em: C:\Users\User\Videos\schoolar\api\uploads
+Servidor rodando ≡ƒÉ▒ΓÇì≡ƒÅì
+11:52:34 PM [tsx] change in ./src\Env\index.ts Restarting...
+cΓ£à [SISTEMA] Pasta de uploads detectada em: C:\Users\User\Videos\schoolar\api\uploads
+Servidor rodando ≡ƒÉ▒ΓÇì≡ƒÅì
+11:52:49 PM [tsx] change in ./src\Env\index.ts Restarting...
+cΓ£à [SISTEMA] Pasta de uploads detectada em: C:\Users\User\Videos\schoolar\api\uploads
+Servidor rodando ≡ƒÉ▒ΓÇì≡ƒÅì
+11:55:19 PM [tsx] change in ./src\http\controllers\bolsas\inscrever-bolsa-controller.ts Restarting...
+cΓ£à [SISTEMA] Pasta de uploads detectada em: C:\Users\User\Videos\schoolar\api\uploads
+Error: listen EADDRINUSE: address already in use 0.0.0.0:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1912:16)
+    at listenInCluster (node:net:1969:12)
+    at node:net:2178:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 3000
+}
+11:55:35 PM [tsx] change in ./src\http\controllers\bolsas\inscrever-bolsa-controller.ts Rerunning...
+c11:55:41 PM [tsx] change in ./src\Env\index.ts Restarting...
+cΓ£à [SISTEMA] Pasta de uploads detectada em: C:\Users\User\Videos\schoolar\api\uploads
+Servidor rodando ≡ƒÉ▒ΓÇì≡ƒÅì
+12:20:59 AM [tsx] change in ./src\http\controllers\bolsas\inscrever-bolsa-controller.ts Rerunning...
+c12:21:01 AM [tsx] change in ./src\http\controllers\bolsas\inscrever-bolsa-controller.ts Restarting...
+cΓ£à [SISTEMA] Pasta de uploads detectada em: C:\Users\User\Videos\schoolar\api\uploads
+Servidor rodando ≡ƒÉ▒ΓÇì≡ƒÅì
+12:24:44 AM [tsx] change in ./src\Env\index.ts Restarting...
+cΓ£à [SISTEMA] Pasta de uploads detectada em: C:\Users\User\Videos\schoolar\api\uploads
+Servidor rodando ≡ƒÉ▒ΓÇì≡ƒÅì
+≡ƒôÑ [MULTER] Recebendo arquivo: documento (4).pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778369764952-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: CV_ATUAL (3).pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778369764992-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: documento (4).pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778369765230-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: CV_ATUAL (3).pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778369765291-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: documento (4).pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778369770001-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: documento (4).pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778369770028-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: CV_ATUAL (3).pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778369770180-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: CV_ATUAL (3).pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778369770190-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: documento (4).pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778369773263-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: documento (4).pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778369773282-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: CV_ATUAL (3).pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778369773442-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: CV_ATUAL (3).pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778369773449-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: documento (4).pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778369783281-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: documento (4).pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778369783292-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: CV_ATUAL (3).pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778369783459-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: CV_ATUAL (3).pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778369783467-.pdf
+12:39:19 AM [tsx] change in ./src\http\controllers\bolsas\routes.ts Restarting...
+c12:39:27 AM [tsx] change in ./src\http\controllers\bolsas\routes.ts Restarting...
+12:39:27 AM [tsx] change in ./src\http\controllers\bolsas\routes.ts Process hasn't exited. Killing process...
+cΓ£à [SISTEMA] Pasta de uploads detectada em: C:\Users\User\Videos\schoolar\api\uploads
+Servidor rodando ≡ƒÉ▒ΓÇì≡ƒÅì
+≡ƒôÑ [MULTER] Recebendo arquivo: CV_ATUAL (3).pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778370562251-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: SME_1_304727824200_20251125201111.pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778370562265-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: SME_1_304727824200_20251125201111.pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778370580458-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: CV_ATUAL (3).pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778370580459-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: CV_ATUAL (3).pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778370586179-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: SME_1_304727824200_20251125201111.pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778370586211-.pdf
+{ email: 'gabrielcavalamanuel@gmail.com', password: '156' }
+{ email: 'gabrielcavalamanuel@gmail.com', password: '123456' }
+{ email: 'gabrielcavalamanuel@gmail.com', password: '123456' }
+{ email: 'user5@schoolar.com', password: '+244 900 000 014' }
+{ email: 'user5@schoolar.com', password: '+244 900 000 014' }
+{ email: 'user5@schoolar.com', password: '123456' }
+≡ƒôÑ [MULTER] Recebendo arquivo: Teorica_SubprogramasExemplos.pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778371478645-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: CV_ATUAL (3).pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778371478671-.pdf
+≡ƒôÑ [MULTER] Recebendo arquivo: SME_1_304727824200_20251125201111.pdf
+≡ƒÆ╛ [MULTER] Salvando como: trem-1778371478758-.pdf
+{ email: 'user5@schoolar.com', password: '123456' }
+{ email: 'user5@schoolar.com', password: '123456' }
+{ email: 'user5@schoolar.com', password: '123456' }
+{ email: 'user5@schoolar.com', password: '123456' }
+{ email: 'user5@schoolar.com', password: '123456' }
+{ email: 'user5@schoolar.com', password: '123456' }
+{ email: 'user5@schoolar.com', password: '123456' }
+{ email: 'user5@schoolar.com', password: '123456' }
+{ email: 'user5@schoolar.com', password: '123456' }
+{ email: 'user5@schoolar.com', password: '123456' }
+{ email: 'user5@schoolar.com', password: '123456' }
+{ email: 'user5@schoolar.com', password: '123456' }
+{ email: 'user5@schoolar.com', password: '123456' }

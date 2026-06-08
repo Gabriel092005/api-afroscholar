@@ -1,0 +1,890 @@
+(node:41268) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"level":30,"time":1779966942173,"pid":41268,"hostname":"Gabriel","msg":"Server listening at http://127.0.0.1:3333"}
+Servidor rodando 🐱‍🏍
+{"level":30,"time":1779966942173,"pid":41268,"hostname":"Gabriel","msg":"Server listening at http://172.20.10.7:3333"}
+{"level":30,"time":1779966942286,"pid":41268,"hostname":"Gabriel","reqId":"req-1","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":58665},"msg":"incoming request"}
+{"level":30,"time":1779966942294,"pid":41268,"hostname":"Gabriel","reqId":"req-1","res":{"statusCode":204},"responseTime":6.722000002861023,"msg":"request completed"}
+{"level":30,"time":1779966942296,"pid":41268,"hostname":"Gabriel","reqId":"req-2","req":{"method":"OPTIONS","url":"/novidades?status=PUBLICADO","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":58665},"msg":"incoming request"}
+{"level":30,"time":1779966942296,"pid":41268,"hostname":"Gabriel","reqId":"req-2","res":{"statusCode":204},"responseTime":0.5974999666213989,"msg":"request completed"}
+{"level":30,"time":1779966942298,"pid":41268,"hostname":"Gabriel","reqId":"req-3","req":{"method":"OPTIONS","url":"/depoimentos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":58665},"msg":"incoming request"}
+{"level":30,"time":1779966942298,"pid":41268,"hostname":"Gabriel","reqId":"req-3","res":{"statusCode":204},"responseTime":0.4694000482559204,"msg":"request completed"}
+{"level":30,"time":1779966942300,"pid":41268,"hostname":"Gabriel","reqId":"req-4","req":{"method":"OPTIONS","url":"/bolsas/destaques","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":58665},"msg":"incoming request"}
+{"level":30,"time":1779966942301,"pid":41268,"hostname":"Gabriel","reqId":"req-4","res":{"statusCode":204},"responseTime":0.8691999912261963,"msg":"request completed"}
+{"level":30,"time":1779966942303,"pid":41268,"hostname":"Gabriel","reqId":"req-5","req":{"method":"OPTIONS","url":"/perfil-academico","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":58665},"msg":"incoming request"}
+{"level":30,"time":1779966942304,"pid":41268,"hostname":"Gabriel","reqId":"req-5","res":{"statusCode":204},"responseTime":0.6351000070571899,"msg":"request completed"}
+{"level":30,"time":1779966942305,"pid":41268,"hostname":"Gabriel","reqId":"req-6","req":{"method":"OPTIONS","url":"/depoimentos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":58665},"msg":"incoming request"}
+{"level":30,"time":1779966942306,"pid":41268,"hostname":"Gabriel","reqId":"req-6","res":{"statusCode":204},"responseTime":0.661099910736084,"msg":"request completed"}
+{"level":30,"time":1779966942308,"pid":41268,"hostname":"Gabriel","reqId":"req-7","req":{"method":"OPTIONS","url":"/perfil-academico","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":58665},"msg":"incoming request"}
+{"level":30,"time":1779966942309,"pid":41268,"hostname":"Gabriel","reqId":"req-7","res":{"statusCode":204},"responseTime":0.7245999574661255,"msg":"request completed"}
+{"level":30,"time":1779966942560,"pid":41268,"hostname":"Gabriel","reqId":"req-8","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=ecylgfpz","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":58676},"msg":"incoming request"}
+{"level":30,"time":1779966942561,"pid":41268,"hostname":"Gabriel","reqId":"req-8","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=ecylgfpz not found"}
+{"level":30,"time":1779966942562,"pid":41268,"hostname":"Gabriel","reqId":"req-8","res":{"statusCode":404},"responseTime":2.358299970626831,"msg":"request completed"}
+{"level":30,"time":1779966943322,"pid":41268,"hostname":"Gabriel","reqId":"req-9","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":58665},"msg":"incoming request"}
+{"level":30,"time":1779966943324,"pid":41268,"hostname":"Gabriel","reqId":"req-9","res":{"statusCode":204},"responseTime":1.138800024986267,"msg":"request completed"}
+{"level":30,"time":1779966943327,"pid":41268,"hostname":"Gabriel","reqId":"req-a","req":{"method":"OPTIONS","url":"/bolsas/destaques","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":58665},"msg":"incoming request"}
+{"level":30,"time":1779966943327,"pid":41268,"hostname":"Gabriel","reqId":"req-a","res":{"statusCode":204},"responseTime":0.403999924659729,"msg":"request completed"}
+{"level":30,"time":1779966943857,"pid":41268,"hostname":"Gabriel","reqId":"req-b","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=eczu8900","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":58676},"msg":"incoming request"}
+{"level":30,"time":1779966943857,"pid":41268,"hostname":"Gabriel","reqId":"req-b","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=eczu8900 not found"}
+{"level":30,"time":1779966943857,"pid":41268,"hostname":"Gabriel","reqId":"req-b","res":{"statusCode":404},"responseTime":0.628000020980835,"msg":"request completed"}
+{"level":30,"time":1779966946425,"pid":41268,"hostname":"Gabriel","reqId":"req-c","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=ed1thqlc","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":58676},"msg":"incoming request"}
+{"level":30,"time":1779966946426,"pid":41268,"hostname":"Gabriel","reqId":"req-c","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=ed1thqlc not found"}
+{"level":30,"time":1779966946427,"pid":41268,"hostname":"Gabriel","reqId":"req-c","res":{"statusCode":404},"responseTime":1.218999981880188,"msg":"request completed"}
+{"level":30,"time":1779966950850,"pid":41268,"hostname":"Gabriel","reqId":"req-d","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=ed58h3q1","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":58676},"msg":"incoming request"}
+{"level":30,"time":1779966950850,"pid":41268,"hostname":"Gabriel","reqId":"req-d","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=ed58h3q1 not found"}
+{"level":30,"time":1779966950851,"pid":41268,"hostname":"Gabriel","reqId":"req-d","res":{"statusCode":404},"responseTime":0.5328999757766724,"msg":"request completed"}
+{"level":30,"time":1779966960121,"pid":41268,"hostname":"Gabriel","reqId":"req-e","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=edcdywn1","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":58676},"msg":"incoming request"}
+{"level":30,"time":1779966960121,"pid":41268,"hostname":"Gabriel","reqId":"req-e","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=edcdywn1 not found"}
+{"level":30,"time":1779966960122,"pid":41268,"hostname":"Gabriel","reqId":"req-e","res":{"statusCode":404},"responseTime":0.7468999624252319,"msg":"request completed"}
+{"level":30,"time":1779966970132,"pid":41268,"hostname":"Gabriel","reqId":"req-f","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=edk3zz5b","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":58676},"msg":"incoming request"}
+{"level":30,"time":1779966970133,"pid":41268,"hostname":"Gabriel","reqId":"req-f","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=edk3zz5b not found"}
+{"level":30,"time":1779966970136,"pid":41268,"hostname":"Gabriel","reqId":"req-f","res":{"statusCode":404},"responseTime":2.914199948310852,"msg":"request completed"}
+12:28:28 PM [tsx] change in ./src\server.ts Restarting...
+c
+node:internal/modules/run_main:122
+    triggerUncaughtException(
+    ^
+Error: Cannot find package 'C:\Users\User\Videos\schoolar\api\node_modules\index.js' imported from C:\Users\User\Videos\schoolar\api\src\server.ts
+    at legacyMainResolve (node:internal/modules/esm/resolve:204:26)
+    at packageResolve (node:internal/modules/esm/resolve:846:14)
+    at moduleResolve (node:internal/modules/esm/resolve:926:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1056:11)
+    at nextResolve (node:internal/modules/esm/hooks:748:28)
+    at resolveBase (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967708822:2:3744)
+    at resolveDirectory (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967708822:2:4243)
+    at resolveTsPaths (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967708822:2:4984)
+    at async resolve (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967708822:2:5355)
+    at async nextResolve (node:internal/modules/esm/hooks:748:22) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v22.12.0
+12:28:38 PM [tsx] change in ./src\server.ts Rerunning...
+c
+node:internal/modules/run_main:122
+    triggerUncaughtException(
+    ^
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package '`' imported from C:\Users\User\Videos\schoolar\api\src\server.ts
+    at packageResolve (node:internal/modules/esm/resolve:857:9)
+    at moduleResolve (node:internal/modules/esm/resolve:926:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1056:11)
+    at nextResolve (node:internal/modules/esm/hooks:748:28)
+    at resolveBase (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967718415:2:3744)
+    at resolveDirectory (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967718415:2:4243)
+    at resolveTsPaths (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967718415:2:4984)
+    at async resolve (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967718415:2:5355)
+    at async nextResolve (node:internal/modules/esm/hooks:748:22)
+    at async Hooks.resolve (node:internal/modules/esm/hooks:240:24) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v22.12.0
+12:28:39 PM [tsx] change in ./src\server.ts Rerunning...
+c
+node:internal/modules/run_main:122
+    triggerUncaughtException(
+    ^
+Error [TransformError]: Transform failed with 1 error:
+C:\Users\User\Videos\schoolar\api\src\server.ts:4:22: ERROR: Unexpected "`{ OAuth2Namespace } from '@fastify/oauth2';\nimport path from 'path';\nimport fs from 'node:fs';\nimport multer from \"multer\";\nimport { env } from \"./Env\";\nimport { userRoutes } from \"./http/controllers/usuarios/routes\";\nimport { googleOAuthRoutes } from \"./http/controllers/auth/google-oauth\";\nimport { RegisterLastActiveHook } from \"./hooks/update-last-active\";\nimport { NotificationRoutes } from \"./http/controllers/notifications/Notification-routes\";\nimport { cursosRoutes } from \"./http/controllers/cursos/routes\";\nimport { bolsasRoutes } from \"./http/controllers/bolsas/routes\";\nimport { uploadRoutes } from \"./http/controllers/upload/routes\";\nimport { comunidadesRoutes } from \"./http/controllers/comunidades/routes\";\nimport { depoimentosRoutes } from \"./http/controllers/depoimentos/routes\";\nimport { adminRoutes } from \"./http/controllers/admin/routes\";\nimport { NovidadesRoutes } from \"./http/controllers/novidades/routes\";\nimport { analiseDocumentoRoutes } from \"./http/controllers/analise-documento/routes\";\nimport { perfilAcademicoRoutes } from \"./http/controllers/perfil-academico/routes\";\nimport { aulasOnlineRoutes } from \"./http/controllers/aulas-online/routes\";\nimport { mentoriasRoutes } from \"./http/controllers/mentorias/routes\";\n\n\ndeclare module \"fastify\" {\n  interface FastifyInstance {\n    googleOAuth2: OAuth2Namespace;\n  }\n}\n\n\nconst isProduction = env.NODE_ENV === 'production';\n\nconst __dirname = process.cwd();\n\n\nconst uploadDir = path.resolve(__dirname, 'uploads');\n\n\nconst UPLOAD_PATH = isProduction\n  ? '/root/api_afroscholars/uploads'\n  : path.resolve(process.cwd(), 'uploads');\n\nif (!fs.existsSync(UPLOAD_PATH)) {\n  fs.mkdirSync(UPLOAD_PATH, { recursive: true });\n  if (process.env.NODE_ENV !== 'production') {\n    console.log('📁 [SISTEMA] Pasta de uploads criada em:', UPLOAD_PATH);\n  }\n} else {\n  if (process.env.NODE_ENV !== 'production') {\n    console.log('✅ [SISTEMA] Pasta de uploads detectada em:', UPLOAD_PATH);\n  }\n}\n\nconst storage = multer.diskStorage({\n  destination: (req, file, cb) => {\n    cb(null, UPLOAD_PATH);\n  },\n  filename: (req, file, cb) => {\n    const uniqueName = `"
+    at failureErrorWithLog (C:\Users\User\Videos\schoolar\api\node_modules\esbuild\lib\main.js:1467:15)
+    at C:\Users\User\Videos\schoolar\api\node_modules\esbuild\lib\main.js:736:50
+    at responseCallbacks.<computed> (C:\Users\User\Videos\schoolar\api\node_modules\esbuild\lib\main.js:603:9)
+    at handleIncomingPacket (C:\Users\User\Videos\schoolar\api\node_modules\esbuild\lib\main.js:658:12)
+    at Socket.readFromStdout (C:\Users\User\Videos\schoolar\api\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+
+Node.js v22.12.0
+12:28:41 PM [tsx] change in ./src\server.ts Rerunning...
+c
+node:internal/modules/run_main:122
+    triggerUncaughtException(
+    ^
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package '`' imported from C:\Users\User\Videos\schoolar\api\src\server.ts
+    at packageResolve (node:internal/modules/esm/resolve:857:9)
+    at moduleResolve (node:internal/modules/esm/resolve:926:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1056:11)
+    at nextResolve (node:internal/modules/esm/hooks:748:28)
+    at resolveBase (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967721885:2:3744)
+    at resolveDirectory (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967721885:2:4243)
+    at resolveTsPaths (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967721885:2:4984)
+    at async resolve (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967721885:2:5355)
+    at async nextResolve (node:internal/modules/esm/hooks:748:22)
+    at async Hooks.resolve (node:internal/modules/esm/hooks:240:24) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v22.12.0
+12:28:44 PM [tsx] change in ./src\server.ts Rerunning...
+c
+node:internal/modules/run_main:122
+    triggerUncaughtException(
+    ^
+Error: Cannot find package 'C:\Users\User\Videos\schoolar\api\node_modules\index.js' imported from C:\Users\User\Videos\schoolar\api\src\server.ts
+    at legacyMainResolve (node:internal/modules/esm/resolve:204:26)
+    at packageResolve (node:internal/modules/esm/resolve:846:14)
+    at moduleResolve (node:internal/modules/esm/resolve:926:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1056:11)
+    at nextResolve (node:internal/modules/esm/hooks:748:28)
+    at resolveBase (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967724416:2:3744)
+    at resolveDirectory (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967724416:2:4243)
+    at resolveTsPaths (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967724416:2:4984)
+    at async resolve (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967724416:2:5355)
+    at async nextResolve (node:internal/modules/esm/hooks:748:22) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v22.12.0
+12:28:46 PM [tsx] change in ./src\server.ts Rerunning...
+c
+node:internal/modules/run_main:122
+    triggerUncaughtException(
+    ^
+TypeError [ERR_INVALID_MODULE_SPECIFIER]: Invalid module "@" is not a valid package name imported from C:\Users\User\Videos\schoolar\api\src\server.ts
+    at parsePackageName (node:internal/modules/esm/resolve:784:11)
+    at packageResolve (node:internal/modules/esm/resolve:808:5)
+    at moduleResolve (node:internal/modules/esm/resolve:926:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1056:11)
+    at nextResolve (node:internal/modules/esm/hooks:748:28)
+    at resolveBase (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967727115:2:3744)
+    at resolveDirectory (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967727115:2:4243)
+    at resolveTsPaths (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967727115:2:4984)
+    at async resolve (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967727115:2:5355)
+    at async nextResolve (node:internal/modules/esm/hooks:748:22) {
+  code: 'ERR_INVALID_MODULE_SPECIFIER'
+}
+
+Node.js v22.12.0
+12:28:48 PM [tsx] change in ./src\server.ts Rerunning...
+c
+node:internal/modules/run_main:122
+    triggerUncaughtException(
+    ^
+TypeError [ERR_INVALID_MODULE_SPECIFIER]: Invalid module "@a" is not a valid package name imported from C:\Users\User\Videos\schoolar\api\src\server.ts
+    at parsePackageName (node:internal/modules/esm/resolve:784:11)
+    at packageResolve (node:internal/modules/esm/resolve:808:5)
+    at moduleResolve (node:internal/modules/esm/resolve:926:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1056:11)
+    at nextResolve (node:internal/modules/esm/hooks:748:28)
+    at resolveBase (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967729158:2:3744)
+    at resolveDirectory (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967729158:2:4243)
+    at resolveTsPaths (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967729158:2:4984)
+    at async resolve (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967729158:2:5355)
+    at async nextResolve (node:internal/modules/esm/hooks:748:22) {
+  code: 'ERR_INVALID_MODULE_SPECIFIER'
+}
+
+Node.js v22.12.0
+12:28:53 PM [tsx] change in ./src\server.ts Rerunning...
+c
+node:internal/modules/run_main:122
+    triggerUncaughtException(
+    ^
+TypeError [ERR_INVALID_MODULE_SPECIFIER]: Invalid module "@ap" is not a valid package name imported from C:\Users\User\Videos\schoolar\api\src\server.ts
+    at parsePackageName (node:internal/modules/esm/resolve:784:11)
+    at packageResolve (node:internal/modules/esm/resolve:808:5)
+    at moduleResolve (node:internal/modules/esm/resolve:926:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1056:11)
+    at nextResolve (node:internal/modules/esm/hooks:748:28)
+    at resolveBase (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967733515:2:3744)
+    at resolveDirectory (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967733515:2:4243)
+    at resolveTsPaths (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967733515:2:4984)
+    at async resolve (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967733515:2:5355)
+    at async nextResolve (node:internal/modules/esm/hooks:748:22) {
+  code: 'ERR_INVALID_MODULE_SPECIFIER'
+}
+
+Node.js v22.12.0
+12:28:57 PM [tsx] change in ./src\server.ts Rerunning...
+c
+node:internal/modules/run_main:122
+    triggerUncaughtException(
+    ^
+TypeError [ERR_INVALID_MODULE_SPECIFIER]: Invalid module "@apo" is not a valid package name imported from C:\Users\User\Videos\schoolar\api\src\server.ts
+    at parsePackageName (node:internal/modules/esm/resolve:784:11)
+    at packageResolve (node:internal/modules/esm/resolve:808:5)
+    at moduleResolve (node:internal/modules/esm/resolve:926:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1056:11)
+    at nextResolve (node:internal/modules/esm/hooks:748:28)
+    at resolveBase (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967737491:2:3744)
+    at resolveDirectory (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967737491:2:4243)
+    at resolveTsPaths (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967737491:2:4984)
+    at async resolve (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967737491:2:5355)
+    at async nextResolve (node:internal/modules/esm/hooks:748:22) {
+  code: 'ERR_INVALID_MODULE_SPECIFIER'
+}
+
+Node.js v22.12.0
+12:28:59 PM [tsx] change in ./src\server.ts Rerunning...
+c
+node:internal/modules/run_main:122
+    triggerUncaughtException(
+    ^
+TypeError [ERR_INVALID_MODULE_SPECIFIER]: Invalid module "@app" is not a valid package name imported from C:\Users\User\Videos\schoolar\api\src\server.ts
+    at parsePackageName (node:internal/modules/esm/resolve:784:11)
+    at packageResolve (node:internal/modules/esm/resolve:808:5)
+    at moduleResolve (node:internal/modules/esm/resolve:926:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1056:11)
+    at nextResolve (node:internal/modules/esm/hooks:748:28)
+    at resolveBase (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967739935:2:3744)
+    at resolveDirectory (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967739935:2:4243)
+    at resolveTsPaths (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967739935:2:4984)
+    at async resolve (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967739935:2:5355)
+    at async nextResolve (node:internal/modules/esm/hooks:748:22) {
+  code: 'ERR_INVALID_MODULE_SPECIFIER'
+}
+
+Node.js v22.12.0
+12:29:04 PM [tsx] change in ./src\server.ts Rerunning...
+c
+node:internal/modules/run_main:122
+    triggerUncaughtException(
+    ^
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\User\Videos\schoolar\api\src\@\index.json' imported from C:\Users\User\Videos\schoolar\api\src\server.ts
+    at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    at moduleResolve (node:internal/modules/esm/resolve:932:10)
+    at defaultResolve (node:internal/modules/esm/resolve:1056:11)
+    at nextResolve (node:internal/modules/esm/hooks:748:28)
+    at resolveExtensions (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967744523:2:3251)
+    at async resolveDirectory (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967744523:2:4197)
+    at async resolve (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779967744523:2:5355)
+    at async nextResolve (node:internal/modules/esm/hooks:748:22)
+    at async Hooks.resolve (node:internal/modules/esm/hooks:240:24)
+    at async handleMessage (node:internal/modules/esm/worker:199:18) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///C:/Users/User/Videos/schoolar/api/src/@/index.json'
+}
+
+Node.js v22.12.0
+12:29:08 PM [tsx] change in ./src\server.ts Rerunning...
+c12:29:10 PM [tsx] change in ./src\server.ts Restarting...
+c(node:26272) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"level":30,"time":1779967755316,"pid":26272,"hostname":"Gabriel","msg":"Server listening at http://127.0.0.1:3333"}
+Servidor rodando 🐱‍🏍
+{"level":30,"time":1779967755316,"pid":26272,"hostname":"Gabriel","msg":"Server listening at http://172.20.10.7:3333"}
+12:29:28 PM [tsx] change in ./src\server.ts Restarting...
+c12:29:32 PM [tsx] change in ./src\server.ts Restarting...
+c(node:43272) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Error: listen EADDRINUSE: address already in use 0.0.0.0:3333
+    at Server.setupListenHandle [as _listen2] (node:net:1912:16)
+    at listenInCluster (node:net:1969:12)
+    at node:net:2178:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 3333
+}
+12:31:44 PM [tsx] change in ./src\server.ts Rerunning...
+c12:31:49 PM [tsx] change in ./src\server.ts Restarting...
+c12:31:53 PM [tsx] change in ./src\server.ts Restarting...
+c(node:24560) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Error: listen EADDRINUSE: address already in use 0.0.0.0:3333
+    at Server.setupListenHandle [as _listen2] (node:net:1912:16)
+    at listenInCluster (node:net:1969:12)
+    at node:net:2178:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 3333
+}
+12:32:01 PM [tsx] change in ./src\server.ts Rerunning...
+c(node:11124) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"level":30,"time":1779967928548,"pid":11124,"hostname":"Gabriel","msg":"Server listening at http://127.0.0.1:3333"}
+Servidor rodando 🐱‍🏍
+{"level":30,"time":1779967928550,"pid":11124,"hostname":"Gabriel","msg":"Server listening at http://172.20.10.7:3333"}
+12:32:55 PM [tsx] change in ./src\server.ts Rerunning...
+c(node:1768) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"level":30,"time":1779967980622,"pid":1768,"hostname":"Gabriel","msg":"Server listening at http://127.0.0.1:3333"}
+Servidor rodando 🐱‍🏍
+{"level":30,"time":1779967980622,"pid":1768,"hostname":"Gabriel","msg":"Server listening at http://172.20.10.7:3333"}
+{"level":30,"time":1779968017857,"pid":1768,"hostname":"Gabriel","reqId":"req-1","req":{"method":"GET","url":"/bolsas","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60071},"msg":"incoming request"}
+{"level":30,"time":1779968018137,"pid":1768,"hostname":"Gabriel","reqId":"req-1","res":{"statusCode":200},"responseTime":279.63090002536774,"msg":"request completed"}
+{"level":30,"time":1779968018372,"pid":1768,"hostname":"Gabriel","reqId":"req-2","req":{"method":"POST","url":"/sessions","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60071},"msg":"incoming request"}
+{"level":30,"time":1779968018389,"pid":1768,"hostname":"Gabriel","reqId":"req-2","res":{"statusCode":400},"responseTime":17.37780010700226,"msg":"request completed"}
+{"level":30,"time":1779968765191,"pid":1768,"hostname":"Gabriel","reqId":"req-3","req":{"method":"GET","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60945},"msg":"incoming request"}
+{"level":30,"time":1779968765191,"pid":1768,"hostname":"Gabriel","reqId":"req-3","msg":"Route GET:/push/public_key not found"}
+{"level":30,"time":1779968765193,"pid":1768,"hostname":"Gabriel","reqId":"req-3","res":{"statusCode":404},"responseTime":1.7297000885009766,"msg":"request completed"}
+{"level":30,"time":1779968765305,"pid":1768,"hostname":"Gabriel","reqId":"req-4","req":{"method":"GET","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60945},"msg":"incoming request"}
+{"level":30,"time":1779968765305,"pid":1768,"hostname":"Gabriel","reqId":"req-4","msg":"Route GET:/push/public_key not found"}
+{"level":30,"time":1779968765306,"pid":1768,"hostname":"Gabriel","reqId":"req-4","res":{"statusCode":404},"responseTime":0.722599983215332,"msg":"request completed"}
+{"level":30,"time":1779968772245,"pid":1768,"hostname":"Gabriel","reqId":"req-5","req":{"method":"GET","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60945},"msg":"incoming request"}
+{"level":30,"time":1779968772245,"pid":1768,"hostname":"Gabriel","reqId":"req-5","msg":"Route GET:/push/public_key not found"}
+{"level":30,"time":1779968772247,"pid":1768,"hostname":"Gabriel","reqId":"req-5","res":{"statusCode":404},"responseTime":1.1008000373840332,"msg":"request completed"}
+{"level":30,"time":1779968772315,"pid":1768,"hostname":"Gabriel","reqId":"req-6","req":{"method":"GET","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60945},"msg":"incoming request"}
+{"level":30,"time":1779968772316,"pid":1768,"hostname":"Gabriel","reqId":"req-6","msg":"Route GET:/push/public_key not found"}
+{"level":30,"time":1779968772316,"pid":1768,"hostname":"Gabriel","reqId":"req-6","res":{"statusCode":404},"responseTime":0.5929000377655029,"msg":"request completed"}
+{"level":30,"time":1779968784987,"pid":1768,"hostname":"Gabriel","reqId":"req-7","req":{"method":"OPTIONS","url":"/sessions","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60987},"msg":"incoming request"}
+{"level":30,"time":1779968784989,"pid":1768,"hostname":"Gabriel","reqId":"req-7","res":{"statusCode":204},"responseTime":1.6693999767303467,"msg":"request completed"}
+{"level":30,"time":1779968785041,"pid":1768,"hostname":"Gabriel","reqId":"req-8","req":{"method":"OPTIONS","url":"/profile","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60987},"msg":"incoming request"}
+{"level":30,"time":1779968785042,"pid":1768,"hostname":"Gabriel","reqId":"req-8","res":{"statusCode":204},"responseTime":0.9192999601364136,"msg":"request completed"}
+{"level":30,"time":1779968785276,"pid":1768,"hostname":"Gabriel","reqId":"req-9","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=fggonbj7","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60945},"msg":"incoming request"}
+{"level":30,"time":1779968785276,"pid":1768,"hostname":"Gabriel","reqId":"req-9","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=fggonbj7 not found"}
+{"level":30,"time":1779968785277,"pid":1768,"hostname":"Gabriel","reqId":"req-9","res":{"statusCode":404},"responseTime":1.3329999446868896,"msg":"request completed"}
+{"level":30,"time":1779968785299,"pid":1768,"hostname":"Gabriel","reqId":"req-a","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60987},"msg":"incoming request"}
+{"level":30,"time":1779968785301,"pid":1768,"hostname":"Gabriel","reqId":"req-a","res":{"statusCode":204},"responseTime":0.6644999980926514,"msg":"request completed"}
+{"level":30,"time":1779968785301,"pid":1768,"hostname":"Gabriel","reqId":"req-b","req":{"method":"OPTIONS","url":"/novidades?status=PUBLICADO","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60992},"msg":"incoming request"}
+{"level":30,"time":1779968785302,"pid":1768,"hostname":"Gabriel","reqId":"req-b","res":{"statusCode":204},"responseTime":0.4674999713897705,"msg":"request completed"}
+{"level":30,"time":1779968785304,"pid":1768,"hostname":"Gabriel","reqId":"req-c","req":{"method":"OPTIONS","url":"/depoimentos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60987},"msg":"incoming request"}
+{"level":30,"time":1779968785305,"pid":1768,"hostname":"Gabriel","reqId":"req-c","res":{"statusCode":204},"responseTime":0.9309999942779541,"msg":"request completed"}
+{"level":30,"time":1779968785309,"pid":1768,"hostname":"Gabriel","reqId":"req-d","req":{"method":"OPTIONS","url":"/bolsas/destaques","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60987},"msg":"incoming request"}
+{"level":30,"time":1779968785309,"pid":1768,"hostname":"Gabriel","reqId":"req-d","res":{"statusCode":204},"responseTime":0.37279999256134033,"msg":"request completed"}
+{"level":30,"time":1779968785309,"pid":1768,"hostname":"Gabriel","reqId":"req-e","req":{"method":"OPTIONS","url":"/perfil-academico","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60992},"msg":"incoming request"}
+{"level":30,"time":1779968785310,"pid":1768,"hostname":"Gabriel","reqId":"req-e","res":{"statusCode":204},"responseTime":0.5012000799179077,"msg":"request completed"}
+{"level":30,"time":1779968785324,"pid":1768,"hostname":"Gabriel","reqId":"req-f","req":{"method":"OPTIONS","url":"/depoimentos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60987},"msg":"incoming request"}
+{"level":30,"time":1779968785325,"pid":1768,"hostname":"Gabriel","reqId":"req-f","res":{"statusCode":204},"responseTime":0.31489992141723633,"msg":"request completed"}
+{"level":30,"time":1779968785330,"pid":1768,"hostname":"Gabriel","reqId":"req-g","req":{"method":"OPTIONS","url":"/perfil-academico","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60987},"msg":"incoming request"}
+{"level":30,"time":1779968785330,"pid":1768,"hostname":"Gabriel","reqId":"req-g","res":{"statusCode":204},"responseTime":0.46650004386901855,"msg":"request completed"}
+{"level":30,"time":1779968786342,"pid":1768,"hostname":"Gabriel","reqId":"req-h","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60987},"msg":"incoming request"}
+{"level":30,"time":1779968786342,"pid":1768,"hostname":"Gabriel","reqId":"req-h","res":{"statusCode":204},"responseTime":0.32220005989074707,"msg":"request completed"}
+{"level":30,"time":1779968786353,"pid":1768,"hostname":"Gabriel","reqId":"req-i","req":{"method":"OPTIONS","url":"/bolsas/destaques","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60987},"msg":"incoming request"}
+{"level":30,"time":1779968786353,"pid":1768,"hostname":"Gabriel","reqId":"req-i","res":{"statusCode":204},"responseTime":0.36000001430511475,"msg":"request completed"}
+{"level":30,"time":1779968786663,"pid":1768,"hostname":"Gabriel","reqId":"req-j","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=fghr85mg","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60945},"msg":"incoming request"}
+{"level":30,"time":1779968786663,"pid":1768,"hostname":"Gabriel","reqId":"req-j","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=fghr85mg not found"}
+{"level":30,"time":1779968786664,"pid":1768,"hostname":"Gabriel","reqId":"req-j","res":{"statusCode":404},"responseTime":0.7727999687194824,"msg":"request completed"}
+{"level":30,"time":1779968788359,"pid":1768,"hostname":"Gabriel","reqId":"req-k","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60987},"msg":"incoming request"}
+{"level":30,"time":1779968788360,"pid":1768,"hostname":"Gabriel","reqId":"req-k","res":{"statusCode":204},"responseTime":0.3873000144958496,"msg":"request completed"}
+{"level":30,"time":1779968788360,"pid":1768,"hostname":"Gabriel","reqId":"req-l","req":{"method":"OPTIONS","url":"/bolsas/destaques","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60992},"msg":"incoming request"}
+{"level":30,"time":1779968788360,"pid":1768,"hostname":"Gabriel","reqId":"req-l","res":{"statusCode":204},"responseTime":0.2726999521255493,"msg":"request completed"}
+{"level":30,"time":1779968789247,"pid":1768,"hostname":"Gabriel","reqId":"req-m","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=fgjqv9v0","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60945},"msg":"incoming request"}
+{"level":30,"time":1779968789248,"pid":1768,"hostname":"Gabriel","reqId":"req-m","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=fgjqv9v0 not found"}
+{"level":30,"time":1779968789249,"pid":1768,"hostname":"Gabriel","reqId":"req-m","res":{"statusCode":404},"responseTime":1.1516000032424927,"msg":"request completed"}
+{"level":30,"time":1779968791931,"pid":1768,"hostname":"Gabriel","reqId":"req-n","req":{"method":"OPTIONS","url":"/novidades?status=PUBLICADO","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60992},"msg":"incoming request"}
+{"level":30,"time":1779968791932,"pid":1768,"hostname":"Gabriel","reqId":"req-n","res":{"statusCode":204},"responseTime":0.7437000274658203,"msg":"request completed"}
+{"level":30,"time":1779968792276,"pid":1768,"hostname":"Gabriel","reqId":"req-o","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=fgm35ilm","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60945},"msg":"incoming request"}
+{"level":30,"time":1779968792276,"pid":1768,"hostname":"Gabriel","reqId":"req-o","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=fgm35ilm not found"}
+{"level":30,"time":1779968792277,"pid":1768,"hostname":"Gabriel","reqId":"req-o","res":{"statusCode":404},"responseTime":0.6016000509262085,"msg":"request completed"}
+{"level":30,"time":1779968792371,"pid":1768,"hostname":"Gabriel","reqId":"req-p","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60992},"msg":"incoming request"}
+{"level":30,"time":1779968792371,"pid":1768,"hostname":"Gabriel","reqId":"req-p","res":{"statusCode":204},"responseTime":0.3759000301361084,"msg":"request completed"}
+{"level":30,"time":1779968792371,"pid":1768,"hostname":"Gabriel","reqId":"req-q","req":{"method":"OPTIONS","url":"/bolsas/destaques","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60987},"msg":"incoming request"}
+{"level":30,"time":1779968792372,"pid":1768,"hostname":"Gabriel","reqId":"req-q","res":{"statusCode":204},"responseTime":0.4335000514984131,"msg":"request completed"}
+{"level":30,"time":1779968801964,"pid":1768,"hostname":"Gabriel","reqId":"req-r","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=fgtkalyn","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60945},"msg":"incoming request"}
+{"level":30,"time":1779968801964,"pid":1768,"hostname":"Gabriel","reqId":"req-r","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=fgtkalyn not found"}
+{"level":30,"time":1779968801965,"pid":1768,"hostname":"Gabriel","reqId":"req-r","res":{"statusCode":404},"responseTime":0.457800030708313,"msg":"request completed"}
+{"level":30,"time":1779968812959,"pid":1768,"hostname":"Gabriel","reqId":"req-s","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=fh21pst4","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":60945},"msg":"incoming request"}
+{"level":30,"time":1779968812960,"pid":1768,"hostname":"Gabriel","reqId":"req-s","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=fh21pst4 not found"}
+{"level":30,"time":1779968812960,"pid":1768,"hostname":"Gabriel","reqId":"req-s","res":{"statusCode":404},"responseTime":0.5927000045776367,"msg":"request completed"}
+12:47:34 PM [tsx] change in ./src\Env\index.ts Restarting...
+c12:47:36 PM [tsx] change in ./src\Env\index.ts Restarting...
+c12:47:39 PM [tsx] change in ./src\Env\index.ts Restarting...
+c12:47:42 PM [tsx] change in ./src\Env\index.ts Restarting...
+c12:47:43 PM [tsx] change in ./src\Env\index.ts Restarting...
+c12:47:47 PM [tsx] change in ./src\Env\index.ts Restarting...
+c12:47:50 PM [tsx] change in ./src\Env\index.ts Restarting...
+c12:47:52 PM [tsx] change in ./src\Env\index.ts Restarting...
+c(node:37208) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"level":30,"time":1779968880354,"pid":37208,"hostname":"Gabriel","msg":"Server listening at http://127.0.0.1:3333"}
+Servidor rodando 🐱‍🏍
+{"level":30,"time":1779968880355,"pid":37208,"hostname":"Gabriel","msg":"Server listening at http://172.20.10.7:3333"}
+{"level":30,"time":1779968880429,"pid":37208,"hostname":"Gabriel","reqId":"req-1","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=fih1v2fh","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":61157},"msg":"incoming request"}
+{"level":30,"time":1779968880431,"pid":37208,"hostname":"Gabriel","reqId":"req-1","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=fih1v2fh not found"}
+{"level":30,"time":1779968880439,"pid":37208,"hostname":"Gabriel","reqId":"req-1","res":{"statusCode":404},"responseTime":10.053200006484985,"msg":"request completed"}
+{"level":30,"time":1779968880441,"pid":37208,"hostname":"Gabriel","reqId":"req-2","req":{"method":"OPTIONS","url":"/bolsas/destaques","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":61145},"msg":"incoming request"}
+{"level":30,"time":1779968880442,"pid":37208,"hostname":"Gabriel","reqId":"req-2","res":{"statusCode":204},"responseTime":0.8909000158309937,"msg":"request completed"}
+{"level":30,"time":1779968880443,"pid":37208,"hostname":"Gabriel","reqId":"req-3","req":{"method":"OPTIONS","url":"/novidades?status=PUBLICADO","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":61145},"msg":"incoming request"}
+{"level":30,"time":1779968880444,"pid":37208,"hostname":"Gabriel","reqId":"req-3","res":{"statusCode":204},"responseTime":0.6124000549316406,"msg":"request completed"}
+{"level":30,"time":1779968880446,"pid":37208,"hostname":"Gabriel","reqId":"req-4","req":{"method":"OPTIONS","url":"/depoimentos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":61145},"msg":"incoming request"}
+{"level":30,"time":1779968880446,"pid":37208,"hostname":"Gabriel","reqId":"req-4","res":{"statusCode":204},"responseTime":0.42910003662109375,"msg":"request completed"}
+{"level":30,"time":1779968880449,"pid":37208,"hostname":"Gabriel","reqId":"req-5","req":{"method":"OPTIONS","url":"/perfil-academico","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":61145},"msg":"incoming request"}
+{"level":30,"time":1779968880451,"pid":37208,"hostname":"Gabriel","reqId":"req-5","res":{"statusCode":204},"responseTime":1.3909999132156372,"msg":"request completed"}
+{"level":30,"time":1779968880453,"pid":37208,"hostname":"Gabriel","reqId":"req-6","req":{"method":"OPTIONS","url":"/depoimentos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":61145},"msg":"incoming request"}
+{"level":30,"time":1779968880454,"pid":37208,"hostname":"Gabriel","reqId":"req-6","res":{"statusCode":204},"responseTime":0.6118999719619751,"msg":"request completed"}
+{"level":30,"time":1779968880455,"pid":37208,"hostname":"Gabriel","reqId":"req-7","req":{"method":"OPTIONS","url":"/perfil-academico","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":61154},"msg":"incoming request"}
+{"level":30,"time":1779968880456,"pid":37208,"hostname":"Gabriel","reqId":"req-7","res":{"statusCode":204},"responseTime":0.6292001008987427,"msg":"request completed"}
+{"level":30,"time":1779968881967,"pid":37208,"hostname":"Gabriel","reqId":"req-8","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=fijaki68","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":61157},"msg":"incoming request"}
+{"level":30,"time":1779968881967,"pid":37208,"hostname":"Gabriel","reqId":"req-8","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=fijaki68 not found"}
+{"level":30,"time":1779968881968,"pid":37208,"hostname":"Gabriel","reqId":"req-8","res":{"statusCode":404},"responseTime":0.9946000576019287,"msg":"request completed"}
+{"level":30,"time":1779968884982,"pid":37208,"hostname":"Gabriel","reqId":"req-9","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=fillpem6","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":61157},"msg":"incoming request"}
+{"level":30,"time":1779968884983,"pid":37208,"hostname":"Gabriel","reqId":"req-9","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=fillpem6 not found"}
+{"level":30,"time":1779968884984,"pid":37208,"hostname":"Gabriel","reqId":"req-9","res":{"statusCode":404},"responseTime":1.148400068283081,"msg":"request completed"}
+{"level":30,"time":1779968889955,"pid":37208,"hostname":"Gabriel","reqId":"req-a","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=fipgf9r8","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":61157},"msg":"incoming request"}
+{"level":30,"time":1779968889955,"pid":37208,"hostname":"Gabriel","reqId":"req-a","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=fipgf9r8 not found"}
+{"level":30,"time":1779968889956,"pid":37208,"hostname":"Gabriel","reqId":"req-a","res":{"statusCode":404},"responseTime":1.2531999349594116,"msg":"request completed"}
+12:48:12 PM [tsx] change in ./src\Env\index.ts Restarting...
+c(node:43236) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Error: listen EADDRINUSE: address already in use 0.0.0.0:3333
+    at Server.setupListenHandle [as _listen2] (node:net:1912:16)
+    at listenInCluster (node:net:1969:12)
+    at node:net:2178:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 3333
+}
+12:48:57 PM [tsx] change in ./src\Env\index.ts Rerunning...
+c(node:14416) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Error: listen EADDRINUSE: address already in use 0.0.0.0:3333
+    at Server.setupListenHandle [as _listen2] (node:net:1912:16)
+    at listenInCluster (node:net:1969:12)
+    at node:net:2178:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 3333
+}
+12:49:50 PM [tsx] change in ./src\Env\index.ts Rerunning...
+c(node:39724) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"level":30,"time":1779968995569,"pid":39724,"hostname":"Gabriel","msg":"Server listening at http://127.0.0.1:3333"}
+Servidor rodando 🐱‍🏍
+{"level":30,"time":1779968995570,"pid":39724,"hostname":"Gabriel","msg":"Server listening at http://172.20.10.7:3333"}
+12:51:51 PM [tsx] change in ./src\Env\index.ts Restarting...
+c12:51:54 PM [tsx] change in ./src\Env\index.ts Restarting...
+c(node:36932) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Error: listen EADDRINUSE: address already in use 0.0.0.0:3333
+    at Server.setupListenHandle [as _listen2] (node:net:1912:16)
+    at listenInCluster (node:net:1969:12)
+    at node:net:2178:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 3333
+}
+12:59:09 PM [tsx] change in ./src\Env\index.ts Rerunning...
+c✅ [SISTEMA] Pasta de uploads detectada em: C:\Users\User\Videos\schoolar\api\uploads
+(node:15380) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"level":30,"time":1779969557288,"pid":15380,"hostname":"Gabriel","msg":"Server listening at http://127.0.0.1:3333"}
+Servidor rodando 🐱‍🏍
+{"level":30,"time":1779969557291,"pid":15380,"hostname":"Gabriel","msg":"Server listening at http://172.20.10.7:3333"}
+{"level":30,"time":1779969561450,"pid":15380,"hostname":"Gabriel","reqId":"req-1","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=fx3ch4qo","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62365},"msg":"incoming request"}
+{"level":30,"time":1779969561452,"pid":15380,"hostname":"Gabriel","reqId":"req-1","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=fx3ch4qo not found"}
+{"level":30,"time":1779969561461,"pid":15380,"hostname":"Gabriel","reqId":"req-1","res":{"statusCode":404},"responseTime":9.904300093650818,"msg":"request completed"}
+{"level":30,"time":1779969561492,"pid":15380,"hostname":"Gabriel","reqId":"req-2","req":{"method":"OPTIONS","url":"/profile","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62366},"msg":"incoming request"}
+{"level":30,"time":1779969561493,"pid":15380,"hostname":"Gabriel","reqId":"req-2","res":{"statusCode":204},"responseTime":0.8131999969482422,"msg":"request completed"}
+{"level":30,"time":1779969561494,"pid":15380,"hostname":"Gabriel","reqId":"req-3","req":{"method":"OPTIONS","url":"/novidades?status=PUBLICADO","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62367},"msg":"incoming request"}
+{"level":30,"time":1779969561494,"pid":15380,"hostname":"Gabriel","reqId":"req-3","res":{"statusCode":204},"responseTime":0.5113999843597412,"msg":"request completed"}
+{"level":30,"time":1779969561495,"pid":15380,"hostname":"Gabriel","reqId":"req-4","req":{"method":"OPTIONS","url":"/depoimentos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62368},"msg":"incoming request"}
+{"level":30,"time":1779969561496,"pid":15380,"hostname":"Gabriel","reqId":"req-4","res":{"statusCode":204},"responseTime":0.6535999774932861,"msg":"request completed"}
+{"level":30,"time":1779969561497,"pid":15380,"hostname":"Gabriel","reqId":"req-5","req":{"method":"OPTIONS","url":"/perfil-academico","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62369},"msg":"incoming request"}
+{"level":30,"time":1779969561498,"pid":15380,"hostname":"Gabriel","reqId":"req-5","res":{"statusCode":204},"responseTime":0.6618999242782593,"msg":"request completed"}
+{"level":30,"time":1779969561499,"pid":15380,"hostname":"Gabriel","reqId":"req-6","req":{"method":"OPTIONS","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62366},"msg":"incoming request"}
+{"level":30,"time":1779969561500,"pid":15380,"hostname":"Gabriel","reqId":"req-6","res":{"statusCode":204},"responseTime":0.7452000379562378,"msg":"request completed"}
+{"level":30,"time":1779969561501,"pid":15380,"hostname":"Gabriel","reqId":"req-7","req":{"method":"GET","url":"/profile","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62365},"msg":"incoming request"}
+{"level":30,"time":1779969561504,"pid":15380,"hostname":"Gabriel","reqId":"req-7","res":{"statusCode":401},"responseTime":2.51010000705719,"msg":"request completed"}
+{"level":30,"time":1779969561505,"pid":15380,"hostname":"Gabriel","reqId":"req-8","req":{"method":"GET","url":"/novidades?status=PUBLICADO","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62365},"msg":"incoming request"}
+{"level":30,"time":1779969561699,"pid":15380,"hostname":"Gabriel","reqId":"req-9","req":{"method":"GET","url":"/perfil-academico","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62377},"msg":"incoming request"}
+{"level":30,"time":1779969561701,"pid":15380,"hostname":"Gabriel","reqId":"req-9","res":{"statusCode":401},"responseTime":1.8319000005722046,"msg":"request completed"}
+{"level":30,"time":1779969561704,"pid":15380,"hostname":"Gabriel","reqId":"req-a","req":{"method":"GET","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62377},"msg":"incoming request"}
+{"level":30,"time":1779969561705,"pid":15380,"hostname":"Gabriel","reqId":"req-a","msg":"Route GET:/push/public_key not found"}
+{"level":30,"time":1779969561706,"pid":15380,"hostname":"Gabriel","reqId":"req-a","res":{"statusCode":404},"responseTime":0.8730000257492065,"msg":"request completed"}
+{"level":30,"time":1779969561708,"pid":15380,"hostname":"Gabriel","reqId":"req-b","req":{"method":"GET","url":"/depoimentos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62377},"msg":"incoming request"}
+{"level":30,"time":1779969561785,"pid":15380,"hostname":"Gabriel","reqId":"req-8","res":{"statusCode":200},"responseTime":279.5285999774933,"msg":"request completed"}
+{"level":30,"time":1779969561811,"pid":15380,"hostname":"Gabriel","reqId":"req-b","res":{"statusCode":200},"responseTime":103.6094000339508,"msg":"request completed"}
+{"level":30,"time":1779969563001,"pid":15380,"hostname":"Gabriel","reqId":"req-c","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=fx4rqqti","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62377},"msg":"incoming request"}
+{"level":30,"time":1779969563002,"pid":15380,"hostname":"Gabriel","reqId":"req-c","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=fx4rqqti not found"}
+{"level":30,"time":1779969563002,"pid":15380,"hostname":"Gabriel","reqId":"req-c","res":{"statusCode":404},"responseTime":0.9122999906539917,"msg":"request completed"}
+{"level":30,"time":1779969565968,"pid":15380,"hostname":"Gabriel","reqId":"req-d","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=fx72i04v","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62377},"msg":"incoming request"}
+{"level":30,"time":1779969565968,"pid":15380,"hostname":"Gabriel","reqId":"req-d","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=fx72i04v not found"}
+{"level":30,"time":1779969565968,"pid":15380,"hostname":"Gabriel","reqId":"req-d","res":{"statusCode":404},"responseTime":0.5752999782562256,"msg":"request completed"}
+{"level":30,"time":1779969569958,"pid":15380,"hostname":"Gabriel","reqId":"req-e","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=fxa5cgqw","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62377},"msg":"incoming request"}
+{"level":30,"time":1779969569959,"pid":15380,"hostname":"Gabriel","reqId":"req-e","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=fxa5cgqw not found"}
+{"level":30,"time":1779969569960,"pid":15380,"hostname":"Gabriel","reqId":"req-e","res":{"statusCode":404},"responseTime":1.7233999967575073,"msg":"request completed"}
+{"level":30,"time":1779969570003,"pid":15380,"hostname":"Gabriel","reqId":"req-f","req":{"method":"OPTIONS","url":"/profile","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62366},"msg":"incoming request"}
+{"level":30,"time":1779969570004,"pid":15380,"hostname":"Gabriel","reqId":"req-f","res":{"statusCode":204},"responseTime":0.7141000032424927,"msg":"request completed"}
+{"level":30,"time":1779969570007,"pid":15380,"hostname":"Gabriel","reqId":"req-g","req":{"method":"GET","url":"/profile","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62377},"msg":"incoming request"}
+{"level":30,"time":1779969570009,"pid":15380,"hostname":"Gabriel","reqId":"req-g","res":{"statusCode":401},"responseTime":1.1938999891281128,"msg":"request completed"}
+{"level":30,"time":1779969570017,"pid":15380,"hostname":"Gabriel","reqId":"req-h","req":{"method":"OPTIONS","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62366},"msg":"incoming request"}
+{"level":30,"time":1779969570017,"pid":15380,"hostname":"Gabriel","reqId":"req-h","res":{"statusCode":204},"responseTime":0.33949995040893555,"msg":"request completed"}
+{"level":30,"time":1779969570020,"pid":15380,"hostname":"Gabriel","reqId":"req-i","req":{"method":"GET","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62365},"msg":"incoming request"}
+{"level":30,"time":1779969570021,"pid":15380,"hostname":"Gabriel","reqId":"req-i","msg":"Route GET:/push/public_key not found"}
+{"level":30,"time":1779969570021,"pid":15380,"hostname":"Gabriel","reqId":"req-i","res":{"statusCode":404},"responseTime":0.6572999954223633,"msg":"request completed"}
+{"level":30,"time":1779969570472,"pid":15380,"hostname":"Gabriel","reqId":"req-j","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62366},"msg":"incoming request"}
+{"level":30,"time":1779969570473,"pid":15380,"hostname":"Gabriel","reqId":"req-j","res":{"statusCode":204},"responseTime":0.32770001888275146,"msg":"request completed"}
+{"level":30,"time":1779969570476,"pid":15380,"hostname":"Gabriel","reqId":"req-k","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62377},"msg":"incoming request"}
+{"level":30,"time":1779969570476,"pid":15380,"hostname":"Gabriel","reqId":"req-k","res":{"statusCode":401},"responseTime":0.5626000165939331,"msg":"request completed"}
+{"level":30,"time":1779969570477,"pid":15380,"hostname":"Gabriel","reqId":"req-l","req":{"method":"OPTIONS","url":"/novidades?status=PUBLICADO","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62366},"msg":"incoming request"}
+{"level":30,"time":1779969570477,"pid":15380,"hostname":"Gabriel","reqId":"req-l","res":{"statusCode":204},"responseTime":0.27799999713897705,"msg":"request completed"}
+{"level":30,"time":1779969570477,"pid":15380,"hostname":"Gabriel","reqId":"req-m","req":{"method":"OPTIONS","url":"/depoimentos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62369},"msg":"incoming request"}
+{"level":30,"time":1779969570478,"pid":15380,"hostname":"Gabriel","reqId":"req-m","res":{"statusCode":204},"responseTime":0.29750001430511475,"msg":"request completed"}
+{"level":30,"time":1779969570481,"pid":15380,"hostname":"Gabriel","reqId":"req-n","req":{"method":"GET","url":"/novidades?status=PUBLICADO","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62381},"msg":"incoming request"}
+{"level":30,"time":1779969570482,"pid":15380,"hostname":"Gabriel","reqId":"req-o","req":{"method":"GET","url":"/depoimentos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62382},"msg":"incoming request"}
+{"level":30,"time":1779969570488,"pid":15380,"hostname":"Gabriel","reqId":"req-n","res":{"statusCode":200},"responseTime":7.331499934196472,"msg":"request completed"}
+{"level":30,"time":1779969570491,"pid":15380,"hostname":"Gabriel","reqId":"req-o","res":{"statusCode":200},"responseTime":8.589300036430359,"msg":"request completed"}
+{"level":30,"time":1779969570495,"pid":15380,"hostname":"Gabriel","reqId":"req-p","req":{"method":"OPTIONS","url":"/bolsas/destaques","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62369},"msg":"incoming request"}
+{"level":30,"time":1779969570496,"pid":15380,"hostname":"Gabriel","reqId":"req-p","res":{"statusCode":204},"responseTime":0.37370002269744873,"msg":"request completed"}
+{"level":30,"time":1779969570496,"pid":15380,"hostname":"Gabriel","reqId":"req-q","req":{"method":"OPTIONS","url":"/perfil-academico","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62366},"msg":"incoming request"}
+{"level":30,"time":1779969570496,"pid":15380,"hostname":"Gabriel","reqId":"req-q","res":{"statusCode":204},"responseTime":0.49449992179870605,"msg":"request completed"}
+{"level":30,"time":1779969570499,"pid":15380,"hostname":"Gabriel","reqId":"req-r","req":{"method":"GET","url":"/bolsas/destaques","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62383},"msg":"incoming request"}
+{"level":30,"time":1779969570501,"pid":15380,"hostname":"Gabriel","reqId":"req-s","req":{"method":"GET","url":"/perfil-academico","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62384},"msg":"incoming request"}
+{"level":30,"time":1779969570502,"pid":15380,"hostname":"Gabriel","reqId":"req-s","res":{"statusCode":401},"responseTime":0.7387000322341919,"msg":"request completed"}
+{"level":30,"time":1779969570505,"pid":15380,"hostname":"Gabriel","reqId":"req-t","req":{"method":"OPTIONS","url":"/depoimentos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62366},"msg":"incoming request"}
+{"level":30,"time":1779969570505,"pid":15380,"hostname":"Gabriel","reqId":"req-t","res":{"statusCode":204},"responseTime":0.4448000192642212,"msg":"request completed"}
+{"level":30,"time":1779969570510,"pid":15380,"hostname":"Gabriel","reqId":"req-r","res":{"statusCode":200},"responseTime":10.580199956893921,"msg":"request completed"}
+{"level":30,"time":1779969570510,"pid":15380,"hostname":"Gabriel","reqId":"req-u","req":{"method":"OPTIONS","url":"/perfil-academico","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62366},"msg":"incoming request"}
+{"level":30,"time":1779969570511,"pid":15380,"hostname":"Gabriel","reqId":"req-u","res":{"statusCode":204},"responseTime":0.31630003452301025,"msg":"request completed"}
+{"level":30,"time":1779969570614,"pid":15380,"hostname":"Gabriel","reqId":"req-v","req":{"method":"GET","url":"/depoimentos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62365},"msg":"incoming request"}
+{"level":30,"time":1779969570617,"pid":15380,"hostname":"Gabriel","reqId":"req-v","res":{"statusCode":200},"responseTime":2.3250999450683594,"msg":"request completed"}
+{"level":30,"time":1779969570647,"pid":15380,"hostname":"Gabriel","reqId":"req-w","req":{"method":"GET","url":"/perfil-academico","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62377},"msg":"incoming request"}
+{"level":30,"time":1779969570648,"pid":15380,"hostname":"Gabriel","reqId":"req-w","res":{"statusCode":401},"responseTime":0.694599986076355,"msg":"request completed"}
+{"level":30,"time":1779969578964,"pid":15380,"hostname":"Gabriel","reqId":"req-x","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=fxh3mybl","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62381},"msg":"incoming request"}
+{"level":30,"time":1779969578965,"pid":15380,"hostname":"Gabriel","reqId":"req-x","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=fxh3mybl not found"}
+{"level":30,"time":1779969578965,"pid":15380,"hostname":"Gabriel","reqId":"req-x","res":{"statusCode":404},"responseTime":0.5218000411987305,"msg":"request completed"}
+{"level":30,"time":1779969589964,"pid":15380,"hostname":"Gabriel","reqId":"req-y","req":{"method":"GET","url":"/api/socket.io/?EIO=4&transport=polling&t=fxpl2msb","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62381},"msg":"incoming request"}
+{"level":30,"time":1779969589966,"pid":15380,"hostname":"Gabriel","reqId":"req-y","msg":"Route GET:/api/socket.io/?EIO=4&transport=polling&t=fxpl2msb not found"}
+{"level":30,"time":1779969589969,"pid":15380,"hostname":"Gabriel","reqId":"req-y","res":{"statusCode":404},"responseTime":3.749799966812134,"msg":"request completed"}
+{"level":30,"time":1779969954504,"pid":15380,"hostname":"Gabriel","reqId":"req-z","req":{"method":"OPTIONS","url":"/profile","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62999},"msg":"incoming request"}
+{"level":30,"time":1779969954505,"pid":15380,"hostname":"Gabriel","reqId":"req-z","res":{"statusCode":204},"responseTime":0.4839000701904297,"msg":"request completed"}
+{"level":30,"time":1779969954505,"pid":15380,"hostname":"Gabriel","reqId":"req-10","req":{"method":"OPTIONS","url":"/novidades?status=PUBLICADO","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63000},"msg":"incoming request"}
+{"level":30,"time":1779969954505,"pid":15380,"hostname":"Gabriel","reqId":"req-10","res":{"statusCode":204},"responseTime":0.21779990196228027,"msg":"request completed"}
+{"level":30,"time":1779969954508,"pid":15380,"hostname":"Gabriel","reqId":"req-11","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63001},"msg":"incoming request"}
+{"level":30,"time":1779969954509,"pid":15380,"hostname":"Gabriel","reqId":"req-11","res":{"statusCode":204},"responseTime":0.5046999454498291,"msg":"request completed"}
+{"level":30,"time":1779969954510,"pid":15380,"hostname":"Gabriel","reqId":"req-12","req":{"method":"OPTIONS","url":"/bolsas/destaques","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63002},"msg":"incoming request"}
+{"level":30,"time":1779969954513,"pid":15380,"hostname":"Gabriel","reqId":"req-12","res":{"statusCode":204},"responseTime":2.5331000089645386,"msg":"request completed"}
+{"level":30,"time":1779969954835,"pid":15380,"hostname":"Gabriel","reqId":"req-13","req":{"method":"GET","url":"/profile","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63010},"msg":"incoming request"}
+{"level":30,"time":1779969954836,"pid":15380,"hostname":"Gabriel","reqId":"req-13","res":{"statusCode":401},"responseTime":1.6821999549865723,"msg":"request completed"}
+{"level":30,"time":1779969954837,"pid":15380,"hostname":"Gabriel","reqId":"req-14","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63011},"msg":"incoming request"}
+{"level":30,"time":1779969954838,"pid":15380,"hostname":"Gabriel","reqId":"req-14","res":{"statusCode":401},"responseTime":0.7631999254226685,"msg":"request completed"}
+{"level":30,"time":1779969954838,"pid":15380,"hostname":"Gabriel","reqId":"req-15","req":{"method":"GET","url":"/novidades?status=PUBLICADO","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63012},"msg":"incoming request"}
+{"level":30,"time":1779969954842,"pid":15380,"hostname":"Gabriel","reqId":"req-16","req":{"method":"GET","url":"/bolsas/destaques","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63013},"msg":"incoming request"}
+{"level":30,"time":1779969955136,"pid":15380,"hostname":"Gabriel","reqId":"req-16","res":{"statusCode":200},"responseTime":294.3007000684738,"msg":"request completed"}
+{"level":30,"time":1779969955301,"pid":15380,"hostname":"Gabriel","reqId":"req-15","res":{"statusCode":200},"responseTime":463.00479996204376,"msg":"request completed"}
+{"level":30,"time":1779969956531,"pid":15380,"hostname":"Gabriel","reqId":"req-17","req":{"method":"OPTIONS","url":"/profile","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63002},"msg":"incoming request"}
+{"level":30,"time":1779969956532,"pid":15380,"hostname":"Gabriel","reqId":"req-17","res":{"statusCode":204},"responseTime":0.5767999887466431,"msg":"request completed"}
+{"level":30,"time":1779969956532,"pid":15380,"hostname":"Gabriel","reqId":"req-18","req":{"method":"OPTIONS","url":"/bolsas/destaques","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63001},"msg":"incoming request"}
+{"level":30,"time":1779969956533,"pid":15380,"hostname":"Gabriel","reqId":"req-18","res":{"statusCode":204},"responseTime":0.48610007762908936,"msg":"request completed"}
+{"level":30,"time":1779969956537,"pid":15380,"hostname":"Gabriel","reqId":"req-19","req":{"method":"OPTIONS","url":"/novidades?status=PUBLICADO","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63001},"msg":"incoming request"}
+{"level":30,"time":1779969956538,"pid":15380,"hostname":"Gabriel","reqId":"req-19","res":{"statusCode":204},"responseTime":0.46429991722106934,"msg":"request completed"}
+{"level":30,"time":1779969956538,"pid":15380,"hostname":"Gabriel","reqId":"req-1a","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63002},"msg":"incoming request"}
+{"level":30,"time":1779969956540,"pid":15380,"hostname":"Gabriel","reqId":"req-1a","res":{"statusCode":204},"responseTime":1.947700023651123,"msg":"request completed"}
+{"level":30,"time":1779969956634,"pid":15380,"hostname":"Gabriel","reqId":"req-1b","req":{"method":"GET","url":"/profile","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63012},"msg":"incoming request"}
+{"level":30,"time":1779969956635,"pid":15380,"hostname":"Gabriel","reqId":"req-1b","res":{"statusCode":401},"responseTime":1.290600061416626,"msg":"request completed"}
+{"level":30,"time":1779969956636,"pid":15380,"hostname":"Gabriel","reqId":"req-1c","req":{"method":"GET","url":"/bolsas/destaques","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63013},"msg":"incoming request"}
+{"level":30,"time":1779969956638,"pid":15380,"hostname":"Gabriel","reqId":"req-1d","req":{"method":"GET","url":"/novidades?status=PUBLICADO","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63011},"msg":"incoming request"}
+{"level":30,"time":1779969956669,"pid":15380,"hostname":"Gabriel","reqId":"req-1d","res":{"statusCode":200},"responseTime":30.997599959373474,"msg":"request completed"}
+{"level":30,"time":1779969956670,"pid":15380,"hostname":"Gabriel","reqId":"req-1c","res":{"statusCode":200},"responseTime":34.09500002861023,"msg":"request completed"}
+{"level":30,"time":1779969956670,"pid":15380,"hostname":"Gabriel","reqId":"req-1e","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63010},"msg":"incoming request"}
+{"level":30,"time":1779969956671,"pid":15380,"hostname":"Gabriel","reqId":"req-1e","res":{"statusCode":401},"responseTime":0.892799973487854,"msg":"request completed"}
+{"level":30,"time":1779969958941,"pid":15380,"hostname":"Gabriel","reqId":"req-1f","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63002},"msg":"incoming request"}
+{"level":30,"time":1779969958941,"pid":15380,"hostname":"Gabriel","reqId":"req-1f","res":{"statusCode":204},"responseTime":0.5690000057220459,"msg":"request completed"}
+{"level":30,"time":1779969958944,"pid":15380,"hostname":"Gabriel","reqId":"req-1g","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63013},"msg":"incoming request"}
+{"level":30,"time":1779969958945,"pid":15380,"hostname":"Gabriel","reqId":"req-1g","res":{"statusCode":401},"responseTime":0.6582000255584717,"msg":"request completed"}
+{"level":30,"time":1779969963143,"pid":15380,"hostname":"Gabriel","reqId":"req-1h","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63013},"msg":"incoming request"}
+{"level":30,"time":1779969963144,"pid":15380,"hostname":"Gabriel","reqId":"req-1h","res":{"statusCode":401},"responseTime":0.4740999937057495,"msg":"request completed"}
+{"level":30,"time":1779969974935,"pid":15380,"hostname":"Gabriel","reqId":"req-1i","req":{"method":"OPTIONS","url":"/sessions","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63002},"msg":"incoming request"}
+{"level":30,"time":1779969974936,"pid":15380,"hostname":"Gabriel","reqId":"req-1i","res":{"statusCode":204},"responseTime":0.979699969291687,"msg":"request completed"}
+{"level":30,"time":1779969974939,"pid":15380,"hostname":"Gabriel","reqId":"req-1j","req":{"method":"POST","url":"/sessions","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63013},"msg":"incoming request"}
+{"level":30,"time":1779969974977,"pid":15380,"hostname":"Gabriel","reqId":"req-1j","res":{"statusCode":400},"responseTime":37.52470004558563,"msg":"request completed"}
+{"level":30,"time":1779969984673,"pid":15380,"hostname":"Gabriel","reqId":"req-1k","req":{"method":"OPTIONS","url":"/sessions","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63002},"msg":"incoming request"}
+{"level":30,"time":1779969984673,"pid":15380,"hostname":"Gabriel","reqId":"req-1k","res":{"statusCode":204},"responseTime":0.43039989471435547,"msg":"request completed"}
+{"level":30,"time":1779969984676,"pid":15380,"hostname":"Gabriel","reqId":"req-1l","req":{"method":"POST","url":"/sessions","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63013},"msg":"incoming request"}
+{"level":30,"time":1779969984680,"pid":15380,"hostname":"Gabriel","reqId":"req-1l","res":{"statusCode":400},"responseTime":4.301499962806702,"msg":"request completed"}
+{"level":30,"time":1779969991629,"pid":15380,"hostname":"Gabriel","reqId":"req-1m","req":{"method":"OPTIONS","url":"/sessions","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63002},"msg":"incoming request"}
+{"level":30,"time":1779969991629,"pid":15380,"hostname":"Gabriel","reqId":"req-1m","res":{"statusCode":204},"responseTime":0.3307000398635864,"msg":"request completed"}
+{"level":30,"time":1779969991631,"pid":15380,"hostname":"Gabriel","reqId":"req-1n","req":{"method":"POST","url":"/sessions","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63013},"msg":"incoming request"}
+{"level":30,"time":1779969991634,"pid":15380,"hostname":"Gabriel","reqId":"req-1n","res":{"statusCode":400},"responseTime":2.7204999923706055,"msg":"request completed"}
+{"level":30,"time":1779969993064,"pid":15380,"hostname":"Gabriel","reqId":"req-1o","req":{"method":"POST","url":"/sessions","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63013},"msg":"incoming request"}
+{"level":30,"time":1779969993067,"pid":15380,"hostname":"Gabriel","reqId":"req-1o","res":{"statusCode":400},"responseTime":2.598299980163574,"msg":"request completed"}
+{"level":30,"time":1779969996961,"pid":15380,"hostname":"Gabriel","reqId":"req-1p","req":{"method":"GET","url":"/auth/google","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63013},"msg":"incoming request"}
+{"level":30,"time":1779969996965,"pid":15380,"hostname":"Gabriel","reqId":"req-1p","res":{"statusCode":302},"responseTime":3.7769999504089355,"msg":"request completed"}
+{"level":30,"time":1779969997716,"pid":15380,"hostname":"Gabriel","reqId":"req-1q","req":{"method":"GET","url":"/auth/google/callback?state=U386OdbY_GvhsIBcCS2-Nw&iss=https%3A%2F%2Faccounts.google.com&code=4%2F0AeoWuM-7O7bMHtb5AW2zRk9MCTjdWXwZA-I8sgyUYkBItiDObladNYAdPUmOQlKHVR0tUQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63013},"msg":"incoming request"}
+{"level":30,"time":1779969997874,"pid":15380,"hostname":"Gabriel","reqId":"req-1r","req":{"method":"OPTIONS","url":"/sessions","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63002},"msg":"incoming request"}
+{"level":30,"time":1779969997874,"pid":15380,"hostname":"Gabriel","reqId":"req-1r","res":{"statusCode":204},"responseTime":0.4501999616622925,"msg":"request completed"}
+{"level":30,"time":1779969997879,"pid":15380,"hostname":"Gabriel","reqId":"req-1s","req":{"method":"POST","url":"/sessions","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63011},"msg":"incoming request"}
+{"level":30,"time":1779969997892,"pid":15380,"hostname":"Gabriel","reqId":"req-1s","res":{"statusCode":400},"responseTime":13.569300055503845,"msg":"request completed"}
+{"level":30,"time":1779969999968,"pid":15380,"hostname":"Gabriel","reqId":"req-1q","res":{"statusCode":302},"responseTime":2251.1506999731064,"msg":"request completed"}
+{"level":30,"time":1779970014733,"pid":15380,"hostname":"Gabriel","reqId":"req-1t","req":{"method":"OPTIONS","url":"/profile","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63002},"msg":"incoming request"}
+{"level":30,"time":1779970014734,"pid":15380,"hostname":"Gabriel","reqId":"req-1t","res":{"statusCode":204},"responseTime":0.41509997844696045,"msg":"request completed"}
+{"level":30,"time":1779970014788,"pid":15380,"hostname":"Gabriel","reqId":"req-1u","req":{"method":"GET","url":"/profile","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63013},"msg":"incoming request"}
+{"level":30,"time":1779970014795,"pid":15380,"hostname":"Gabriel","reqId":"req-1u","res":{"statusCode":200},"responseTime":6.938899993896484,"msg":"request completed"}
+{"level":30,"time":1779970015109,"pid":15380,"hostname":"Gabriel","reqId":"req-1v","req":{"method":"OPTIONS","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63002},"msg":"incoming request"}
+{"level":30,"time":1779970015109,"pid":15380,"hostname":"Gabriel","reqId":"req-1v","res":{"statusCode":204},"responseTime":0.35759997367858887,"msg":"request completed"}
+{"level":30,"time":1779970015110,"pid":15380,"hostname":"Gabriel","reqId":"req-1w","req":{"method":"OPTIONS","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63001},"msg":"incoming request"}
+{"level":30,"time":1779970015111,"pid":15380,"hostname":"Gabriel","reqId":"req-1w","res":{"statusCode":204},"responseTime":0.32819998264312744,"msg":"request completed"}
+{"level":30,"time":1779970015115,"pid":15380,"hostname":"Gabriel","reqId":"req-1x","req":{"method":"GET","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63013},"msg":"incoming request"}
+{"level":30,"time":1779970015115,"pid":15380,"hostname":"Gabriel","reqId":"req-1x","msg":"Route GET:/push/public_key not found"}
+{"level":30,"time":1779970015116,"pid":15380,"hostname":"Gabriel","reqId":"req-1x","res":{"statusCode":404},"responseTime":0.5103999376296997,"msg":"request completed"}
+{"level":30,"time":1779970015116,"pid":15380,"hostname":"Gabriel","reqId":"req-1y","req":{"method":"GET","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63011},"msg":"incoming request"}
+{"level":30,"time":1779970015116,"pid":15380,"hostname":"Gabriel","reqId":"req-1y","msg":"Route GET:/push/public_key not found"}
+{"level":30,"time":1779970015116,"pid":15380,"hostname":"Gabriel","reqId":"req-1y","res":{"statusCode":404},"responseTime":0.30959999561309814,"msg":"request completed"}
+{"level":30,"time":1779970015344,"pid":15380,"hostname":"Gabriel","reqId":"req-1z","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63001},"msg":"incoming request"}
+{"level":30,"time":1779970015345,"pid":15380,"hostname":"Gabriel","reqId":"req-1z","res":{"statusCode":204},"responseTime":0.4005000591278076,"msg":"request completed"}
+{"level":30,"time":1779970015349,"pid":15380,"hostname":"Gabriel","reqId":"req-20","req":{"method":"OPTIONS","url":"/novidades?status=PUBLICADO","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63002},"msg":"incoming request"}
+{"level":30,"time":1779970015350,"pid":15380,"hostname":"Gabriel","reqId":"req-20","res":{"statusCode":204},"responseTime":0.3928999900817871,"msg":"request completed"}
+{"level":30,"time":1779970015405,"pid":15380,"hostname":"Gabriel","reqId":"req-21","req":{"method":"OPTIONS","url":"/depoimentos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63000},"msg":"incoming request"}
+{"level":30,"time":1779970015406,"pid":15380,"hostname":"Gabriel","reqId":"req-21","res":{"statusCode":204},"responseTime":0.46959996223449707,"msg":"request completed"}
+{"level":30,"time":1779970015432,"pid":15380,"hostname":"Gabriel","reqId":"req-22","req":{"method":"OPTIONS","url":"/bolsas/destaques","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":62999},"msg":"incoming request"}
+{"level":30,"time":1779970015432,"pid":15380,"hostname":"Gabriel","reqId":"req-22","res":{"statusCode":204},"responseTime":0.3958998918533325,"msg":"request completed"}
+{"level":30,"time":1779970015441,"pid":15380,"hostname":"Gabriel","reqId":"req-23","req":{"method":"OPTIONS","url":"/perfil-academico","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63001},"msg":"incoming request"}
+{"level":30,"time":1779970015441,"pid":15380,"hostname":"Gabriel","reqId":"req-23","res":{"statusCode":204},"responseTime":0.4084000587463379,"msg":"request completed"}
+{"level":30,"time":1779970015454,"pid":15380,"hostname":"Gabriel","reqId":"req-24","req":{"method":"OPTIONS","url":"/depoimentos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63002},"msg":"incoming request"}
+{"level":30,"time":1779970015454,"pid":15380,"hostname":"Gabriel","reqId":"req-24","res":{"statusCode":204},"responseTime":0.527999997138977,"msg":"request completed"}
+{"level":30,"time":1779970015474,"pid":15380,"hostname":"Gabriel","reqId":"req-25","req":{"method":"OPTIONS","url":"/perfil-academico","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63000},"msg":"incoming request"}
+{"level":30,"time":1779970015475,"pid":15380,"hostname":"Gabriel","reqId":"req-25","res":{"statusCode":204},"responseTime":0.23369991779327393,"msg":"request completed"}
+✅ Usuário 0b535581-85e7-4117-be86-c50e6172ce15 conectado na sala privada
+{"level":30,"time":1779970015608,"pid":15380,"hostname":"Gabriel","reqId":"req-26","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63013},"msg":"incoming request"}
+{"level":30,"time":1779970015613,"pid":15380,"hostname":"Gabriel","reqId":"req-26","res":{"statusCode":200},"responseTime":4.572700023651123,"msg":"request completed"}
+{"level":30,"time":1779970015614,"pid":15380,"hostname":"Gabriel","reqId":"req-27","req":{"method":"GET","url":"/novidades?status=PUBLICADO","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63010},"msg":"incoming request"}
+{"level":30,"time":1779970015616,"pid":15380,"hostname":"Gabriel","reqId":"req-27","res":{"statusCode":200},"responseTime":2.4491000175476074,"msg":"request completed"}
+{"level":30,"time":1779970015634,"pid":15380,"hostname":"Gabriel","reqId":"req-28","req":{"method":"GET","url":"/depoimentos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63012},"msg":"incoming request"}
+{"level":30,"time":1779970015639,"pid":15380,"hostname":"Gabriel","reqId":"req-28","res":{"statusCode":200},"responseTime":5.2936999797821045,"msg":"request completed"}
+{"level":30,"time":1779970015701,"pid":15380,"hostname":"Gabriel","reqId":"req-29","req":{"method":"GET","url":"/bolsas/destaques","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63011},"msg":"incoming request"}
+{"level":30,"time":1779970015708,"pid":15380,"hostname":"Gabriel","reqId":"req-29","res":{"statusCode":200},"responseTime":7.051300048828125,"msg":"request completed"}
+{"level":30,"time":1779970015794,"pid":15380,"hostname":"Gabriel","reqId":"req-2a","req":{"method":"GET","url":"/perfil-academico","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63013},"msg":"incoming request"}
+{"level":30,"time":1779970015806,"pid":15380,"hostname":"Gabriel","reqId":"req-2a","res":{"statusCode":200},"responseTime":11.946900010108948,"msg":"request completed"}
+{"level":30,"time":1779970015881,"pid":15380,"hostname":"Gabriel","reqId":"req-2b","req":{"method":"GET","url":"/depoimentos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63012},"msg":"incoming request"}
+{"level":30,"time":1779970015885,"pid":15380,"hostname":"Gabriel","reqId":"req-2b","res":{"statusCode":200},"responseTime":3.9270999431610107,"msg":"request completed"}
+{"level":30,"time":1779970015913,"pid":15380,"hostname":"Gabriel","reqId":"req-2c","req":{"method":"GET","url":"/perfil-academico","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63011},"msg":"incoming request"}
+{"level":30,"time":1779970015934,"pid":15380,"hostname":"Gabriel","reqId":"req-2c","res":{"statusCode":200},"responseTime":21.126399993896484,"msg":"request completed"}
+🔍 [STATIC] Pedido de imagem: /uploads/https://lh3.googleusercontent.com/a/ACg8ocKP2e1KWq_yvPZaca1FqH6XY1EjN0HcVGUoQruni3xcWcUjoYco=s96-c
+📂 [STATIC] Tentando ler em: C:\Users\User\Videos\schoolar\api\uploads\https:\lh3.googleusercontent.com\a\ACg8ocKP2e1KWq_yvPZaca1FqH6XY1EjN0HcVGUoQruni3xcWcUjoYco=s96-c | Existe? NÃO
+{"level":30,"time":1779970016672,"pid":15380,"hostname":"Gabriel","reqId":"req-2d","req":{"method":"GET","url":"/uploads/https://lh3.googleusercontent.com/a/ACg8ocKP2e1KWq_yvPZaca1FqH6XY1EjN0HcVGUoQruni3xcWcUjoYco=s96-c","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63011},"msg":"incoming request"}
+{"level":30,"time":1779970016676,"pid":15380,"hostname":"Gabriel","reqId":"req-2d","msg":"Route GET:/uploads/https://lh3.googleusercontent.com/a/ACg8ocKP2e1KWq_yvPZaca1FqH6XY1EjN0HcVGUoQruni3xcWcUjoYco=s96-c not found"}
+{"level":30,"time":1779970016677,"pid":15380,"hostname":"Gabriel","reqId":"req-2d","res":{"statusCode":404},"responseTime":5.015400052070618,"msg":"request completed"}
+{"level":30,"time":1779970022313,"pid":15380,"hostname":"Gabriel","reqId":"req-2e","req":{"method":"GET","url":"/uploads/https://lh3.googleusercontent.com/a/ACg8ocKP2e1KWq_yvPZaca1FqH6XY1EjN0HcVGUoQruni3xcWcUjoYco=s96-c","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":63012},"msg":"incoming request"}
+🔍 [STATIC] Pedido de imagem: /uploads/https://lh3.googleusercontent.com/a/ACg8ocKP2e1KWq_yvPZaca1FqH6XY1EjN0HcVGUoQruni3xcWcUjoYco=s96-c
+📂 [STATIC] Tentando ler em: C:\Users\User\Videos\schoolar\api\uploads\https:\lh3.googleusercontent.com\a\ACg8ocKP2e1KWq_yvPZaca1FqH6XY1EjN0HcVGUoQruni3xcWcUjoYco=s96-c | Existe? NÃO
+{"level":30,"time":1779970022314,"pid":15380,"hostname":"Gabriel","reqId":"req-2e","msg":"Route GET:/uploads/https://lh3.googleusercontent.com/a/ACg8ocKP2e1KWq_yvPZaca1FqH6XY1EjN0HcVGUoQruni3xcWcUjoYco=s96-c not found"}
+{"level":30,"time":1779970022314,"pid":15380,"hostname":"Gabriel","reqId":"req-2e","res":{"statusCode":404},"responseTime":1.2529000043869019,"msg":"request completed"}
+{"level":30,"time":1779970236190,"pid":15380,"hostname":"Gabriel","reqId":"req-2f","req":{"method":"OPTIONS","url":"/sessions","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56811},"msg":"incoming request"}
+{"level":30,"time":1779970236191,"pid":15380,"hostname":"Gabriel","reqId":"req-2f","res":{"statusCode":204},"responseTime":0.6908999681472778,"msg":"request completed"}
+{"level":30,"time":1779970236496,"pid":15380,"hostname":"Gabriel","reqId":"req-2g","req":{"method":"POST","url":"/sessions","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56816},"msg":"incoming request"}
+{"level":30,"time":1779970236527,"pid":15380,"hostname":"Gabriel","reqId":"req-2g","res":{"statusCode":200},"responseTime":31.210999965667725,"msg":"request completed"}
+{"level":30,"time":1779970242309,"pid":15380,"hostname":"Gabriel","reqId":"req-2h","req":{"method":"OPTIONS","url":"/profile","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56811},"msg":"incoming request"}
+{"level":30,"time":1779970242309,"pid":15380,"hostname":"Gabriel","reqId":"req-2h","res":{"statusCode":204},"responseTime":0.33640003204345703,"msg":"request completed"}
+{"level":30,"time":1779970242313,"pid":15380,"hostname":"Gabriel","reqId":"req-2i","req":{"method":"GET","url":"/profile","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56816},"msg":"incoming request"}
+{"level":30,"time":1779970242316,"pid":15380,"hostname":"Gabriel","reqId":"req-2i","res":{"statusCode":200},"responseTime":3.0418999195098877,"msg":"request completed"}
+{"level":30,"time":1779970242549,"pid":15380,"hostname":"Gabriel","reqId":"req-2j","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56811},"msg":"incoming request"}
+{"level":30,"time":1779970242551,"pid":15380,"hostname":"Gabriel","reqId":"req-2j","res":{"statusCode":204},"responseTime":1.267199993133545,"msg":"request completed"}
+{"level":30,"time":1779970242556,"pid":15380,"hostname":"Gabriel","reqId":"req-2k","req":{"method":"OPTIONS","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56814},"msg":"incoming request"}
+{"level":30,"time":1779970242557,"pid":15380,"hostname":"Gabriel","reqId":"req-2k","res":{"statusCode":204},"responseTime":0.4607999324798584,"msg":"request completed"}
+{"level":30,"time":1779970242564,"pid":15380,"hostname":"Gabriel","reqId":"req-2l","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56816},"msg":"incoming request"}
+{"level":30,"time":1779970242565,"pid":15380,"hostname":"Gabriel","reqId":"req-2m","req":{"method":"GET","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56817},"msg":"incoming request"}
+{"level":30,"time":1779970242565,"pid":15380,"hostname":"Gabriel","reqId":"req-2m","msg":"Route GET:/push/public_key not found"}
+{"level":30,"time":1779970242566,"pid":15380,"hostname":"Gabriel","reqId":"req-2m","res":{"statusCode":404},"responseTime":0.511199951171875,"msg":"request completed"}
+{"level":30,"time":1779970242566,"pid":15380,"hostname":"Gabriel","reqId":"req-2l","res":{"statusCode":200},"responseTime":2.2979999780654907,"msg":"request completed"}
+{"level":30,"time":1779970242594,"pid":15380,"hostname":"Gabriel","reqId":"req-2n","req":{"method":"OPTIONS","url":"/admin/dashboard","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56814},"msg":"incoming request"}
+{"level":30,"time":1779970242595,"pid":15380,"hostname":"Gabriel","reqId":"req-2n","res":{"statusCode":204},"responseTime":0.32350003719329834,"msg":"request completed"}
+{"level":30,"time":1779970242609,"pid":15380,"hostname":"Gabriel","reqId":"req-2o","req":{"method":"GET","url":"/admin/dashboard","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56816},"msg":"incoming request"}
+{"level":30,"time":1779970242610,"pid":15380,"hostname":"Gabriel","reqId":"req-2p","req":{"method":"GET","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56817},"msg":"incoming request"}
+{"level":30,"time":1779970242610,"pid":15380,"hostname":"Gabriel","reqId":"req-2p","msg":"Route GET:/push/public_key not found"}
+{"level":30,"time":1779970242611,"pid":15380,"hostname":"Gabriel","reqId":"req-2p","res":{"statusCode":404},"responseTime":0.7731999158859253,"msg":"request completed"}
+{"level":30,"time":1779970242901,"pid":15380,"hostname":"Gabriel","reqId":"req-2o","res":{"statusCode":200},"responseTime":292.2863999605179,"msg":"request completed"}
+{"level":30,"time":1779970244949,"pid":15380,"hostname":"Gabriel","reqId":"req-2q","req":{"method":"OPTIONS","url":"/admin/inscricoes?tipoInteresse=CONSULTORIA","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56814},"msg":"incoming request"}
+{"level":30,"time":1779970244950,"pid":15380,"hostname":"Gabriel","reqId":"req-2q","res":{"statusCode":204},"responseTime":0.4220999479293823,"msg":"request completed"}
+{"level":30,"time":1779970244952,"pid":15380,"hostname":"Gabriel","reqId":"req-2r","req":{"method":"OPTIONS","url":"/bolsas","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56811},"msg":"incoming request"}
+{"level":30,"time":1779970244952,"pid":15380,"hostname":"Gabriel","reqId":"req-2r","res":{"statusCode":204},"responseTime":0.4875999689102173,"msg":"request completed"}
+{"level":30,"time":1779970244958,"pid":15380,"hostname":"Gabriel","reqId":"req-2s","req":{"method":"GET","url":"/admin/inscricoes?tipoInteresse=CONSULTORIA","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56816},"msg":"incoming request"}
+{"level":30,"time":1779970244961,"pid":15380,"hostname":"Gabriel","reqId":"req-2t","req":{"method":"GET","url":"/bolsas","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56817},"msg":"incoming request"}
+{"level":30,"time":1779970244966,"pid":15380,"hostname":"Gabriel","reqId":"req-2s","res":{"statusCode":200},"responseTime":7.474700093269348,"msg":"request completed"}
+{"level":30,"time":1779970244968,"pid":15380,"hostname":"Gabriel","reqId":"req-2t","res":{"statusCode":200},"responseTime":7.209699988365173,"msg":"request completed"}
+{"level":30,"time":1779970246492,"pid":15380,"hostname":"Gabriel","reqId":"req-2u","req":{"method":"OPTIONS","url":"/admin/inscricoes?tipoInteresse=MENTORIA","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56811},"msg":"incoming request"}
+{"level":30,"time":1779970246493,"pid":15380,"hostname":"Gabriel","reqId":"req-2u","res":{"statusCode":204},"responseTime":0.795699954032898,"msg":"request completed"}
+{"level":30,"time":1779970246499,"pid":15380,"hostname":"Gabriel","reqId":"req-2v","req":{"method":"GET","url":"/admin/inscricoes?tipoInteresse=MENTORIA","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56817},"msg":"incoming request"}
+{"level":30,"time":1779970246500,"pid":15380,"hostname":"Gabriel","reqId":"req-2w","req":{"method":"GET","url":"/bolsas","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56816},"msg":"incoming request"}
+{"level":30,"time":1779970246509,"pid":15380,"hostname":"Gabriel","reqId":"req-2w","res":{"statusCode":200},"responseTime":8.543400049209595,"msg":"request completed"}
+{"level":30,"time":1779970246514,"pid":15380,"hostname":"Gabriel","reqId":"req-2v","res":{"statusCode":200},"responseTime":14.986599922180176,"msg":"request completed"}
+{"level":30,"time":1779970247971,"pid":15380,"hostname":"Gabriel","reqId":"req-2x","req":{"method":"OPTIONS","url":"/cursos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56811},"msg":"incoming request"}
+{"level":30,"time":1779970247972,"pid":15380,"hostname":"Gabriel","reqId":"req-2x","res":{"statusCode":204},"responseTime":0.4426000118255615,"msg":"request completed"}
+{"level":30,"time":1779970247975,"pid":15380,"hostname":"Gabriel","reqId":"req-2y","req":{"method":"GET","url":"/cursos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56817},"msg":"incoming request"}
+{"level":30,"time":1779970247991,"pid":15380,"hostname":"Gabriel","reqId":"req-2y","res":{"statusCode":200},"responseTime":16.70299994945526,"msg":"request completed"}
+{"level":30,"time":1779970255600,"pid":15380,"hostname":"Gabriel","reqId":"req-2z","req":{"method":"OPTIONS","url":"/cursos/07fd0c5f-6499-4455-a5f1-c8065d6941fe","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56811},"msg":"incoming request"}
+{"level":30,"time":1779970255600,"pid":15380,"hostname":"Gabriel","reqId":"req-2z","res":{"statusCode":204},"responseTime":0.4119999408721924,"msg":"request completed"}
+{"level":30,"time":1779970257663,"pid":15380,"hostname":"Gabriel","reqId":"req-30","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56811},"msg":"incoming request"}
+{"level":30,"time":1779970257663,"pid":15380,"hostname":"Gabriel","reqId":"req-30","res":{"statusCode":204},"responseTime":0.3637000322341919,"msg":"request completed"}
+{"level":30,"time":1779970257671,"pid":15380,"hostname":"Gabriel","reqId":"req-31","req":{"method":"OPTIONS","url":"/cursos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56811},"msg":"incoming request"}
+{"level":30,"time":1779970257671,"pid":15380,"hostname":"Gabriel","reqId":"req-31","res":{"statusCode":204},"responseTime":0.4989999532699585,"msg":"request completed"}
+{"level":30,"time":1779970257742,"pid":15380,"hostname":"Gabriel","reqId":"req-32","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56817},"msg":"incoming request"}
+{"level":30,"time":1779970257746,"pid":15380,"hostname":"Gabriel","reqId":"req-33","req":{"method":"GET","url":"/cursos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56816},"msg":"incoming request"}
+{"level":30,"time":1779970257761,"pid":15380,"hostname":"Gabriel","reqId":"req-32","res":{"statusCode":200},"responseTime":18.7121000289917,"msg":"request completed"}
+{"level":30,"time":1779970257879,"pid":15380,"hostname":"Gabriel","reqId":"req-33","res":{"statusCode":200},"responseTime":133.30229997634888,"msg":"request completed"}
+{"level":30,"time":1779970308108,"pid":15380,"hostname":"Gabriel","reqId":"req-34","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56811},"msg":"incoming request"}
+{"level":30,"time":1779970308108,"pid":15380,"hostname":"Gabriel","reqId":"req-34","res":{"statusCode":204},"responseTime":0.4883999824523926,"msg":"request completed"}
+{"level":30,"time":1779970308109,"pid":15380,"hostname":"Gabriel","reqId":"req-35","req":{"method":"OPTIONS","url":"/cursos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56814},"msg":"incoming request"}
+{"level":30,"time":1779970308110,"pid":15380,"hostname":"Gabriel","reqId":"req-35","res":{"statusCode":204},"responseTime":0.43439996242523193,"msg":"request completed"}
+{"level":30,"time":1779970308163,"pid":15380,"hostname":"Gabriel","reqId":"req-36","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56816},"msg":"incoming request"}
+{"level":30,"time":1779970308173,"pid":15380,"hostname":"Gabriel","reqId":"req-36","res":{"statusCode":200},"responseTime":10.357499957084656,"msg":"request completed"}
+{"level":30,"time":1779970308266,"pid":15380,"hostname":"Gabriel","reqId":"req-37","req":{"method":"GET","url":"/cursos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56817},"msg":"incoming request"}
+{"level":30,"time":1779970308308,"pid":15380,"hostname":"Gabriel","reqId":"req-37","res":{"statusCode":200},"responseTime":42.20620000362396,"msg":"request completed"}
+{"level":30,"time":1779970313620,"pid":15380,"hostname":"Gabriel","reqId":"req-38","req":{"method":"OPTIONS","url":"/admin/dashboard","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56814},"msg":"incoming request"}
+{"level":30,"time":1779970313621,"pid":15380,"hostname":"Gabriel","reqId":"req-38","res":{"statusCode":204},"responseTime":0.44609999656677246,"msg":"request completed"}
+{"level":30,"time":1779970313625,"pid":15380,"hostname":"Gabriel","reqId":"req-39","req":{"method":"GET","url":"/admin/dashboard","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56817},"msg":"incoming request"}
+{"level":30,"time":1779970313819,"pid":15380,"hostname":"Gabriel","reqId":"req-39","res":{"statusCode":200},"responseTime":194.28769993782043,"msg":"request completed"}
+{"level":30,"time":1779970315787,"pid":15380,"hostname":"Gabriel","reqId":"req-3a","req":{"method":"OPTIONS","url":"/admin/inscricoes?tipoInteresse=INSCRICAO","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56814},"msg":"incoming request"}
+{"level":30,"time":1779970315788,"pid":15380,"hostname":"Gabriel","reqId":"req-3a","res":{"statusCode":204},"responseTime":0.556899905204773,"msg":"request completed"}
+{"level":30,"time":1779970315789,"pid":15380,"hostname":"Gabriel","reqId":"req-3b","req":{"method":"OPTIONS","url":"/bolsas","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56811},"msg":"incoming request"}
+{"level":30,"time":1779970315789,"pid":15380,"hostname":"Gabriel","reqId":"req-3b","res":{"statusCode":204},"responseTime":0.361799955368042,"msg":"request completed"}
+{"level":30,"time":1779970315791,"pid":15380,"hostname":"Gabriel","reqId":"req-3c","req":{"method":"GET","url":"/admin/inscricoes?tipoInteresse=INSCRICAO","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56817},"msg":"incoming request"}
+{"level":30,"time":1779970315793,"pid":15380,"hostname":"Gabriel","reqId":"req-3d","req":{"method":"GET","url":"/bolsas","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56816},"msg":"incoming request"}
+{"level":30,"time":1779970315796,"pid":15380,"hostname":"Gabriel","reqId":"req-3d","res":{"statusCode":200},"responseTime":3.458199977874756,"msg":"request completed"}
+{"level":30,"time":1779970315801,"pid":15380,"hostname":"Gabriel","reqId":"req-3c","res":{"statusCode":200},"responseTime":9.860700011253357,"msg":"request completed"}
+{"level":30,"time":1779970316887,"pid":15380,"hostname":"Gabriel","reqId":"req-3e","req":{"method":"GET","url":"/bolsas","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56817},"msg":"incoming request"}
+{"level":30,"time":1779970316892,"pid":15380,"hostname":"Gabriel","reqId":"req-3e","res":{"statusCode":200},"responseTime":5.301900029182434,"msg":"request completed"}
+{"level":30,"time":1779970321874,"pid":15380,"hostname":"Gabriel","reqId":"req-3f","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56811},"msg":"incoming request"}
+{"level":30,"time":1779970321874,"pid":15380,"hostname":"Gabriel","reqId":"req-3f","res":{"statusCode":204},"responseTime":0.35319995880126953,"msg":"request completed"}
+{"level":30,"time":1779970321877,"pid":15380,"hostname":"Gabriel","reqId":"req-3g","req":{"method":"OPTIONS","url":"/bolsas","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56811},"msg":"incoming request"}
+{"level":30,"time":1779970321877,"pid":15380,"hostname":"Gabriel","reqId":"req-3g","res":{"statusCode":204},"responseTime":0.28929996490478516,"msg":"request completed"}
+{"level":30,"time":1779970322064,"pid":15380,"hostname":"Gabriel","reqId":"req-3h","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56817},"msg":"incoming request"}
+{"level":30,"time":1779970322067,"pid":15380,"hostname":"Gabriel","reqId":"req-3i","req":{"method":"GET","url":"/bolsas","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56816},"msg":"incoming request"}
+{"level":30,"time":1779970322070,"pid":15380,"hostname":"Gabriel","reqId":"req-3h","res":{"statusCode":200},"responseTime":6.47979998588562,"msg":"request completed"}
+{"level":30,"time":1779970322072,"pid":15380,"hostname":"Gabriel","reqId":"req-3i","res":{"statusCode":200},"responseTime":5.422900080680847,"msg":"request completed"}
+{"level":30,"time":1779970323357,"pid":15380,"hostname":"Gabriel","reqId":"req-3j","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56816},"msg":"incoming request"}
+{"level":30,"time":1779970323359,"pid":15380,"hostname":"Gabriel","reqId":"req-3k","req":{"method":"GET","url":"/bolsas","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56817},"msg":"incoming request"}
+{"level":30,"time":1779970323367,"pid":15380,"hostname":"Gabriel","reqId":"req-3j","res":{"statusCode":200},"responseTime":9.705900073051453,"msg":"request completed"}
+{"level":30,"time":1779970323368,"pid":15380,"hostname":"Gabriel","reqId":"req-3k","res":{"statusCode":200},"responseTime":9.790300011634827,"msg":"request completed"}
+{"level":30,"time":1779970324243,"pid":15380,"hostname":"Gabriel","reqId":"req-3l","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56817},"msg":"incoming request"}
+{"level":30,"time":1779970324244,"pid":15380,"hostname":"Gabriel","reqId":"req-3m","req":{"method":"GET","url":"/bolsas","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56816},"msg":"incoming request"}
+{"level":30,"time":1779970324247,"pid":15380,"hostname":"Gabriel","reqId":"req-3l","res":{"statusCode":200},"responseTime":3.6995999813079834,"msg":"request completed"}
+{"level":30,"time":1779970324270,"pid":15380,"hostname":"Gabriel","reqId":"req-3m","res":{"statusCode":200},"responseTime":25.98199999332428,"msg":"request completed"}
+{"level":30,"time":1779970377968,"pid":15380,"hostname":"Gabriel","reqId":"req-3n","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56811},"msg":"incoming request"}
+{"level":30,"time":1779970377969,"pid":15380,"hostname":"Gabriel","reqId":"req-3n","res":{"statusCode":204},"responseTime":1.0827999114990234,"msg":"request completed"}
+{"level":30,"time":1779970377970,"pid":15380,"hostname":"Gabriel","reqId":"req-3o","req":{"method":"OPTIONS","url":"/bolsas","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56814},"msg":"incoming request"}
+{"level":30,"time":1779970377971,"pid":15380,"hostname":"Gabriel","reqId":"req-3o","res":{"statusCode":204},"responseTime":0.48919999599456787,"msg":"request completed"}
+{"level":30,"time":1779970378001,"pid":15380,"hostname":"Gabriel","reqId":"req-3p","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56816},"msg":"incoming request"}
+{"level":30,"time":1779970378004,"pid":15380,"hostname":"Gabriel","reqId":"req-3p","res":{"statusCode":200},"responseTime":3.0598000288009644,"msg":"request completed"}
+{"level":30,"time":1779970378005,"pid":15380,"hostname":"Gabriel","reqId":"req-3q","req":{"method":"GET","url":"/bolsas","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":56817},"msg":"incoming request"}
+{"level":30,"time":1779970378009,"pid":15380,"hostname":"Gabriel","reqId":"req-3q","res":{"statusCode":200},"responseTime":3.7103999853134155,"msg":"request completed"}
+1:14:31 PM [tsx] change in ./src\http\controllers\cursos\delete-curso-controller.ts Restarting...
+c
+node:internal/modules/run_main:122
+    triggerUncaughtException(
+    ^
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@/generated' imported from C:\Users\User\Videos\schoolar\api\src\http\controllers\cursos\delete-curso-controller.ts
+    at packageResolve (node:internal/modules/esm/resolve:857:9)
+    at moduleResolve (node:internal/modules/esm/resolve:926:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1056:11)
+    at nextResolve (node:internal/modules/esm/hooks:748:28)
+    at resolveBase (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779970471518:2:3744)
+    at resolveDirectory (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779970471518:2:4243)
+    at resolveTsPaths (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779970471518:2:4984)
+    at async resolve (file:///C:/Users/User/Videos/schoolar/api/node_modules/tsx/dist/esm/index.mjs?1779970471518:2:5355)
+    at async nextResolve (node:internal/modules/esm/hooks:748:22)
+    at async Hooks.resolve (node:internal/modules/esm/hooks:240:24) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v22.12.0
+1:15:03 PM [tsx] change in ./src\http\controllers\cursos\delete-curso-controller.ts Rerunning...
+c✅ [SISTEMA] Pasta de uploads detectada em: C:\Users\User\Videos\schoolar\api\uploads
+(node:35868) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"level":30,"time":1779970510590,"pid":35868,"hostname":"Gabriel","msg":"Server listening at http://127.0.0.1:3333"}
+Servidor rodando 🐱‍🏍
+{"level":30,"time":1779970510591,"pid":35868,"hostname":"Gabriel","msg":"Server listening at http://172.20.10.7:3333"}
+{"level":30,"time":1779970670218,"pid":35868,"hostname":"Gabriel","reqId":"req-1","req":{"method":"OPTIONS","url":"/profile","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57356},"msg":"incoming request"}
+{"level":30,"time":1779970670229,"pid":35868,"hostname":"Gabriel","reqId":"req-1","res":{"statusCode":204},"responseTime":9.934199929237366,"msg":"request completed"}
+{"level":30,"time":1779970670231,"pid":35868,"hostname":"Gabriel","reqId":"req-2","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57357},"msg":"incoming request"}
+{"level":30,"time":1779970670232,"pid":35868,"hostname":"Gabriel","reqId":"req-2","res":{"statusCode":204},"responseTime":0.7254999876022339,"msg":"request completed"}
+{"level":30,"time":1779970670233,"pid":35868,"hostname":"Gabriel","reqId":"req-3","req":{"method":"OPTIONS","url":"/bolsas","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57358},"msg":"incoming request"}
+{"level":30,"time":1779970670233,"pid":35868,"hostname":"Gabriel","reqId":"req-3","res":{"statusCode":204},"responseTime":0.5002000331878662,"msg":"request completed"}
+{"level":30,"time":1779970670551,"pid":35868,"hostname":"Gabriel","reqId":"req-4","req":{"method":"GET","url":"/profile","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57364},"msg":"incoming request"}
+{"level":30,"time":1779970670578,"pid":35868,"hostname":"Gabriel","reqId":"req-5","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57365},"msg":"incoming request"}
+{"level":30,"time":1779970670580,"pid":35868,"hostname":"Gabriel","reqId":"req-6","req":{"method":"GET","url":"/bolsas","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57366},"msg":"incoming request"}
+{"level":30,"time":1779970670786,"pid":35868,"hostname":"Gabriel","reqId":"req-4","res":{"statusCode":200},"responseTime":234.08640003204346,"msg":"request completed"}
+{"level":30,"time":1779970670787,"pid":35868,"hostname":"Gabriel","reqId":"req-5","res":{"statusCode":200},"responseTime":209.18929994106293,"msg":"request completed"}
+{"level":30,"time":1779970670806,"pid":35868,"hostname":"Gabriel","reqId":"req-6","res":{"statusCode":200},"responseTime":225.42180001735687,"msg":"request completed"}
+{"level":30,"time":1779970695012,"pid":35868,"hostname":"Gabriel","reqId":"req-7","req":{"method":"OPTIONS","url":"/bolsas/6a0da5ed-fcf1-4e40-8f71-db5dc705dc80","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57358},"msg":"incoming request"}
+{"level":30,"time":1779970695014,"pid":35868,"hostname":"Gabriel","reqId":"req-7","res":{"statusCode":204},"responseTime":2.346400022506714,"msg":"request completed"}
+{"level":30,"time":1779970698269,"pid":35868,"hostname":"Gabriel","reqId":"req-8","req":{"method":"OPTIONS","url":"/cursos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57358},"msg":"incoming request"}
+{"level":30,"time":1779970698269,"pid":35868,"hostname":"Gabriel","reqId":"req-8","res":{"statusCode":204},"responseTime":0.5990999937057495,"msg":"request completed"}
+{"level":30,"time":1779970698276,"pid":35868,"hostname":"Gabriel","reqId":"req-9","req":{"method":"GET","url":"/cursos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57366},"msg":"incoming request"}
+{"level":30,"time":1779970698292,"pid":35868,"hostname":"Gabriel","reqId":"req-9","res":{"statusCode":200},"responseTime":16.329300045967102,"msg":"request completed"}
+{"level":30,"time":1779970700913,"pid":35868,"hostname":"Gabriel","reqId":"req-a","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57358},"msg":"incoming request"}
+{"level":30,"time":1779970700916,"pid":35868,"hostname":"Gabriel","reqId":"req-a","res":{"statusCode":204},"responseTime":1.635699987411499,"msg":"request completed"}
+{"level":30,"time":1779970700921,"pid":35868,"hostname":"Gabriel","reqId":"req-b","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57366},"msg":"incoming request"}
+{"level":30,"time":1779970700932,"pid":35868,"hostname":"Gabriel","reqId":"req-b","res":{"statusCode":200},"responseTime":9.937700033187866,"msg":"request completed"}
+{"level":30,"time":1779970704446,"pid":35868,"hostname":"Gabriel","reqId":"req-c","req":{"method":"OPTIONS","url":"/cursos/07fd0c5f-6499-4455-a5f1-c8065d6941fe","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57412},"msg":"incoming request"}
+{"level":30,"time":1779970704447,"pid":35868,"hostname":"Gabriel","reqId":"req-c","res":{"statusCode":204},"responseTime":0.353100061416626,"msg":"request completed"}
+{"level":30,"time":1779970709027,"pid":35868,"hostname":"Gabriel","reqId":"req-d","req":{"method":"OPTIONS","url":"/cursos/07fd0c5f-6499-4455-a5f1-c8065d6941fe","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57412},"msg":"incoming request"}
+{"level":30,"time":1779970709028,"pid":35868,"hostname":"Gabriel","reqId":"req-d","res":{"statusCode":204},"responseTime":0.549799919128418,"msg":"request completed"}
+{"level":30,"time":1779970711680,"pid":35868,"hostname":"Gabriel","reqId":"req-e","req":{"method":"OPTIONS","url":"/profile","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57412},"msg":"incoming request"}
+{"level":30,"time":1779970711680,"pid":35868,"hostname":"Gabriel","reqId":"req-e","res":{"statusCode":204},"responseTime":0.6852999925613403,"msg":"request completed"}
+{"level":30,"time":1779970711728,"pid":35868,"hostname":"Gabriel","reqId":"req-f","req":{"method":"OPTIONS","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57412},"msg":"incoming request"}
+{"level":30,"time":1779970711729,"pid":35868,"hostname":"Gabriel","reqId":"req-f","res":{"statusCode":204},"responseTime":0.3708000183105469,"msg":"request completed"}
+{"level":30,"time":1779970711997,"pid":35868,"hostname":"Gabriel","reqId":"req-g","req":{"method":"GET","url":"/profile","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57439},"msg":"incoming request"}
+{"level":30,"time":1779970712002,"pid":35868,"hostname":"Gabriel","reqId":"req-g","res":{"statusCode":200},"responseTime":5.370499968528748,"msg":"request completed"}
+{"level":30,"time":1779970712006,"pid":35868,"hostname":"Gabriel","reqId":"req-h","req":{"method":"GET","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57439},"msg":"incoming request"}
+{"level":30,"time":1779970712006,"pid":35868,"hostname":"Gabriel","reqId":"req-h","msg":"Route GET:/push/public_key not found"}
+{"level":30,"time":1779970712007,"pid":35868,"hostname":"Gabriel","reqId":"req-h","res":{"statusCode":404},"responseTime":0.8628000020980835,"msg":"request completed"}
+{"level":30,"time":1779970712009,"pid":35868,"hostname":"Gabriel","reqId":"req-i","req":{"method":"GET","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57439},"msg":"incoming request"}
+{"level":30,"time":1779970712009,"pid":35868,"hostname":"Gabriel","reqId":"req-i","msg":"Route GET:/push/public_key not found"}
+{"level":30,"time":1779970712009,"pid":35868,"hostname":"Gabriel","reqId":"req-i","res":{"statusCode":404},"responseTime":0.48249995708465576,"msg":"request completed"}
+{"level":30,"time":1779970712210,"pid":35868,"hostname":"Gabriel","reqId":"req-j","req":{"method":"OPTIONS","url":"/cursos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57412},"msg":"incoming request"}
+{"level":30,"time":1779970712211,"pid":35868,"hostname":"Gabriel","reqId":"req-j","res":{"statusCode":204},"responseTime":0.3533000946044922,"msg":"request completed"}
+{"level":30,"time":1779970712211,"pid":35868,"hostname":"Gabriel","reqId":"req-k","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57413},"msg":"incoming request"}
+{"level":30,"time":1779970712211,"pid":35868,"hostname":"Gabriel","reqId":"req-k","res":{"statusCode":204},"responseTime":0.32870006561279297,"msg":"request completed"}
+{"level":30,"time":1779970712215,"pid":35868,"hostname":"Gabriel","reqId":"req-l","req":{"method":"GET","url":"/cursos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57439},"msg":"incoming request"}
+{"level":30,"time":1779970712217,"pid":35868,"hostname":"Gabriel","reqId":"req-m","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57442},"msg":"incoming request"}
+{"level":30,"time":1779970712226,"pid":35868,"hostname":"Gabriel","reqId":"req-l","res":{"statusCode":200},"responseTime":10.491199970245361,"msg":"request completed"}
+{"level":30,"time":1779970712227,"pid":35868,"hostname":"Gabriel","reqId":"req-m","res":{"statusCode":200},"responseTime":9.048399925231934,"msg":"request completed"}
+{"level":30,"time":1779970715331,"pid":35868,"hostname":"Gabriel","reqId":"req-n","req":{"method":"OPTIONS","url":"/cursos/07fd0c5f-6499-4455-a5f1-c8065d6941fe","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57413},"msg":"incoming request"}
+{"level":30,"time":1779970715332,"pid":35868,"hostname":"Gabriel","reqId":"req-n","res":{"statusCode":204},"responseTime":1.004599928855896,"msg":"request completed"}
+{"level":30,"time":1779970742378,"pid":35868,"hostname":"Gabriel","reqId":"req-o","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57413},"msg":"incoming request"}
+{"level":30,"time":1779970742379,"pid":35868,"hostname":"Gabriel","reqId":"req-o","res":{"statusCode":204},"responseTime":0.8039000034332275,"msg":"request completed"}
+{"level":30,"time":1779970742394,"pid":35868,"hostname":"Gabriel","reqId":"req-p","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57442},"msg":"incoming request"}
+{"level":30,"time":1779970742397,"pid":35868,"hostname":"Gabriel","reqId":"req-p","res":{"statusCode":200},"responseTime":3.5959999561309814,"msg":"request completed"}
+{"level":30,"time":1779970895356,"pid":35868,"hostname":"Gabriel","reqId":"req-q","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57728},"msg":"incoming request"}
+{"level":30,"time":1779970895356,"pid":35868,"hostname":"Gabriel","reqId":"req-q","res":{"statusCode":204},"responseTime":0.295199990272522,"msg":"request completed"}
+{"level":30,"time":1779970895356,"pid":35868,"hostname":"Gabriel","reqId":"req-r","req":{"method":"OPTIONS","url":"/cursos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57729},"msg":"incoming request"}
+{"level":30,"time":1779970895357,"pid":35868,"hostname":"Gabriel","reqId":"req-r","res":{"statusCode":204},"responseTime":0.35969996452331543,"msg":"request completed"}
+{"level":30,"time":1779970895664,"pid":35868,"hostname":"Gabriel","reqId":"req-s","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57734},"msg":"incoming request"}
+{"level":30,"time":1779970895665,"pid":35868,"hostname":"Gabriel","reqId":"req-t","req":{"method":"GET","url":"/cursos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57735},"msg":"incoming request"}
+{"level":30,"time":1779970895667,"pid":35868,"hostname":"Gabriel","reqId":"req-s","res":{"statusCode":200},"responseTime":2.6783000230789185,"msg":"request completed"}
+{"level":30,"time":1779970895670,"pid":35868,"hostname":"Gabriel","reqId":"req-t","res":{"statusCode":200},"responseTime":5.442000031471252,"msg":"request completed"}
+{"level":30,"time":1779970899150,"pid":35868,"hostname":"Gabriel","reqId":"req-u","req":{"method":"OPTIONS","url":"/cursos/07fd0c5f-6499-4455-a5f1-c8065d6941fe","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57729},"msg":"incoming request"}
+{"level":30,"time":1779970899151,"pid":35868,"hostname":"Gabriel","reqId":"req-u","res":{"statusCode":204},"responseTime":0.679900050163269,"msg":"request completed"}
+{"level":30,"time":1779970901781,"pid":35868,"hostname":"Gabriel","reqId":"req-v","req":{"method":"OPTIONS","url":"/profile","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57729},"msg":"incoming request"}
+{"level":30,"time":1779970901782,"pid":35868,"hostname":"Gabriel","reqId":"req-v","res":{"statusCode":204},"responseTime":0.3632999658584595,"msg":"request completed"}
+{"level":30,"time":1779970901785,"pid":35868,"hostname":"Gabriel","reqId":"req-w","req":{"method":"GET","url":"/profile","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57735},"msg":"incoming request"}
+{"level":30,"time":1779970901788,"pid":35868,"hostname":"Gabriel","reqId":"req-w","res":{"statusCode":200},"responseTime":3.2752000093460083,"msg":"request completed"}
+{"level":30,"time":1779970901831,"pid":35868,"hostname":"Gabriel","reqId":"req-x","req":{"method":"OPTIONS","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57729},"msg":"incoming request"}
+{"level":30,"time":1779970901831,"pid":35868,"hostname":"Gabriel","reqId":"req-x","res":{"statusCode":204},"responseTime":0.33329999446868896,"msg":"request completed"}
+{"level":30,"time":1779970901832,"pid":35868,"hostname":"Gabriel","reqId":"req-y","req":{"method":"OPTIONS","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57728},"msg":"incoming request"}
+{"level":30,"time":1779970901832,"pid":35868,"hostname":"Gabriel","reqId":"req-y","res":{"statusCode":204},"responseTime":0.31550002098083496,"msg":"request completed"}
+{"level":30,"time":1779970901837,"pid":35868,"hostname":"Gabriel","reqId":"req-z","req":{"method":"GET","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57735},"msg":"incoming request"}
+{"level":30,"time":1779970901838,"pid":35868,"hostname":"Gabriel","reqId":"req-z","msg":"Route GET:/push/public_key not found"}
+{"level":30,"time":1779970901838,"pid":35868,"hostname":"Gabriel","reqId":"req-z","res":{"statusCode":404},"responseTime":0.5655999183654785,"msg":"request completed"}
+{"level":30,"time":1779970901839,"pid":35868,"hostname":"Gabriel","reqId":"req-10","req":{"method":"GET","url":"/push/public_key","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57734},"msg":"incoming request"}
+{"level":30,"time":1779970901839,"pid":35868,"hostname":"Gabriel","reqId":"req-10","msg":"Route GET:/push/public_key not found"}
+{"level":30,"time":1779970901840,"pid":35868,"hostname":"Gabriel","reqId":"req-10","res":{"statusCode":404},"responseTime":1.0191999673843384,"msg":"request completed"}
+{"level":30,"time":1779970902022,"pid":35868,"hostname":"Gabriel","reqId":"req-11","req":{"method":"OPTIONS","url":"/cursos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57728},"msg":"incoming request"}
+{"level":30,"time":1779970902023,"pid":35868,"hostname":"Gabriel","reqId":"req-11","res":{"statusCode":204},"responseTime":0.5699999332427979,"msg":"request completed"}
+{"level":30,"time":1779970902023,"pid":35868,"hostname":"Gabriel","reqId":"req-12","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57729},"msg":"incoming request"}
+{"level":30,"time":1779970902024,"pid":35868,"hostname":"Gabriel","reqId":"req-12","res":{"statusCode":204},"responseTime":0.44070005416870117,"msg":"request completed"}
+{"level":30,"time":1779970902027,"pid":35868,"hostname":"Gabriel","reqId":"req-13","req":{"method":"GET","url":"/cursos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57734},"msg":"incoming request"}
+{"level":30,"time":1779970902028,"pid":35868,"hostname":"Gabriel","reqId":"req-14","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57735},"msg":"incoming request"}
+{"level":30,"time":1779970902031,"pid":35868,"hostname":"Gabriel","reqId":"req-14","res":{"statusCode":200},"responseTime":2.8136000633239746,"msg":"request completed"}
+{"level":30,"time":1779970902032,"pid":35868,"hostname":"Gabriel","reqId":"req-13","res":{"statusCode":200},"responseTime":5.183799982070923,"msg":"request completed"}
+{"level":30,"time":1779970907714,"pid":35868,"hostname":"Gabriel","reqId":"req-15","req":{"method":"OPTIONS","url":"/cursos/cc53ce62-1f47-4973-8f91-82d6bcb50779","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57729},"msg":"incoming request"}
+{"level":30,"time":1779970907716,"pid":35868,"hostname":"Gabriel","reqId":"req-15","res":{"statusCode":204},"responseTime":1.4391999244689941,"msg":"request completed"}
+{"level":30,"time":1779970910777,"pid":35868,"hostname":"Gabriel","reqId":"req-16","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57729},"msg":"incoming request"}
+{"level":30,"time":1779970910778,"pid":35868,"hostname":"Gabriel","reqId":"req-16","res":{"statusCode":204},"responseTime":0.610200047492981,"msg":"request completed"}
+{"level":30,"time":1779970910783,"pid":35868,"hostname":"Gabriel","reqId":"req-17","req":{"method":"OPTIONS","url":"/cursos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57729},"msg":"incoming request"}
+{"level":30,"time":1779970910783,"pid":35868,"hostname":"Gabriel","reqId":"req-17","res":{"statusCode":204},"responseTime":0.3806999921798706,"msg":"request completed"}
+{"level":30,"time":1779970910853,"pid":35868,"hostname":"Gabriel","reqId":"req-18","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57734},"msg":"incoming request"}
+{"level":30,"time":1779970910854,"pid":35868,"hostname":"Gabriel","reqId":"req-19","req":{"method":"GET","url":"/cursos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57735},"msg":"incoming request"}
+{"level":30,"time":1779970910862,"pid":35868,"hostname":"Gabriel","reqId":"req-18","res":{"statusCode":200},"responseTime":8.89520001411438,"msg":"request completed"}
+{"level":30,"time":1779970910871,"pid":35868,"hostname":"Gabriel","reqId":"req-19","res":{"statusCode":200},"responseTime":16.499500036239624,"msg":"request completed"}
+{"level":30,"time":1779970917668,"pid":35868,"hostname":"Gabriel","reqId":"req-1a","req":{"method":"OPTIONS","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57729},"msg":"incoming request"}
+{"level":30,"time":1779970917669,"pid":35868,"hostname":"Gabriel","reqId":"req-1a","res":{"statusCode":204},"responseTime":0.4701000452041626,"msg":"request completed"}
+{"level":30,"time":1779970917670,"pid":35868,"hostname":"Gabriel","reqId":"req-1b","req":{"method":"OPTIONS","url":"/cursos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57728},"msg":"incoming request"}
+{"level":30,"time":1779970917671,"pid":35868,"hostname":"Gabriel","reqId":"req-1b","res":{"statusCode":204},"responseTime":0.9320999383926392,"msg":"request completed"}
+{"level":30,"time":1779970917684,"pid":35868,"hostname":"Gabriel","reqId":"req-1c","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57735},"msg":"incoming request"}
+{"level":30,"time":1779970917691,"pid":35868,"hostname":"Gabriel","reqId":"req-1c","res":{"statusCode":200},"responseTime":6.3099000453948975,"msg":"request completed"}
+{"level":30,"time":1779970917694,"pid":35868,"hostname":"Gabriel","reqId":"req-1d","req":{"method":"GET","url":"/cursos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57734},"msg":"incoming request"}
+{"level":30,"time":1779970917705,"pid":35868,"hostname":"Gabriel","reqId":"req-1d","res":{"statusCode":200},"responseTime":11.785000085830688,"msg":"request completed"}
+{"level":30,"time":1779970918409,"pid":35868,"hostname":"Gabriel","reqId":"req-1e","req":{"method":"GET","url":"/notificacoes","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57734},"msg":"incoming request"}
+{"level":30,"time":1779970918415,"pid":35868,"hostname":"Gabriel","reqId":"req-1f","req":{"method":"GET","url":"/cursos","host":"localhost:3333","remoteAddress":"127.0.0.1","remotePort":57735},"msg":"incoming request"}
+{"level":30,"time":1779970918450,"pid":35868,"hostname":"Gabriel","reqId":"req-1e","res":{"statusCode":200},"responseTime":40.94350004196167,"msg":"request completed"}
+{"level":30,"time":1779970918456,"pid":35868,"hostname":"Gabriel","reqId":"req-1f","res":{"statusCode":200},"responseTime":40.8885999917984,"msg":"request completed"}

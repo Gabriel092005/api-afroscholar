@@ -1,0 +1,48 @@
+import { FastifyInstance } from "fastify";
+import { verifyJWT } from "../middleware/verify-jwt";
+import { verifyUserRole } from "../middleware/verify-user-role";
+import { criar } from "./criar";
+import { editar } from "./editar";
+import { listar } from "./listar";
+import { buscar } from "./buscar";
+import { entrar } from "./entrar";
+import { sair } from "./sair";
+import { listarMensagens } from "./listar-mensagens";
+import { enviarMensagem } from "./enviar-mensagem";
+import { convidar } from "./convidar";
+import { searchUsuarios } from "./search-usuarios";
+import { listarMembros } from "./listar-membros";
+import { listarSolicitacoes } from "./listar-solicitacoes";
+import { responderSolicitacao } from "./responder-solicitacao";
+import { remover } from "./remover";
+import { removerMensagem } from "./remover-mensagem";
+import { removerMembro } from "./remover-membro";
+import { criarDuvida } from "./criar-duvida";
+import { listarDuvidas } from "./listar-duvidas";
+import { removerDuvida } from "./remover-duvida";
+import { criarResposta } from "./criar-resposta";
+import { removerResposta } from "./remover-resposta";
+
+export async function comunidadesRoutes(app: FastifyInstance) {
+  app.put("/comunidades/:id",   { onRequest: [verifyJWT] }, editar);
+  app.post("/comunidades",      { onRequest: [verifyJWT, verifyUserRole('ADMIN')] }, criar);
+  app.get("/comunidades",       { onRequest: [verifyJWT] }, listar);
+  app.get("/comunidades/:id",   { onRequest: [verifyJWT] }, buscar);
+  app.post("/comunidades/:id/entrar", { onRequest: [verifyJWT] }, entrar);
+  app.post("/comunidades/:id/sair",   { onRequest: [verifyJWT] }, sair);
+  app.post("/comunidades/:id/convidar", { onRequest: [verifyJWT] }, convidar);
+  app.get("/comunidades/:id/mensagens",    { onRequest: [verifyJWT] }, listarMensagens);
+  app.post("/comunidades/:id/mensagens",   { onRequest: [verifyJWT] }, enviarMensagem);
+  app.delete("/comunidades/:id/mensagens/:mensagemId", { onRequest: [verifyJWT] }, removerMensagem);
+  app.get("/comunidades/:id/membros",      { onRequest: [verifyJWT] }, listarMembros);
+  app.get("/comunidades/:id/solicitacoes", { onRequest: [verifyJWT] }, listarSolicitacoes);
+  app.put("/comunidades/:id/solicitacoes/:membroId", { onRequest: [verifyJWT] }, responderSolicitacao);
+  app.delete("/comunidades/:id/membros/:membroId", { onRequest: [verifyJWT] }, removerMembro);
+  app.delete("/comunidades/:id", { onRequest: [verifyJWT, verifyUserRole('ADMIN')] }, remover);
+  app.get("/comunidades/:id/duvidas", { onRequest: [verifyJWT] }, listarDuvidas);
+  app.post("/comunidades/:id/duvidas", { onRequest: [verifyJWT] }, criarDuvida);
+  app.delete("/comunidades/:id/duvidas/:duvidaId", { onRequest: [verifyJWT] }, removerDuvida);
+  app.post("/comunidades/:id/duvidas/:duvidaId/respostas", { onRequest: [verifyJWT] }, criarResposta);
+  app.delete("/comunidades/:id/duvidas/:duvidaId/respostas/:respostaId", { onRequest: [verifyJWT] }, removerResposta);
+  app.get("/usuarios/search",  { onRequest: [verifyJWT] }, searchUsuarios);
+}

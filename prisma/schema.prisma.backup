@@ -1,0 +1,446 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Enums ────────────────────────────────────────────────
+
+enum Role {
+  ADMIN
+  GESTOR
+  USUARIO
+}
+
+enum EstadoConta {
+  ACTIVA
+  INACTIVA
+}
+
+enum BolsaStatus {
+  RASCUNHO
+  PUBLICADA
+  INATIVA
+}
+
+enum TipoInteresse {
+  CONSULTORIA
+  MENTORIA
+  INSCRICAO
+}
+
+enum InscricaoStatus {
+  PENDENTE
+  APROVADA
+  REJEITADA
+  CANCELADA
+}
+
+enum CursoStatus {
+  RASCUNHO
+  PUBLICADO
+}
+
+enum AulaTipo {
+  VIDEO
+  PDF
+  QUIZ
+}
+
+enum PagamentoStatus {
+  PENDENTE
+  APROVADO
+  REJEITADO
+  CANCELADO
+}
+
+// ─── Models ───────────────────────────────────────────────
+
+model User {
+  id              String              @id @default(uuid())
+  nome            String
+  email           String              @unique
+  phone           String?
+  password        String
+  role            Role                @default(USUARIO)
+  estado_conta    EstadoConta         @default(ACTIVA)
+  image_path      String?
+  created_at      DateTime            @default(now())
+  last_active_at  DateTime            @default(now())
+
+  notifications   Notification[]
+  inscricoes      BolsaInscricao[]
+  pagamentos      CursoPagamento[]
+  cursosComprados CursoUsuario[]
+  comunidades     Community[]        @relation("CreatedCommunities")
+  membroEm        CommunityMember[]
+  mensagens       CommunityMessage[]
+  depoimentos     Depoimento[]
+  novidades       Novidade[]
+  novidadeInscricoes NovidadeInscricao[]
+  analises           AnaliseDocumento[]
+  perfilAcademico    PerfilAcademico?
+}
+
+model Notification {
+  id          String   @id @default(uuid())
+  titulo      String
+  content     String
+  tipo        String   @default("INFO")
+  link        String?
+  entidade    String?
+  entidadeId  String?
+  visualizada Boolean  @default(false)
+  created_at  DateTime @default(now())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+}
+
+// ─── Bolsas (Scholarships) ────────────────────────────────
+
+model Bolsa {
+  id                String          @id @default(uuid())
+  titulo            String
+  subtitulo         String?
+  categoria         String?
+  instituicao       String?
+  pais              String?
+  nivel             String?
+  requisitos        String?
+  valor             Float
+  moeda             String          @default("AOA")
+  precoOriginal     Float?
+  precoInscricao    Float?
+  precoConsultoria  Float?
+  precoMentoria     Float?
+  idioma            String?
+  tags              String[]
+  descricao         String?
+  imagemUrl         String?
+  linkAplicar       String?
+  prazo             DateTime?
+  numeroVagas       Int?
+  status            BolsaStatus     @default(RASCUNHO)
+  modalidade        String?
+  imagemBg          String?
+  datasImportantes  Json?
+  created_at        DateTime        @default(now())
+  updated_at        DateTime        @updatedAt
+
+  inscricoes        BolsaInscricao[]
+}
+
+model BolsaInscricao {
+  id                  String                     @id @default(uuid())
+  bolsaId             String
+  usuarioId           String
+  tipoInteresse       TipoInteresse?
+  status              InscricaoStatus            @default(PENDENTE)
+  observacoes         String?
+  nome                String?
+  email               String?
+  telefone            String?
+  documentoUrl        String?
+  certificadoUrl      String?
+  historicoUrl        String?
+  biUrl               String?
+  metodoPagamento     String?
+  referenciaPagamento String?
+  comprovativoUrl     String?
+  valorPago           Float?
+  created_at          DateTime                   @default(now())
+  updated_at          DateTime                   @updatedAt
+
+  bolsa               Bolsa                      @relation(fields: [bolsaId], references: [id])
+  usuario             User                       @relation(fields: [usuarioId], references: [id])
+  documentos          BolsaInscricaoDocumento[]
+
+  @@unique([bolsaId, usuarioId])
+}
+
+model BolsaInscricaoDocumento {
+  id            String          @id @default(uuid())
+  inscricaoId   String
+  nome          String
+  file          String
+  created_at    DateTime        @default(now())
+
+  inscricao     BolsaInscricao  @relation(fields: [inscricaoId], references: [id], onDelete: Cascade)
+}
+
+// ─── Cursos ───────────────────────────────────────────────
+
+model Curso {
+  id            String       @id @default(uuid())
+  titulo        String
+  subtitulo     String?
+  categoria     String?
+  nivel         String?
+  duracao       String?
+  quantAulas    Int          @default(0)
+  estudantes    Int          @default(0)
+  rating        Float        @default(0)
+  preco         Float
+  precoOriginal Float?
+  idioma        String?
+  tags          String[]
+  descricao     String?
+  capaUrl       String?
+  status        CursoStatus  @default(RASCUNHO)
+  mentorNome    String?
+  mentorAvatar  String?
+  created_at    DateTime     @default(now())
+  updated_at    DateTime     @updatedAt
+
+  aulas         Aula[]
+  pagamentos    CursoPagamento[]
+  compras       CursoUsuario[]
+}
+
+model Aula {
+  id         String   @id @default(uuid())
+  cursoId    String
+  titulo     String
+  tipo       AulaTipo
+  duracao    String?
+  ordem      Int
+  gratuito   Boolean  @default(false)
+  videoUrl   String?
+  videoLocal String?
+  pdfUrl     String?
+  created_at DateTime @default(now())
+
+  curso      Curso    @relation(fields: [cursoId], references: [id], onDelete: Cascade)
+}
+
+model CursoPagamento {
+  id           String          @id @default(uuid())
+  cursoId      String
+  usuarioId    String
+  valor        Float
+  metodo       String?
+  referencia   String?
+  status       PagamentoStatus @default(PENDENTE)
+  comprovativo String?
+  observacoes  String?
+  created_at   DateTime        @default(now())
+  updated_at   DateTime        @updatedAt
+
+  curso        Curso           @relation(fields: [cursoId], references: [id])
+  usuario      User            @relation(fields: [usuarioId], references: [id])
+
+  @@unique([cursoId, usuarioId])
+}
+
+model CursoUsuario {
+  id        String   @id @default(uuid())
+  cursoId   String
+  usuarioId String
+  created_at DateTime @default(now())
+
+  curso     Curso    @relation(fields: [cursoId], references: [id])
+  usuario   User     @relation(fields: [usuarioId], references: [id])
+
+  @@unique([cursoId, usuarioId])
+}
+
+// ─── Depoimentos ──────────────────────────────────────────
+
+enum DepoimentoStatus {
+  RASCUNHO
+  PUBLICADO
+}
+
+model Depoimento {
+  id         String           @id @default(uuid())
+  nome       String
+  curso      String
+  texto      String
+  rating     Int              @default(5)
+  imagem     String?
+  usuarioId  String?
+  usuario    User?            @relation(fields: [usuarioId], references: [id])
+  status     DepoimentoStatus @default(PUBLICADO)
+  created_at DateTime         @default(now())
+  updated_at DateTime         @updatedAt
+}
+
+// ─── Novidades (News/Highlights) ───────────────────────────────
+
+model Novidade {
+  id          String   @id @default(uuid())
+  title       String
+  introduction String
+  sobre       String
+  description String
+  image_path  String?
+  image_url   String?
+  destaque    Boolean  @default(false)
+  status      String   @default("RASCUNHO")
+  temInscricao Boolean @default(false)
+  usuarioId   String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  usuario     User              @relation(fields: [usuarioId], references: [id])
+  anexos      Anexo[]
+  inscricoes  NovidadeInscricao[]
+}
+
+model NovidadeInscricao {
+  id                  String                        @id @default(uuid())
+  novidadeId          String
+  usuarioId           String
+  nome                String
+  email               String
+  telefone            String?
+  observacao          String?
+  metodoPagamento     String?
+  referenciaPagamento String?
+  comprovativoUrl     String?
+  valorPago           Float?
+  status              String                        @default("PENDENTE")
+  created_at          DateTime                      @default(now())
+  updated_at          DateTime                      @updatedAt
+
+  novidade            Novidade                      @relation(fields: [novidadeId], references: [id], onDelete: Cascade)
+  usuario             User                          @relation(fields: [usuarioId], references: [id])
+  documentos          NovidadeInscricaoDocumento[]
+
+  @@unique([novidadeId, usuarioId])
+}
+
+model NovidadeInscricaoDocumento {
+  id          String          @id @default(uuid())
+  inscricaoId String
+  nome        String
+  file        String
+  created_at  DateTime        @default(now())
+
+  inscricao   NovidadeInscricao @relation(fields: [inscricaoId], references: [id], onDelete: Cascade)
+}
+
+model Anexo {
+  id         String   @id @default(uuid())
+  novidadeId String
+  file       String
+  type       String
+  created_at DateTime @default(now())
+
+  novidade   Novidade @relation(fields: [novidadeId], references: [id], onDelete: Cascade)
+}
+
+// ─── Perfil Académico ─────────────────────────────────────────
+
+model PerfilAcademico {
+  id                    String   @id @default(uuid())
+  usuarioId             String   @unique
+  nivelEnsino           String
+  instituicao           String?
+  curso                 String?
+  anoConclusao          String?
+  media                 String?
+  pais                  String?
+  idiomas               String?
+  biUrl                 String?
+  curriculumUrl         String?
+  fotoUrl               String?
+  dataNascimento        String?
+  provincia             String?
+  municipio             String?
+  motivacoes            String?
+  experienciaProfissional String?
+  created_at            DateTime @default(now())
+  updated_at            DateTime @updatedAt
+
+  usuario               User     @relation(fields: [usuarioId], references: [id])
+}
+
+// ─── Análise de Documentos ─────────────────────────────────────
+
+model AnaliseDocumento {
+  id              String   @id @default(uuid())
+  usuarioId       String
+  nome            String
+  email           String
+  telefone        String?
+  tipoDocumento   String
+  areaPretendida  String
+  observacao      String?
+  status          String   @default("PENDENTE")
+  feedback        String?
+  arquivoUrl      String?
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+
+  usuario         User     @relation(fields: [usuarioId], references: [id])
+}
+
+// ─── Comunidades ───────────────────────────────────────────────
+
+enum CommunityRole {
+  ADMIN
+  MEMBER
+}
+
+enum JoinStatus {
+  PENDENTE
+  APROVADO
+  REJEITADO
+}
+
+model Community {
+  id          String             @id @default(uuid())
+  nome        String
+  descricao   String?
+  imagem      String?
+  created_at  DateTime           @default(now())
+
+  criadorId   String
+  criador     User               @relation("CreatedCommunities", fields: [criadorId], references: [id])
+
+  membros     CommunityMember[]
+  mensagens   CommunityMessage[]
+}
+
+model CommunityMember {
+  id          String        @id @default(uuid())
+  role        CommunityRole @default(MEMBER)
+  status      JoinStatus    @default(APROVADO)
+  joined_at   DateTime      @default(now())
+
+  comunidadeId String
+  comunidade   Community    @relation(fields: [comunidadeId], references: [id], onDelete: Cascade)
+
+  usuarioId    String
+  usuario      User         @relation(fields: [usuarioId], references: [id])
+
+  @@unique([comunidadeId, usuarioId])
+}
+
+enum MensagemTipo {
+  TEXT
+  IMAGE
+  AUDIO
+  VIDEO
+  DOCUMENT
+}
+
+model CommunityMessage {
+  id         String        @id @default(uuid())
+  content    String        @default("")
+  tipo       MensagemTipo  @default(TEXT)
+  anexoUrl   String?
+  created_at DateTime      @default(now())
+  updated_at DateTime      @updatedAt
+
+  comunidadeId String
+  comunidade   Community @relation(fields: [comunidadeId], references: [id], onDelete: Cascade)
+
+  usuarioId String
+  usuario   User    @relation(fields: [usuarioId], references: [id])
+}

@@ -1,0 +1,977 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ═══════════════════════════════════════════════════════════════
+// ENUMS
+// ═══════════════════════════════════════════════════════════════
+
+enum Role {
+  ADMIN
+  GESTOR
+  USUARIO
+}
+
+enum EstadoConta {
+  ACTIVA
+  INACTIVA
+}
+
+enum ACCOUNT_STATUS {
+  ACTIVA
+  DESATIVADA
+  PENDENTE
+  SUSPENSA
+}
+
+enum TRANSACTION_STATUS {
+  PENDENTE
+  APROVADO
+  REJEITADO
+  CANCELADO
+}
+
+enum BOT_STATE {
+  APRESENTACAO
+  TRABALHANDO
+  REPOUSANDO
+  CONVERSANDO
+  RELAXANDO
+}
+
+enum SUBS_STATUS {
+  PENDENTE
+  APROVADO
+  CANCELADO
+  EXPIRADA
+  AGUARDANDO_APROVACAO
+  REJEITADO
+  ACTIVA
+}
+
+enum BolsaStatus {
+  RASCUNHO
+  PUBLICADA
+  INATIVA
+}
+
+enum TipoInteresse {
+  CONSULTORIA
+  MENTORIA
+  INSCRICAO
+}
+
+enum InscricaoStatus {
+  PENDENTE
+  APROVADA
+  REJEITADA
+  CANCELADA
+}
+
+enum CursoStatus {
+  RASCUNHO
+  PUBLICADO
+}
+
+enum AulaTipo {
+  VIDEO
+  PDF
+  QUIZ
+}
+
+enum PagamentoStatus {
+  PENDENTE
+  APROVADO
+  REJEITADO
+  CANCELADO
+}
+
+enum DepoimentoStatus {
+  RASCUNHO
+  PUBLICADO
+}
+
+enum CommunityRole {
+  ADMIN
+  MEMBER
+}
+
+enum JoinStatus {
+  PENDENTE
+  APROVADO
+  REJEITADO
+}
+
+enum MensagemTipo {
+  TEXT
+  IMAGE
+  AUDIO
+  VIDEO
+  DOCUMENT
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SCHOOLAR — USER & NOTIFICATION
+// ═══════════════════════════════════════════════════════════════
+
+model User {
+  id               String      @id @default(uuid())
+  nome             String
+  email            String      @unique
+  phone            String?
+  password         String
+  role             Role        @default(USUARIO)
+  estado_conta     EstadoConta @default(ACTIVA)
+  image_path       String?
+  pushSubscription String?
+  resetToken       String?     @unique
+  resetTokenExpiry DateTime?
+  created_at       DateTime    @default(now())
+  last_active_at   DateTime    @default(now())
+
+  notifications       Notification[]
+  inscricoes          BolsaInscricao[]
+  pagamentos          CursoPagamento[]
+  cursosComprados     CursoUsuario[]
+  comunidades         Community[]              @relation("CreatedCommunities")
+  membroEm            CommunityMember[]
+  mensagens           CommunityMessage[]
+  depoimentos         Depoimento[]
+  novidades           Novidade[]
+  novidadeInscricoes  NovidadeInscricao[]
+  analises            AnaliseDocumento[]
+  perfilAcademico     PerfilAcademico?
+  aulasOnline         AulaOnline[]             @relation("HostedAulas")
+  aulasParticipadas   AulaOnlineParticipante[] @relation("AulaParticipanteUser")
+  mentoriasInscricoes MentoriaInscricao[]
+  duvidas             CommunityQuestion[]
+  respostasDuvidas    CommunityAnswer[]
+}
+
+model Notification {
+  id          String   @id @default(uuid())
+  titulo      String
+  content     String
+  tipo        String   @default("INFO")
+  link        String?
+  entidade    String?
+  entidadeId  String?
+  visualizada Boolean  @default(false)
+  created_at  DateTime @default(now())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CALUNGA — USERS & AUTH (legacy tables)
+// ═══════════════════════════════════════════════════════════════
+
+model Usuario {
+  id               String         @id @default(uuid())
+  nome             String
+  email            String         @unique
+  palavraPasse     String
+  image_path       String?
+  role             Role           @default(GESTOR)
+  estado_conta     ACCOUNT_STATUS @default(ACTIVA)
+  pushSubscription String?
+  fcm_token        String?
+  created_at       DateTime       @default(now())
+  last_active_at   DateTime       @default(now())
+
+  empresas      Empresa[]
+  notificacoes  Notificacao[]
+  carrinhoItens CarrinhoItem[]
+  feedbacks     Feedback[]
+  mensagens     Mensagem[]
+
+  @@map("usuario")
+}
+
+model Notificacao {
+  id          String   @id @default(uuid())
+  titulo      String
+  conteudo    String
+  tipo        String   @default("INFO")
+  link        String?
+  entidade    String?
+  entidadeId  String?
+  visualizada Boolean  @default(false)
+  created_at  DateTime @default(now())
+  usuarioId   String
+  usuario     Usuario  @relation(fields: [usuarioId], references: [id])
+
+  @@map("notificacao")
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CALUNGA — BUSINESS ENTITIES
+// ═══════════════════════════════════════════════════════════════
+
+model Empresa {
+  id           String   @id @default(uuid())
+  nome         String
+  sector       String
+  website      String?
+  logotipo     String?
+  cor_primaria String?
+  descricao    String?
+  contacto     String?
+  created_at   DateTime @default(now())
+
+  usuarioId String
+  usuario   Usuario @relation(fields: [usuarioId], references: [id])
+
+  departamentos Departamento[]
+  transacoes    Transacao[]
+  arquivos      Arquivo[]
+  bots_alocados BotEmpresa[]
+  assinaturas   Assinatura[]
+  carrinhoItens CarrinhoItem[]
+  settings      Setting[]
+
+  @@map("empresa")
+}
+
+model Departamento {
+  id            String         @id @default(uuid())
+  nome          String
+  empresaId     String
+  empresa       Empresa        @relation(fields: [empresaId], references: [id])
+  bots          BotEmpresa[]
+  assinaturas   Assinatura[]
+  carrinhoItens CarrinhoItem[]
+
+  @@map("departamento")
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CALUNGA — BOTS
+// ═══════════════════════════════════════════════════════════════
+
+model Bot {
+  id            String   @id @default(uuid())
+  nome          String
+  funcao        String
+  descricao     String   @db.Text
+  preco_mensal  Decimal  @db.Decimal(10, 2)
+  custo_api_est Decimal  @db.Decimal(10, 2)
+  rating        Float    @default(5.0)
+  tags          String[]
+  status        String   @default("ON")
+  avatar_url    String?
+  created_at    DateTime @default(now())
+
+  assets           BotAsset[]
+  contratos        BotEmpresa[]
+  assinaturas      Assinatura[]
+  carrinhoItens    CarrinhoItem[]
+  feedbacks        Feedback[]
+  whatBotCanDos    WhatBotCanDo[]
+  whatBotCanNotDos WhatBotCanNotDo[]
+
+  @@map("bot")
+}
+
+model BotAsset {
+  id         String    @id @default(uuid())
+  botId      String
+  estado     BOT_STATE
+  video_path String
+  file_size  Int?
+  mime_type  String?   @default("video/mp4")
+
+  bot Bot @relation(fields: [botId], references: [id])
+
+  @@map("bot_asset")
+}
+
+model BotEmpresa {
+  id             String         @id @default(uuid())
+  botId          String
+  empresaId      String
+  departamentoId String
+  data_contrato  DateTime       @default(now())
+  status         ACCOUNT_STATUS @default(ACTIVA)
+
+  bot          Bot          @relation(fields: [botId], references: [id])
+  empresa      Empresa      @relation(fields: [empresaId], references: [id])
+  departamento Departamento @relation(fields: [departamentoId], references: [id])
+  folhas_pag   FolhaBot[]
+  mensagens    Mensagem[]
+
+  @@map("bot_empresa")
+}
+
+model FolhaBot {
+  id             String  @id @default(uuid())
+  botEmpresaId   String
+  mes            Int
+  ano            Int
+  custo_api_real Decimal @db.Decimal(10, 2)
+  valor_cobrado  Decimal @db.Decimal(10, 2)
+  horas_uso      Float   @default(0)
+
+  botEmpresa BotEmpresa @relation(fields: [botEmpresaId], references: [id])
+
+  @@map("folha_bot")
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CALUNGA — FINANCE & FILES
+// ═══════════════════════════════════════════════════════════════
+
+model Transacao {
+  id         String             @id @default(uuid())
+  empresaId  String
+  valor      Decimal            @db.Decimal(10, 2)
+  metodo     String
+  status     TRANSACTION_STATUS @default(PENDENTE)
+  referencia String?            @unique
+  created_at DateTime           @default(now())
+
+  empresa Empresa @relation(fields: [empresaId], references: [id])
+
+  @@map("transacao")
+}
+
+model Arquivo {
+  id         String   @id @default(uuid())
+  nome       String
+  tipo       String
+  url        String
+  created_at DateTime @default(now())
+  empresaId  String
+
+  empresa Empresa @relation(fields: [empresaId], references: [id])
+
+  @@map("arquivo")
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CALUNGA — SUBSCRIPTIONS & CART
+// ═══════════════════════════════════════════════════════════════
+
+model Assinatura {
+  id              String      @id @default(uuid())
+  botId           String
+  empresaId       String
+  departamentoId  String
+  valorContrato   Decimal     @db.Decimal(10, 2)
+  status          SUBS_STATUS @default(PENDENTE)
+  ativa           Boolean     @default(false)
+  dataContratacao DateTime    @default(now())
+  dataExpiracao   DateTime
+  metodoPagamento String?
+
+  bot          Bot          @relation(fields: [botId], references: [id])
+  empresa      Empresa      @relation(fields: [empresaId], references: [id])
+  departamento Departamento @relation(fields: [departamentoId], references: [id])
+
+  @@map("assinatura")
+}
+
+model CarrinhoItem {
+  id             String   @id @default(uuid())
+  usuarioId      String
+  botId          String
+  empresaId      String
+  departamentoId String
+  quantity       Int      @default(1)
+  created_at     DateTime @default(now())
+
+  usuario      Usuario      @relation(fields: [usuarioId], references: [id])
+  bot          Bot          @relation(fields: [botId], references: [id])
+  empresa      Empresa      @relation(fields: [empresaId], references: [id])
+  departamento Departamento @relation(fields: [departamentoId], references: [id])
+
+  @@map("carrinho_item")
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CALUNGA — FEEDBACK & CHAT
+// ═══════════════════════════════════════════════════════════════
+
+model Feedback {
+  id             String   @id @default(uuid())
+  rating         Int
+  comentario     String?
+  nome_exibicao  String?
+  cargo_exibicao String?
+  usuarioId      String
+  botId          String
+  created_at     DateTime @default(now())
+
+  usuario Usuario @relation(fields: [usuarioId], references: [id])
+  bot     Bot     @relation(fields: [botId], references: [id])
+
+  @@map("feedback")
+}
+
+model Mensagem {
+  id           String   @id @default(uuid())
+  content      String
+  sender       String   @default("user")
+  createdAt    DateTime @default(now())
+  botEmpresaId String
+  usuarioId    String
+
+  botEmpresa BotEmpresa @relation(fields: [botEmpresaId], references: [id])
+  usuario    Usuario    @relation(fields: [usuarioId], references: [id])
+
+  @@map("mensagem")
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CALUNGA — SETTINGS & BOT CAPABILITIES
+// ═══════════════════════════════════════════════════════════════
+
+model Setting {
+  id        String  @id @default(uuid())
+  slug      String  @unique
+  value     String?
+  iban      String?
+  Banco     String?
+  empresaId String?
+
+  empresa Empresa? @relation(fields: [empresaId], references: [id])
+
+  @@map("setting")
+}
+
+model WhatBotCanDo {
+  id          String   @id @default(uuid())
+  botId       String
+  title       String
+  description String?
+  order       Int      @default(0)
+  created_at  DateTime @default(now())
+
+  bot Bot @relation(fields: [botId], references: [id])
+
+  @@map("what_bot_can_do")
+}
+
+model WhatBotCanNotDo {
+  id          String   @id @default(uuid())
+  botId       String
+  title       String
+  description String?
+  order       Int      @default(0)
+  created_at  DateTime @default(now())
+
+  bot Bot @relation(fields: [botId], references: [id])
+
+  @@map("what_bot_can_not_do")
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SCHOOLAR — BOLSAS (Scholarships)
+// ═══════════════════════════════════════════════════════════════
+
+model Bolsa {
+  id               String      @id @default(uuid())
+  titulo           String
+  subtitulo        String?
+  categoria        String?
+  instituicao      String?
+  pais             String?
+  nivel            String?
+  requisitos       String?
+  valor            Float
+  moeda            String      @default("AOA")
+  precoOriginal    Float?
+  precoInscricao   Float?
+  precoConsultoria Float?
+  precoMentoria    Float?
+  idioma           String?
+  tags             String[]
+  descricao        String?
+  imagemUrl        String?
+  linkAplicar      String?
+  prazo            DateTime?
+  numeroVagas      Int?
+  status           BolsaStatus @default(RASCUNHO)
+  modalidade       String?
+  imagemBg         String?
+  datasImportantes Json?
+  created_at       DateTime    @default(now())
+  updated_at       DateTime    @updatedAt
+
+  inscricoes   BolsaInscricao[]
+  aulas        AulaOnline[]
+  comunidades  Community[]
+  mentorias    Mentoria[]
+}
+
+model BolsaInscricao {
+  id                  String          @id @default(uuid())
+  bolsaId             String
+  usuarioId           String
+  tipoInteresse       TipoInteresse?
+  status              InscricaoStatus @default(PENDENTE)
+  observacoes         String?
+  nome                String?
+  email               String?
+  telefone            String?
+  documentoUrl        String?
+  certificadoUrl      String?
+  historicoUrl        String?
+  biUrl               String?
+  metodoPagamento     String?
+  referenciaPagamento String?
+  comprovativoUrl     String?
+  valorPago           Float?
+  created_at          DateTime        @default(now())
+  updated_at          DateTime        @updatedAt
+
+  bolsa      Bolsa                     @relation(fields: [bolsaId], references: [id], onDelete: Cascade)
+  usuario    User                      @relation(fields: [usuarioId], references: [id])
+  documentos BolsaInscricaoDocumento[]
+
+  @@unique([bolsaId, usuarioId])
+}
+
+model BolsaInscricaoDocumento {
+  id          String   @id @default(uuid())
+  inscricaoId String
+  nome        String
+  file        String
+  created_at  DateTime @default(now())
+
+  inscricao BolsaInscricao @relation(fields: [inscricaoId], references: [id], onDelete: Cascade)
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SCHOOLAR — CURSOS
+// ═══════════════════════════════════════════════════════════════
+
+model Curso {
+  id            String      @id @default(uuid())
+  titulo        String
+  subtitulo     String?
+  categoria     String?
+  nivel         String?
+  duracao       String?
+  quantAulas    Int         @default(0)
+  estudantes    Int         @default(0)
+  rating        Float       @default(0)
+  preco         Float
+  precoOriginal Float?
+  idioma        String?
+  tags          String[]
+  descricao     String?
+  capaUrl       String?
+  status        CursoStatus @default(RASCUNHO)
+  mentorNome    String?
+  mentorAvatar  String?
+  created_at    DateTime    @default(now())
+  updated_at    DateTime    @updatedAt
+
+  aulas      Aula[]
+  pagamentos CursoPagamento[]
+  compras    CursoUsuario[]
+}
+
+model Aula {
+  id         String   @id @default(uuid())
+  cursoId    String
+  titulo     String
+  tipo       AulaTipo
+  duracao    String?
+  ordem      Int
+  gratuito   Boolean  @default(false)
+  videoUrl   String?
+  videoLocal String?
+  pdfUrl     String?
+  created_at DateTime @default(now())
+
+  curso Curso @relation(fields: [cursoId], references: [id], onDelete: Cascade)
+}
+
+model CursoPagamento {
+  id           String          @id @default(uuid())
+  cursoId      String
+  usuarioId    String
+  valor        Float
+  metodo       String?
+  referencia   String?
+  status       PagamentoStatus @default(PENDENTE)
+  comprovativo String?
+  observacoes  String?
+  created_at   DateTime        @default(now())
+  updated_at   DateTime        @updatedAt
+
+  curso   Curso @relation(fields: [cursoId], references: [id], onDelete: Cascade)
+  usuario User  @relation(fields: [usuarioId], references: [id])
+
+  @@unique([cursoId, usuarioId])
+}
+
+model CursoUsuario {
+  id         String   @id @default(uuid())
+  cursoId    String
+  usuarioId  String
+  created_at DateTime @default(now())
+
+  curso   Curso @relation(fields: [cursoId], references: [id], onDelete: Cascade)
+  usuario User  @relation(fields: [usuarioId], references: [id])
+
+  @@unique([cursoId, usuarioId])
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SCHOOLAR — DEPOIMENTOS
+// ═══════════════════════════════════════════════════════════════
+
+model Depoimento {
+  id         String           @id @default(uuid())
+  nome       String
+  curso      String
+  texto      String
+  rating     Int              @default(5)
+  imagem     String?
+  usuarioId  String?
+  usuario    User?            @relation(fields: [usuarioId], references: [id])
+  status     DepoimentoStatus @default(PUBLICADO)
+  created_at DateTime         @default(now())
+  updated_at DateTime         @updatedAt
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SCHOOLAR — NOVIDADES (News/Highlights)
+// ═══════════════════════════════════════════════════════════════
+
+model Novidade {
+  id           String   @id @default(uuid())
+  title        String
+  introduction String
+  sobre        String
+  description  String
+  image_path   String?
+  image_url    String?
+  destaque     Boolean  @default(false)
+  status       String   @default("RASCUNHO")
+  temInscricao Boolean  @default(false)
+  usuarioId    String
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+
+  usuario    User                @relation(fields: [usuarioId], references: [id])
+  anexos     Anexo[]
+  inscricoes NovidadeInscricao[]
+}
+
+model NovidadeInscricao {
+  id                  String   @id @default(uuid())
+  novidadeId          String
+  usuarioId           String
+  nome                String
+  email               String
+  telefone            String?
+  observacao          String?
+  metodoPagamento     String?
+  referenciaPagamento String?
+  comprovativoUrl     String?
+  valorPago           Float?
+  status              String   @default("PENDENTE")
+  created_at          DateTime @default(now())
+  updated_at          DateTime @updatedAt
+
+  novidade   Novidade                     @relation(fields: [novidadeId], references: [id], onDelete: Cascade)
+  usuario    User                         @relation(fields: [usuarioId], references: [id])
+  documentos NovidadeInscricaoDocumento[]
+
+  @@unique([novidadeId, usuarioId])
+}
+
+model NovidadeInscricaoDocumento {
+  id          String   @id @default(uuid())
+  inscricaoId String
+  nome        String
+  file        String
+  created_at  DateTime @default(now())
+
+  inscricao NovidadeInscricao @relation(fields: [inscricaoId], references: [id], onDelete: Cascade)
+}
+
+model Anexo {
+  id         String   @id @default(uuid())
+  novidadeId String
+  file       String
+  type       String
+  created_at DateTime @default(now())
+
+  novidade Novidade @relation(fields: [novidadeId], references: [id], onDelete: Cascade)
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SCHOOLAR — PERFIL ACADÉMICO
+// ═══════════════════════════════════════════════════════════════
+
+model PerfilAcademico {
+  id                      String   @id @default(uuid())
+  usuarioId               String   @unique
+  nivelEnsino             String
+  instituicao             String?
+  curso                   String?
+  nivel                   String?
+  anoConclusao            String?
+  media                   String?
+  pais                    String?
+  genero                  String?
+  nacionalidade           String?
+  cidade                  String?
+  whatsapp                String?
+  idiomas                 String?
+  certificadosIdiomas     String?
+  biUrl                   String?
+  curriculumUrl           String?
+  fotoUrl                 String?
+  dataNascimento          String?
+  provincia               String?
+  municipio               String?
+  motivacoes              String?
+  experienciaProfissional String?
+  areaActuacao            String?
+  cargoOcupado            String?
+  historicoProfissional   String?
+  atividadesExtracurriculares String?
+  descricaoAtividades     String?
+  producaoCientifica      String?
+  descricaoProducao       String?
+  bolsaIntegral           String?
+  bolsaParcial            String?
+  custeiaPassagem         String?
+  preferenciaDestino      String?
+  mudarPais               String?
+  qualquerContinente      String?
+  documentos              String?
+  areaInteresse            String?
+  cursoDesejado            String?
+  objetivosAcademicos      String?
+  quandoPretendeIniciar    String?
+  created_at              DateTime @default(now())
+  updated_at              DateTime @updatedAt
+
+  usuario User @relation(fields: [usuarioId], references: [id])
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SCHOOLAR — ANÁLISE DE DOCUMENTOS
+// ═══════════════════════════════════════════════════════════════
+
+model AnaliseDocumento {
+  id             String   @id @default(uuid())
+  usuarioId      String
+  nome           String
+  email          String
+  telefone       String?
+  tipoDocumento  String
+  areaPretendida String
+  observacao     String?
+  status         String   @default("PENDENTE")
+  feedback       String?
+  arquivoUrl     String?
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+
+  usuario User @relation(fields: [usuarioId], references: [id])
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SCHOOLAR — COMUNIDADES
+// ═══════════════════════════════════════════════════════════════
+
+model Community {
+  id         String   @id @default(uuid())
+  nome       String
+  descricao  String?
+  imagem     String?
+  capa       String?
+  created_at DateTime @default(now())
+
+  criadorId String
+  criador   User   @relation("CreatedCommunities", fields: [criadorId], references: [id])
+
+  bolsaId String?
+  bolsa   Bolsa?  @relation(fields: [bolsaId], references: [id])
+
+  membros   CommunityMember[]
+  mensagens CommunityMessage[]
+  duvidas   CommunityQuestion[]
+}
+
+model CommunityMember {
+  id        String        @id @default(uuid())
+  role      CommunityRole @default(MEMBER)
+  status    JoinStatus    @default(APROVADO)
+  joined_at DateTime      @default(now())
+
+  comunidadeId String
+  comunidade   Community @relation(fields: [comunidadeId], references: [id], onDelete: Cascade)
+
+  usuarioId String
+  usuario   User   @relation(fields: [usuarioId], references: [id])
+
+  @@unique([comunidadeId, usuarioId])
+}
+
+model CommunityMessage {
+  id         String       @id @default(uuid())
+  content    String       @default("")
+  tipo       MensagemTipo @default(TEXT)
+  anexoUrl   String?
+  created_at DateTime     @default(now())
+  updated_at DateTime     @updatedAt
+
+  comunidadeId String
+  comunidade   Community @relation(fields: [comunidadeId], references: [id], onDelete: Cascade)
+
+  usuarioId String
+  usuario   User   @relation(fields: [usuarioId], references: [id])
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SCHOOLAR — AULAS ONLINE (Live Video Classes)
+// ═══════════════════════════════════════════════════════════════
+
+enum AulaOnlineStatus {
+  AGENDADA
+  AO_VIVO
+  FINALIZADA
+  CANCELADA
+}
+
+model AulaOnline {
+  id          String           @id @default(uuid())
+  titulo      String
+  descricao   String?
+  data        DateTime
+  duracao     Int? // duração em minutos
+  roomId      String           @unique
+  status      AulaOnlineStatus @default(AGENDADA)
+  gravacaoUrl String? // URL da gravação após aula finalizada
+  created_at  DateTime         @default(now())
+  updated_at  DateTime         @updatedAt
+
+  hostId String
+  host   User   @relation("HostedAulas", fields: [hostId], references: [id])
+
+  bolsaId String?
+  bolsa   Bolsa?  @relation(fields: [bolsaId], references: [id])
+
+  participantes AulaOnlineParticipante[]
+  mentoria      Mentoria?                @relation(fields: [mentoriaId], references: [id])
+  mentoriaId    String?
+
+  @@map("aulas_online")
+}
+
+model AulaOnlineParticipante {
+  id        String   @id @default(uuid())
+  joined_at DateTime @default(now())
+
+  aulaId String
+  aula   AulaOnline @relation(fields: [aulaId], references: [id], onDelete: Cascade)
+
+  usuarioId String
+  usuario   User   @relation("AulaParticipanteUser", fields: [usuarioId], references: [id])
+
+  @@unique([aulaId, usuarioId])
+  @@map("aulas_online_participantes")
+}
+
+model Mentoria {
+  id         String   @id @default(uuid())
+  nome       String
+  descricao  String?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  bolsaId String?
+  bolsa   Bolsa?  @relation(fields: [bolsaId], references: [id])
+
+  aulas      AulaOnline[]
+  inscricoes MentoriaInscricao[]
+
+  @@map("mentorias")
+}
+
+model MentoriaInscricao {
+  id         String          @id @default(uuid())
+  mentoriaId String
+  usuarioId  String
+  status     InscricaoStatus @default(PENDENTE)
+  created_at DateTime        @default(now())
+
+  mentoria Mentoria @relation(fields: [mentoriaId], references: [id])
+  usuario  User     @relation(fields: [usuarioId], references: [id])
+
+  @@unique([mentoriaId, usuarioId])
+  @@map("mentorias_inscricoes")
+}
+
+model CommunityQuestion {
+  id          String   @id @default(uuid())
+  titulo      String
+  conteudo    String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  comunidadeId String
+  comunidade   Community          @relation(fields: [comunidadeId], references: [id], onDelete: Cascade)
+  usuarioId    String
+  usuario      User               @relation(fields: [usuarioId], references: [id])
+  respostas    CommunityAnswer[]
+
+  @@map("comunidade_duvida")
+}
+
+model CommunityAnswer {
+  id         String   @id @default(uuid())
+  conteudo   String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  duvidaId String
+  duvida   CommunityQuestion @relation(fields: [duvidaId], references: [id], onDelete: Cascade)
+  usuarioId String
+  usuario   User             @relation(fields: [usuarioId], references: [id])
+
+  @@map("comunidade_resposta")
+}
+
+model HomeBanner {
+  id        String   @id @default(uuid())
+  imageUrl  String
+  order     Int      @default(0)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("home_banners")
+}
+
+model MapaGlobal {
+  id        String   @id @default(uuid())
+  nome      String
+  curso     String
+  pais      String
+  bandeira  String   @default("")
+  latitude  Float
+  longitude Float
+  imagem    String?
+  texto     String?
+  ativo     Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("mapa_global")
+}

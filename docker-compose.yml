@@ -1,0 +1,19 @@
+version: '3'
+services:
+  api:
+    build: .
+    ports:
+      - "3333:3333"
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/northwind?
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Gabriel092005
+      POSTGRES_DB: northwind
+    ports:
+      - "5432:5432"
