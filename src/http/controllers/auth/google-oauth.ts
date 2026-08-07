@@ -2,20 +2,24 @@ import { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
 import { prisma } from "@/lib/prisma";
 import { env } from "@/Env";
 
-
+function failRedirect(reply: FastifyReply, reason: string) {
+  const url = `${env.FRONTEND_URL}/sign-in?error=google_auth_failed&reason=${encodeURIComponent(reason)}`;
+  return reply.redirect(url);
+}
 
 export async function googleOAuthRoutes(app: FastifyInstance) {
   app.get("/auth/google/callback", async (request: FastifyRequest, reply: FastifyReply) => {
     if (!env.GOOGLE_CLIENT_ID) {
-      return reply.status(501).send({ error: "Google OAuth não configurado." });
+      console.error("Google OAuth não configurado: GOOGLE_CLIENT_ID em falta.");
+      return failRedirect(reply, "google_not_configured");
     }
 
     try {
       const result = await app.googleOAuth2.getAccessTokenFromAuthorizationCodeFlow(request);
-      const token = result.token?.access_token || result.access_token;
+      const token = result.token?.access_token;
 
       if (!token) {
-        return reply.status(500).send({ error: "Falha ao obter token de acesso do Google." });
+        return failRedirect(reply, "no_access_token");
       }
 
       const userInfoResponse = await fetch("https://www.googleapis.com/oauth2/v2/userinfo", {
@@ -24,7 +28,8 @@ export async function googleOAuthRoutes(app: FastifyInstance) {
 
       if (!userInfoResponse.ok) {
         const body = await userInfoResponse.text().catch(() => "");
-        return reply.status(400).send({ error: "Falha ao buscar dados do usuário Google.", details: body });
+        console.error("Google userinfo falhou:", body);
+        return failRedirect(reply, "userinfo_failed");
       }
 
       const googleUser = (await userInfoResponse.json()) as {
@@ -46,6 +51,10 @@ export async function googleOAuthRoutes(app: FastifyInstance) {
             role: "USUARIO",
           },
         });
+      }
+
+      if (user.estado_conta === "INACTIVA") {
+        return failRedirect(reply, "conta_suspensa");
       }
 
       const accessToken = await reply.jwtSign(
@@ -72,7 +81,7 @@ export async function googleOAuthRoutes(app: FastifyInstance) {
       console.error("Erro no callback do Google OAuth:", msg);
       console.error("GOOGLE_CALLBACK_URL usado:", env.GOOGLE_CALLBACK_URL);
       console.error("FRONTEND_URL usado:", env.FRONTEND_URL);
-      return reply.status(500).send({ error: "Erro interno no OAuth.", details: msg });
+      return failRedirect(reply, msg.slice(0, 160));
     }
   });
 }
