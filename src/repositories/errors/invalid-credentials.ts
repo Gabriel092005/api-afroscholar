@@ -3,7 +3,7 @@ export  class invalidCredentialsError extends Error{
 
     constructor(){
 
-        super('Invalid Credentials')
+        super('E-mail ou senha incorrectos')
         
     }
 }

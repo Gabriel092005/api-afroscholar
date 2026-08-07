@@ -25,7 +25,8 @@ interface RegisterUseCaseResponse{
 
  : Promise<RegisterUseCaseResponse>
 {
-     const userWithSameEmail = await this.usersRepository.findByEmail(email)
+     const normalizedEmail = email.trim().toLowerCase()
+     const userWithSameEmail = await this.usersRepository.findByEmail(normalizedEmail)
 
   if(userWithSameEmail){
     throw new UserAreadyExistsError()
@@ -36,7 +37,7 @@ const hashedPassword = await bcrypt.hash(palavraPasse, 8)
     const role = userCount === 0 ? "ADMIN" : undefined
 
     const user = await this.usersRepository.create({
-     email,
+     email: normalizedEmail,
      nome,
      password: hashedPassword,
      image_path,
