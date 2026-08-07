@@ -2,6 +2,9 @@
 
 import { PrismaClient } from "@/generated/client"
 
+    
+
+
 
 // SIMPLE initialization - this works for Prisma 6
 export const prisma = new PrismaClient({

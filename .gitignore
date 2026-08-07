@@ -9,3 +9,5 @@ node_modules/
 dist/
 .env
 .env.dev
+src/generated/*.so.node
+src/generated/*.node.tmp*

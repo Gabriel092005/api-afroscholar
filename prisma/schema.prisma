@@ -1,6 +1,7 @@
 generator client {
   provider      = "prisma-client"
   binaryTargets = ["native", "debian-openssl-3.0.x"]
+  output        = "../src/generated"
 }
 
 datasource db {
@@ -528,6 +529,8 @@ model BolsaInscricao {
   referenciaPagamento String?
   comprovativoUrl     String?
   valorPago           Float?
+  dataAgendada        DateTime?
+  duracaoMinutos      Int?         @default(60)
   created_at          DateTime        @default(now())
   updated_at          DateTime        @updatedAt
 

@@ -6,6 +6,7 @@ import { createBolsa } from "./create-bolsa-controller";
 import { updateBolsa } from "./update-bolsa-controller";
 import { deleteBolsa } from "./delete-bolsa-controller";
 import { inscribirBolsa } from "./inscrever-bolsa-controller";
+import { listConsultoriaSlots } from "./list-consultoria-slots-controller";
 import { listMinhasInscricoes } from "./list-minhas-inscricoes-controller";
 import { getInscricao } from "./get-inscricao-controller";
 import { cancelarInscricao } from "./cancelar-inscricao-controller";
@@ -24,6 +25,7 @@ export async function bolsasRoutes(fastify: FastifyInstance) {
   fastify.delete("/bolsas/:id", { onRequest: [verifyJWT, verifyUserRole("ADMIN", "GESTOR")] }, deleteBolsa);
 
   fastify.post("/bolsas/:id/inscrever", { onRequest: [verifyJWT] }, inscribirBolsa);
+  fastify.get("/bolsas/:id/consultoria/slots", listConsultoriaSlots);
   fastify.post("/bolsas/chat", { onRequest: [verifyJWT] }, chatBolsa);
 
   fastify.get("/inscricoes", { onRequest: [verifyJWT] }, listMinhasInscricoes);

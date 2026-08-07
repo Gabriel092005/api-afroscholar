@@ -11,7 +11,35 @@ const inscribirSchema = z.object({
   telefone: z.string().optional(),
   metodoPagamento: z.string().optional(),
   referenciaPagamento: z.string().optional(),
+  dataAgendada: z.string().optional(),
 });
+
+function validarAgendamento(dataAgendadaRaw?: string): { data?: Date; erro?: string } {
+  if (!dataAgendadaRaw) {
+    return { erro: "Selecione a data e hora da consultoria." };
+  }
+
+  const data = new Date(dataAgendadaRaw);
+  if (isNaN(data.getTime())) {
+    return { erro: "Data de agendamento inválida." };
+  }
+
+  const diaSemana = data.getDay();
+  if (diaSemana === 0 || diaSemana === 6) {
+    return { erro: "Selecione um dia útil (segunda a sexta)." };
+  }
+
+  const hora = data.getHours();
+  if (hora < 9 || hora > 16 || data.getMinutes() !== 0) {
+    return { erro: "Selecione um horário em ponto entre 09:00 e 16:00." };
+  }
+
+  if (data.getTime() <= Date.now()) {
+    return { erro: "Selecione uma data e hora futuras." };
+  }
+
+  return { data };
+}
 
 export const inscribirBolsa = async (
   req: FastifyRequest,
@@ -59,6 +87,36 @@ export const inscribirBolsa = async (
       });
     }
 
+    let dataAgendada: Date | undefined;
+    if (body.tipoInteresse === "CONSULTORIA") {
+      const agendamento = validarAgendamento(body.dataAgendada);
+      if (agendamento.erro) {
+        return res.status(400).send({
+          error: "Validation Error",
+          message: agendamento.erro,
+        });
+      }
+
+      const conflito = await prisma.bolsaInscricao.findFirst({
+        where: {
+          bolsaId: id,
+          tipoInteresse: "CONSULTORIA",
+          status: { in: ["PENDENTE", "APROVADA"] },
+          dataAgendada: agendamento.data,
+          NOT: { usuarioId: userId },
+        },
+      });
+
+      if (conflito) {
+        return res.status(409).send({
+          error: "Conflict",
+          message: "Este horário já está reservado. Escolha outro.",
+        });
+      }
+
+      dataAgendada = agendamento.data;
+    }
+
     const documentosData = docFiles.map((f, i) => ({
       file: f.filename,
       nome: docNomes[i] || `Documento ${i + 1}`,
@@ -80,6 +138,8 @@ export const inscribirBolsa = async (
         metodoPagamento: body.metodoPagamento,
         referenciaPagamento: body.referenciaPagamento,
         comprovativoUrl: comprovativoFile ? comprovativoFile.filename : undefined,
+        dataAgendada: dataAgendada,
+        duracaoMinutos: dataAgendada ? 60 : undefined,
         status: "PENDENTE",
         documentos: {
           deleteMany: {},
@@ -97,6 +157,8 @@ export const inscribirBolsa = async (
         metodoPagamento: body.metodoPagamento,
         referenciaPagamento: body.referenciaPagamento,
         comprovativoUrl: comprovativoFile ? comprovativoFile.filename : undefined,
+        dataAgendada: dataAgendada,
+        duracaoMinutos: dataAgendada ? 60 : undefined,
         documentos: {
           create: documentosData,
         },

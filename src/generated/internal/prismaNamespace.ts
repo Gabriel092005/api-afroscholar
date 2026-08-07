@@ -4062,6 +4062,8 @@ export const BolsaInscricaoScalarFieldEnum = {
   referenciaPagamento: 'referenciaPagamento',
   comprovativoUrl: 'comprovativoUrl',
   valorPago: 'valorPago',
+  dataAgendada: 'dataAgendada',
+  duracaoMinutos: 'duracaoMinutos',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const

@@ -26,17 +26,17 @@ const tiposIngles: Record<string, { nome: string; desc: string; scoring: string;
   geral:     { nome: "General English", desc: "General English Proficiency Assessment",           scoring: "CEFR",           bandas: "A1, A2, B1, B2, C1, C2" },
 };
 
-const idiomasInfo: Record<string, { nome: string; exame: string; niveis: string }> = {
-  ingles:    { nome: "English",    exame: "TOEFL/IELTS/Cambridge", niveis: "Variable by test type" },
-  frances:   { nome: "Français",  exame: "CEFR/DELF",             niveis: "A1, A2, B1, B2, C1, C2" },
-  espanhol:  { nome: "Español",   exame: "CEFR/DELE",             niveis: "A1, A2, B1, B2, C1, C2" },
-  mandarim:  { nome: "中文",      exame: "HSK",                   niveis: "HSK 1, HSK 2, HSK 3, HSK 4, HSK 5, HSK 6" },
-  japones:   { nome: "日本語",    exame: "JLPT",                  niveis: "N5, N4, N3, N2, N1" },
-  alemao:    { nome: "Deutsch",   exame: "CEFR/Goethe",           niveis: "A1, A2, B1, B2, C1, C2" },
-  italiano:  { nome: "Italiano",  exame: "CEFR/CELI",             niveis: "A1, A2, B1, B2, C1, C2" },
-  coreano:   { nome: "한국어",    exame: "TOPIK",                 niveis: "TOPIK 1, TOPIK 2, TOPIK 3, TOPIK 4, TOPIK 5, TOPIK 6" },
-  arabe:     { nome: "العربية",   exame: "CEFR/ALPT",             niveis: "A1, A2, B1, B2, C1, C2" },
-  russo:     { nome: "Русский",   exame: "CEFR/ТРКИ",             niveis: "A1, A2, B1, B2, C1, C2" },
+const idiomasInfo: Record<string, { nome: string; nomeEn: string; exame: string; niveis: string }> = {
+  ingles:    { nome: "English",    nomeEn: "English",      exame: "TOEFL/IELTS/Cambridge", niveis: "Variable by test type" },
+  frances:   { nome: "Français",  nomeEn: "French",       exame: "CEFR/DELF",             niveis: "A1, A2, B1, B2, C1, C2" },
+  espanhol:  { nome: "Español",   nomeEn: "Spanish",      exame: "CEFR/DELE",             niveis: "A1, A2, B1, B2, C1, C2" },
+  mandarim:  { nome: "中文",      nomeEn: "Chinese",      exame: "HSK",                   niveis: "HSK 1, HSK 2, HSK 3, HSK 4, HSK 5, HSK 6" },
+  japones:   { nome: "日本語",    nomeEn: "Japanese",     exame: "JLPT",                  niveis: "N5, N4, N3, N2, N1" },
+  alemao:    { nome: "Deutsch",   nomeEn: "German",       exame: "CEFR/Goethe",           niveis: "A1, A2, B1, B2, C1, C2" },
+  italiano:  { nome: "Italiano",  nomeEn: "Italian",      exame: "CEFR/CELI",             niveis: "A1, A2, B1, B2, C1, C2" },
+  coreano:   { nome: "한국어",    nomeEn: "Korean",       exame: "TOPIK",                 niveis: "TOPIK 1, TOPIK 2, TOPIK 3, TOPIK 4, TOPIK 5, TOPIK 6" },
+  arabe:     { nome: "العربية",   nomeEn: "Arabic",       exame: "CEFR/ALPT",             niveis: "A1, A2, B1, B2, C1, C2" },
+  russo:     { nome: "Русский",   nomeEn: "Russian",      exame: "CEFR/ТРКИ",             niveis: "A1, A2, B1, B2, C1, C2" },
 };
 
 function construirSystemPrompt(idioma: string, tipo?: string, finalizar?: boolean): string {
@@ -245,6 +245,282 @@ export const proficienciaConversa = async (
     return res.status(500).send({
       error: "Internal Server Error",
       message: "Error processing proficiency test.",
+    });
+  }
+};
+
+const quizGenerateSchema = z.object({
+  idioma: z.enum([
+    "ingles", "frances", "espanhol", "mandarim", "japones",
+    "alemao", "italiano", "coreano", "arabe", "russo",
+  ]),
+  tipo: tipoInglesSchema,
+});
+
+const quizSubmitSchema = z.object({
+  idioma: z.enum([
+    "ingles", "frances", "espanhol", "mandarim", "japones",
+    "alemao", "italiano", "coreano", "arabe", "russo",
+  ]),
+  tipo: tipoInglesSchema,
+  perguntas: z.array(z.object({
+    pergunta: z.string(),
+    opcoes: z.array(z.string()).length(4),
+    correta: z.enum(["A", "B", "C", "D"]),
+    categoria: z.string(),
+    explicacao: z.string(),
+  })),
+  respostas: z.array(z.object({
+    perguntaIndex: z.number(),
+    resposta: z.enum(["A", "B", "C", "D"]),
+  })),
+});
+
+const QUIZ_SYSTEM_PROMPT = `You are a language proficiency test generator. You generate high-quality multiple-choice quizzes for language learners.
+
+CRITICAL RULES:
+1. Generate EXACTLY 10 questions.
+2. Each question MUST have exactly 4 options labeled as an array of 4 strings.
+3. Exactly ONE option must be correct.
+4. The "correta" field must be one of: "A", "B", "C", or "D" (corresponding to the 1st, 2nd, 3rd, or 4th option).
+5. Questions must test DIFFERENT skills spread across categories: "vocabulario", "gramatica", "compreensao", "conjugacao", "expressoes".
+6. Difficulty must be varied: 3 easy (A1-A2), 4 intermediate (B1-B2), 3 advanced (C1-C2).
+7. ALL questions and ALL answer options MUST be written entirely in the TARGET LANGUAGE being tested. Do NOT write questions in Portuguese or English — write them in the language being tested.
+8. The "explicacao" field must be written in Portuguese (for Brazilian students).
+9. Questions should be relevant to academic and real-world contexts suitable for scholarship candidates.
+10. Respond ONLY with valid JSON. No markdown, no code fences, no text outside the JSON.
+
+EXACT JSON FORMAT (follow this structure precisely):
+{
+  "perguntas": [
+    {
+      "pergunta": "Full question text written in the target language",
+      "opcoes": ["First option in target language", "Second option in target language", "Third option in target language", "Fourth option in target language"],
+      "correta": "A",
+      "categoria": "vocabulario",
+      "explicacao": "Explicação em português do por que esta é a resposta correta"
+    }
+  ]
+}
+
+Valid category values: "vocabulario", "gramatica", "compreensao", "conjugacao", "expressoes"
+Valid "correta" values: "A", "B", "C", "D" (index of correct option in the opcoes array, 0-based converted to letter)`;
+
+const EVALUATION_PROMPT = `You are a certified language proficiency examiner. Based on the quiz results, provide a comprehensive evaluation.
+
+RULES:
+- Calculate the final score as a percentage (0-100).
+- Determine the CEFR level based on the score: 0-20%: A1, 21-40%: A2, 41-60%: B1, 61-80%: B2, 81-95%: C1, 96-100%: C2.
+- Provide scores for each category (0-10 scale).
+- Write a detailed evaluation in Portuguese.
+- Be encouraging but honest about areas for improvement.
+- Include specific study recommendations.
+- Respond ONLY with valid JSON.
+
+JSON FORMAT:
+{
+  "pontuacao": 70,
+  "corretas": 7,
+  "nivel": "B2",
+  "porCategoria": {
+    "vocabulario": { "corretas": 2, "total": 2 },
+    "gramatica": { "corretas": 2, "total": 3 },
+    "compreensao": { "corretas": 1, "total": 2 },
+    "conjugacao": { "corretas": 1, "total": 2 },
+    "expressoes": { "corretas": 1, "total": 1 }
+  },
+  "avaliacao": "Sua avaliação detalhada aqui..."
+}`;
+
+export const gerarQuiz = async (
+  req: FastifyRequest,
+  res: FastifyReply,
+) => {
+  try {
+    const { idioma, tipo } = quizGenerateSchema.parse(req.body);
+    const openai = getOpenAI();
+
+    const info = idiomasInfo[idioma] || idiomasInfo.ingles;
+    const langName = info.nome;
+    const langNameEn = info.nomeEn;
+
+    let examContext = "";
+    if (idioma === "ingles" && tipo && tipo !== "geral") {
+      const t = tiposIngles[tipo];
+      if (t) {
+        examContext = ` for ${t.nome} format`;
+      }
+    }
+
+    const userPrompt = `Generate a 10-question proficiency quiz for: ${langName} (${langNameEn})${examContext}
+
+CRITICAL INSTRUCTIONS:
+- ALL questions and ALL answer options MUST be written ENTIRELY in ${langName} (${langNameEn}).
+- Do NOT write questions in Portuguese. Do NOT write questions in English (unless the target language IS English).
+- The questions must test the ${langName} (${langNameEn}) language itself.
+- The "explicacao" (explanation) field should be in Portuguese.
+- Test a mix of skills: vocabulary, grammar, comprehension, conjugation, expressions.
+- Vary difficulty: easy, intermediate, and advanced questions.`;
+
+    const completion = await openai.chat.completions.create({
+      model: env.OPENAI_MODEL,
+      messages: [
+        { role: "system", content: QUIZ_SYSTEM_PROMPT },
+        { role: "user", content: userPrompt },
+      ],
+      temperature: 0.8,
+      max_tokens: 8000,
+      response_format: { type: "json_object" },
+    });
+
+    const content = completion.choices[0]?.message?.content || "{}";
+    const parsed = JSON.parse(content);
+
+    if (!parsed.perguntas || !Array.isArray(parsed.perguntas)) {
+      return res.status(500).send({
+        error: "Quiz Generation Error",
+        message: "Failed to generate quiz questions. Please try again.",
+      });
+    }
+
+    const perguntas = parsed.perguntas.slice(0, 10);
+
+    if (perguntas.length < 5) {
+      return res.status(500).send({
+        error: "Quiz Generation Error",
+        message: "Not enough questions were generated. Please try again.",
+      });
+    }
+
+    const normalized = perguntas.map((p: any, idx: number) => ({
+      pergunta: String(p.pergunta || ""),
+      opcoes: Array.isArray(p.opcoes) ? p.opcoes.slice(0, 4).map(String) : ["", "", "", ""],
+      correta: ["A", "B", "C", "D"].includes(p.correta) ? p.correta : "A",
+      categoria: ["vocabulario", "gramatica", "compreensao", "conjugacao", "expressoes"].includes(p.categoria) ? p.categoria : "vocabulario",
+      explicacao: String(p.explicacao || ""),
+    }));
+
+    return res.send({ perguntas: normalized });
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return res.status(400).send({
+        error: "Validation Error",
+        message: error.errors.map((e) => e.message).join(", "),
+      });
+    }
+
+    if (error instanceof SyntaxError) {
+      req.log.error(error);
+      return res.status(500).send({
+        error: "AI Response Error",
+        message: "Failed to parse AI response. Please try again.",
+      });
+    }
+
+    req.log.error(error);
+    return res.status(500).send({
+      error: "Internal Server Error",
+      message: "Error generating quiz.",
+    });
+  }
+};
+
+export const submeterQuiz = async (
+  req: FastifyRequest,
+  res: FastifyReply,
+) => {
+  try {
+    const { idioma, tipo, perguntas, respostas } = quizSubmitSchema.parse(req.body);
+    const openai = getOpenAI();
+
+    let corretas = 0;
+    const porCategoria: Record<string, { corretas: number; total: number }> = {};
+
+    for (const resposta of respostas) {
+      const pergunta = perguntas[resposta.perguntaIndex];
+      if (!pergunta) continue;
+
+      if (!porCategoria[pergunta.categoria]) {
+        porCategoria[pergunta.categoria] = { corretas: 0, total: 0 };
+      }
+      porCategoria[pergunta.categoria].total++;
+
+      if (resposta.resposta === pergunta.correta) {
+        corretas++;
+        porCategoria[pergunta.categoria].corretas++;
+      }
+    }
+
+    const total = perguntas.length;
+    const pontuacao = Math.round((corretas / total) * 100);
+
+    let nivel = "A1";
+    if (pontuacao >= 96) nivel = "C2";
+    else if (pontuacao >= 81) nivel = "C1";
+    else if (pontuacao >= 61) nivel = "B2";
+    else if (pontuacao >= 41) nivel = "B1";
+    else if (pontuacao >= 21) nivel = "A2";
+
+    const info = idiomasInfo[idioma] || idiomasInfo.ingles;
+    const langName = info.nome;
+
+    const resultados = respostas.map((r) => ({
+      perguntaIndex: r.perguntaIndex,
+      pergunta: perguntas[r.perguntaIndex].pergunta,
+      respostaUsuario: r.resposta,
+      respostaCorreta: perguntas[r.perguntaIndex].correta,
+      correto: r.resposta === perguntas[r.perguntaIndex].correta,
+      explicacao: perguntas[r.perguntaIndex].explicacao,
+      categoria: perguntas[r.perguntaIndex].categoria,
+    }));
+
+    try {
+      const completion = await openai.chat.completions.create({
+        model: env.OPENAI_MODEL,
+        messages: [
+          { role: "system", content: EVALUATION_PROMPT },
+          { role: "user", content: `Quiz results for ${langName}${tipo && tipo !== "geral" ? ` (${tiposIngles[tipo]?.nome || tipo})` : ""}:\n\nScore: ${corretas}/${total} (${pontuacao}%)\nLevel: ${nivel}\n\nResults:\n${resultados.map((r) => `- Q${r.perguntaIndex + 1}: ${r.correto ? "Correct" : "Wrong"} (${r.respostaUsuario}/${r.respostaCorreta})`).join("\n")}` },
+        ],
+        temperature: 0.7,
+        max_tokens: 2000,
+        response_format: { type: "json_object" },
+      });
+
+      const content = completion.choices[0]?.message?.content || "{}";
+      const avaliacao = JSON.parse(content);
+
+      return res.send({
+        pontuacao,
+        corretas,
+        total,
+        nivel: avaliacao.nivel || nivel,
+        porCategoria: avaliacao.porCategoria || porCategoria,
+        avaliacao: avaliacao.avaliacao || `Você acertou ${corretas} de ${total} perguntas.`,
+        resultados,
+      });
+    } catch {
+      return res.send({
+        pontuacao,
+        corretas,
+        total,
+        nivel,
+        porCategoria,
+        avaliacao: `Você acertou ${corretas} de ${total} perguntas (${pontuacao}%). Nível estimado: ${nivel}.`,
+        resultados,
+      });
+    }
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return res.status(400).send({
+        error: "Validation Error",
+        message: error.errors.map((e) => e.message).join(", "),
+      });
+    }
+
+    req.log.error(error);
+    return res.status(500).send({
+      error: "Internal Server Error",
+      message: "Error submitting quiz.",
     });
   }
 };
