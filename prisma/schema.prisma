@@ -153,6 +153,7 @@ model User {
   mentoriasInscricoes MentoriaInscricao[]
   duvidas             CommunityQuestion[]
   respostasDuvidas    CommunityAnswer[]
+  atividades          Atividade[]
 }
 
 model Notification {
@@ -977,4 +978,20 @@ model MapaGlobal {
   updatedAt DateTime @updatedAt
 
   @@map("mapa_global")
+}
+
+model Atividade {
+  id             String   @id @default(uuid())
+  titulo         String
+  descricao      String?
+  data           DateTime
+  duracaoMinutos Int?
+  local          String?
+  tipo           String   @default("ATIVIDADE")
+  criadoPorId    String
+  criadoPor      User     @relation(fields: [criadoPorId], references: [id])
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@map("atividades")
 }

@@ -92,7 +92,8 @@ export const ModelName = {
   CommunityQuestion: 'CommunityQuestion',
   CommunityAnswer: 'CommunityAnswer',
   HomeBanner: 'HomeBanner',
-  MapaGlobal: 'MapaGlobal'
+  MapaGlobal: 'MapaGlobal',
+  Atividade: 'Atividade'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -805,6 +806,22 @@ export const MapaGlobalScalarFieldEnum = {
 } as const
 
 export type MapaGlobalScalarFieldEnum = (typeof MapaGlobalScalarFieldEnum)[keyof typeof MapaGlobalScalarFieldEnum]
+
+
+export const AtividadeScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  descricao: 'descricao',
+  data: 'data',
+  duracaoMinutos: 'duracaoMinutos',
+  local: 'local',
+  tipo: 'tipo',
+  criadoPorId: 'criadoPorId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AtividadeScalarFieldEnum = (typeof AtividadeScalarFieldEnum)[keyof typeof AtividadeScalarFieldEnum]
 
 
 export const SortOrder = {

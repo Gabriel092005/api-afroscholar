@@ -1,20 +1,9 @@
 import multer from 'multer'
-import path from 'path'
 import fs from 'fs'
+import { UPLOAD_PATH } from '@/lib/upload';
 
-// FORÇAR CAMINHO ABSOLUTO NA VPS
-// Isso garante que não importa onde o código rode, ele salvará na pasta correta
-// const uploadDir = '/root/api_liberal/uploads';
-
-// if (!fs.existsSync(uploadDir)) {
-//   fs.mkdirSync(uploadDir, { recursive: true })
-//   console.log('📁 Diretório de uploads criado:', uploadDir);
-// }
-
-
-
-// 1. ISSO VAI GARANTIR QUE SEJA NA PASTA DO PROJETO
-const uploadDir = path.resolve(process.cwd(), 'uploads');
+// MESMO CAMINHO USADO PELO fastifyStatic E PELO lib/upload
+const uploadDir = UPLOAD_PATH;
 
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true });

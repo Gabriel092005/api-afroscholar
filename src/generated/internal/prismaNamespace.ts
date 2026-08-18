@@ -433,7 +433,8 @@ export const ModelName = {
   CommunityQuestion: 'CommunityQuestion',
   CommunityAnswer: 'CommunityAnswer',
   HomeBanner: 'HomeBanner',
-  MapaGlobal: 'MapaGlobal'
+  MapaGlobal: 'MapaGlobal',
+  Atividade: 'Atividade'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -449,7 +450,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "notification" | "usuario" | "notificacao" | "empresa" | "departamento" | "bot" | "botAsset" | "botEmpresa" | "folhaBot" | "transacao" | "arquivo" | "assinatura" | "carrinhoItem" | "feedback" | "mensagem" | "setting" | "whatBotCanDo" | "whatBotCanNotDo" | "bolsa" | "bolsaInscricao" | "bolsaInscricaoDocumento" | "curso" | "aula" | "cursoPagamento" | "cursoUsuario" | "depoimento" | "novidade" | "novidadeInscricao" | "novidadeInscricaoDocumento" | "anexo" | "perfilAcademico" | "analiseDocumento" | "community" | "communityMember" | "communityMessage" | "aulaOnline" | "aulaOnlineParticipante" | "mentoria" | "mentoriaInscricao" | "communityQuestion" | "communityAnswer" | "homeBanner" | "mapaGlobal"
+    modelProps: "user" | "notification" | "usuario" | "notificacao" | "empresa" | "departamento" | "bot" | "botAsset" | "botEmpresa" | "folhaBot" | "transacao" | "arquivo" | "assinatura" | "carrinhoItem" | "feedback" | "mensagem" | "setting" | "whatBotCanDo" | "whatBotCanNotDo" | "bolsa" | "bolsaInscricao" | "bolsaInscricaoDocumento" | "curso" | "aula" | "cursoPagamento" | "cursoUsuario" | "depoimento" | "novidade" | "novidadeInscricao" | "novidadeInscricaoDocumento" | "anexo" | "perfilAcademico" | "analiseDocumento" | "community" | "communityMember" | "communityMessage" | "aulaOnline" | "aulaOnlineParticipante" | "mentoria" | "mentoriaInscricao" | "communityQuestion" | "communityAnswer" | "homeBanner" | "mapaGlobal" | "atividade"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -3709,6 +3710,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Atividade: {
+      payload: Prisma.$AtividadePayload<ExtArgs>
+      fields: Prisma.AtividadeFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AtividadeFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtividadePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AtividadeFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtividadePayload>
+        }
+        findFirst: {
+          args: Prisma.AtividadeFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtividadePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AtividadeFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtividadePayload>
+        }
+        findMany: {
+          args: Prisma.AtividadeFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtividadePayload>[]
+        }
+        create: {
+          args: Prisma.AtividadeCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtividadePayload>
+        }
+        createMany: {
+          args: Prisma.AtividadeCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AtividadeCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtividadePayload>[]
+        }
+        delete: {
+          args: Prisma.AtividadeDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtividadePayload>
+        }
+        update: {
+          args: Prisma.AtividadeUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtividadePayload>
+        }
+        deleteMany: {
+          args: Prisma.AtividadeDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AtividadeUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AtividadeUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtividadePayload>[]
+        }
+        upsert: {
+          args: Prisma.AtividadeUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtividadePayload>
+        }
+        aggregate: {
+          args: Prisma.AtividadeAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAtividade>
+        }
+        groupBy: {
+          args: Prisma.AtividadeGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AtividadeGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AtividadeCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AtividadeCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -4444,6 +4519,22 @@ export const MapaGlobalScalarFieldEnum = {
 export type MapaGlobalScalarFieldEnum = (typeof MapaGlobalScalarFieldEnum)[keyof typeof MapaGlobalScalarFieldEnum]
 
 
+export const AtividadeScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  descricao: 'descricao',
+  data: 'data',
+  duracaoMinutos: 'duracaoMinutos',
+  local: 'local',
+  tipo: 'tipo',
+  criadoPorId: 'criadoPorId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AtividadeScalarFieldEnum = (typeof AtividadeScalarFieldEnum)[keyof typeof AtividadeScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -4950,6 +5041,7 @@ export type GlobalOmitConfig = {
   communityAnswer?: Prisma.CommunityAnswerOmit
   homeBanner?: Prisma.HomeBannerOmit
   mapaGlobal?: Prisma.MapaGlobalOmit
+  atividade?: Prisma.AtividadeOmit
 }
 
 /* Types for Logging */

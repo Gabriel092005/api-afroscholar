@@ -263,6 +263,7 @@ export type UserWhereInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoListRelationFilter
   duvidas?: Prisma.CommunityQuestionListRelationFilter
   respostasDuvidas?: Prisma.CommunityAnswerListRelationFilter
+  atividades?: Prisma.AtividadeListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -296,6 +297,7 @@ export type UserOrderByWithRelationInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoOrderByRelationAggregateInput
   duvidas?: Prisma.CommunityQuestionOrderByRelationAggregateInput
   respostasDuvidas?: Prisma.CommunityAnswerOrderByRelationAggregateInput
+  atividades?: Prisma.AtividadeOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -332,6 +334,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   mentoriasInscricoes?: Prisma.MentoriaInscricaoListRelationFilter
   duvidas?: Prisma.CommunityQuestionListRelationFilter
   respostasDuvidas?: Prisma.CommunityAnswerListRelationFilter
+  atividades?: Prisma.AtividadeListRelationFilter
 }, "id" | "email" | "resetToken">
 
 export type UserOrderByWithAggregationInput = {
@@ -403,6 +406,7 @@ export type UserCreateInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -436,6 +440,7 @@ export type UserUncheckedCreateInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserUpdateInput = {
@@ -469,6 +474,7 @@ export type UserUpdateInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -502,6 +508,7 @@ export type UserUncheckedUpdateInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -874,6 +881,20 @@ export type UserUpdateOneRequiredWithoutRespostasDuvidasNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRespostasDuvidasInput, Prisma.UserUpdateWithoutRespostasDuvidasInput>, Prisma.UserUncheckedUpdateWithoutRespostasDuvidasInput>
 }
 
+export type UserCreateNestedOneWithoutAtividadesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAtividadesInput, Prisma.UserUncheckedCreateWithoutAtividadesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAtividadesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutAtividadesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAtividadesInput, Prisma.UserUncheckedCreateWithoutAtividadesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAtividadesInput
+  upsert?: Prisma.UserUpsertWithoutAtividadesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAtividadesInput, Prisma.UserUpdateWithoutAtividadesInput>, Prisma.UserUncheckedUpdateWithoutAtividadesInput>
+}
+
 export type UserCreateWithoutNotificationsInput = {
   id?: string
   nome: string
@@ -904,6 +925,7 @@ export type UserCreateWithoutNotificationsInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -936,6 +958,7 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -984,6 +1007,7 @@ export type UserUpdateWithoutNotificationsInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -1016,6 +1040,7 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserCreateWithoutInscricoesInput = {
@@ -1048,6 +1073,7 @@ export type UserCreateWithoutInscricoesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserUncheckedCreateWithoutInscricoesInput = {
@@ -1080,6 +1106,7 @@ export type UserUncheckedCreateWithoutInscricoesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserCreateOrConnectWithoutInscricoesInput = {
@@ -1128,6 +1155,7 @@ export type UserUpdateWithoutInscricoesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInscricoesInput = {
@@ -1160,6 +1188,7 @@ export type UserUncheckedUpdateWithoutInscricoesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserCreateWithoutPagamentosInput = {
@@ -1192,6 +1221,7 @@ export type UserCreateWithoutPagamentosInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserUncheckedCreateWithoutPagamentosInput = {
@@ -1224,6 +1254,7 @@ export type UserUncheckedCreateWithoutPagamentosInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserCreateOrConnectWithoutPagamentosInput = {
@@ -1272,6 +1303,7 @@ export type UserUpdateWithoutPagamentosInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPagamentosInput = {
@@ -1304,6 +1336,7 @@ export type UserUncheckedUpdateWithoutPagamentosInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserCreateWithoutCursosCompradosInput = {
@@ -1336,6 +1369,7 @@ export type UserCreateWithoutCursosCompradosInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserUncheckedCreateWithoutCursosCompradosInput = {
@@ -1368,6 +1402,7 @@ export type UserUncheckedCreateWithoutCursosCompradosInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserCreateOrConnectWithoutCursosCompradosInput = {
@@ -1416,6 +1451,7 @@ export type UserUpdateWithoutCursosCompradosInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCursosCompradosInput = {
@@ -1448,6 +1484,7 @@ export type UserUncheckedUpdateWithoutCursosCompradosInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserCreateWithoutDepoimentosInput = {
@@ -1480,6 +1517,7 @@ export type UserCreateWithoutDepoimentosInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserUncheckedCreateWithoutDepoimentosInput = {
@@ -1512,6 +1550,7 @@ export type UserUncheckedCreateWithoutDepoimentosInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserCreateOrConnectWithoutDepoimentosInput = {
@@ -1560,6 +1599,7 @@ export type UserUpdateWithoutDepoimentosInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDepoimentosInput = {
@@ -1592,6 +1632,7 @@ export type UserUncheckedUpdateWithoutDepoimentosInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserCreateWithoutNovidadesInput = {
@@ -1624,6 +1665,7 @@ export type UserCreateWithoutNovidadesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserUncheckedCreateWithoutNovidadesInput = {
@@ -1656,6 +1698,7 @@ export type UserUncheckedCreateWithoutNovidadesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserCreateOrConnectWithoutNovidadesInput = {
@@ -1704,6 +1747,7 @@ export type UserUpdateWithoutNovidadesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNovidadesInput = {
@@ -1736,6 +1780,7 @@ export type UserUncheckedUpdateWithoutNovidadesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserCreateWithoutNovidadeInscricoesInput = {
@@ -1768,6 +1813,7 @@ export type UserCreateWithoutNovidadeInscricoesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserUncheckedCreateWithoutNovidadeInscricoesInput = {
@@ -1800,6 +1846,7 @@ export type UserUncheckedCreateWithoutNovidadeInscricoesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserCreateOrConnectWithoutNovidadeInscricoesInput = {
@@ -1848,6 +1895,7 @@ export type UserUpdateWithoutNovidadeInscricoesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNovidadeInscricoesInput = {
@@ -1880,6 +1928,7 @@ export type UserUncheckedUpdateWithoutNovidadeInscricoesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserCreateWithoutPerfilAcademicoInput = {
@@ -1912,6 +1961,7 @@ export type UserCreateWithoutPerfilAcademicoInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserUncheckedCreateWithoutPerfilAcademicoInput = {
@@ -1944,6 +1994,7 @@ export type UserUncheckedCreateWithoutPerfilAcademicoInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserCreateOrConnectWithoutPerfilAcademicoInput = {
@@ -1992,6 +2043,7 @@ export type UserUpdateWithoutPerfilAcademicoInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPerfilAcademicoInput = {
@@ -2024,6 +2076,7 @@ export type UserUncheckedUpdateWithoutPerfilAcademicoInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserCreateWithoutAnalisesInput = {
@@ -2056,6 +2109,7 @@ export type UserCreateWithoutAnalisesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserUncheckedCreateWithoutAnalisesInput = {
@@ -2088,6 +2142,7 @@ export type UserUncheckedCreateWithoutAnalisesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserCreateOrConnectWithoutAnalisesInput = {
@@ -2136,6 +2191,7 @@ export type UserUpdateWithoutAnalisesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAnalisesInput = {
@@ -2168,6 +2224,7 @@ export type UserUncheckedUpdateWithoutAnalisesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserCreateWithoutComunidadesInput = {
@@ -2200,6 +2257,7 @@ export type UserCreateWithoutComunidadesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserUncheckedCreateWithoutComunidadesInput = {
@@ -2232,6 +2290,7 @@ export type UserUncheckedCreateWithoutComunidadesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserCreateOrConnectWithoutComunidadesInput = {
@@ -2280,6 +2339,7 @@ export type UserUpdateWithoutComunidadesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutComunidadesInput = {
@@ -2312,6 +2372,7 @@ export type UserUncheckedUpdateWithoutComunidadesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserCreateWithoutMembroEmInput = {
@@ -2344,6 +2405,7 @@ export type UserCreateWithoutMembroEmInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserUncheckedCreateWithoutMembroEmInput = {
@@ -2376,6 +2438,7 @@ export type UserUncheckedCreateWithoutMembroEmInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserCreateOrConnectWithoutMembroEmInput = {
@@ -2424,6 +2487,7 @@ export type UserUpdateWithoutMembroEmInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMembroEmInput = {
@@ -2456,6 +2520,7 @@ export type UserUncheckedUpdateWithoutMembroEmInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserCreateWithoutMensagensInput = {
@@ -2488,6 +2553,7 @@ export type UserCreateWithoutMensagensInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserUncheckedCreateWithoutMensagensInput = {
@@ -2520,6 +2586,7 @@ export type UserUncheckedCreateWithoutMensagensInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserCreateOrConnectWithoutMensagensInput = {
@@ -2568,6 +2635,7 @@ export type UserUpdateWithoutMensagensInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMensagensInput = {
@@ -2600,6 +2668,7 @@ export type UserUncheckedUpdateWithoutMensagensInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserCreateWithoutAulasOnlineInput = {
@@ -2632,6 +2701,7 @@ export type UserCreateWithoutAulasOnlineInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserUncheckedCreateWithoutAulasOnlineInput = {
@@ -2664,6 +2734,7 @@ export type UserUncheckedCreateWithoutAulasOnlineInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserCreateOrConnectWithoutAulasOnlineInput = {
@@ -2712,6 +2783,7 @@ export type UserUpdateWithoutAulasOnlineInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAulasOnlineInput = {
@@ -2744,6 +2816,7 @@ export type UserUncheckedUpdateWithoutAulasOnlineInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserCreateWithoutAulasParticipadasInput = {
@@ -2776,6 +2849,7 @@ export type UserCreateWithoutAulasParticipadasInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserUncheckedCreateWithoutAulasParticipadasInput = {
@@ -2808,6 +2882,7 @@ export type UserUncheckedCreateWithoutAulasParticipadasInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserCreateOrConnectWithoutAulasParticipadasInput = {
@@ -2856,6 +2931,7 @@ export type UserUpdateWithoutAulasParticipadasInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAulasParticipadasInput = {
@@ -2888,6 +2964,7 @@ export type UserUncheckedUpdateWithoutAulasParticipadasInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserCreateWithoutMentoriasInscricoesInput = {
@@ -2920,6 +2997,7 @@ export type UserCreateWithoutMentoriasInscricoesInput = {
   aulasParticipadas?: Prisma.AulaOnlineParticipanteCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserUncheckedCreateWithoutMentoriasInscricoesInput = {
@@ -2952,6 +3030,7 @@ export type UserUncheckedCreateWithoutMentoriasInscricoesInput = {
   aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserCreateOrConnectWithoutMentoriasInscricoesInput = {
@@ -3000,6 +3079,7 @@ export type UserUpdateWithoutMentoriasInscricoesInput = {
   aulasParticipadas?: Prisma.AulaOnlineParticipanteUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMentoriasInscricoesInput = {
@@ -3032,6 +3112,7 @@ export type UserUncheckedUpdateWithoutMentoriasInscricoesInput = {
   aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserCreateWithoutDuvidasInput = {
@@ -3064,6 +3145,7 @@ export type UserCreateWithoutDuvidasInput = {
   aulasParticipadas?: Prisma.AulaOnlineParticipanteCreateNestedManyWithoutUsuarioInput
   mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserUncheckedCreateWithoutDuvidasInput = {
@@ -3096,6 +3178,7 @@ export type UserUncheckedCreateWithoutDuvidasInput = {
   aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserCreateOrConnectWithoutDuvidasInput = {
@@ -3144,6 +3227,7 @@ export type UserUpdateWithoutDuvidasInput = {
   aulasParticipadas?: Prisma.AulaOnlineParticipanteUpdateManyWithoutUsuarioNestedInput
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDuvidasInput = {
@@ -3176,6 +3260,7 @@ export type UserUncheckedUpdateWithoutDuvidasInput = {
   aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserCreateWithoutRespostasDuvidasInput = {
@@ -3208,6 +3293,7 @@ export type UserCreateWithoutRespostasDuvidasInput = {
   aulasParticipadas?: Prisma.AulaOnlineParticipanteCreateNestedManyWithoutUsuarioInput
   mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserUncheckedCreateWithoutRespostasDuvidasInput = {
@@ -3240,6 +3326,7 @@ export type UserUncheckedCreateWithoutRespostasDuvidasInput = {
   aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
 }
 
 export type UserCreateOrConnectWithoutRespostasDuvidasInput = {
@@ -3288,6 +3375,7 @@ export type UserUpdateWithoutRespostasDuvidasInput = {
   aulasParticipadas?: Prisma.AulaOnlineParticipanteUpdateManyWithoutUsuarioNestedInput
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRespostasDuvidasInput = {
@@ -3320,6 +3408,155 @@ export type UserUncheckedUpdateWithoutRespostasDuvidasInput = {
   aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+}
+
+export type UserCreateWithoutAtividadesInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserUncheckedCreateWithoutAtividadesInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityUncheckedCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberUncheckedCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageUncheckedCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoUncheckedCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeUncheckedCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoUncheckedCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserCreateOrConnectWithoutAtividadesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAtividadesInput, Prisma.UserUncheckedCreateWithoutAtividadesInput>
+}
+
+export type UserUpsertWithoutAtividadesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAtividadesInput, Prisma.UserUncheckedUpdateWithoutAtividadesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAtividadesInput, Prisma.UserUncheckedCreateWithoutAtividadesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAtividadesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAtividadesInput, Prisma.UserUncheckedUpdateWithoutAtividadesInput>
+}
+
+export type UserUpdateWithoutAtividadesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAtividadesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUncheckedUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUncheckedUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUncheckedUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 
@@ -3344,6 +3581,7 @@ export type UserCountOutputType = {
   mentoriasInscricoes: number
   duvidas: number
   respostasDuvidas: number
+  atividades: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3363,6 +3601,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   mentoriasInscricoes?: boolean | UserCountOutputTypeCountMentoriasInscricoesArgs
   duvidas?: boolean | UserCountOutputTypeCountDuvidasArgs
   respostasDuvidas?: boolean | UserCountOutputTypeCountRespostasDuvidasArgs
+  atividades?: boolean | UserCountOutputTypeCountAtividadesArgs
 }
 
 /**
@@ -3487,6 +3726,13 @@ export type UserCountOutputTypeCountRespostasDuvidasArgs<ExtArgs extends runtime
   where?: Prisma.CommunityAnswerWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAtividadesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AtividadeWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -3519,6 +3765,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   mentoriasInscricoes?: boolean | Prisma.User$mentoriasInscricoesArgs<ExtArgs>
   duvidas?: boolean | Prisma.User$duvidasArgs<ExtArgs>
   respostasDuvidas?: boolean | Prisma.User$respostasDuvidasArgs<ExtArgs>
+  atividades?: boolean | Prisma.User$atividadesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -3589,6 +3836,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   mentoriasInscricoes?: boolean | Prisma.User$mentoriasInscricoesArgs<ExtArgs>
   duvidas?: boolean | Prisma.User$duvidasArgs<ExtArgs>
   respostasDuvidas?: boolean | Prisma.User$respostasDuvidasArgs<ExtArgs>
+  atividades?: boolean | Prisma.User$atividadesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -3614,6 +3862,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     mentoriasInscricoes: Prisma.$MentoriaInscricaoPayload<ExtArgs>[]
     duvidas: Prisma.$CommunityQuestionPayload<ExtArgs>[]
     respostasDuvidas: Prisma.$CommunityAnswerPayload<ExtArgs>[]
+    atividades: Prisma.$AtividadePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -4040,6 +4289,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   mentoriasInscricoes<T extends Prisma.User$mentoriasInscricoesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$mentoriasInscricoesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MentoriaInscricaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   duvidas<T extends Prisma.User$duvidasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$duvidasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommunityQuestionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   respostasDuvidas<T extends Prisma.User$respostasDuvidasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$respostasDuvidasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommunityAnswerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  atividades<T extends Prisma.User$atividadesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$atividadesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AtividadePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4870,6 +5120,30 @@ export type User$respostasDuvidasArgs<ExtArgs extends runtime.Types.Extensions.I
   take?: number
   skip?: number
   distinct?: Prisma.CommunityAnswerScalarFieldEnum | Prisma.CommunityAnswerScalarFieldEnum[]
+}
+
+/**
+ * User.atividades
+ */
+export type User$atividadesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Atividade
+   */
+  select?: Prisma.AtividadeSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Atividade
+   */
+  omit?: Prisma.AtividadeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AtividadeInclude<ExtArgs> | null
+  where?: Prisma.AtividadeWhereInput
+  orderBy?: Prisma.AtividadeOrderByWithRelationInput | Prisma.AtividadeOrderByWithRelationInput[]
+  cursor?: Prisma.AtividadeWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AtividadeScalarFieldEnum | Prisma.AtividadeScalarFieldEnum[]
 }
 
 /**

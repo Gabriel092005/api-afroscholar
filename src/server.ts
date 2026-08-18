@@ -25,6 +25,7 @@ import { entrevistaRoutes } from "./http/controllers/entrevista/routes";
 import { proficienciaRoutes } from "./http/controllers/proficiencia/routes";
 import { homeBannersRoutes } from "./http/controllers/home-banners/routes";
 import { mapaGlobalRoutes } from "./http/controllers/mapa-global/routes";
+import { atividadesRoutes } from "./http/controllers/atividades/routes";
 import { testEmail } from "./http/controllers/test-email";
 
 
@@ -39,8 +40,6 @@ const isProduction = env.NODE_ENV === 'production';
 
 const __dirname = process.cwd();
 
-const uploadDir = path.resolve(__dirname, 'uploads');
-
 // --- 3. REGISTRO DE PLUGINS ---
 
 // IMPORTANTE: Parser para não dar erro 415
@@ -50,7 +49,7 @@ app.addContentTypeParser('multipart/form-data', (request, payload, done) => {
 
 // No registro do Fastify Static:
 app.register(fastifyStatic, {
-  root: uploadDir,
+  root: UPLOAD_PATH,
   prefix: '/uploads/',
 });
 
@@ -89,6 +88,11 @@ if (env.GOOGLE_CLIENT_ID) {
     },
     startRedirectPath: '/auth/google',
     callbackUri: env.GOOGLE_CALLBACK_URL,
+    cookie: {
+      path: '/',
+      secure: isProduction,
+      sameSite: 'lax',
+    },
   });
 }
 app.register(googleOAuthRoutes);
@@ -110,6 +114,7 @@ app.register(aulasOnlineRoutes)
 app.register(mentoriasRoutes)
 app.register(homeBannersRoutes)
 app.register(mapaGlobalRoutes)
+app.register(atividadesRoutes)
 app.post('/diagnostico/test-email', testEmail)
 
 let io: Server;

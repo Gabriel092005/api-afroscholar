@@ -268,3 +268,8 @@ export type HomeBanner = Prisma.HomeBannerModel
  * 
  */
 export type MapaGlobal = Prisma.MapaGlobalModel
+/**
+ * Model Atividade
+ * 
+ */
+export type Atividade = Prisma.AtividadeModel

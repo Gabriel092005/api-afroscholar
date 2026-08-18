@@ -81,6 +81,11 @@ export async function googleOAuthRoutes(app: FastifyInstance) {
       console.error("Erro no callback do Google OAuth:", msg);
       console.error("GOOGLE_CALLBACK_URL usado:", env.GOOGLE_CALLBACK_URL);
       console.error("FRONTEND_URL usado:", env.FRONTEND_URL);
+      if (msg.toLowerCase().includes("invalid state")) {
+        console.error("query keys:", Object.keys((request as any).query ?? {}));
+        console.error("state query:", (request as any).query?.state);
+        console.error("cookies presentes:", Object.keys((request as any).cookies ?? {}));
+      }
       return failRedirect(reply, msg.slice(0, 160));
     }
   });
