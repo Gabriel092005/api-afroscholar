@@ -369,9 +369,9 @@ CRITICAL INSTRUCTIONS:
         { role: "user", content: userPrompt },
       ],
       temperature: 0.8,
-      max_tokens: 8000,
+      max_tokens: 6000,
       response_format: { type: "json_object" },
-    });
+    } as any);
 
     const content = completion.choices[0]?.message?.content || "{}";
     const parsed = JSON.parse(content);

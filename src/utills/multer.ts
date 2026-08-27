@@ -1,5 +1,6 @@
 import multer from 'multer'
 import fs from 'fs'
+import path from 'path'
 import { UPLOAD_PATH } from '@/lib/upload';
 
 // MESMO CAMINHO USADO PELO fastifyStatic E PELO lib/upload
