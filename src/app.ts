@@ -4,7 +4,7 @@ import jwt from "@fastify/jwt";
 import cors from "@fastify/cors";
 import { env } from "@/Env";
 
-export const app = fastify({ logger: true, trustProxy:true });
+export const app = fastify({ logger: true, trustProxy: true, bodyLimit: 100 * 1024 * 1024 });
 
 // Hook global de CORS — executa ANTES de qualquer middleware de rota
 app.addHook("onRequest", async (request, reply) => {

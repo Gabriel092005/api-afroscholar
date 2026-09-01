@@ -27,6 +27,7 @@ import { homeBannersRoutes } from "./http/controllers/home-banners/routes";
 import { mapaGlobalRoutes } from "./http/controllers/mapa-global/routes";
 import { atividadesRoutes } from "./http/controllers/atividades/routes";
 import { testEmail } from "./http/controllers/test-email";
+import { prisma } from "./lib/prisma";
 
 
 declare module "fastify" {
@@ -187,13 +188,31 @@ io.on("connection", (socket) => {
   });
 });
 
-    await app.listen({ port: env.PORT, host: '0.0.0.0' });
+await app.listen({ port: env.PORT, host: '0.0.0.0' });
     console.log("Servidor rodando 🐱‍🏍");
   } catch (err) {
     console.error(err);
     process.exit(1);
   }
 };
+
+const shutdown = async (signal: string) => {
+  console.log(`\n[SHUTDOWN] ${signal} recebido, a encerrar serviço...`);
+  try {
+    io?.close();
+    await app.close();
+    await prisma.$disconnect();
+    console.log("[SHUTDOWN] Encerrado com sucesso.");
+    process.exit(0);
+  } catch (err) {
+    console.error("[SHUTDOWN] Erro ao encerrar:", err);
+    process.exit(1);
+  }
+};
+
+process.on("SIGTERM", () => shutdown("SIGTERM"));
+process.on("SIGINT", () => shutdown("SIGINT"));
+
 export { io, app };
 
 start();
