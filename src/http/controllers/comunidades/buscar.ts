@@ -1,3 +1,4 @@
+import { podeVerComunidade } from "@/lib/mentoria-acesso";
 import prisma from "@/lib/prisma";
 import { FastifyReply, FastifyRequest } from "fastify";
 
@@ -25,6 +26,10 @@ export async function buscar(req: FastifyRequest, res: FastifyReply) {
 
     if (!comunidade) {
       return res.status(404).send({ error: "Not Found", message: "Comunidade não encontrada." });
+    }
+
+    if (!(await podeVerComunidade(usuarioId, comunidade))) {
+      return res.status(403).send({ error: "Forbidden", message: "Esta comunidade está incluída na mentoria da bolsa." });
     }
 
     return res.send({

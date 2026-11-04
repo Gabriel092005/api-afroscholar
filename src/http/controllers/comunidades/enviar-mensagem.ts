@@ -20,7 +20,7 @@ export async function enviarMensagem(req: FastifyRequest, res: FastifyReply) {
       where: { comunidadeId_usuarioId: { comunidadeId: id, usuarioId } },
     });
 
-    if (!membro) {
+    if (!membro || membro.status !== "APROVADO") {
       return res.status(403).send({ error: "Forbidden", message: "Não é membro desta comunidade." });
     }
 

@@ -12,7 +12,7 @@ export function verifyUserRole(...rolesToVerify: ('ADMIN' | 'GESTOR')[]) {
       select: { role: true },
     });
 
-    if (!user || !rolesToVerify.includes(user.role)) {
+    if (!user || !rolesToVerify.includes(user.role as 'ADMIN' | 'GESTOR')) {
       return reply.status(401).send({ message: 'unauthorized' });
     }
   };

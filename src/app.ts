@@ -35,3 +35,18 @@ app.register(jwt, {
   },
 });
 
+// Captura o corpo cru (raw) para permitir validar assinaturas de webhooks (ex.: MoMenu)
+app.addContentTypeParser(
+  "application/json",
+  { parseAs: "string" },
+  (req, body, done) => {
+    (req as { rawBody?: string }).rawBody = body as string;
+    try {
+      const json = body && (body as string).length > 0 ? JSON.parse(body as string) : {};
+      done(null, json);
+    } catch (err) {
+      done(err as Error, undefined);
+    }
+  }
+);
+

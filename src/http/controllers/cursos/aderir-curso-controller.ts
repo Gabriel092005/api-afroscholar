@@ -1,11 +1,19 @@
+import crypto from "node:crypto";
+import { cursosComAcesso } from "@/lib/mentoria-acesso";
 import prisma from "@/lib/prisma";
+import {
+  iniciarCobranca,
+  metodoPagamentoSchema,
+  responderErroPagamento,
+  serializarPagamento,
+  telefoneSchema,
+} from "@/lib/pagamentos-momenu";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
 const aderirCursoSchema = z.object({
-  metodo: z.string().optional(),
-  referencia: z.string().optional(),
-  comprovativo: z.string().optional(),
+  metodo: metodoPagamentoSchema.optional(),
+  phoneNumber: telefoneSchema.optional(),
 });
 
 export const aderirCurso = async (
@@ -23,7 +31,7 @@ export const aderirCurso = async (
       });
     }
 
-    const body = aderirCursoSchema.parse(req.body);
+    const body = aderirCursoSchema.parse(req.body ?? {});
 
     const curso = await prisma.curso.findUnique({
       where: { id },
@@ -36,64 +44,126 @@ export const aderirCurso = async (
       });
     }
 
-    const pagamentoExistente = await prisma.cursoPagamento.findUnique({
-      where: {
-        cursoId_usuarioId: {
-          cursoId: id,
-          usuarioId: userId,
-        },
-      },
-    });
+    const chave = { cursoId_usuarioId: { cursoId: id, usuarioId: userId } };
+    const existente = await prisma.cursoPagamento.findUnique({ where: chave });
 
-    if (pagamentoExistente && pagamentoExistente.status === "APROVADO") {
+    // O que veio com uma mentoria já terminada não conta: pode ser comprado.
+    if (existente?.status === "APROVADO" && (await cursosComAcesso(userId)).has(id)) {
       return res.status(400).send({
         error: "Bad Request",
         message: "Você já possui este curso.",
       });
     }
 
-    if (pagamentoExistente && pagamentoExistente.status === "PENDENTE") {
-      return res.status(400).send({
-        error: "Bad Request",
-        message: "Pagamento já está em análise.",
+    // Preço 0 num curso de bolsa não significa gratuito: o acesso vem da inscrição na bolsa.
+    if (curso.bolsaId && curso.preco <= 0) {
+      return res.status(403).send({
+        error: "Forbidden",
+        message: "Este curso está incluído numa bolsa. Inscreva-se na bolsa para ter acesso.",
       });
     }
 
-    const pagamento = await prisma.cursoPagamento.upsert({
-      where: {
-        cursoId_usuarioId: {
-          cursoId: id,
-          usuarioId: userId,
-        },
-      },
-      update: {
-        metodo: body.metodo,
-        referencia: body.referencia,
-        comprovativo: body.comprovativo,
-        status: "PENDENTE",
-      },
-      create: {
-        cursoId: id,
-        usuarioId: userId,
-        valor: curso.preco,
-        metodo: body.metodo,
-        referencia: body.referencia,
-        comprovativo: body.comprovativo,
-      },
+    if (curso.preco <= 0) {
+      const pagamento = await prisma.$transaction(async (tx) => {
+        const aprovado = await tx.cursoPagamento.upsert({
+          where: chave,
+          update: { status: "APROVADO", valor: 0, metodo: "GRATUITO" },
+          create: {
+            cursoId: id,
+            usuarioId: userId,
+            valor: 0,
+            metodo: "GRATUITO",
+            status: "APROVADO",
+          },
+        });
+        const matricula = { cursoId: id, usuarioId: userId };
+        const jaMatriculado = await tx.cursoUsuario.findUnique({
+          where: { cursoId_usuarioId: matricula },
+        });
+        if (!jaMatriculado) {
+          await tx.cursoUsuario.create({ data: matricula });
+          await tx.curso.update({
+            where: { id },
+            data: { estudantes: { increment: 1 } },
+          });
+        }
+        return aprovado;
+      });
+
+      return res.status(201).send({
+        id: pagamento.id,
+        status: pagamento.status,
+        message: "Curso gratuito adicionado.",
+      });
+    }
+
+    // Pedidos antigos, com comprovativo manual, continuam à espera do administrador.
+    if (existente?.status === "PENDENTE") {
+      const temCobranca = await prisma.pagamentoMomenu.count({
+        where: { tipo: "CURSO", alvoId: existente.id },
+      });
+      if (!temCobranca) {
+        return res.status(400).send({
+          error: "Bad Request",
+          message: "Pagamento já está em análise.",
+        });
+      }
+    }
+
+    const alvoId = existente?.id ?? crypto.randomUUID();
+
+    const pagamento = await iniciarCobranca({
+      tipo: "CURSO",
+      itemId: id,
+      alvoId,
+      usuarioId: userId,
+      valor: curso.preco,
+      metodo: body.metodo,
+      phoneNumber: body.phoneNumber,
+      produto: curso.titulo || "Curso",
+      link: `/cursos/${id}`,
+      persistirAlvo: (tx, cobranca) =>
+        tx.cursoPagamento.upsert({
+          where: chave,
+          update: {
+            valor: curso.preco,
+            metodo: cobranca.metodo,
+            referencia: cobranca.referencia,
+            comprovativo: null,
+            status: "PENDENTE",
+          },
+          create: {
+            id: alvoId,
+            cursoId: id,
+            usuarioId: userId,
+            valor: curso.preco,
+            metodo: cobranca.metodo,
+            referencia: cobranca.referencia,
+            comprovativo: null,
+            status: "PENDENTE",
+          },
+        }),
     });
 
+    const pago = pagamento.status === "PAGO";
+
     return res.status(201).send({
-      id: pagamento.id,
-      status: pagamento.status,
-      message: "Pagamento enviado para análise",
+      id: alvoId,
+      status: pago ? "APROVADO" : "PENDENTE",
+      pagamento: serializarPagamento(pagamento),
+      message: pago ? "Pagamento confirmado." : "Pagamento iniciado.",
     });
   } catch (error) {
     if (error instanceof z.ZodError) {
       return res.status(400).send({
         error: "Validation Error",
+        message: error.issues[0]?.message,
         issues: error.format(),
       });
     }
+    const resposta = responderErroPagamento(error, req, res);
+    if (resposta) return resposta;
+
     req.log.error(error);
     return res.status(500).send({
       error: "Internal Server Error",

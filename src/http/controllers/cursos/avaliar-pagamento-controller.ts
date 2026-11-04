@@ -3,6 +3,7 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import crypto from "node:crypto";
 import { io } from "@/server";
+import { temCobrancaMomenu } from "@/lib/pagamentos-momenu";
 
 const avaliarSchema = z.object({
   status: z.enum(["APROVADO", "REJEITADO", "CANCELADO"]),
@@ -33,6 +34,13 @@ export const avaliarPagamento = async (
       return res.status(400).send({
         error: "Bad Request",
         message: `Pagamento já está ${pagamento.status.toLowerCase()}.`,
+      });
+    }
+
+    if (await temCobrancaMomenu("CURSO", id)) {
+      return res.status(409).send({
+        error: "Conflict",
+        message: "Este pagamento é confirmado automaticamente: não precisa de aprovação.",
       });
     }
 

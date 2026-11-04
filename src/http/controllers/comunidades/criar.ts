@@ -1,3 +1,5 @@
+import { erroAoVincularBolsa } from "@/lib/curso-bolsa";
+import { juntarMentoradosAComunidade } from "@/lib/mentoria-acesso";
 import prisma from "@/lib/prisma";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
@@ -13,6 +15,11 @@ export async function criar(req: FastifyRequest, res: FastifyReply) {
   try {
     const { sub: usuarioId } = req.user;
     const body = criarSchema.parse(req.body);
+
+    if (body.bolsaId) {
+      const erro = await erroAoVincularBolsa(body.bolsaId, usuarioId);
+      if (erro) return res.status(erro.status).send({ error: "Bad Request", message: erro.message });
+    }
 
     const comunidade = await prisma.community.create({
       data: {
@@ -42,6 +49,8 @@ export async function criar(req: FastifyRequest, res: FastifyReply) {
         },
       },
     });
+
+    if (body.bolsaId) await juntarMentoradosAComunidade(comunidade.id, body.bolsaId);
 
     return res.status(201).send({
       ...comunidade,

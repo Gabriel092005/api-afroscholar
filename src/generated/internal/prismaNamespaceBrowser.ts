@@ -75,6 +75,8 @@ export const ModelName = {
   Aula: 'Aula',
   CursoPagamento: 'CursoPagamento',
   CursoUsuario: 'CursoUsuario',
+  Documento: 'Documento',
+  DocumentoCompra: 'DocumentoCompra',
   Depoimento: 'Depoimento',
   Novidade: 'Novidade',
   NovidadeInscricao: 'NovidadeInscricao',
@@ -88,12 +90,14 @@ export const ModelName = {
   AulaOnline: 'AulaOnline',
   AulaOnlineParticipante: 'AulaOnlineParticipante',
   Mentoria: 'Mentoria',
+  MentoriaAcesso: 'MentoriaAcesso',
   MentoriaInscricao: 'MentoriaInscricao',
   CommunityQuestion: 'CommunityQuestion',
   CommunityAnswer: 'CommunityAnswer',
   HomeBanner: 'HomeBanner',
   MapaGlobal: 'MapaGlobal',
-  Atividade: 'Atividade'
+  Atividade: 'Atividade',
+  PagamentoMomenu: 'PagamentoMomenu'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -121,6 +125,8 @@ export const UserScalarFieldEnum = {
   role: 'role',
   estado_conta: 'estado_conta',
   image_path: 'image_path',
+  bio: 'bio',
+  paisMentoria: 'paisMentoria',
   pushSubscription: 'pushSubscription',
   resetToken: 'resetToken',
   resetTokenExpiry: 'resetTokenExpiry',
@@ -402,7 +408,8 @@ export const BolsaScalarFieldEnum = {
   imagemBg: 'imagemBg',
   datasImportantes: 'datasImportantes',
   created_at: 'created_at',
-  updated_at: 'updated_at'
+  updated_at: 'updated_at',
+  criadoPorId: 'criadoPorId'
 } as const
 
 export type BolsaScalarFieldEnum = (typeof BolsaScalarFieldEnum)[keyof typeof BolsaScalarFieldEnum]
@@ -428,6 +435,7 @@ export const BolsaInscricaoScalarFieldEnum = {
   valorPago: 'valorPago',
   dataAgendada: 'dataAgendada',
   duracaoMinutos: 'duracaoMinutos',
+  inscritoEm: 'inscritoEm',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
@@ -457,7 +465,6 @@ export const CursoScalarFieldEnum = {
   estudantes: 'estudantes',
   rating: 'rating',
   preco: 'preco',
-  precoOriginal: 'precoOriginal',
   idioma: 'idioma',
   tags: 'tags',
   descricao: 'descricao',
@@ -466,7 +473,9 @@ export const CursoScalarFieldEnum = {
   mentorNome: 'mentorNome',
   mentorAvatar: 'mentorAvatar',
   created_at: 'created_at',
-  updated_at: 'updated_at'
+  updated_at: 'updated_at',
+  criadoPorId: 'criadoPorId',
+  bolsaId: 'bolsaId'
 } as const
 
 export type CursoScalarFieldEnum = (typeof CursoScalarFieldEnum)[keyof typeof CursoScalarFieldEnum]
@@ -514,6 +523,42 @@ export const CursoUsuarioScalarFieldEnum = {
 } as const
 
 export type CursoUsuarioScalarFieldEnum = (typeof CursoUsuarioScalarFieldEnum)[keyof typeof CursoUsuarioScalarFieldEnum]
+
+
+export const DocumentoScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  descricao: 'descricao',
+  categoria: 'categoria',
+  fileName: 'fileName',
+  fileUrl: 'fileUrl',
+  fileType: 'fileType',
+  fileSize: 'fileSize',
+  status: 'status',
+  criadoPorId: 'criadoPorId',
+  bolsaId: 'bolsaId',
+  preco: 'preco',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type DocumentoScalarFieldEnum = (typeof DocumentoScalarFieldEnum)[keyof typeof DocumentoScalarFieldEnum]
+
+
+export const DocumentoCompraScalarFieldEnum = {
+  id: 'id',
+  documentoId: 'documentoId',
+  usuarioId: 'usuarioId',
+  valor: 'valor',
+  metodo: 'metodo',
+  referencia: 'referencia',
+  status: 'status',
+  comprovativo: 'comprovativo',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type DocumentoCompraScalarFieldEnum = (typeof DocumentoCompraScalarFieldEnum)[keyof typeof DocumentoCompraScalarFieldEnum]
 
 
 export const DepoimentoScalarFieldEnum = {
@@ -734,6 +779,7 @@ export const MentoriaScalarFieldEnum = {
   id: 'id',
   nome: 'nome',
   descricao: 'descricao',
+  preco: 'preco',
   created_at: 'created_at',
   updated_at: 'updated_at',
   bolsaId: 'bolsaId'
@@ -742,12 +788,29 @@ export const MentoriaScalarFieldEnum = {
 export type MentoriaScalarFieldEnum = (typeof MentoriaScalarFieldEnum)[keyof typeof MentoriaScalarFieldEnum]
 
 
+export const MentoriaAcessoScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  bolsaId: 'bolsaId',
+  mentoriaId: 'mentoriaId',
+  pago: 'pago',
+  created_at: 'created_at',
+  expiraEm: 'expiraEm',
+  encerradoEm: 'encerradoEm'
+} as const
+
+export type MentoriaAcessoScalarFieldEnum = (typeof MentoriaAcessoScalarFieldEnum)[keyof typeof MentoriaAcessoScalarFieldEnum]
+
+
 export const MentoriaInscricaoScalarFieldEnum = {
   id: 'id',
   mentoriaId: 'mentoriaId',
   usuarioId: 'usuarioId',
   status: 'status',
-  created_at: 'created_at'
+  created_at: 'created_at',
+  metodoPagamento: 'metodoPagamento',
+  referenciaPagamento: 'referenciaPagamento',
+  comprovativoUrl: 'comprovativoUrl'
 } as const
 
 export type MentoriaInscricaoScalarFieldEnum = (typeof MentoriaInscricaoScalarFieldEnum)[keyof typeof MentoriaInscricaoScalarFieldEnum]
@@ -822,6 +885,30 @@ export const AtividadeScalarFieldEnum = {
 } as const
 
 export type AtividadeScalarFieldEnum = (typeof AtividadeScalarFieldEnum)[keyof typeof AtividadeScalarFieldEnum]
+
+
+export const PagamentoMomenuScalarFieldEnum = {
+  id: 'id',
+  transactionId: 'transactionId',
+  operationId: 'operationId',
+  tipo: 'tipo',
+  alvoId: 'alvoId',
+  usuarioId: 'usuarioId',
+  valor: 'valor',
+  metodo: 'metodo',
+  status: 'status',
+  referenceNumber: 'referenceNumber',
+  entity: 'entity',
+  dueDate: 'dueDate',
+  invoiceUrl: 'invoiceUrl',
+  falhaMotivo: 'falhaMotivo',
+  ultimaVerificacao: 'ultimaVerificacao',
+  pagoEm: 'pagoEm',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type PagamentoMomenuScalarFieldEnum = (typeof PagamentoMomenuScalarFieldEnum)[keyof typeof PagamentoMomenuScalarFieldEnum]
 
 
 export const SortOrder = {

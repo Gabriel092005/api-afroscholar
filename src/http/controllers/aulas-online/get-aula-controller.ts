@@ -1,3 +1,4 @@
+import { podeEntrarNaAula } from "@/lib/mentoria-acesso";
 import prisma from "@/lib/prisma";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { generateJitsiToken } from "@/lib/jitsi";
@@ -22,21 +23,17 @@ export async function getAula(req: FastifyRequest, res: FastifyReply) {
 
     const user = await prisma.user.findUnique({ where: { id: userId }, select: { role: true, nome: true, email: true, image_path: true } });
 
-    if (user && user.role !== "ADMIN" && user.role !== "GESTOR" && aula.hostId !== userId && aula.bolsaId) {
-      const inscricao = await prisma.bolsaInscricao.findFirst({
-        where: {
-          bolsaId: aula.bolsaId,
-          usuarioId: userId,
-          status: "APROVADA",
-        },
+    if (
+      user &&
+      user.role !== "ADMIN" &&
+      user.role !== "GESTOR" &&
+      aula.hostId !== userId &&
+      !(await podeEntrarNaAula(userId, aula))
+    ) {
+      return res.status(403).send({
+        error: "Forbidden",
+        message: "Esta aula é para quem tem a inscrição ou a mentoria desta bolsa.",
       });
-
-      if (!inscricao) {
-        return res.status(403).send({
-          error: "Forbidden",
-          message: "É necessário estar inscrito na bolsa desta aula para aceder.",
-        });
-      }
     }
 
     const jitsiToken = generateJitsiToken(`afroscholars-${aula.roomId}`, {

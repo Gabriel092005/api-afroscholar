@@ -12,6 +12,11 @@ export const deleteInscricao = async (req: FastifyRequest, res: FastifyReply) =>
     }
 
     await prisma.bolsaInscricao.delete({ where: { id } });
+    if (inscricao.tipoInteresse === "MENTORIA") {
+      await prisma.mentoriaAcesso.deleteMany({
+        where: { usuarioId: inscricao.usuarioId, bolsaId: inscricao.bolsaId },
+      });
+    }
 
     return res.status(200).send({ message: "Inscrição eliminada com sucesso" });
   } catch (error) {

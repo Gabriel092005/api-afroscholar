@@ -1,3 +1,4 @@
+import { cursosComAcesso } from "@/lib/mentoria-acesso";
 import prisma from "@/lib/prisma";
 import { FastifyReply, FastifyRequest } from "fastify";
 
@@ -31,7 +32,8 @@ export const listMeusCursos = async (
       },
     });
 
-    const cursos = pagamentos.map((p) => p.curso);
+    const liberados = await cursosComAcesso(userId);
+    const cursos = pagamentos.filter((p) => liberados.has(p.cursoId)).map((p) => p.curso);
 
     return res.send(cursos);
   } catch (error) {

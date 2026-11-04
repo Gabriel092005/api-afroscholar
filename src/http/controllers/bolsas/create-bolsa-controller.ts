@@ -94,6 +94,7 @@ export const createBolsa = async (
         prazo: parsedBody.prazo ? new Date(parsedBody.prazo) : null,
         numeroVagas: parseIntOptional(parsedBody.numeroVagas),
         imagemBg,
+        criadoPorId: req.user?.sub,
       },
     });
 

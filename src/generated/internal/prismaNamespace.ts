@@ -88,11 +88,11 @@ export type PrismaVersion = {
 }
 
 /**
- * Prisma Client JS version: 6.19.2
+ * Prisma Client JS version: 6.19.3
  * Query Engine version: c2990dca591cba766e3b7ef5d9e8a84796e47ab7
  */
 export const prismaVersion: PrismaVersion = {
-  client: "6.19.2",
+  client: "6.19.3",
   engine: "c2990dca591cba766e3b7ef5d9e8a84796e47ab7"
 }
 
@@ -416,6 +416,8 @@ export const ModelName = {
   Aula: 'Aula',
   CursoPagamento: 'CursoPagamento',
   CursoUsuario: 'CursoUsuario',
+  Documento: 'Documento',
+  DocumentoCompra: 'DocumentoCompra',
   Depoimento: 'Depoimento',
   Novidade: 'Novidade',
   NovidadeInscricao: 'NovidadeInscricao',
@@ -429,12 +431,14 @@ export const ModelName = {
   AulaOnline: 'AulaOnline',
   AulaOnlineParticipante: 'AulaOnlineParticipante',
   Mentoria: 'Mentoria',
+  MentoriaAcesso: 'MentoriaAcesso',
   MentoriaInscricao: 'MentoriaInscricao',
   CommunityQuestion: 'CommunityQuestion',
   CommunityAnswer: 'CommunityAnswer',
   HomeBanner: 'HomeBanner',
   MapaGlobal: 'MapaGlobal',
-  Atividade: 'Atividade'
+  Atividade: 'Atividade',
+  PagamentoMomenu: 'PagamentoMomenu'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -450,7 +454,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "notification" | "usuario" | "notificacao" | "empresa" | "departamento" | "bot" | "botAsset" | "botEmpresa" | "folhaBot" | "transacao" | "arquivo" | "assinatura" | "carrinhoItem" | "feedback" | "mensagem" | "setting" | "whatBotCanDo" | "whatBotCanNotDo" | "bolsa" | "bolsaInscricao" | "bolsaInscricaoDocumento" | "curso" | "aula" | "cursoPagamento" | "cursoUsuario" | "depoimento" | "novidade" | "novidadeInscricao" | "novidadeInscricaoDocumento" | "anexo" | "perfilAcademico" | "analiseDocumento" | "community" | "communityMember" | "communityMessage" | "aulaOnline" | "aulaOnlineParticipante" | "mentoria" | "mentoriaInscricao" | "communityQuestion" | "communityAnswer" | "homeBanner" | "mapaGlobal" | "atividade"
+    modelProps: "user" | "notification" | "usuario" | "notificacao" | "empresa" | "departamento" | "bot" | "botAsset" | "botEmpresa" | "folhaBot" | "transacao" | "arquivo" | "assinatura" | "carrinhoItem" | "feedback" | "mensagem" | "setting" | "whatBotCanDo" | "whatBotCanNotDo" | "bolsa" | "bolsaInscricao" | "bolsaInscricaoDocumento" | "curso" | "aula" | "cursoPagamento" | "cursoUsuario" | "documento" | "documentoCompra" | "depoimento" | "novidade" | "novidadeInscricao" | "novidadeInscricaoDocumento" | "anexo" | "perfilAcademico" | "analiseDocumento" | "community" | "communityMember" | "communityMessage" | "aulaOnline" | "aulaOnlineParticipante" | "mentoria" | "mentoriaAcesso" | "mentoriaInscricao" | "communityQuestion" | "communityAnswer" | "homeBanner" | "mapaGlobal" | "atividade" | "pagamentoMomenu"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2378,6 +2382,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Documento: {
+      payload: Prisma.$DocumentoPayload<ExtArgs>
+      fields: Prisma.DocumentoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.DocumentoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.DocumentoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoPayload>
+        }
+        findFirst: {
+          args: Prisma.DocumentoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.DocumentoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoPayload>
+        }
+        findMany: {
+          args: Prisma.DocumentoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoPayload>[]
+        }
+        create: {
+          args: Prisma.DocumentoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoPayload>
+        }
+        createMany: {
+          args: Prisma.DocumentoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.DocumentoCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoPayload>[]
+        }
+        delete: {
+          args: Prisma.DocumentoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoPayload>
+        }
+        update: {
+          args: Prisma.DocumentoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoPayload>
+        }
+        deleteMany: {
+          args: Prisma.DocumentoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.DocumentoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.DocumentoUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoPayload>[]
+        }
+        upsert: {
+          args: Prisma.DocumentoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoPayload>
+        }
+        aggregate: {
+          args: Prisma.DocumentoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateDocumento>
+        }
+        groupBy: {
+          args: Prisma.DocumentoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DocumentoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.DocumentoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DocumentoCountAggregateOutputType> | number
+        }
+      }
+    }
+    DocumentoCompra: {
+      payload: Prisma.$DocumentoCompraPayload<ExtArgs>
+      fields: Prisma.DocumentoCompraFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.DocumentoCompraFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoCompraPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.DocumentoCompraFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoCompraPayload>
+        }
+        findFirst: {
+          args: Prisma.DocumentoCompraFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoCompraPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.DocumentoCompraFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoCompraPayload>
+        }
+        findMany: {
+          args: Prisma.DocumentoCompraFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoCompraPayload>[]
+        }
+        create: {
+          args: Prisma.DocumentoCompraCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoCompraPayload>
+        }
+        createMany: {
+          args: Prisma.DocumentoCompraCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.DocumentoCompraCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoCompraPayload>[]
+        }
+        delete: {
+          args: Prisma.DocumentoCompraDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoCompraPayload>
+        }
+        update: {
+          args: Prisma.DocumentoCompraUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoCompraPayload>
+        }
+        deleteMany: {
+          args: Prisma.DocumentoCompraDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.DocumentoCompraUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.DocumentoCompraUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoCompraPayload>[]
+        }
+        upsert: {
+          args: Prisma.DocumentoCompraUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DocumentoCompraPayload>
+        }
+        aggregate: {
+          args: Prisma.DocumentoCompraAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateDocumentoCompra>
+        }
+        groupBy: {
+          args: Prisma.DocumentoCompraGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DocumentoCompraGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.DocumentoCompraCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DocumentoCompraCountAggregateOutputType> | number
+        }
+      }
+    }
     Depoimento: {
       payload: Prisma.$DepoimentoPayload<ExtArgs>
       fields: Prisma.DepoimentoFieldRefs
@@ -3340,6 +3492,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    MentoriaAcesso: {
+      payload: Prisma.$MentoriaAcessoPayload<ExtArgs>
+      fields: Prisma.MentoriaAcessoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MentoriaAcessoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MentoriaAcessoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MentoriaAcessoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MentoriaAcessoPayload>
+        }
+        findFirst: {
+          args: Prisma.MentoriaAcessoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MentoriaAcessoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MentoriaAcessoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MentoriaAcessoPayload>
+        }
+        findMany: {
+          args: Prisma.MentoriaAcessoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MentoriaAcessoPayload>[]
+        }
+        create: {
+          args: Prisma.MentoriaAcessoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MentoriaAcessoPayload>
+        }
+        createMany: {
+          args: Prisma.MentoriaAcessoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MentoriaAcessoCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MentoriaAcessoPayload>[]
+        }
+        delete: {
+          args: Prisma.MentoriaAcessoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MentoriaAcessoPayload>
+        }
+        update: {
+          args: Prisma.MentoriaAcessoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MentoriaAcessoPayload>
+        }
+        deleteMany: {
+          args: Prisma.MentoriaAcessoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MentoriaAcessoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MentoriaAcessoUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MentoriaAcessoPayload>[]
+        }
+        upsert: {
+          args: Prisma.MentoriaAcessoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MentoriaAcessoPayload>
+        }
+        aggregate: {
+          args: Prisma.MentoriaAcessoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMentoriaAcesso>
+        }
+        groupBy: {
+          args: Prisma.MentoriaAcessoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MentoriaAcessoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MentoriaAcessoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MentoriaAcessoCountAggregateOutputType> | number
+        }
+      }
+    }
     MentoriaInscricao: {
       payload: Prisma.$MentoriaInscricaoPayload<ExtArgs>
       fields: Prisma.MentoriaInscricaoFieldRefs
@@ -3784,6 +4010,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    PagamentoMomenu: {
+      payload: Prisma.$PagamentoMomenuPayload<ExtArgs>
+      fields: Prisma.PagamentoMomenuFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PagamentoMomenuFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PagamentoMomenuPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PagamentoMomenuFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PagamentoMomenuPayload>
+        }
+        findFirst: {
+          args: Prisma.PagamentoMomenuFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PagamentoMomenuPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PagamentoMomenuFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PagamentoMomenuPayload>
+        }
+        findMany: {
+          args: Prisma.PagamentoMomenuFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PagamentoMomenuPayload>[]
+        }
+        create: {
+          args: Prisma.PagamentoMomenuCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PagamentoMomenuPayload>
+        }
+        createMany: {
+          args: Prisma.PagamentoMomenuCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PagamentoMomenuCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PagamentoMomenuPayload>[]
+        }
+        delete: {
+          args: Prisma.PagamentoMomenuDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PagamentoMomenuPayload>
+        }
+        update: {
+          args: Prisma.PagamentoMomenuUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PagamentoMomenuPayload>
+        }
+        deleteMany: {
+          args: Prisma.PagamentoMomenuDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PagamentoMomenuUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PagamentoMomenuUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PagamentoMomenuPayload>[]
+        }
+        upsert: {
+          args: Prisma.PagamentoMomenuUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PagamentoMomenuPayload>
+        }
+        aggregate: {
+          args: Prisma.PagamentoMomenuAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePagamentoMomenu>
+        }
+        groupBy: {
+          args: Prisma.PagamentoMomenuGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PagamentoMomenuGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PagamentoMomenuCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PagamentoMomenuCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -3832,6 +4132,8 @@ export const UserScalarFieldEnum = {
   role: 'role',
   estado_conta: 'estado_conta',
   image_path: 'image_path',
+  bio: 'bio',
+  paisMentoria: 'paisMentoria',
   pushSubscription: 'pushSubscription',
   resetToken: 'resetToken',
   resetTokenExpiry: 'resetTokenExpiry',
@@ -4113,7 +4415,8 @@ export const BolsaScalarFieldEnum = {
   imagemBg: 'imagemBg',
   datasImportantes: 'datasImportantes',
   created_at: 'created_at',
-  updated_at: 'updated_at'
+  updated_at: 'updated_at',
+  criadoPorId: 'criadoPorId'
 } as const
 
 export type BolsaScalarFieldEnum = (typeof BolsaScalarFieldEnum)[keyof typeof BolsaScalarFieldEnum]
@@ -4139,6 +4442,7 @@ export const BolsaInscricaoScalarFieldEnum = {
   valorPago: 'valorPago',
   dataAgendada: 'dataAgendada',
   duracaoMinutos: 'duracaoMinutos',
+  inscritoEm: 'inscritoEm',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
@@ -4168,7 +4472,6 @@ export const CursoScalarFieldEnum = {
   estudantes: 'estudantes',
   rating: 'rating',
   preco: 'preco',
-  precoOriginal: 'precoOriginal',
   idioma: 'idioma',
   tags: 'tags',
   descricao: 'descricao',
@@ -4177,7 +4480,9 @@ export const CursoScalarFieldEnum = {
   mentorNome: 'mentorNome',
   mentorAvatar: 'mentorAvatar',
   created_at: 'created_at',
-  updated_at: 'updated_at'
+  updated_at: 'updated_at',
+  criadoPorId: 'criadoPorId',
+  bolsaId: 'bolsaId'
 } as const
 
 export type CursoScalarFieldEnum = (typeof CursoScalarFieldEnum)[keyof typeof CursoScalarFieldEnum]
@@ -4225,6 +4530,42 @@ export const CursoUsuarioScalarFieldEnum = {
 } as const
 
 export type CursoUsuarioScalarFieldEnum = (typeof CursoUsuarioScalarFieldEnum)[keyof typeof CursoUsuarioScalarFieldEnum]
+
+
+export const DocumentoScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  descricao: 'descricao',
+  categoria: 'categoria',
+  fileName: 'fileName',
+  fileUrl: 'fileUrl',
+  fileType: 'fileType',
+  fileSize: 'fileSize',
+  status: 'status',
+  criadoPorId: 'criadoPorId',
+  bolsaId: 'bolsaId',
+  preco: 'preco',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type DocumentoScalarFieldEnum = (typeof DocumentoScalarFieldEnum)[keyof typeof DocumentoScalarFieldEnum]
+
+
+export const DocumentoCompraScalarFieldEnum = {
+  id: 'id',
+  documentoId: 'documentoId',
+  usuarioId: 'usuarioId',
+  valor: 'valor',
+  metodo: 'metodo',
+  referencia: 'referencia',
+  status: 'status',
+  comprovativo: 'comprovativo',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type DocumentoCompraScalarFieldEnum = (typeof DocumentoCompraScalarFieldEnum)[keyof typeof DocumentoCompraScalarFieldEnum]
 
 
 export const DepoimentoScalarFieldEnum = {
@@ -4445,6 +4786,7 @@ export const MentoriaScalarFieldEnum = {
   id: 'id',
   nome: 'nome',
   descricao: 'descricao',
+  preco: 'preco',
   created_at: 'created_at',
   updated_at: 'updated_at',
   bolsaId: 'bolsaId'
@@ -4453,12 +4795,29 @@ export const MentoriaScalarFieldEnum = {
 export type MentoriaScalarFieldEnum = (typeof MentoriaScalarFieldEnum)[keyof typeof MentoriaScalarFieldEnum]
 
 
+export const MentoriaAcessoScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  bolsaId: 'bolsaId',
+  mentoriaId: 'mentoriaId',
+  pago: 'pago',
+  created_at: 'created_at',
+  expiraEm: 'expiraEm',
+  encerradoEm: 'encerradoEm'
+} as const
+
+export type MentoriaAcessoScalarFieldEnum = (typeof MentoriaAcessoScalarFieldEnum)[keyof typeof MentoriaAcessoScalarFieldEnum]
+
+
 export const MentoriaInscricaoScalarFieldEnum = {
   id: 'id',
   mentoriaId: 'mentoriaId',
   usuarioId: 'usuarioId',
   status: 'status',
-  created_at: 'created_at'
+  created_at: 'created_at',
+  metodoPagamento: 'metodoPagamento',
+  referenciaPagamento: 'referenciaPagamento',
+  comprovativoUrl: 'comprovativoUrl'
 } as const
 
 export type MentoriaInscricaoScalarFieldEnum = (typeof MentoriaInscricaoScalarFieldEnum)[keyof typeof MentoriaInscricaoScalarFieldEnum]
@@ -4533,6 +4892,30 @@ export const AtividadeScalarFieldEnum = {
 } as const
 
 export type AtividadeScalarFieldEnum = (typeof AtividadeScalarFieldEnum)[keyof typeof AtividadeScalarFieldEnum]
+
+
+export const PagamentoMomenuScalarFieldEnum = {
+  id: 'id',
+  transactionId: 'transactionId',
+  operationId: 'operationId',
+  tipo: 'tipo',
+  alvoId: 'alvoId',
+  usuarioId: 'usuarioId',
+  valor: 'valor',
+  metodo: 'metodo',
+  status: 'status',
+  referenceNumber: 'referenceNumber',
+  entity: 'entity',
+  dueDate: 'dueDate',
+  invoiceUrl: 'invoiceUrl',
+  falhaMotivo: 'falhaMotivo',
+  ultimaVerificacao: 'ultimaVerificacao',
+  pagoEm: 'pagoEm',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type PagamentoMomenuScalarFieldEnum = (typeof PagamentoMomenuScalarFieldEnum)[keyof typeof PagamentoMomenuScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -4842,6 +5225,20 @@ export type ListEnumPagamentoStatusFieldRefInput<$PrismaModel> = FieldRefInputTy
 
 
 /**
+ * Reference to a field of type 'DocumentoStatus'
+ */
+export type EnumDocumentoStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DocumentoStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'DocumentoStatus[]'
+ */
+export type ListEnumDocumentoStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DocumentoStatus[]'>
+    
+
+
+/**
  * Reference to a field of type 'DepoimentoStatus'
  */
 export type EnumDepoimentoStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DepoimentoStatus'>
@@ -4908,6 +5305,34 @@ export type EnumAulaOnlineStatusFieldRefInput<$PrismaModel> = FieldRefInputType<
  * Reference to a field of type 'AulaOnlineStatus[]'
  */
 export type ListEnumAulaOnlineStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AulaOnlineStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'TipoPagamentoMomenu'
+ */
+export type EnumTipoPagamentoMomenuFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TipoPagamentoMomenu'>
+    
+
+
+/**
+ * Reference to a field of type 'TipoPagamentoMomenu[]'
+ */
+export type ListEnumTipoPagamentoMomenuFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TipoPagamentoMomenu[]'>
+    
+
+
+/**
+ * Reference to a field of type 'PagamentoMomenuStatus'
+ */
+export type EnumPagamentoMomenuStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PagamentoMomenuStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'PagamentoMomenuStatus[]'
+ */
+export type ListEnumPagamentoMomenuStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PagamentoMomenuStatus[]'>
     
 
 /**
@@ -5023,6 +5448,8 @@ export type GlobalOmitConfig = {
   aula?: Prisma.AulaOmit
   cursoPagamento?: Prisma.CursoPagamentoOmit
   cursoUsuario?: Prisma.CursoUsuarioOmit
+  documento?: Prisma.DocumentoOmit
+  documentoCompra?: Prisma.DocumentoCompraOmit
   depoimento?: Prisma.DepoimentoOmit
   novidade?: Prisma.NovidadeOmit
   novidadeInscricao?: Prisma.NovidadeInscricaoOmit
@@ -5036,12 +5463,14 @@ export type GlobalOmitConfig = {
   aulaOnline?: Prisma.AulaOnlineOmit
   aulaOnlineParticipante?: Prisma.AulaOnlineParticipanteOmit
   mentoria?: Prisma.MentoriaOmit
+  mentoriaAcesso?: Prisma.MentoriaAcessoOmit
   mentoriaInscricao?: Prisma.MentoriaInscricaoOmit
   communityQuestion?: Prisma.CommunityQuestionOmit
   communityAnswer?: Prisma.CommunityAnswerOmit
   homeBanner?: Prisma.HomeBannerOmit
   mapaGlobal?: Prisma.MapaGlobalOmit
   atividade?: Prisma.AtividadeOmit
+  pagamentoMomenu?: Prisma.PagamentoMomenuOmit
 }
 
 /* Types for Logging */

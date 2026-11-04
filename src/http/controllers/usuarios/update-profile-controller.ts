@@ -15,10 +15,12 @@ export async function updateProfileController(
       nome: z.string().min(2).optional(),
       email: z.string().email().optional(),
       phone: z.string().min(6).optional(),
+      bio: z.string().max(2000).nullable().optional(),
+      paisMentoria: z.string().trim().min(1).max(80).nullable().optional(),
       image_path: z.string().optional(),
     });
 
-    const { nome, email, phone, image_path } =
+    const { nome, email, phone, bio, paisMentoria, image_path } =
       updateProfileSchema.parse(request.body);
 
     const usersRepository = new PrismaUserRepository();
@@ -29,6 +31,8 @@ export async function updateProfileController(
       nome,
       email,
       phone,
+      bio,
+      paisMentoria,
       image_path,
     });
 

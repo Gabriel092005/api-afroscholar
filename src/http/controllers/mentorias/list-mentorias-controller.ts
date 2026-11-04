@@ -23,11 +23,23 @@ export async function listMentorias(req: FastifyRequest, res: FastifyReply) {
       orderBy: { created_at: "desc" },
     });
 
-    const data = mentorias.map((m) => ({
-      ...m,
-      inscrito: m.inscricoes.length > 0 ? m.inscricoes[0].status : null,
-      inscricoes: undefined,
-    }));
+    const acessos = await prisma.mentoriaAcesso.findMany({
+      where: { usuarioId: userId, expiraEm: { gt: new Date() } },
+      select: { mentoriaId: true, expiraEm: true },
+    });
+    const expiraPorMentoria = new Map(acessos.map((a) => [a.mentoriaId, a.expiraEm]));
+
+    const data = mentorias.map((m) => {
+      const estado = m.inscricoes[0]?.status ?? null;
+      const expiraEm = expiraPorMentoria.get(m.id) ?? null;
+      return {
+        ...m,
+        // Aprovada mas fora de prazo: volta a aparecer como disponível, para renovar.
+        inscrito: estado === "APROVADA" && !expiraEm ? null : estado,
+        expiraEm,
+        inscricoes: undefined,
+      };
+    });
 
     return res.send({ data });
   } catch (error) {

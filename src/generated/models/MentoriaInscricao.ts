@@ -30,6 +30,9 @@ export type MentoriaInscricaoMinAggregateOutputType = {
   usuarioId: string | null
   status: $Enums.InscricaoStatus | null
   created_at: Date | null
+  metodoPagamento: string | null
+  referenciaPagamento: string | null
+  comprovativoUrl: string | null
 }
 
 export type MentoriaInscricaoMaxAggregateOutputType = {
@@ -38,6 +41,9 @@ export type MentoriaInscricaoMaxAggregateOutputType = {
   usuarioId: string | null
   status: $Enums.InscricaoStatus | null
   created_at: Date | null
+  metodoPagamento: string | null
+  referenciaPagamento: string | null
+  comprovativoUrl: string | null
 }
 
 export type MentoriaInscricaoCountAggregateOutputType = {
@@ -46,6 +52,9 @@ export type MentoriaInscricaoCountAggregateOutputType = {
   usuarioId: number
   status: number
   created_at: number
+  metodoPagamento: number
+  referenciaPagamento: number
+  comprovativoUrl: number
   _all: number
 }
 
@@ -56,6 +65,9 @@ export type MentoriaInscricaoMinAggregateInputType = {
   usuarioId?: true
   status?: true
   created_at?: true
+  metodoPagamento?: true
+  referenciaPagamento?: true
+  comprovativoUrl?: true
 }
 
 export type MentoriaInscricaoMaxAggregateInputType = {
@@ -64,6 +76,9 @@ export type MentoriaInscricaoMaxAggregateInputType = {
   usuarioId?: true
   status?: true
   created_at?: true
+  metodoPagamento?: true
+  referenciaPagamento?: true
+  comprovativoUrl?: true
 }
 
 export type MentoriaInscricaoCountAggregateInputType = {
@@ -72,6 +87,9 @@ export type MentoriaInscricaoCountAggregateInputType = {
   usuarioId?: true
   status?: true
   created_at?: true
+  metodoPagamento?: true
+  referenciaPagamento?: true
+  comprovativoUrl?: true
   _all?: true
 }
 
@@ -153,6 +171,9 @@ export type MentoriaInscricaoGroupByOutputType = {
   usuarioId: string
   status: $Enums.InscricaoStatus
   created_at: Date
+  metodoPagamento: string | null
+  referenciaPagamento: string | null
+  comprovativoUrl: string | null
   _count: MentoriaInscricaoCountAggregateOutputType | null
   _min: MentoriaInscricaoMinAggregateOutputType | null
   _max: MentoriaInscricaoMaxAggregateOutputType | null
@@ -182,6 +203,9 @@ export type MentoriaInscricaoWhereInput = {
   usuarioId?: Prisma.StringFilter<"MentoriaInscricao"> | string
   status?: Prisma.EnumInscricaoStatusFilter<"MentoriaInscricao"> | $Enums.InscricaoStatus
   created_at?: Prisma.DateTimeFilter<"MentoriaInscricao"> | Date | string
+  metodoPagamento?: Prisma.StringNullableFilter<"MentoriaInscricao"> | string | null
+  referenciaPagamento?: Prisma.StringNullableFilter<"MentoriaInscricao"> | string | null
+  comprovativoUrl?: Prisma.StringNullableFilter<"MentoriaInscricao"> | string | null
   mentoria?: Prisma.XOR<Prisma.MentoriaScalarRelationFilter, Prisma.MentoriaWhereInput>
   usuario?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
@@ -192,6 +216,9 @@ export type MentoriaInscricaoOrderByWithRelationInput = {
   usuarioId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  metodoPagamento?: Prisma.SortOrderInput | Prisma.SortOrder
+  referenciaPagamento?: Prisma.SortOrderInput | Prisma.SortOrder
+  comprovativoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   mentoria?: Prisma.MentoriaOrderByWithRelationInput
   usuario?: Prisma.UserOrderByWithRelationInput
 }
@@ -206,6 +233,9 @@ export type MentoriaInscricaoWhereUniqueInput = Prisma.AtLeast<{
   usuarioId?: Prisma.StringFilter<"MentoriaInscricao"> | string
   status?: Prisma.EnumInscricaoStatusFilter<"MentoriaInscricao"> | $Enums.InscricaoStatus
   created_at?: Prisma.DateTimeFilter<"MentoriaInscricao"> | Date | string
+  metodoPagamento?: Prisma.StringNullableFilter<"MentoriaInscricao"> | string | null
+  referenciaPagamento?: Prisma.StringNullableFilter<"MentoriaInscricao"> | string | null
+  comprovativoUrl?: Prisma.StringNullableFilter<"MentoriaInscricao"> | string | null
   mentoria?: Prisma.XOR<Prisma.MentoriaScalarRelationFilter, Prisma.MentoriaWhereInput>
   usuario?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id" | "mentoriaId_usuarioId">
@@ -216,6 +246,9 @@ export type MentoriaInscricaoOrderByWithAggregationInput = {
   usuarioId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  metodoPagamento?: Prisma.SortOrderInput | Prisma.SortOrder
+  referenciaPagamento?: Prisma.SortOrderInput | Prisma.SortOrder
+  comprovativoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.MentoriaInscricaoCountOrderByAggregateInput
   _max?: Prisma.MentoriaInscricaoMaxOrderByAggregateInput
   _min?: Prisma.MentoriaInscricaoMinOrderByAggregateInput
@@ -230,12 +263,18 @@ export type MentoriaInscricaoScalarWhereWithAggregatesInput = {
   usuarioId?: Prisma.StringWithAggregatesFilter<"MentoriaInscricao"> | string
   status?: Prisma.EnumInscricaoStatusWithAggregatesFilter<"MentoriaInscricao"> | $Enums.InscricaoStatus
   created_at?: Prisma.DateTimeWithAggregatesFilter<"MentoriaInscricao"> | Date | string
+  metodoPagamento?: Prisma.StringNullableWithAggregatesFilter<"MentoriaInscricao"> | string | null
+  referenciaPagamento?: Prisma.StringNullableWithAggregatesFilter<"MentoriaInscricao"> | string | null
+  comprovativoUrl?: Prisma.StringNullableWithAggregatesFilter<"MentoriaInscricao"> | string | null
 }
 
 export type MentoriaInscricaoCreateInput = {
   id?: string
   status?: $Enums.InscricaoStatus
   created_at?: Date | string
+  metodoPagamento?: string | null
+  referenciaPagamento?: string | null
+  comprovativoUrl?: string | null
   mentoria: Prisma.MentoriaCreateNestedOneWithoutInscricoesInput
   usuario: Prisma.UserCreateNestedOneWithoutMentoriasInscricoesInput
 }
@@ -246,12 +285,18 @@ export type MentoriaInscricaoUncheckedCreateInput = {
   usuarioId: string
   status?: $Enums.InscricaoStatus
   created_at?: Date | string
+  metodoPagamento?: string | null
+  referenciaPagamento?: string | null
+  comprovativoUrl?: string | null
 }
 
 export type MentoriaInscricaoUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumInscricaoStatusFieldUpdateOperationsInput | $Enums.InscricaoStatus
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  metodoPagamento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referenciaPagamento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comprovativoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mentoria?: Prisma.MentoriaUpdateOneRequiredWithoutInscricoesNestedInput
   usuario?: Prisma.UserUpdateOneRequiredWithoutMentoriasInscricoesNestedInput
 }
@@ -262,6 +307,9 @@ export type MentoriaInscricaoUncheckedUpdateInput = {
   usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumInscricaoStatusFieldUpdateOperationsInput | $Enums.InscricaoStatus
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  metodoPagamento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referenciaPagamento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comprovativoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type MentoriaInscricaoCreateManyInput = {
@@ -270,12 +318,18 @@ export type MentoriaInscricaoCreateManyInput = {
   usuarioId: string
   status?: $Enums.InscricaoStatus
   created_at?: Date | string
+  metodoPagamento?: string | null
+  referenciaPagamento?: string | null
+  comprovativoUrl?: string | null
 }
 
 export type MentoriaInscricaoUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumInscricaoStatusFieldUpdateOperationsInput | $Enums.InscricaoStatus
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  metodoPagamento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referenciaPagamento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comprovativoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type MentoriaInscricaoUncheckedUpdateManyInput = {
@@ -284,6 +338,9 @@ export type MentoriaInscricaoUncheckedUpdateManyInput = {
   usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumInscricaoStatusFieldUpdateOperationsInput | $Enums.InscricaoStatus
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  metodoPagamento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referenciaPagamento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comprovativoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type MentoriaInscricaoListRelationFilter = {
@@ -307,6 +364,9 @@ export type MentoriaInscricaoCountOrderByAggregateInput = {
   usuarioId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  metodoPagamento?: Prisma.SortOrder
+  referenciaPagamento?: Prisma.SortOrder
+  comprovativoUrl?: Prisma.SortOrder
 }
 
 export type MentoriaInscricaoMaxOrderByAggregateInput = {
@@ -315,6 +375,9 @@ export type MentoriaInscricaoMaxOrderByAggregateInput = {
   usuarioId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  metodoPagamento?: Prisma.SortOrder
+  referenciaPagamento?: Prisma.SortOrder
+  comprovativoUrl?: Prisma.SortOrder
 }
 
 export type MentoriaInscricaoMinOrderByAggregateInput = {
@@ -323,6 +386,9 @@ export type MentoriaInscricaoMinOrderByAggregateInput = {
   usuarioId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  metodoPagamento?: Prisma.SortOrder
+  referenciaPagamento?: Prisma.SortOrder
+  comprovativoUrl?: Prisma.SortOrder
 }
 
 export type MentoriaInscricaoCreateNestedManyWithoutUsuarioInput = {
@@ -413,6 +479,9 @@ export type MentoriaInscricaoCreateWithoutUsuarioInput = {
   id?: string
   status?: $Enums.InscricaoStatus
   created_at?: Date | string
+  metodoPagamento?: string | null
+  referenciaPagamento?: string | null
+  comprovativoUrl?: string | null
   mentoria: Prisma.MentoriaCreateNestedOneWithoutInscricoesInput
 }
 
@@ -421,6 +490,9 @@ export type MentoriaInscricaoUncheckedCreateWithoutUsuarioInput = {
   mentoriaId: string
   status?: $Enums.InscricaoStatus
   created_at?: Date | string
+  metodoPagamento?: string | null
+  referenciaPagamento?: string | null
+  comprovativoUrl?: string | null
 }
 
 export type MentoriaInscricaoCreateOrConnectWithoutUsuarioInput = {
@@ -458,12 +530,18 @@ export type MentoriaInscricaoScalarWhereInput = {
   usuarioId?: Prisma.StringFilter<"MentoriaInscricao"> | string
   status?: Prisma.EnumInscricaoStatusFilter<"MentoriaInscricao"> | $Enums.InscricaoStatus
   created_at?: Prisma.DateTimeFilter<"MentoriaInscricao"> | Date | string
+  metodoPagamento?: Prisma.StringNullableFilter<"MentoriaInscricao"> | string | null
+  referenciaPagamento?: Prisma.StringNullableFilter<"MentoriaInscricao"> | string | null
+  comprovativoUrl?: Prisma.StringNullableFilter<"MentoriaInscricao"> | string | null
 }
 
 export type MentoriaInscricaoCreateWithoutMentoriaInput = {
   id?: string
   status?: $Enums.InscricaoStatus
   created_at?: Date | string
+  metodoPagamento?: string | null
+  referenciaPagamento?: string | null
+  comprovativoUrl?: string | null
   usuario: Prisma.UserCreateNestedOneWithoutMentoriasInscricoesInput
 }
 
@@ -472,6 +550,9 @@ export type MentoriaInscricaoUncheckedCreateWithoutMentoriaInput = {
   usuarioId: string
   status?: $Enums.InscricaoStatus
   created_at?: Date | string
+  metodoPagamento?: string | null
+  referenciaPagamento?: string | null
+  comprovativoUrl?: string | null
 }
 
 export type MentoriaInscricaoCreateOrConnectWithoutMentoriaInput = {
@@ -505,12 +586,18 @@ export type MentoriaInscricaoCreateManyUsuarioInput = {
   mentoriaId: string
   status?: $Enums.InscricaoStatus
   created_at?: Date | string
+  metodoPagamento?: string | null
+  referenciaPagamento?: string | null
+  comprovativoUrl?: string | null
 }
 
 export type MentoriaInscricaoUpdateWithoutUsuarioInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumInscricaoStatusFieldUpdateOperationsInput | $Enums.InscricaoStatus
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  metodoPagamento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referenciaPagamento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comprovativoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mentoria?: Prisma.MentoriaUpdateOneRequiredWithoutInscricoesNestedInput
 }
 
@@ -519,6 +606,9 @@ export type MentoriaInscricaoUncheckedUpdateWithoutUsuarioInput = {
   mentoriaId?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumInscricaoStatusFieldUpdateOperationsInput | $Enums.InscricaoStatus
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  metodoPagamento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referenciaPagamento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comprovativoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioInput = {
@@ -526,6 +616,9 @@ export type MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioInput = {
   mentoriaId?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumInscricaoStatusFieldUpdateOperationsInput | $Enums.InscricaoStatus
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  metodoPagamento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referenciaPagamento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comprovativoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type MentoriaInscricaoCreateManyMentoriaInput = {
@@ -533,12 +626,18 @@ export type MentoriaInscricaoCreateManyMentoriaInput = {
   usuarioId: string
   status?: $Enums.InscricaoStatus
   created_at?: Date | string
+  metodoPagamento?: string | null
+  referenciaPagamento?: string | null
+  comprovativoUrl?: string | null
 }
 
 export type MentoriaInscricaoUpdateWithoutMentoriaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumInscricaoStatusFieldUpdateOperationsInput | $Enums.InscricaoStatus
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  metodoPagamento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referenciaPagamento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comprovativoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usuario?: Prisma.UserUpdateOneRequiredWithoutMentoriasInscricoesNestedInput
 }
 
@@ -547,6 +646,9 @@ export type MentoriaInscricaoUncheckedUpdateWithoutMentoriaInput = {
   usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumInscricaoStatusFieldUpdateOperationsInput | $Enums.InscricaoStatus
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  metodoPagamento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referenciaPagamento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comprovativoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type MentoriaInscricaoUncheckedUpdateManyWithoutMentoriaInput = {
@@ -554,6 +656,9 @@ export type MentoriaInscricaoUncheckedUpdateManyWithoutMentoriaInput = {
   usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumInscricaoStatusFieldUpdateOperationsInput | $Enums.InscricaoStatus
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  metodoPagamento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referenciaPagamento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comprovativoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -564,6 +669,9 @@ export type MentoriaInscricaoSelect<ExtArgs extends runtime.Types.Extensions.Int
   usuarioId?: boolean
   status?: boolean
   created_at?: boolean
+  metodoPagamento?: boolean
+  referenciaPagamento?: boolean
+  comprovativoUrl?: boolean
   mentoria?: boolean | Prisma.MentoriaDefaultArgs<ExtArgs>
   usuario?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["mentoriaInscricao"]>
@@ -574,6 +682,9 @@ export type MentoriaInscricaoSelectCreateManyAndReturn<ExtArgs extends runtime.T
   usuarioId?: boolean
   status?: boolean
   created_at?: boolean
+  metodoPagamento?: boolean
+  referenciaPagamento?: boolean
+  comprovativoUrl?: boolean
   mentoria?: boolean | Prisma.MentoriaDefaultArgs<ExtArgs>
   usuario?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["mentoriaInscricao"]>
@@ -584,6 +695,9 @@ export type MentoriaInscricaoSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   usuarioId?: boolean
   status?: boolean
   created_at?: boolean
+  metodoPagamento?: boolean
+  referenciaPagamento?: boolean
+  comprovativoUrl?: boolean
   mentoria?: boolean | Prisma.MentoriaDefaultArgs<ExtArgs>
   usuario?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["mentoriaInscricao"]>
@@ -594,9 +708,12 @@ export type MentoriaInscricaoSelectScalar = {
   usuarioId?: boolean
   status?: boolean
   created_at?: boolean
+  metodoPagamento?: boolean
+  referenciaPagamento?: boolean
+  comprovativoUrl?: boolean
 }
 
-export type MentoriaInscricaoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "mentoriaId" | "usuarioId" | "status" | "created_at", ExtArgs["result"]["mentoriaInscricao"]>
+export type MentoriaInscricaoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "mentoriaId" | "usuarioId" | "status" | "created_at" | "metodoPagamento" | "referenciaPagamento" | "comprovativoUrl", ExtArgs["result"]["mentoriaInscricao"]>
 export type MentoriaInscricaoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   mentoria?: boolean | Prisma.MentoriaDefaultArgs<ExtArgs>
   usuario?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -622,6 +739,9 @@ export type $MentoriaInscricaoPayload<ExtArgs extends runtime.Types.Extensions.I
     usuarioId: string
     status: $Enums.InscricaoStatus
     created_at: Date
+    metodoPagamento: string | null
+    referenciaPagamento: string | null
+    comprovativoUrl: string | null
   }, ExtArgs["result"]["mentoriaInscricao"]>
   composites: {}
 }
@@ -1052,6 +1172,9 @@ export interface MentoriaInscricaoFieldRefs {
   readonly usuarioId: Prisma.FieldRef<"MentoriaInscricao", 'String'>
   readonly status: Prisma.FieldRef<"MentoriaInscricao", 'InscricaoStatus'>
   readonly created_at: Prisma.FieldRef<"MentoriaInscricao", 'DateTime'>
+  readonly metodoPagamento: Prisma.FieldRef<"MentoriaInscricao", 'String'>
+  readonly referenciaPagamento: Prisma.FieldRef<"MentoriaInscricao", 'String'>
+  readonly comprovativoUrl: Prisma.FieldRef<"MentoriaInscricao", 'String'>
 }
     
 

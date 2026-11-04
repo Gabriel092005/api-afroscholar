@@ -1,3 +1,4 @@
+import { bolsasComMentoria, eStaff } from "@/lib/mentoria-acesso";
 import prisma from "@/lib/prisma";
 import { FastifyReply, FastifyRequest } from "fastify";
 
@@ -7,6 +8,7 @@ export async function listar(req: FastifyRequest, res: FastifyReply) {
     const { bolsaId } = req.query as { bolsaId?: string };
 
     const where = bolsaId ? { bolsaId } : {};
+    const [staff, minhasBolsas] = await Promise.all([eStaff(usuarioId), bolsasComMentoria(usuarioId)]);
 
     const comunidades = await prisma.community.findMany({
       where,
@@ -26,7 +28,16 @@ export async function listar(req: FastifyRequest, res: FastifyReply) {
       },
     });
 
-    const comunidadesMapeadas = comunidades.map((c) => ({
+    // Uma comunidade de bolsa só aparece a quem tem a mentoria ou já é membro aprovado.
+    const visiveis = comunidades.filter(
+      (c) =>
+        staff ||
+        !c.bolsaId ||
+        minhasBolsas.includes(c.bolsaId) ||
+        c.membros.some((m) => m.status === "APROVADO")
+    );
+
+    const comunidadesMapeadas = visiveis.map((c) => ({
       ...c,
       souMembro: c.membros.some((m) => m.status === "APROVADO"),
       solicitacaoPendente: c.membros.some((m) => m.status === "PENDENTE"),

@@ -4,4 +4,5 @@ build/
 .env.dev
 *.log
 uploads/
+documentos-privados/
 src/lib/*.json

@@ -3,6 +3,8 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import crypto from "node:crypto";
 import { io } from "@/server";
+import { concederMentoria } from "@/lib/mentoria-acesso";
+import { temCobrancaMomenu } from "@/lib/pagamentos-momenu";
 
 const avaliarSchema = z.object({
   status: z.enum(["APROVADA", "REJEITADA"]),
@@ -36,15 +38,30 @@ export const avaliarInscricao = async (
       });
     }
 
+    if (await temCobrancaMomenu("BOLSA", id)) {
+      return res.status(409).send({
+        error: "Conflict",
+        message: "Este pagamento é confirmado automaticamente: não precisa de aprovação.",
+      });
+    }
+
     const atualizada = await prisma.bolsaInscricao.update({
       where: { id },
       data: {
         status: body.status,
         observacoes: body.observacoes || inscricao.observacoes,
+        ...(inscricao.tipoInteresse === "INSCRICAO"
+          ? { inscritoEm: body.status === "APROVADA" ? inscricao.inscritoEm ?? new Date() : null }
+          : {}),
       },
     });
 
     if (body.status === "APROVADA") {
+      // Só a mentoria abre conteúdos. Aprovar de novo não pode somar mais um mês.
+      if (inscricao.tipoInteresse === "MENTORIA" && inscricao.status !== "APROVADA") {
+        await concederMentoria({ usuarioId: inscricao.usuarioId, bolsaId: inscricao.bolsaId, pago: true });
+      }
+
       await prisma.notification.create({
         data: {
           titulo: "Inscrição Aprovada ✅",

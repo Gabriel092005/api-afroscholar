@@ -1,4 +1,4 @@
-import { PrismaClient } from "@/generated/client"
+import { PrismaClient, type BolsaStatus, type CursoStatus } from "@/generated/client"
 import bcrypt from "bcryptjs"
 import crypto from "node:crypto"
 
@@ -155,7 +155,7 @@ async function main() {
 
   const bolsas = []
   for (const data of bolsasData) {
-    const bolsa = await prisma.bolsa.create({ data })
+    const bolsa = await prisma.bolsa.create({ data: { ...data, status: data.status as BolsaStatus, criadoPorId: gestor.id } })
     bolsas.push(bolsa)
   }
 
@@ -289,7 +289,7 @@ async function main() {
 
   const cursos = []
   for (const data of cursosData) {
-    const curso = await prisma.curso.create({ data })
+    const curso = await prisma.curso.create({ data: { ...data, status: data.status as CursoStatus, criadoPorId: gestor.id } })
     cursos.push(curso)
   }
 

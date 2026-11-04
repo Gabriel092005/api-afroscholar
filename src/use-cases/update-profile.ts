@@ -7,6 +7,8 @@ interface UpdateProfileRequest {
   nome?: string;
   email?: string;
   phone?: string;
+  bio?: string | null;
+  paisMentoria?: string | null;
   image_path?: string | null;
 }
 
@@ -26,11 +28,13 @@ export class UpdateProfileUseCase {
       }
     }
 
-    const updateData: Prisma.UsuarioUpdateInput = {};
+    const updateData: Prisma.UserUpdateInput = {};
 
     if (data.nome !== undefined) updateData.nome = data.nome;
     if (data.email !== undefined) updateData.email = data.email;
     if (data.phone !== undefined) updateData.phone = data.phone;
+    if (data.bio !== undefined) updateData.bio = data.bio;
+    if (data.paisMentoria !== undefined) updateData.paisMentoria = data.paisMentoria;
     if (data.image_path !== undefined)
       updateData.image_path = data.image_path;
 

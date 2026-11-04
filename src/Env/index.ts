@@ -34,6 +34,10 @@ const envSchema =  z.object ({
     JITSI_APP_ID: z.string().default(""),
     JITSI_KEY_ID: z.string().default(""),
     JITSI_PRIVATE_KEY: z.string().default(""),
+    MOMENU_BASE_URL: z.string().default("https://api.momenu.online"),
+    MOMENU_API_KEY: z.string().default(""),
+    MOMENU_QA: z.enum(["true", "false"]).default("false"),
+    MOMENU_WEBHOOK_SECRET: z.string().default(""),
 })
 
 const _env = envSchema.safeParse(process.env)

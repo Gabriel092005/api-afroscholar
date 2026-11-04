@@ -1,3 +1,4 @@
+import { bolsasForaDoCatalogo } from "@/lib/mentoria-acesso";
 import prisma from "@/lib/prisma";
 import { FastifyReply, FastifyRequest } from "fastify";
 
@@ -6,8 +7,14 @@ export const listBolsasDestaques = async (
   res: FastifyReply
 ) => {
   try {
+    const usuarioId = await req
+      .jwtVerify<{ sub: string }>()
+      .then((token) => token.sub)
+      .catch(() => null);
+    const foraDoCatalogo = usuarioId ? await bolsasForaDoCatalogo(usuarioId) : [];
+
     const bolsas = await prisma.bolsa.findMany({
-      where: { status: "PUBLICADA" },
+      where: { status: "PUBLICADA", id: { notIn: foraDoCatalogo } },
       include: {
         _count: {
           select: { inscricoes: true },

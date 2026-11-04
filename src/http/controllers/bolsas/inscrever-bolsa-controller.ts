@@ -1,18 +1,39 @@
+import crypto from "node:crypto";
 import { upload } from "@/lib/upload";
 import prisma from "@/lib/prisma";
+import type { Prisma } from "@/generated/client";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
+import { concederMentoria, temMentoriaNaBolsa } from "@/lib/mentoria-acesso";
+import {
+  iniciarCobranca,
+  metodoPagamentoSchema,
+  responderErroPagamento,
+  serializarPagamento,
+  telefoneSchema,
+} from "@/lib/pagamentos-momenu";
+
+// Tem de coincidir com o preço mostrado em ScholarshipDetail.tsx.
+const CONSULTORIA_PRECO = 5000;
 
 const inscribirSchema = z.object({
-  tipoInteresse: z.enum(["CONSULTORIA", "MENTORIA", "INSCRICAO"]).optional(),
+  tipoInteresse: z.enum(["CONSULTORIA", "MENTORIA", "INSCRICAO"]),
   observacoes: z.string().optional(),
   nome: z.string().optional(),
   email: z.string().optional(),
   telefone: z.string().optional(),
-  metodoPagamento: z.string().optional(),
-  referenciaPagamento: z.string().optional(),
+  phoneNumber: telefoneSchema.optional(),
+  metodoPagamento: metodoPagamentoSchema.optional(),
   dataAgendada: z.string().optional(),
 });
+
+function precoDoServico(
+  bolsa: { precoInscricao: number | null; precoMentoria: number | null },
+  tipo: z.infer<typeof inscribirSchema>["tipoInteresse"]
+): number | null {
+  if (tipo === "CONSULTORIA") return CONSULTORIA_PRECO;
+  return tipo === "MENTORIA" ? bolsa.precoMentoria : bolsa.precoInscricao;
+}
 
 function validarAgendamento(dataAgendadaRaw?: string): { data?: Date; erro?: string } {
   if (!dataAgendadaRaw) {
@@ -58,7 +79,6 @@ export const inscribirBolsa = async (
 
     await new Promise<void>((resolve, reject) => {
       upload.fields([
-        { name: "comprovativo", maxCount: 1 },
         { name: "docFile", maxCount: 10 },
       ])(req.raw as any, res.raw as any, (err: any) => {
         if (err) return reject(err);
@@ -68,7 +88,6 @@ export const inscribirBolsa = async (
 
     const rawReq = req.raw as any;
     const files = rawReq.files as { [fieldname: string]: Express.Multer.File[] } || {};
-    const comprovativoFile = files["comprovativo"]?.[0];
     const docFiles = files["docFile"] || [];
     const docNomes = rawReq.body.docNome
       ? (Array.isArray(rawReq.body.docNome) ? rawReq.body.docNome : [rawReq.body.docNome])
@@ -117,65 +136,142 @@ export const inscribirBolsa = async (
       dataAgendada = agendamento.data;
     }
 
+    const chave = { bolsaId_usuarioId: { bolsaId: id, usuarioId: userId } };
+    const existente = await prisma.bolsaInscricao.findUnique({ where: chave });
+
+    // A consultoria pode ser marcada mais de uma vez, e a mentoria renovada quando terminar.
+    if (body.tipoInteresse === "INSCRICAO" && existente?.inscritoEm) {
+      return res.status(400).send({
+        error: "Bad Request",
+        message: "Já está inscrito nesta bolsa.",
+      });
+    }
+
+    // Quem comprou outro serviço depois perdeu o tipo na inscrição, mas não a mentoria.
+    if (body.tipoInteresse === "MENTORIA" && (await temMentoriaNaBolsa(userId, id))) {
+      return res.status(400).send({
+        error: "Bad Request",
+        message: "Já tem a mentoria desta bolsa.",
+      });
+    }
+
+    const valor = precoDoServico(bolsa, body.tipoInteresse);
+    if (valor === null) {
+      return res.status(400).send({
+        error: "Bad Request",
+        message: "Este serviço não está disponível nesta bolsa.",
+      });
+    }
+
     const documentosData = docFiles.map((f, i) => ({
       file: f.filename,
       nome: docNomes[i] || `Documento ${i + 1}`,
     }));
 
-    const inscricao = await prisma.bolsaInscricao.upsert({
-      where: {
-        bolsaId_usuarioId: {
+    const dadosInscricao = {
+      tipoInteresse: body.tipoInteresse,
+      observacoes: body.observacoes,
+      nome: body.nome,
+      email: body.email,
+      telefone: body.telefone,
+      dataAgendada,
+      duracaoMinutos: dataAgendada ? 60 : undefined,
+    };
+
+    const gravarInscricao = (
+      tx: Prisma.TransactionClient,
+      alvoId: string | undefined,
+      pagamento: {
+        status: "PENDENTE" | "APROVADA";
+        valorPago: number | null;
+        metodoPagamento: string | null;
+        referenciaPagamento: string | null;
+        comprovativoUrl: string | null;
+        inscritoEm?: Date;
+      }
+    ) =>
+      tx.bolsaInscricao.upsert({
+        where: chave,
+        update: {
+          ...dadosInscricao,
+          ...pagamento,
+          documentos: { deleteMany: {}, create: documentosData },
+        },
+        create: {
+          ...(alvoId ? { id: alvoId } : {}),
           bolsaId: id,
           usuarioId: userId,
+          ...dadosInscricao,
+          ...pagamento,
+          documentos: { create: documentosData },
         },
-      },
-      update: {
-        tipoInteresse: body.tipoInteresse,
-        observacoes: body.observacoes,
-        nome: body.nome,
-        email: body.email,
-        telefone: body.telefone,
-        metodoPagamento: body.metodoPagamento,
-        referenciaPagamento: body.referenciaPagamento,
-        comprovativoUrl: comprovativoFile ? comprovativoFile.filename : undefined,
-        dataAgendada: dataAgendada,
-        duracaoMinutos: dataAgendada ? 60 : undefined,
-        status: "PENDENTE",
-        documentos: {
-          deleteMany: {},
-          create: documentosData,
-        },
-      },
-      create: {
-        bolsaId: id,
-        usuarioId: userId,
-        tipoInteresse: body.tipoInteresse,
-        observacoes: body.observacoes,
-        nome: body.nome,
-        email: body.email,
-        telefone: body.telefone,
-        metodoPagamento: body.metodoPagamento,
-        referenciaPagamento: body.referenciaPagamento,
-        comprovativoUrl: comprovativoFile ? comprovativoFile.filename : undefined,
-        dataAgendada: dataAgendada,
-        duracaoMinutos: dataAgendada ? 60 : undefined,
-        documentos: {
-          create: documentosData,
-        },
-      },
+      });
+
+    if (valor <= 0) {
+      const eMentoria = body.tipoInteresse === "MENTORIA";
+      const inscricao = await prisma.$transaction(async (tx) => {
+        const gravada = await gravarInscricao(tx, undefined, {
+          status: "APROVADA",
+          valorPago: 0,
+          metodoPagamento: "GRATUITO",
+          referenciaPagamento: null,
+          comprovativoUrl: null,
+          ...(body.tipoInteresse === "INSCRICAO" ? { inscritoEm: new Date() } : {}),
+        });
+        if (eMentoria) await concederMentoria({ usuarioId: userId, bolsaId: id, pago: false }, tx);
+        return gravada;
+      });
+
+      return res.status(200).send({
+        id: inscricao.id,
+        status: inscricao.status,
+        message: eMentoria ? "Mentoria ativada por 1 mês." : "Inscrição realizada.",
+      });
+    }
+
+    const alvoId = existente?.id ?? crypto.randomUUID();
+
+    const pagamento = await iniciarCobranca({
+      tipo: "BOLSA",
+      itemId: id,
+      alvoId,
+      usuarioId: userId,
+      valor,
+      metodo: body.metodoPagamento,
+      phoneNumber: body.phoneNumber,
+      produto: bolsa.titulo || "Bolsa",
+      link: `/bolsas/${id}`,
+      persistirAlvo: (tx, cobranca) =>
+        gravarInscricao(tx, alvoId, {
+          status: "PENDENTE",
+          valorPago: null,
+          metodoPagamento: cobranca.metodo,
+          referenciaPagamento: cobranca.referencia,
+          comprovativoUrl: null,
+        }),
     });
 
+    const pago = pagamento.status === "PAGO";
+
     return res.status(200).send({
-      id: inscricao.id,
-      message: "Inscrição realizada com sucesso",
+      id: alvoId,
+      status: pago ? "APROVADA" : "PENDENTE",
+      pagamento: serializarPagamento(pagamento),
+      message: pago
+        ? "Pagamento confirmado. Acesso aos cursos e aulas ao vivo liberado."
+        : "Pagamento iniciado. A inscrição fica aprovada assim que for confirmado.",
     });
   } catch (error) {
     if (error instanceof z.ZodError) {
       return res.status(400).send({
         error: "Validation Error",
+        message: error.issues[0]?.message,
         issues: error.format(),
       });
     }
+    const resposta = responderErroPagamento(error, req, res);
+    if (resposta) return resposta;
+
     req.log.error(error);
     return res.status(500).send({
       error: "Internal Server Error",

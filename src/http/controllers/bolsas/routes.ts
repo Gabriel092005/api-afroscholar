@@ -13,7 +13,9 @@ import { cancelarInscricao } from "./cancelar-inscricao-controller";
 import { avaliarInscricao } from "./avaliar-inscricao-controller";
 import { listInscricoesAdmin } from "./list-inscricoes-admin-controller";
 import { chatBolsa } from "./chat-bolsa-controller";
+import { meuEstadoBolsa } from "./meu-estado-bolsa-controller";
 import { verifyJWT } from "../middleware/verify-jwt";
+import { verifyMentoriaPaga } from "../middleware/verify-mentoria-paga";
 import { verifyUserRole } from "../middleware/verify-user-role";
 
 export async function bolsasRoutes(fastify: FastifyInstance) {
@@ -25,8 +27,9 @@ export async function bolsasRoutes(fastify: FastifyInstance) {
   fastify.delete("/bolsas/:id", { onRequest: [verifyJWT, verifyUserRole("ADMIN", "GESTOR")] }, deleteBolsa);
 
   fastify.post("/bolsas/:id/inscrever", { onRequest: [verifyJWT] }, inscribirBolsa);
+  fastify.get("/bolsas/:id/meu-estado", { onRequest: [verifyJWT] }, meuEstadoBolsa);
   fastify.get("/bolsas/:id/consultoria/slots", listConsultoriaSlots);
-  fastify.post("/bolsas/chat", { onRequest: [verifyJWT] }, chatBolsa);
+  fastify.post("/bolsas/chat", { onRequest: [verifyJWT, verifyMentoriaPaga] }, chatBolsa);
 
   fastify.get("/inscricoes", { onRequest: [verifyJWT] }, listMinhasInscricoes);
   fastify.get("/inscricoes/:id", { onRequest: [verifyJWT] }, getInscricao);

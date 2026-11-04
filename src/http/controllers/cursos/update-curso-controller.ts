@@ -1,3 +1,5 @@
+import { liberarCursoParaMentorados } from "@/lib/mentoria-acesso";
+import { erroAoVincularBolsa, erroNoPrecoDoCurso } from "@/lib/curso-bolsa";
 import prisma from "@/lib/prisma";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
@@ -9,7 +11,6 @@ const updateCursoSchema = z.object({
   nivel: z.string().optional(),
   duracao: z.string().optional(),
   preco: z.number().optional(),
-  precoOriginal: z.number().optional(),
   idioma: z.string().optional(),
   tags: z.array(z.string()).optional(),
   descricao: z.string().optional(),
@@ -17,6 +18,7 @@ const updateCursoSchema = z.object({
   status: z.enum(["RASCUNHO", "PUBLICADO"]).optional(),
   mentorNome: z.string().optional(),
   mentorAvatar: z.string().optional(),
+  bolsaId: z.string().min(1).nullable().optional(),
 });
 
 export const updateCurso = async (
@@ -38,10 +40,26 @@ export const updateCurso = async (
       });
     }
 
+    if (body.bolsaId && body.bolsaId !== existingCurso.bolsaId) {
+      const erro = await erroAoVincularBolsa(body.bolsaId, req.user.sub);
+      if (erro) return res.status(erro.status).send({ error: "Bad Request", message: erro.message });
+    }
+
+    const bolsaFinal = body.bolsaId === undefined ? existingCurso.bolsaId : body.bolsaId;
+    if (!bolsaFinal) {
+      const erroPreco = erroNoPrecoDoCurso(body.preco ?? existingCurso.preco);
+      if (erroPreco) return res.status(400).send({ error: "Bad Request", message: erroPreco });
+    }
+
     const curso = await prisma.curso.update({
       where: { id },
-      data: body,
+      // O acesso a um curso de bolsa vem da inscrição na bolsa, não de uma compra à parte.
+      data: bolsaFinal ? { ...body, preco: 0 } : body,
     });
+
+    if (bolsaFinal && bolsaFinal !== existingCurso.bolsaId) {
+      await liberarCursoParaMentorados(curso.id, bolsaFinal);
+    }
 
     return res.status(200).send({
       id: curso.id,

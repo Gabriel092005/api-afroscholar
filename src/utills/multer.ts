@@ -1,7 +1,7 @@
 import multer from 'multer'
 import fs from 'fs'
 import path from 'path'
-import { UPLOAD_PATH } from '@/lib/upload';
+import { UPLOAD_PATH, filtroDeFicheiros } from '@/lib/upload';
 
 // MESMO CAMINHO USADO PELO fastifyStatic E PELO lib/upload
 const uploadDir = UPLOAD_PATH;
@@ -27,4 +27,5 @@ export const upload = multer({
   limits: {
     fileSize: 50 * 1024 * 1024 // 50MB
   },
+  fileFilter: filtroDeFicheiros,
 })

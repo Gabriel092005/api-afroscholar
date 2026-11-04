@@ -179,6 +179,16 @@ export type CursoPagamento = Prisma.CursoPagamentoModel
  */
 export type CursoUsuario = Prisma.CursoUsuarioModel
 /**
+ * Model Documento
+ * 
+ */
+export type Documento = Prisma.DocumentoModel
+/**
+ * Model DocumentoCompra
+ * 
+ */
+export type DocumentoCompra = Prisma.DocumentoCompraModel
+/**
  * Model Depoimento
  * 
  */
@@ -244,6 +254,11 @@ export type AulaOnlineParticipante = Prisma.AulaOnlineParticipanteModel
  */
 export type Mentoria = Prisma.MentoriaModel
 /**
+ * Model MentoriaAcesso
+ * Acesso de quem pagou uma mentoria: não se perde ao comprar outro serviço da mesma bolsa.
+ */
+export type MentoriaAcesso = Prisma.MentoriaAcessoModel
+/**
  * Model MentoriaInscricao
  * 
  */
@@ -273,3 +288,8 @@ export type MapaGlobal = Prisma.MapaGlobalModel
  * 
  */
 export type Atividade = Prisma.AtividadeModel
+/**
+ * Model PagamentoMomenu
+ * 
+ */
+export type PagamentoMomenu = Prisma.PagamentoMomenuModel

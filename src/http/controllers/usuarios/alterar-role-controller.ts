@@ -14,7 +14,7 @@ export async function alterarRoleController(req: FastifyRequest, res: FastifyRep
   try {
     const { id } = paramsSchema.parse(req.params);
     const { role } = bodySchema.parse(req.body);
-    const currentUserId = req.user.id;
+    const currentUserId = req.user.sub;
 
     const useCase = new AlterarRoleUseCase();
     const { user } = await useCase.execute({

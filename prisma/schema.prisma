@@ -80,6 +80,11 @@ enum CursoStatus {
   PUBLICADO
 }
 
+enum DocumentoStatus {
+  RASCUNHO
+  PUBLICADO
+}
+
 enum AulaTipo {
   VIDEO
   PDF
@@ -130,8 +135,10 @@ model User {
   role             Role        @default(USUARIO)
   estado_conta     EstadoConta @default(ACTIVA)
   image_path       String?
+  bio              String?
+  paisMentoria     String?
   pushSubscription String?
-  resetToken       String?     @unique
+  resetToken      String?     @unique
   resetTokenExpiry DateTime?
   created_at       DateTime    @default(now())
   last_active_at   DateTime    @default(now())
@@ -154,6 +161,12 @@ model User {
   duvidas             CommunityQuestion[]
   respostasDuvidas    CommunityAnswer[]
   atividades          Atividade[]
+  bolsasCriadas       Bolsa[]                  @relation("BolsasCriadas")
+  cursosCriados       Curso[]                  @relation("CursosCriados")
+  documentos          Documento[]
+  documentosComprados DocumentoCompra[]
+  pagamentosMomenu    PagamentoMomenu[]
+  mentoriaAcessos     MentoriaAcesso[]
 }
 
 model Notification {
@@ -503,13 +516,19 @@ model Bolsa {
   modalidade       String?
   imagemBg         String?
   datasImportantes Json?
-  created_at       DateTime    @default(now())
-  updated_at       DateTime    @updatedAt
+  created_at   DateTime    @default(now())
+  updated_at   DateTime    @updatedAt
+
+  criadoPorId String?
+  criadoPor   User?   @relation("BolsasCriadas", fields: [criadoPorId], references: [id])
 
   inscricoes   BolsaInscricao[]
   aulas        AulaOnline[]
   comunidades  Community[]
   mentorias    Mentoria[]
+  materiais    Documento[]
+  mentoriaAcessos MentoriaAcesso[]
+  cursos       Curso[]
 }
 
 model BolsaInscricao {
@@ -532,6 +551,9 @@ model BolsaInscricao {
   valorPago           Float?
   dataAgendada        DateTime?
   duracaoMinutos      Int?         @default(60)
+  /// Quando a inscrição foi confirmada. tipoInteresse guarda só o último serviço pedido,
+  /// e comprar depois uma consultoria não pode apagar o facto de já estar inscrito.
+  inscritoEm          DateTime?
   created_at          DateTime        @default(now())
   updated_at          DateTime        @updatedAt
 
@@ -567,7 +589,6 @@ model Curso {
   estudantes    Int         @default(0)
   rating        Float       @default(0)
   preco         Float
-  precoOriginal Float?
   idioma        String?
   tags          String[]
   descricao     String?
@@ -577,6 +598,12 @@ model Curso {
   mentorAvatar  String?
   created_at    DateTime    @default(now())
   updated_at    DateTime    @updatedAt
+
+  criadoPorId String?
+  criadoPor   User?   @relation("CursosCriados", fields: [criadoPorId], references: [id])
+
+  bolsaId String?
+  bolsa   Bolsa?  @relation(fields: [bolsaId], references: [id])
 
   aulas      Aula[]
   pagamentos CursoPagamento[]
@@ -628,6 +655,55 @@ model CursoUsuario {
   usuario User  @relation(fields: [usuarioId], references: [id])
 
   @@unique([cursoId, usuarioId])
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SCHOOLAR — DOCUMENTOS (publicados por gestores)
+// ═══════════════════════════════════════════════════════════════
+
+model Documento {
+  id          String          @id @default(uuid())
+  titulo      String
+  descricao   String?
+  categoria   String?
+  fileName    String?
+  fileUrl     String
+  fileType    String?
+  fileSize    Int?
+  status      DocumentoStatus @default(RASCUNHO)
+  criadoPorId String
+  criadoPor   User            @relation(fields: [criadoPorId], references: [id])
+  // Com bolsa, só quem tem a mentoria dessa bolsa o vê.
+  bolsaId     String?
+  bolsa       Bolsa?          @relation(fields: [bolsaId], references: [id], onDelete: Cascade)
+  // 0 é gratuito. Com preço, o ficheiro só se abre depois de comprado.
+  preco       Float           @default(0)
+  created_at  DateTime        @default(now())
+  updated_at  DateTime        @updatedAt
+
+  compras DocumentoCompra[]
+
+  @@index([bolsaId])
+  @@map("documentos")
+}
+
+model DocumentoCompra {
+  id           String          @id @default(uuid())
+  documentoId  String
+  usuarioId    String
+  valor        Float
+  metodo       String?
+  referencia   String?
+  status       PagamentoStatus @default(PENDENTE)
+  comprovativo String?
+  created_at   DateTime        @default(now())
+  updated_at   DateTime        @updatedAt
+
+  documento Documento @relation(fields: [documentoId], references: [id], onDelete: Cascade)
+  usuario   User      @relation(fields: [usuarioId], references: [id])
+
+  @@unique([documentoId, usuarioId])
+  @@map("documento_compras")
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -896,6 +972,7 @@ model Mentoria {
   id         String   @id @default(uuid())
   nome       String
   descricao  String?
+  preco      Float    @default(100)
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
@@ -904,16 +981,45 @@ model Mentoria {
 
   aulas      AulaOnline[]
   inscricoes MentoriaInscricao[]
+  acessos    MentoriaAcesso[]
 
   @@map("mentorias")
 }
 
-model MentoriaInscricao {
-  id         String          @id @default(uuid())
-  mentoriaId String
+/// Acesso de quem pagou uma mentoria: não se perde ao comprar outro serviço da mesma bolsa.
+model MentoriaAcesso {
+  id         String   @id @default(uuid())
   usuarioId  String
-  status     InscricaoStatus @default(PENDENTE)
-  created_at DateTime        @default(now())
+  bolsaId    String?
+  mentoriaId String?
+  /// Uma mentoria gratuita abre o que lhe está ligado, mas não a IA.
+  pago       Boolean  @default(true)
+  created_at DateTime @default(now())
+  /// A mentoria dura um mês. Depois disto, deixa de abrir o que lhe está ligado.
+  expiraEm   DateTime
+  /// Quando o fim do acesso já foi tratado (aviso e saída das comunidades). Renovar limpa-o.
+  encerradoEm DateTime?
+
+  usuario  User      @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  bolsa    Bolsa?    @relation(fields: [bolsaId], references: [id], onDelete: Cascade)
+  mentoria Mentoria? @relation(fields: [mentoriaId], references: [id], onDelete: Cascade)
+
+  @@unique([usuarioId, bolsaId])
+  @@unique([usuarioId, mentoriaId])
+  @@index([bolsaId])
+  @@index([expiraEm])
+  @@map("mentoria_acessos")
+}
+
+model MentoriaInscricao {
+  id                  String          @id @default(uuid())
+  mentoriaId          String
+  usuarioId           String
+  status              InscricaoStatus @default(PENDENTE)
+  created_at          DateTime        @default(now())
+  metodoPagamento     String?
+  referenciaPagamento String?
+  comprovativoUrl     String?
 
   mentoria Mentoria @relation(fields: [mentoriaId], references: [id])
   usuario  User     @relation(fields: [usuarioId], references: [id])
@@ -994,4 +1100,48 @@ model Atividade {
   updatedAt      DateTime @updatedAt
 
   @@map("atividades")
+}
+
+// ═══════════════════════════════════════════════════════════════
+// PAGAMENTOS — cobranças criadas na MoMenu (Express e Referência)
+// ═══════════════════════════════════════════════════════════════
+
+enum TipoPagamentoMomenu {
+  CURSO
+  BOLSA
+  MENTORIA
+  DOCUMENTO
+}
+
+enum PagamentoMomenuStatus {
+  PENDENTE
+  PAGO
+  FALHADO
+}
+
+model PagamentoMomenu {
+  id                String                @id @default(uuid())
+  transactionId     String?               @unique
+  operationId       String?
+  tipo              TipoPagamentoMomenu
+  alvoId            String
+  usuarioId         String?
+  valor             Float
+  metodo            String
+  status            PagamentoMomenuStatus @default(PENDENTE)
+  referenceNumber   String?
+  entity            String?
+  dueDate           DateTime?
+  invoiceUrl        String?
+  falhaMotivo       String?
+  ultimaVerificacao DateTime?
+  pagoEm            DateTime?
+  created_at        DateTime              @default(now())
+  updated_at        DateTime              @updatedAt
+
+  usuario User? @relation(fields: [usuarioId], references: [id], onDelete: SetNull)
+
+  @@index([tipo, alvoId])
+  @@index([status, ultimaVerificacao])
+  @@map("pagamentos_momenu")
 }

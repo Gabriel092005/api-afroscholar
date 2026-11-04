@@ -9,6 +9,7 @@ import { upload, UPLOAD_PATH } from "./lib/upload";
 import { userRoutes } from "./http/controllers/usuarios/routes";
 import { googleOAuthRoutes } from "./http/controllers/auth/google-oauth";
 import { RegisterLastActiveHook } from "./hooks/update-last-active";
+import { registarAuditoriaGestor } from "./hooks/auditoria-gestor";
 import { NotificationRoutes } from "./http/controllers/notifications/Notification-routes";
 import { cursosRoutes } from "./http/controllers/cursos/routes";
 import { bolsasRoutes } from "./http/controllers/bolsas/routes";
@@ -16,7 +17,7 @@ import { uploadRoutes } from "./http/controllers/upload/routes";
 import { comunidadesRoutes } from "./http/controllers/comunidades/routes";
 import { depoimentosRoutes } from "./http/controllers/depoimentos/routes";
 import { adminRoutes } from "./http/controllers/admin/routes";
-import { NovidadesRoutes } from "./http/controllers/novidades/routes";
+import { gestorRoutes } from "./http/controllers/gestor/routes";import { NovidadesRoutes } from "./http/controllers/novidades/routes";
 import { analiseDocumentoRoutes } from "./http/controllers/analise-documento/routes";
 import { perfilAcademicoRoutes } from "./http/controllers/perfil-academico/routes";
 import { aulasOnlineRoutes } from "./http/controllers/aulas-online/routes";
@@ -27,6 +28,13 @@ import { homeBannersRoutes } from "./http/controllers/home-banners/routes";
 import { mapaGlobalRoutes } from "./http/controllers/mapa-global/routes";
 import { atividadesRoutes } from "./http/controllers/atividades/routes";
 import { testEmail } from "./http/controllers/test-email";
+import { verificarEmail } from "./lib/mail";
+import { verifyJWT } from "./http/controllers/middleware/verify-jwt";
+import { verifyUserRole } from "./http/controllers/middleware/verify-user-role";
+import { gatewayRoutes } from "./http/controllers/gateway/routes";
+import { mentoresRoutes } from "./http/controllers/mentores/routes";
+import { webhookConfigurado } from "./http/controllers/gateway/webhook-momenu-controller";
+import { setupSincronizacaoPagamentos } from "./Jobs/sincronizar-pagamentos";
 import { prisma } from "./lib/prisma";
 
 
@@ -76,6 +84,9 @@ app.addHook('onRequest', (request, reply, done) => {
 
 app.register(RegisterLastActiveHook);
 
+// Antes das rotas: um hook só se aplica ao que é registado depois dele.
+registarAuditoriaGestor(app);
+
 if (env.GOOGLE_CLIENT_ID) {
   app.register(fastifyOAuth2, {
     name: 'googleOAuth2',
@@ -106,6 +117,7 @@ app.register(uploadRoutes)
 app.register(comunidadesRoutes)
 app.register(depoimentosRoutes)
 app.register(adminRoutes)
+app.register(gestorRoutes)
 app.register(NovidadesRoutes)
 app.register(analiseDocumentoRoutes)
 app.register(perfilAcademicoRoutes)
@@ -116,7 +128,10 @@ app.register(mentoriasRoutes)
 app.register(homeBannersRoutes)
 app.register(mapaGlobalRoutes)
 app.register(atividadesRoutes)
-app.post('/diagnostico/test-email', testEmail)
+app.register(gatewayRoutes)
+app.register(mentoresRoutes)
+// Só para administradores: aberta, servia para enviar emails a qualquer pessoa em nosso nome.
+app.post('/diagnostico/test-email', { onRequest: [verifyJWT, verifyUserRole("ADMIN")] }, testEmail)
 
 let io: Server;
 
@@ -165,10 +180,21 @@ io.on("connection", (socket) => {
     }
   }
 
-  socket.on("entrar_comunidade", (comunidadeId: string) => {
-    socket.join(`comunidade:${comunidadeId}`);
-    if (process.env.NODE_ENV !== 'production') {
-      console.log(`👥 Usuário ${userId} entrou na sala comunidade:${comunidadeId}`);
+  // A sala recebe as mensagens em tempo real: só entra quem é membro aprovado.
+  socket.on("entrar_comunidade", async (comunidadeId: string) => {
+    if (!userId || typeof comunidadeId !== "string") return;
+    try {
+      const membro = await prisma.communityMember.findUnique({
+        where: { comunidadeId_usuarioId: { comunidadeId, usuarioId: String(userId) } },
+        select: { status: true },
+      });
+      if (membro?.status !== "APROVADO") return;
+      socket.join(`comunidade:${comunidadeId}`);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log(`👥 Usuário ${userId} entrou na sala comunidade:${comunidadeId}`);
+      }
+    } catch (error) {
+      console.error("[socket entrar_comunidade]", error);
     }
   });
 
@@ -189,6 +215,11 @@ io.on("connection", (socket) => {
 });
 
 await app.listen({ port: env.PORT, host: '0.0.0.0' });
+void verificarEmail();
+setupSincronizacaoPagamentos();
+if (!webhookConfigurado()) {
+  console.error(' ❌MOMENU_WEBHOOK_SECRET não está configurado: os webhooks da MoMenu serão recusados.');
+}
     console.log("Servidor rodando 🐱‍🏍");
   } catch (err) {
     console.error(err);

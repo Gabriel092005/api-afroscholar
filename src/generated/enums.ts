@@ -106,6 +106,14 @@ export const CursoStatus = {
 export type CursoStatus = (typeof CursoStatus)[keyof typeof CursoStatus]
 
 
+export const DocumentoStatus = {
+  RASCUNHO: 'RASCUNHO',
+  PUBLICADO: 'PUBLICADO'
+} as const
+
+export type DocumentoStatus = (typeof DocumentoStatus)[keyof typeof DocumentoStatus]
+
+
 export const AulaTipo = {
   VIDEO: 'VIDEO',
   PDF: 'PDF',
@@ -169,3 +177,22 @@ export const AulaOnlineStatus = {
 } as const
 
 export type AulaOnlineStatus = (typeof AulaOnlineStatus)[keyof typeof AulaOnlineStatus]
+
+
+export const TipoPagamentoMomenu = {
+  CURSO: 'CURSO',
+  BOLSA: 'BOLSA',
+  MENTORIA: 'MENTORIA',
+  DOCUMENTO: 'DOCUMENTO'
+} as const
+
+export type TipoPagamentoMomenu = (typeof TipoPagamentoMomenu)[keyof typeof TipoPagamentoMomenu]
+
+
+export const PagamentoMomenuStatus = {
+  PENDENTE: 'PENDENTE',
+  PAGO: 'PAGO',
+  FALHADO: 'FALHADO'
+} as const
+
+export type PagamentoMomenuStatus = (typeof PagamentoMomenuStatus)[keyof typeof PagamentoMomenuStatus]

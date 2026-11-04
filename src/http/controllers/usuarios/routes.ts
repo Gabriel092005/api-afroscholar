@@ -24,9 +24,9 @@ export async function userRoutes(app:FastifyInstance) {
      app.post('/sessions',Authenticate)
      app.get('/profile', {onRequest:[verifyJWT]}, getProfile)
      app.get('/metrics', {onRequest:[verifyJWT]}, getUserMetricsController )
-     app.get('/gestores/metrics', { onRequest: [verifyJWT] }, listGestoresController)
+     app.get('/gestores/metrics', { onRequest: [verifyJWT, verifyUserRole("ADMIN", "GESTOR")] }, listGestoresController)
      app.put('/update/profile-image', { onRequest: [verifyJWT]}, updateProfileImage)
-     app.patch('/usuarios/:id/status', suspendUsuarioController)
+     app.patch('/usuarios/:id/status', { onRequest: [verifyJWT, verifyUserRole("ADMIN")] }, suspendUsuarioController)
      app.get('/churn/metrics', getHealthOverview)
      app.put('/update', {onRequest:[verifyJWT]}, updateProfileController)
      app.post("/log-out", LogOut);

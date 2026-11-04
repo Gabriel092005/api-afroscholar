@@ -33,6 +33,8 @@ export type UserMinAggregateOutputType = {
   role: $Enums.Role | null
   estado_conta: $Enums.EstadoConta | null
   image_path: string | null
+  bio: string | null
+  paisMentoria: string | null
   pushSubscription: string | null
   resetToken: string | null
   resetTokenExpiry: Date | null
@@ -49,6 +51,8 @@ export type UserMaxAggregateOutputType = {
   role: $Enums.Role | null
   estado_conta: $Enums.EstadoConta | null
   image_path: string | null
+  bio: string | null
+  paisMentoria: string | null
   pushSubscription: string | null
   resetToken: string | null
   resetTokenExpiry: Date | null
@@ -65,6 +69,8 @@ export type UserCountAggregateOutputType = {
   role: number
   estado_conta: number
   image_path: number
+  bio: number
+  paisMentoria: number
   pushSubscription: number
   resetToken: number
   resetTokenExpiry: number
@@ -83,6 +89,8 @@ export type UserMinAggregateInputType = {
   role?: true
   estado_conta?: true
   image_path?: true
+  bio?: true
+  paisMentoria?: true
   pushSubscription?: true
   resetToken?: true
   resetTokenExpiry?: true
@@ -99,6 +107,8 @@ export type UserMaxAggregateInputType = {
   role?: true
   estado_conta?: true
   image_path?: true
+  bio?: true
+  paisMentoria?: true
   pushSubscription?: true
   resetToken?: true
   resetTokenExpiry?: true
@@ -115,6 +125,8 @@ export type UserCountAggregateInputType = {
   role?: true
   estado_conta?: true
   image_path?: true
+  bio?: true
+  paisMentoria?: true
   pushSubscription?: true
   resetToken?: true
   resetTokenExpiry?: true
@@ -204,6 +216,8 @@ export type UserGroupByOutputType = {
   role: $Enums.Role
   estado_conta: $Enums.EstadoConta
   image_path: string | null
+  bio: string | null
+  paisMentoria: string | null
   pushSubscription: string | null
   resetToken: string | null
   resetTokenExpiry: Date | null
@@ -241,6 +255,8 @@ export type UserWhereInput = {
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFilter<"User"> | $Enums.EstadoConta
   image_path?: Prisma.StringNullableFilter<"User"> | string | null
+  bio?: Prisma.StringNullableFilter<"User"> | string | null
+  paisMentoria?: Prisma.StringNullableFilter<"User"> | string | null
   pushSubscription?: Prisma.StringNullableFilter<"User"> | string | null
   resetToken?: Prisma.StringNullableFilter<"User"> | string | null
   resetTokenExpiry?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
@@ -264,6 +280,12 @@ export type UserWhereInput = {
   duvidas?: Prisma.CommunityQuestionListRelationFilter
   respostasDuvidas?: Prisma.CommunityAnswerListRelationFilter
   atividades?: Prisma.AtividadeListRelationFilter
+  bolsasCriadas?: Prisma.BolsaListRelationFilter
+  cursosCriados?: Prisma.CursoListRelationFilter
+  documentos?: Prisma.DocumentoListRelationFilter
+  documentosComprados?: Prisma.DocumentoCompraListRelationFilter
+  pagamentosMomenu?: Prisma.PagamentoMomenuListRelationFilter
+  mentoriaAcessos?: Prisma.MentoriaAcessoListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -275,6 +297,8 @@ export type UserOrderByWithRelationInput = {
   role?: Prisma.SortOrder
   estado_conta?: Prisma.SortOrder
   image_path?: Prisma.SortOrderInput | Prisma.SortOrder
+  bio?: Prisma.SortOrderInput | Prisma.SortOrder
+  paisMentoria?: Prisma.SortOrderInput | Prisma.SortOrder
   pushSubscription?: Prisma.SortOrderInput | Prisma.SortOrder
   resetToken?: Prisma.SortOrderInput | Prisma.SortOrder
   resetTokenExpiry?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -298,6 +322,12 @@ export type UserOrderByWithRelationInput = {
   duvidas?: Prisma.CommunityQuestionOrderByRelationAggregateInput
   respostasDuvidas?: Prisma.CommunityAnswerOrderByRelationAggregateInput
   atividades?: Prisma.AtividadeOrderByRelationAggregateInput
+  bolsasCriadas?: Prisma.BolsaOrderByRelationAggregateInput
+  cursosCriados?: Prisma.CursoOrderByRelationAggregateInput
+  documentos?: Prisma.DocumentoOrderByRelationAggregateInput
+  documentosComprados?: Prisma.DocumentoCompraOrderByRelationAggregateInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuOrderByRelationAggregateInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -313,6 +343,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFilter<"User"> | $Enums.EstadoConta
   image_path?: Prisma.StringNullableFilter<"User"> | string | null
+  bio?: Prisma.StringNullableFilter<"User"> | string | null
+  paisMentoria?: Prisma.StringNullableFilter<"User"> | string | null
   pushSubscription?: Prisma.StringNullableFilter<"User"> | string | null
   resetTokenExpiry?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   created_at?: Prisma.DateTimeFilter<"User"> | Date | string
@@ -335,6 +367,12 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   duvidas?: Prisma.CommunityQuestionListRelationFilter
   respostasDuvidas?: Prisma.CommunityAnswerListRelationFilter
   atividades?: Prisma.AtividadeListRelationFilter
+  bolsasCriadas?: Prisma.BolsaListRelationFilter
+  cursosCriados?: Prisma.CursoListRelationFilter
+  documentos?: Prisma.DocumentoListRelationFilter
+  documentosComprados?: Prisma.DocumentoCompraListRelationFilter
+  pagamentosMomenu?: Prisma.PagamentoMomenuListRelationFilter
+  mentoriaAcessos?: Prisma.MentoriaAcessoListRelationFilter
 }, "id" | "email" | "resetToken">
 
 export type UserOrderByWithAggregationInput = {
@@ -346,6 +384,8 @@ export type UserOrderByWithAggregationInput = {
   role?: Prisma.SortOrder
   estado_conta?: Prisma.SortOrder
   image_path?: Prisma.SortOrderInput | Prisma.SortOrder
+  bio?: Prisma.SortOrderInput | Prisma.SortOrder
+  paisMentoria?: Prisma.SortOrderInput | Prisma.SortOrder
   pushSubscription?: Prisma.SortOrderInput | Prisma.SortOrder
   resetToken?: Prisma.SortOrderInput | Prisma.SortOrder
   resetTokenExpiry?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -368,6 +408,8 @@ export type UserScalarWhereWithAggregatesInput = {
   role?: Prisma.EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaWithAggregatesFilter<"User"> | $Enums.EstadoConta
   image_path?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  bio?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  paisMentoria?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   pushSubscription?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   resetToken?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   resetTokenExpiry?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
@@ -384,6 +426,8 @@ export type UserCreateInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -407,6 +451,12 @@ export type UserCreateInput = {
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -418,6 +468,8 @@ export type UserUncheckedCreateInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -441,6 +493,12 @@ export type UserUncheckedCreateInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUpdateInput = {
@@ -452,6 +510,8 @@ export type UserUpdateInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -475,6 +535,12 @@ export type UserUpdateInput = {
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -486,6 +552,8 @@ export type UserUncheckedUpdateInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -509,6 +577,12 @@ export type UserUncheckedUpdateInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -520,6 +594,8 @@ export type UserCreateManyInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -536,6 +612,8 @@ export type UserUpdateManyMutationInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -552,6 +630,8 @@ export type UserUncheckedUpdateManyInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -568,6 +648,8 @@ export type UserCountOrderByAggregateInput = {
   role?: Prisma.SortOrder
   estado_conta?: Prisma.SortOrder
   image_path?: Prisma.SortOrder
+  bio?: Prisma.SortOrder
+  paisMentoria?: Prisma.SortOrder
   pushSubscription?: Prisma.SortOrder
   resetToken?: Prisma.SortOrder
   resetTokenExpiry?: Prisma.SortOrder
@@ -584,6 +666,8 @@ export type UserMaxOrderByAggregateInput = {
   role?: Prisma.SortOrder
   estado_conta?: Prisma.SortOrder
   image_path?: Prisma.SortOrder
+  bio?: Prisma.SortOrder
+  paisMentoria?: Prisma.SortOrder
   pushSubscription?: Prisma.SortOrder
   resetToken?: Prisma.SortOrder
   resetTokenExpiry?: Prisma.SortOrder
@@ -600,6 +684,8 @@ export type UserMinOrderByAggregateInput = {
   role?: Prisma.SortOrder
   estado_conta?: Prisma.SortOrder
   image_path?: Prisma.SortOrder
+  bio?: Prisma.SortOrder
+  paisMentoria?: Prisma.SortOrder
   pushSubscription?: Prisma.SortOrder
   resetToken?: Prisma.SortOrder
   resetTokenExpiry?: Prisma.SortOrder
@@ -655,6 +741,22 @@ export type UserUpdateOneRequiredWithoutNotificationsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNotificationsInput, Prisma.UserUpdateWithoutNotificationsInput>, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
 }
 
+export type UserCreateNestedOneWithoutBolsasCriadasInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBolsasCriadasInput, Prisma.UserUncheckedCreateWithoutBolsasCriadasInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBolsasCriadasInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutBolsasCriadasNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBolsasCriadasInput, Prisma.UserUncheckedCreateWithoutBolsasCriadasInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBolsasCriadasInput
+  upsert?: Prisma.UserUpsertWithoutBolsasCriadasInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBolsasCriadasInput, Prisma.UserUpdateWithoutBolsasCriadasInput>, Prisma.UserUncheckedUpdateWithoutBolsasCriadasInput>
+}
+
 export type UserCreateNestedOneWithoutInscricoesInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutInscricoesInput, Prisma.UserUncheckedCreateWithoutInscricoesInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutInscricoesInput
@@ -667,6 +769,22 @@ export type UserUpdateOneRequiredWithoutInscricoesNestedInput = {
   upsert?: Prisma.UserUpsertWithoutInscricoesInput
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutInscricoesInput, Prisma.UserUpdateWithoutInscricoesInput>, Prisma.UserUncheckedUpdateWithoutInscricoesInput>
+}
+
+export type UserCreateNestedOneWithoutCursosCriadosInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCursosCriadosInput, Prisma.UserUncheckedCreateWithoutCursosCriadosInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCursosCriadosInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutCursosCriadosNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCursosCriadosInput, Prisma.UserUncheckedCreateWithoutCursosCriadosInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCursosCriadosInput
+  upsert?: Prisma.UserUpsertWithoutCursosCriadosInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCursosCriadosInput, Prisma.UserUpdateWithoutCursosCriadosInput>, Prisma.UserUncheckedUpdateWithoutCursosCriadosInput>
 }
 
 export type UserCreateNestedOneWithoutPagamentosInput = {
@@ -695,6 +813,34 @@ export type UserUpdateOneRequiredWithoutCursosCompradosNestedInput = {
   upsert?: Prisma.UserUpsertWithoutCursosCompradosInput
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCursosCompradosInput, Prisma.UserUpdateWithoutCursosCompradosInput>, Prisma.UserUncheckedUpdateWithoutCursosCompradosInput>
+}
+
+export type UserCreateNestedOneWithoutDocumentosInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDocumentosInput, Prisma.UserUncheckedCreateWithoutDocumentosInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDocumentosInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutDocumentosNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDocumentosInput, Prisma.UserUncheckedCreateWithoutDocumentosInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDocumentosInput
+  upsert?: Prisma.UserUpsertWithoutDocumentosInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutDocumentosInput, Prisma.UserUpdateWithoutDocumentosInput>, Prisma.UserUncheckedUpdateWithoutDocumentosInput>
+}
+
+export type UserCreateNestedOneWithoutDocumentosCompradosInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDocumentosCompradosInput, Prisma.UserUncheckedCreateWithoutDocumentosCompradosInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDocumentosCompradosInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutDocumentosCompradosNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDocumentosCompradosInput, Prisma.UserUncheckedCreateWithoutDocumentosCompradosInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDocumentosCompradosInput
+  upsert?: Prisma.UserUpsertWithoutDocumentosCompradosInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutDocumentosCompradosInput, Prisma.UserUpdateWithoutDocumentosCompradosInput>, Prisma.UserUncheckedUpdateWithoutDocumentosCompradosInput>
 }
 
 export type UserCreateNestedOneWithoutDepoimentosInput = {
@@ -839,6 +985,20 @@ export type UserUpdateOneRequiredWithoutAulasParticipadasNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAulasParticipadasInput, Prisma.UserUpdateWithoutAulasParticipadasInput>, Prisma.UserUncheckedUpdateWithoutAulasParticipadasInput>
 }
 
+export type UserCreateNestedOneWithoutMentoriaAcessosInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMentoriaAcessosInput, Prisma.UserUncheckedCreateWithoutMentoriaAcessosInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMentoriaAcessosInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutMentoriaAcessosNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMentoriaAcessosInput, Prisma.UserUncheckedCreateWithoutMentoriaAcessosInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMentoriaAcessosInput
+  upsert?: Prisma.UserUpsertWithoutMentoriaAcessosInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMentoriaAcessosInput, Prisma.UserUpdateWithoutMentoriaAcessosInput>, Prisma.UserUncheckedUpdateWithoutMentoriaAcessosInput>
+}
+
 export type UserCreateNestedOneWithoutMentoriasInscricoesInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutMentoriasInscricoesInput, Prisma.UserUncheckedCreateWithoutMentoriasInscricoesInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutMentoriasInscricoesInput
@@ -895,6 +1055,22 @@ export type UserUpdateOneRequiredWithoutAtividadesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAtividadesInput, Prisma.UserUpdateWithoutAtividadesInput>, Prisma.UserUncheckedUpdateWithoutAtividadesInput>
 }
 
+export type UserCreateNestedOneWithoutPagamentosMomenuInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPagamentosMomenuInput, Prisma.UserUncheckedCreateWithoutPagamentosMomenuInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPagamentosMomenuInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutPagamentosMomenuNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPagamentosMomenuInput, Prisma.UserUncheckedCreateWithoutPagamentosMomenuInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPagamentosMomenuInput
+  upsert?: Prisma.UserUpsertWithoutPagamentosMomenuInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPagamentosMomenuInput, Prisma.UserUpdateWithoutPagamentosMomenuInput>, Prisma.UserUncheckedUpdateWithoutPagamentosMomenuInput>
+}
+
 export type UserCreateWithoutNotificationsInput = {
   id?: string
   nome: string
@@ -904,6 +1080,8 @@ export type UserCreateWithoutNotificationsInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -926,6 +1104,12 @@ export type UserCreateWithoutNotificationsInput = {
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -937,6 +1121,8 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -959,6 +1145,12 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -986,6 +1178,8 @@ export type UserUpdateWithoutNotificationsInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1008,6 +1202,12 @@ export type UserUpdateWithoutNotificationsInput = {
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -1019,6 +1219,8 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1041,6 +1243,192 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UserCreateWithoutBolsasCriadasInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserUncheckedCreateWithoutBolsasCriadasInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityUncheckedCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberUncheckedCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageUncheckedCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoUncheckedCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeUncheckedCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoUncheckedCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserCreateOrConnectWithoutBolsasCriadasInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutBolsasCriadasInput, Prisma.UserUncheckedCreateWithoutBolsasCriadasInput>
+}
+
+export type UserUpsertWithoutBolsasCriadasInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutBolsasCriadasInput, Prisma.UserUncheckedUpdateWithoutBolsasCriadasInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutBolsasCriadasInput, Prisma.UserUncheckedCreateWithoutBolsasCriadasInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutBolsasCriadasInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutBolsasCriadasInput, Prisma.UserUncheckedUpdateWithoutBolsasCriadasInput>
+}
+
+export type UserUpdateWithoutBolsasCriadasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UserUncheckedUpdateWithoutBolsasCriadasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUncheckedUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUncheckedUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUncheckedUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutInscricoesInput = {
@@ -1052,6 +1440,8 @@ export type UserCreateWithoutInscricoesInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -1074,6 +1464,12 @@ export type UserCreateWithoutInscricoesInput = {
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutInscricoesInput = {
@@ -1085,6 +1481,8 @@ export type UserUncheckedCreateWithoutInscricoesInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -1107,6 +1505,12 @@ export type UserUncheckedCreateWithoutInscricoesInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutInscricoesInput = {
@@ -1134,6 +1538,8 @@ export type UserUpdateWithoutInscricoesInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1156,6 +1562,12 @@ export type UserUpdateWithoutInscricoesInput = {
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInscricoesInput = {
@@ -1167,6 +1579,8 @@ export type UserUncheckedUpdateWithoutInscricoesInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1189,6 +1603,192 @@ export type UserUncheckedUpdateWithoutInscricoesInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UserCreateWithoutCursosCriadosInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserUncheckedCreateWithoutCursosCriadosInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityUncheckedCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberUncheckedCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageUncheckedCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoUncheckedCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeUncheckedCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoUncheckedCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserCreateOrConnectWithoutCursosCriadosInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCursosCriadosInput, Prisma.UserUncheckedCreateWithoutCursosCriadosInput>
+}
+
+export type UserUpsertWithoutCursosCriadosInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCursosCriadosInput, Prisma.UserUncheckedUpdateWithoutCursosCriadosInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCursosCriadosInput, Prisma.UserUncheckedCreateWithoutCursosCriadosInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCursosCriadosInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCursosCriadosInput, Prisma.UserUncheckedUpdateWithoutCursosCriadosInput>
+}
+
+export type UserUpdateWithoutCursosCriadosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCursosCriadosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUncheckedUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUncheckedUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUncheckedUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutPagamentosInput = {
@@ -1200,6 +1800,8 @@ export type UserCreateWithoutPagamentosInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -1222,6 +1824,12 @@ export type UserCreateWithoutPagamentosInput = {
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutPagamentosInput = {
@@ -1233,6 +1841,8 @@ export type UserUncheckedCreateWithoutPagamentosInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -1255,6 +1865,12 @@ export type UserUncheckedCreateWithoutPagamentosInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutPagamentosInput = {
@@ -1282,6 +1898,8 @@ export type UserUpdateWithoutPagamentosInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1304,6 +1922,12 @@ export type UserUpdateWithoutPagamentosInput = {
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPagamentosInput = {
@@ -1315,6 +1939,8 @@ export type UserUncheckedUpdateWithoutPagamentosInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1337,6 +1963,12 @@ export type UserUncheckedUpdateWithoutPagamentosInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutCursosCompradosInput = {
@@ -1348,6 +1980,8 @@ export type UserCreateWithoutCursosCompradosInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -1370,6 +2004,12 @@ export type UserCreateWithoutCursosCompradosInput = {
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutCursosCompradosInput = {
@@ -1381,6 +2021,8 @@ export type UserUncheckedCreateWithoutCursosCompradosInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -1403,6 +2045,12 @@ export type UserUncheckedCreateWithoutCursosCompradosInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutCursosCompradosInput = {
@@ -1430,6 +2078,8 @@ export type UserUpdateWithoutCursosCompradosInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1452,6 +2102,12 @@ export type UserUpdateWithoutCursosCompradosInput = {
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCursosCompradosInput = {
@@ -1463,6 +2119,8 @@ export type UserUncheckedUpdateWithoutCursosCompradosInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1485,6 +2143,372 @@ export type UserUncheckedUpdateWithoutCursosCompradosInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UserCreateWithoutDocumentosInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserUncheckedCreateWithoutDocumentosInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityUncheckedCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberUncheckedCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageUncheckedCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoUncheckedCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeUncheckedCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoUncheckedCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserCreateOrConnectWithoutDocumentosInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutDocumentosInput, Prisma.UserUncheckedCreateWithoutDocumentosInput>
+}
+
+export type UserUpsertWithoutDocumentosInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutDocumentosInput, Prisma.UserUncheckedUpdateWithoutDocumentosInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutDocumentosInput, Prisma.UserUncheckedCreateWithoutDocumentosInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutDocumentosInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutDocumentosInput, Prisma.UserUncheckedUpdateWithoutDocumentosInput>
+}
+
+export type UserUpdateWithoutDocumentosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UserUncheckedUpdateWithoutDocumentosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUncheckedUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUncheckedUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUncheckedUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UserCreateWithoutDocumentosCompradosInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserUncheckedCreateWithoutDocumentosCompradosInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityUncheckedCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberUncheckedCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageUncheckedCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoUncheckedCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeUncheckedCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoUncheckedCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserCreateOrConnectWithoutDocumentosCompradosInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutDocumentosCompradosInput, Prisma.UserUncheckedCreateWithoutDocumentosCompradosInput>
+}
+
+export type UserUpsertWithoutDocumentosCompradosInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutDocumentosCompradosInput, Prisma.UserUncheckedUpdateWithoutDocumentosCompradosInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutDocumentosCompradosInput, Prisma.UserUncheckedCreateWithoutDocumentosCompradosInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutDocumentosCompradosInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutDocumentosCompradosInput, Prisma.UserUncheckedUpdateWithoutDocumentosCompradosInput>
+}
+
+export type UserUpdateWithoutDocumentosCompradosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UserUncheckedUpdateWithoutDocumentosCompradosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUncheckedUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUncheckedUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUncheckedUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutDepoimentosInput = {
@@ -1496,6 +2520,8 @@ export type UserCreateWithoutDepoimentosInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -1518,6 +2544,12 @@ export type UserCreateWithoutDepoimentosInput = {
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutDepoimentosInput = {
@@ -1529,6 +2561,8 @@ export type UserUncheckedCreateWithoutDepoimentosInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -1551,6 +2585,12 @@ export type UserUncheckedCreateWithoutDepoimentosInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutDepoimentosInput = {
@@ -1578,6 +2618,8 @@ export type UserUpdateWithoutDepoimentosInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1600,6 +2642,12 @@ export type UserUpdateWithoutDepoimentosInput = {
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDepoimentosInput = {
@@ -1611,6 +2659,8 @@ export type UserUncheckedUpdateWithoutDepoimentosInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1633,6 +2683,12 @@ export type UserUncheckedUpdateWithoutDepoimentosInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutNovidadesInput = {
@@ -1644,6 +2700,8 @@ export type UserCreateWithoutNovidadesInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -1666,6 +2724,12 @@ export type UserCreateWithoutNovidadesInput = {
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutNovidadesInput = {
@@ -1677,6 +2741,8 @@ export type UserUncheckedCreateWithoutNovidadesInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -1699,6 +2765,12 @@ export type UserUncheckedCreateWithoutNovidadesInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutNovidadesInput = {
@@ -1726,6 +2798,8 @@ export type UserUpdateWithoutNovidadesInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1748,6 +2822,12 @@ export type UserUpdateWithoutNovidadesInput = {
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNovidadesInput = {
@@ -1759,6 +2839,8 @@ export type UserUncheckedUpdateWithoutNovidadesInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1781,6 +2863,12 @@ export type UserUncheckedUpdateWithoutNovidadesInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutNovidadeInscricoesInput = {
@@ -1792,6 +2880,8 @@ export type UserCreateWithoutNovidadeInscricoesInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -1814,6 +2904,12 @@ export type UserCreateWithoutNovidadeInscricoesInput = {
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutNovidadeInscricoesInput = {
@@ -1825,6 +2921,8 @@ export type UserUncheckedCreateWithoutNovidadeInscricoesInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -1847,6 +2945,12 @@ export type UserUncheckedCreateWithoutNovidadeInscricoesInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutNovidadeInscricoesInput = {
@@ -1874,6 +2978,8 @@ export type UserUpdateWithoutNovidadeInscricoesInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1896,6 +3002,12 @@ export type UserUpdateWithoutNovidadeInscricoesInput = {
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNovidadeInscricoesInput = {
@@ -1907,6 +3019,8 @@ export type UserUncheckedUpdateWithoutNovidadeInscricoesInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1929,6 +3043,12 @@ export type UserUncheckedUpdateWithoutNovidadeInscricoesInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutPerfilAcademicoInput = {
@@ -1940,6 +3060,8 @@ export type UserCreateWithoutPerfilAcademicoInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -1962,6 +3084,12 @@ export type UserCreateWithoutPerfilAcademicoInput = {
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutPerfilAcademicoInput = {
@@ -1973,6 +3101,8 @@ export type UserUncheckedCreateWithoutPerfilAcademicoInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -1995,6 +3125,12 @@ export type UserUncheckedCreateWithoutPerfilAcademicoInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutPerfilAcademicoInput = {
@@ -2022,6 +3158,8 @@ export type UserUpdateWithoutPerfilAcademicoInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2044,6 +3182,12 @@ export type UserUpdateWithoutPerfilAcademicoInput = {
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPerfilAcademicoInput = {
@@ -2055,6 +3199,8 @@ export type UserUncheckedUpdateWithoutPerfilAcademicoInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2077,6 +3223,12 @@ export type UserUncheckedUpdateWithoutPerfilAcademicoInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutAnalisesInput = {
@@ -2088,6 +3240,8 @@ export type UserCreateWithoutAnalisesInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -2110,6 +3264,12 @@ export type UserCreateWithoutAnalisesInput = {
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutAnalisesInput = {
@@ -2121,6 +3281,8 @@ export type UserUncheckedCreateWithoutAnalisesInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -2143,6 +3305,12 @@ export type UserUncheckedCreateWithoutAnalisesInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutAnalisesInput = {
@@ -2170,6 +3338,8 @@ export type UserUpdateWithoutAnalisesInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2192,6 +3362,12 @@ export type UserUpdateWithoutAnalisesInput = {
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAnalisesInput = {
@@ -2203,6 +3379,8 @@ export type UserUncheckedUpdateWithoutAnalisesInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2225,6 +3403,12 @@ export type UserUncheckedUpdateWithoutAnalisesInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutComunidadesInput = {
@@ -2236,6 +3420,8 @@ export type UserCreateWithoutComunidadesInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -2258,6 +3444,12 @@ export type UserCreateWithoutComunidadesInput = {
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutComunidadesInput = {
@@ -2269,6 +3461,8 @@ export type UserUncheckedCreateWithoutComunidadesInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -2291,6 +3485,12 @@ export type UserUncheckedCreateWithoutComunidadesInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutComunidadesInput = {
@@ -2318,6 +3518,8 @@ export type UserUpdateWithoutComunidadesInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2340,6 +3542,12 @@ export type UserUpdateWithoutComunidadesInput = {
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutComunidadesInput = {
@@ -2351,6 +3559,8 @@ export type UserUncheckedUpdateWithoutComunidadesInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2373,6 +3583,12 @@ export type UserUncheckedUpdateWithoutComunidadesInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutMembroEmInput = {
@@ -2384,6 +3600,8 @@ export type UserCreateWithoutMembroEmInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -2406,6 +3624,12 @@ export type UserCreateWithoutMembroEmInput = {
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutMembroEmInput = {
@@ -2417,6 +3641,8 @@ export type UserUncheckedCreateWithoutMembroEmInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -2439,6 +3665,12 @@ export type UserUncheckedCreateWithoutMembroEmInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutMembroEmInput = {
@@ -2466,6 +3698,8 @@ export type UserUpdateWithoutMembroEmInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2488,6 +3722,12 @@ export type UserUpdateWithoutMembroEmInput = {
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMembroEmInput = {
@@ -2499,6 +3739,8 @@ export type UserUncheckedUpdateWithoutMembroEmInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2521,6 +3763,12 @@ export type UserUncheckedUpdateWithoutMembroEmInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutMensagensInput = {
@@ -2532,6 +3780,8 @@ export type UserCreateWithoutMensagensInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -2554,6 +3804,12 @@ export type UserCreateWithoutMensagensInput = {
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutMensagensInput = {
@@ -2565,6 +3821,8 @@ export type UserUncheckedCreateWithoutMensagensInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -2587,6 +3845,12 @@ export type UserUncheckedCreateWithoutMensagensInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutMensagensInput = {
@@ -2614,6 +3878,8 @@ export type UserUpdateWithoutMensagensInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2636,6 +3902,12 @@ export type UserUpdateWithoutMensagensInput = {
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMensagensInput = {
@@ -2647,6 +3919,8 @@ export type UserUncheckedUpdateWithoutMensagensInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2669,6 +3943,12 @@ export type UserUncheckedUpdateWithoutMensagensInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutAulasOnlineInput = {
@@ -2680,6 +3960,8 @@ export type UserCreateWithoutAulasOnlineInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -2702,6 +3984,12 @@ export type UserCreateWithoutAulasOnlineInput = {
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutAulasOnlineInput = {
@@ -2713,6 +4001,8 @@ export type UserUncheckedCreateWithoutAulasOnlineInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -2735,6 +4025,12 @@ export type UserUncheckedCreateWithoutAulasOnlineInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutAulasOnlineInput = {
@@ -2762,6 +4058,8 @@ export type UserUpdateWithoutAulasOnlineInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2784,6 +4082,12 @@ export type UserUpdateWithoutAulasOnlineInput = {
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAulasOnlineInput = {
@@ -2795,6 +4099,8 @@ export type UserUncheckedUpdateWithoutAulasOnlineInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2817,6 +4123,12 @@ export type UserUncheckedUpdateWithoutAulasOnlineInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutAulasParticipadasInput = {
@@ -2828,6 +4140,8 @@ export type UserCreateWithoutAulasParticipadasInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -2850,6 +4164,12 @@ export type UserCreateWithoutAulasParticipadasInput = {
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutAulasParticipadasInput = {
@@ -2861,6 +4181,8 @@ export type UserUncheckedCreateWithoutAulasParticipadasInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -2883,6 +4205,12 @@ export type UserUncheckedCreateWithoutAulasParticipadasInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutAulasParticipadasInput = {
@@ -2910,6 +4238,8 @@ export type UserUpdateWithoutAulasParticipadasInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2932,6 +4262,12 @@ export type UserUpdateWithoutAulasParticipadasInput = {
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAulasParticipadasInput = {
@@ -2943,6 +4279,8 @@ export type UserUncheckedUpdateWithoutAulasParticipadasInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2965,6 +4303,192 @@ export type UserUncheckedUpdateWithoutAulasParticipadasInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UserCreateWithoutMentoriaAcessosInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserUncheckedCreateWithoutMentoriaAcessosInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityUncheckedCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberUncheckedCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageUncheckedCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoUncheckedCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeUncheckedCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoUncheckedCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserCreateOrConnectWithoutMentoriaAcessosInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutMentoriaAcessosInput, Prisma.UserUncheckedCreateWithoutMentoriaAcessosInput>
+}
+
+export type UserUpsertWithoutMentoriaAcessosInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutMentoriaAcessosInput, Prisma.UserUncheckedUpdateWithoutMentoriaAcessosInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutMentoriaAcessosInput, Prisma.UserUncheckedCreateWithoutMentoriaAcessosInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutMentoriaAcessosInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutMentoriaAcessosInput, Prisma.UserUncheckedUpdateWithoutMentoriaAcessosInput>
+}
+
+export type UserUpdateWithoutMentoriaAcessosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UserUncheckedUpdateWithoutMentoriaAcessosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUncheckedUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUncheckedUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUncheckedUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutMentoriasInscricoesInput = {
@@ -2976,6 +4500,8 @@ export type UserCreateWithoutMentoriasInscricoesInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -2998,6 +4524,12 @@ export type UserCreateWithoutMentoriasInscricoesInput = {
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutMentoriasInscricoesInput = {
@@ -3009,6 +4541,8 @@ export type UserUncheckedCreateWithoutMentoriasInscricoesInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -3031,6 +4565,12 @@ export type UserUncheckedCreateWithoutMentoriasInscricoesInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutMentoriasInscricoesInput = {
@@ -3058,6 +4598,8 @@ export type UserUpdateWithoutMentoriasInscricoesInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3080,6 +4622,12 @@ export type UserUpdateWithoutMentoriasInscricoesInput = {
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMentoriasInscricoesInput = {
@@ -3091,6 +4639,8 @@ export type UserUncheckedUpdateWithoutMentoriasInscricoesInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3113,6 +4663,12 @@ export type UserUncheckedUpdateWithoutMentoriasInscricoesInput = {
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutDuvidasInput = {
@@ -3124,6 +4680,8 @@ export type UserCreateWithoutDuvidasInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -3146,6 +4704,12 @@ export type UserCreateWithoutDuvidasInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutDuvidasInput = {
@@ -3157,6 +4721,8 @@ export type UserUncheckedCreateWithoutDuvidasInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -3179,6 +4745,12 @@ export type UserUncheckedCreateWithoutDuvidasInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutDuvidasInput = {
@@ -3206,6 +4778,8 @@ export type UserUpdateWithoutDuvidasInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3228,6 +4802,12 @@ export type UserUpdateWithoutDuvidasInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDuvidasInput = {
@@ -3239,6 +4819,8 @@ export type UserUncheckedUpdateWithoutDuvidasInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3261,6 +4843,12 @@ export type UserUncheckedUpdateWithoutDuvidasInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutRespostasDuvidasInput = {
@@ -3272,6 +4860,8 @@ export type UserCreateWithoutRespostasDuvidasInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -3294,6 +4884,12 @@ export type UserCreateWithoutRespostasDuvidasInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutRespostasDuvidasInput = {
@@ -3305,6 +4901,8 @@ export type UserUncheckedCreateWithoutRespostasDuvidasInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -3327,6 +4925,12 @@ export type UserUncheckedCreateWithoutRespostasDuvidasInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutRespostasDuvidasInput = {
@@ -3354,6 +4958,8 @@ export type UserUpdateWithoutRespostasDuvidasInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3376,6 +4982,12 @@ export type UserUpdateWithoutRespostasDuvidasInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRespostasDuvidasInput = {
@@ -3387,6 +4999,8 @@ export type UserUncheckedUpdateWithoutRespostasDuvidasInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3409,6 +5023,12 @@ export type UserUncheckedUpdateWithoutRespostasDuvidasInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutAtividadesInput = {
@@ -3420,6 +5040,8 @@ export type UserCreateWithoutAtividadesInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -3442,6 +5064,12 @@ export type UserCreateWithoutAtividadesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutAtividadesInput = {
@@ -3453,6 +5081,8 @@ export type UserUncheckedCreateWithoutAtividadesInput = {
   role?: $Enums.Role
   estado_conta?: $Enums.EstadoConta
   image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
   pushSubscription?: string | null
   resetToken?: string | null
   resetTokenExpiry?: Date | string | null
@@ -3475,6 +5105,12 @@ export type UserUncheckedCreateWithoutAtividadesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
   duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutAtividadesInput = {
@@ -3502,6 +5138,8 @@ export type UserUpdateWithoutAtividadesInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3524,6 +5162,12 @@ export type UserUpdateWithoutAtividadesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAtividadesInput = {
@@ -3535,6 +5179,8 @@ export type UserUncheckedUpdateWithoutAtividadesInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
   image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3557,6 +5203,192 @@ export type UserUncheckedUpdateWithoutAtividadesInput = {
   mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
   duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
   respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UserCreateWithoutPagamentosMomenuInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserUncheckedCreateWithoutPagamentosMomenuInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityUncheckedCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberUncheckedCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageUncheckedCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoUncheckedCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeUncheckedCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoUncheckedCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserCreateOrConnectWithoutPagamentosMomenuInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutPagamentosMomenuInput, Prisma.UserUncheckedCreateWithoutPagamentosMomenuInput>
+}
+
+export type UserUpsertWithoutPagamentosMomenuInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutPagamentosMomenuInput, Prisma.UserUncheckedUpdateWithoutPagamentosMomenuInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutPagamentosMomenuInput, Prisma.UserUncheckedCreateWithoutPagamentosMomenuInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutPagamentosMomenuInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutPagamentosMomenuInput, Prisma.UserUncheckedUpdateWithoutPagamentosMomenuInput>
+}
+
+export type UserUpdateWithoutPagamentosMomenuInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UserUncheckedUpdateWithoutPagamentosMomenuInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUncheckedUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUncheckedUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUncheckedUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 
@@ -3582,6 +5414,12 @@ export type UserCountOutputType = {
   duvidas: number
   respostasDuvidas: number
   atividades: number
+  bolsasCriadas: number
+  cursosCriados: number
+  documentos: number
+  documentosComprados: number
+  pagamentosMomenu: number
+  mentoriaAcessos: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3602,6 +5440,12 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   duvidas?: boolean | UserCountOutputTypeCountDuvidasArgs
   respostasDuvidas?: boolean | UserCountOutputTypeCountRespostasDuvidasArgs
   atividades?: boolean | UserCountOutputTypeCountAtividadesArgs
+  bolsasCriadas?: boolean | UserCountOutputTypeCountBolsasCriadasArgs
+  cursosCriados?: boolean | UserCountOutputTypeCountCursosCriadosArgs
+  documentos?: boolean | UserCountOutputTypeCountDocumentosArgs
+  documentosComprados?: boolean | UserCountOutputTypeCountDocumentosCompradosArgs
+  pagamentosMomenu?: boolean | UserCountOutputTypeCountPagamentosMomenuArgs
+  mentoriaAcessos?: boolean | UserCountOutputTypeCountMentoriaAcessosArgs
 }
 
 /**
@@ -3733,6 +5577,48 @@ export type UserCountOutputTypeCountAtividadesArgs<ExtArgs extends runtime.Types
   where?: Prisma.AtividadeWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountBolsasCriadasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BolsaWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCursosCriadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CursoWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountDocumentosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DocumentoWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountDocumentosCompradosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DocumentoCompraWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountPagamentosMomenuArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PagamentoMomenuWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountMentoriaAcessosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MentoriaAcessoWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -3743,6 +5629,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   role?: boolean
   estado_conta?: boolean
   image_path?: boolean
+  bio?: boolean
+  paisMentoria?: boolean
   pushSubscription?: boolean
   resetToken?: boolean
   resetTokenExpiry?: boolean
@@ -3766,6 +5654,12 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   duvidas?: boolean | Prisma.User$duvidasArgs<ExtArgs>
   respostasDuvidas?: boolean | Prisma.User$respostasDuvidasArgs<ExtArgs>
   atividades?: boolean | Prisma.User$atividadesArgs<ExtArgs>
+  bolsasCriadas?: boolean | Prisma.User$bolsasCriadasArgs<ExtArgs>
+  cursosCriados?: boolean | Prisma.User$cursosCriadosArgs<ExtArgs>
+  documentos?: boolean | Prisma.User$documentosArgs<ExtArgs>
+  documentosComprados?: boolean | Prisma.User$documentosCompradosArgs<ExtArgs>
+  pagamentosMomenu?: boolean | Prisma.User$pagamentosMomenuArgs<ExtArgs>
+  mentoriaAcessos?: boolean | Prisma.User$mentoriaAcessosArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -3778,6 +5672,8 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   role?: boolean
   estado_conta?: boolean
   image_path?: boolean
+  bio?: boolean
+  paisMentoria?: boolean
   pushSubscription?: boolean
   resetToken?: boolean
   resetTokenExpiry?: boolean
@@ -3794,6 +5690,8 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   role?: boolean
   estado_conta?: boolean
   image_path?: boolean
+  bio?: boolean
+  paisMentoria?: boolean
   pushSubscription?: boolean
   resetToken?: boolean
   resetTokenExpiry?: boolean
@@ -3810,6 +5708,8 @@ export type UserSelectScalar = {
   role?: boolean
   estado_conta?: boolean
   image_path?: boolean
+  bio?: boolean
+  paisMentoria?: boolean
   pushSubscription?: boolean
   resetToken?: boolean
   resetTokenExpiry?: boolean
@@ -3817,7 +5717,7 @@ export type UserSelectScalar = {
   last_active_at?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "email" | "phone" | "password" | "role" | "estado_conta" | "image_path" | "pushSubscription" | "resetToken" | "resetTokenExpiry" | "created_at" | "last_active_at", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "email" | "phone" | "password" | "role" | "estado_conta" | "image_path" | "bio" | "paisMentoria" | "pushSubscription" | "resetToken" | "resetTokenExpiry" | "created_at" | "last_active_at", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
   inscricoes?: boolean | Prisma.User$inscricoesArgs<ExtArgs>
@@ -3837,6 +5737,12 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   duvidas?: boolean | Prisma.User$duvidasArgs<ExtArgs>
   respostasDuvidas?: boolean | Prisma.User$respostasDuvidasArgs<ExtArgs>
   atividades?: boolean | Prisma.User$atividadesArgs<ExtArgs>
+  bolsasCriadas?: boolean | Prisma.User$bolsasCriadasArgs<ExtArgs>
+  cursosCriados?: boolean | Prisma.User$cursosCriadosArgs<ExtArgs>
+  documentos?: boolean | Prisma.User$documentosArgs<ExtArgs>
+  documentosComprados?: boolean | Prisma.User$documentosCompradosArgs<ExtArgs>
+  pagamentosMomenu?: boolean | Prisma.User$pagamentosMomenuArgs<ExtArgs>
+  mentoriaAcessos?: boolean | Prisma.User$mentoriaAcessosArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -3863,6 +5769,12 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     duvidas: Prisma.$CommunityQuestionPayload<ExtArgs>[]
     respostasDuvidas: Prisma.$CommunityAnswerPayload<ExtArgs>[]
     atividades: Prisma.$AtividadePayload<ExtArgs>[]
+    bolsasCriadas: Prisma.$BolsaPayload<ExtArgs>[]
+    cursosCriados: Prisma.$CursoPayload<ExtArgs>[]
+    documentos: Prisma.$DocumentoPayload<ExtArgs>[]
+    documentosComprados: Prisma.$DocumentoCompraPayload<ExtArgs>[]
+    pagamentosMomenu: Prisma.$PagamentoMomenuPayload<ExtArgs>[]
+    mentoriaAcessos: Prisma.$MentoriaAcessoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -3873,6 +5785,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     role: $Enums.Role
     estado_conta: $Enums.EstadoConta
     image_path: string | null
+    bio: string | null
+    paisMentoria: string | null
     pushSubscription: string | null
     resetToken: string | null
     resetTokenExpiry: Date | null
@@ -4290,6 +6204,12 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   duvidas<T extends Prisma.User$duvidasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$duvidasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommunityQuestionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   respostasDuvidas<T extends Prisma.User$respostasDuvidasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$respostasDuvidasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommunityAnswerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   atividades<T extends Prisma.User$atividadesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$atividadesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AtividadePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  bolsasCriadas<T extends Prisma.User$bolsasCriadasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$bolsasCriadasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BolsaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  cursosCriados<T extends Prisma.User$cursosCriadosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$cursosCriadosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CursoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  documentos<T extends Prisma.User$documentosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$documentosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DocumentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  documentosComprados<T extends Prisma.User$documentosCompradosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$documentosCompradosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DocumentoCompraPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  pagamentosMomenu<T extends Prisma.User$pagamentosMomenuArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$pagamentosMomenuArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PagamentoMomenuPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  mentoriaAcessos<T extends Prisma.User$mentoriaAcessosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$mentoriaAcessosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MentoriaAcessoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4327,6 +6247,8 @@ export interface UserFieldRefs {
   readonly role: Prisma.FieldRef<"User", 'Role'>
   readonly estado_conta: Prisma.FieldRef<"User", 'EstadoConta'>
   readonly image_path: Prisma.FieldRef<"User", 'String'>
+  readonly bio: Prisma.FieldRef<"User", 'String'>
+  readonly paisMentoria: Prisma.FieldRef<"User", 'String'>
   readonly pushSubscription: Prisma.FieldRef<"User", 'String'>
   readonly resetToken: Prisma.FieldRef<"User", 'String'>
   readonly resetTokenExpiry: Prisma.FieldRef<"User", 'DateTime'>
@@ -5144,6 +7066,150 @@ export type User$atividadesArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   distinct?: Prisma.AtividadeScalarFieldEnum | Prisma.AtividadeScalarFieldEnum[]
+}
+
+/**
+ * User.bolsasCriadas
+ */
+export type User$bolsasCriadasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Bolsa
+   */
+  select?: Prisma.BolsaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Bolsa
+   */
+  omit?: Prisma.BolsaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BolsaInclude<ExtArgs> | null
+  where?: Prisma.BolsaWhereInput
+  orderBy?: Prisma.BolsaOrderByWithRelationInput | Prisma.BolsaOrderByWithRelationInput[]
+  cursor?: Prisma.BolsaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BolsaScalarFieldEnum | Prisma.BolsaScalarFieldEnum[]
+}
+
+/**
+ * User.cursosCriados
+ */
+export type User$cursosCriadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Curso
+   */
+  select?: Prisma.CursoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Curso
+   */
+  omit?: Prisma.CursoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CursoInclude<ExtArgs> | null
+  where?: Prisma.CursoWhereInput
+  orderBy?: Prisma.CursoOrderByWithRelationInput | Prisma.CursoOrderByWithRelationInput[]
+  cursor?: Prisma.CursoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CursoScalarFieldEnum | Prisma.CursoScalarFieldEnum[]
+}
+
+/**
+ * User.documentos
+ */
+export type User$documentosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Documento
+   */
+  select?: Prisma.DocumentoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Documento
+   */
+  omit?: Prisma.DocumentoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DocumentoInclude<ExtArgs> | null
+  where?: Prisma.DocumentoWhereInput
+  orderBy?: Prisma.DocumentoOrderByWithRelationInput | Prisma.DocumentoOrderByWithRelationInput[]
+  cursor?: Prisma.DocumentoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DocumentoScalarFieldEnum | Prisma.DocumentoScalarFieldEnum[]
+}
+
+/**
+ * User.documentosComprados
+ */
+export type User$documentosCompradosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the DocumentoCompra
+   */
+  select?: Prisma.DocumentoCompraSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the DocumentoCompra
+   */
+  omit?: Prisma.DocumentoCompraOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DocumentoCompraInclude<ExtArgs> | null
+  where?: Prisma.DocumentoCompraWhereInput
+  orderBy?: Prisma.DocumentoCompraOrderByWithRelationInput | Prisma.DocumentoCompraOrderByWithRelationInput[]
+  cursor?: Prisma.DocumentoCompraWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DocumentoCompraScalarFieldEnum | Prisma.DocumentoCompraScalarFieldEnum[]
+}
+
+/**
+ * User.pagamentosMomenu
+ */
+export type User$pagamentosMomenuArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PagamentoMomenu
+   */
+  select?: Prisma.PagamentoMomenuSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PagamentoMomenu
+   */
+  omit?: Prisma.PagamentoMomenuOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PagamentoMomenuInclude<ExtArgs> | null
+  where?: Prisma.PagamentoMomenuWhereInput
+  orderBy?: Prisma.PagamentoMomenuOrderByWithRelationInput | Prisma.PagamentoMomenuOrderByWithRelationInput[]
+  cursor?: Prisma.PagamentoMomenuWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PagamentoMomenuScalarFieldEnum | Prisma.PagamentoMomenuScalarFieldEnum[]
+}
+
+/**
+ * User.mentoriaAcessos
+ */
+export type User$mentoriaAcessosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MentoriaAcesso
+   */
+  select?: Prisma.MentoriaAcessoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MentoriaAcesso
+   */
+  omit?: Prisma.MentoriaAcessoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MentoriaAcessoInclude<ExtArgs> | null
+  where?: Prisma.MentoriaAcessoWhereInput
+  orderBy?: Prisma.MentoriaAcessoOrderByWithRelationInput | Prisma.MentoriaAcessoOrderByWithRelationInput[]
+  cursor?: Prisma.MentoriaAcessoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MentoriaAcessoScalarFieldEnum | Prisma.MentoriaAcessoScalarFieldEnum[]
 }
 
 /**

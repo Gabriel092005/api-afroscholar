@@ -25,7 +25,7 @@ import { removerResposta } from "./remover-resposta";
 
 export async function comunidadesRoutes(app: FastifyInstance) {
   app.put("/comunidades/:id",   { onRequest: [verifyJWT] }, editar);
-  app.post("/comunidades",      { onRequest: [verifyJWT, verifyUserRole('ADMIN')] }, criar);
+  app.post("/comunidades",      { onRequest: [verifyJWT, verifyUserRole('ADMIN', 'GESTOR')] }, criar);
   app.get("/comunidades",       { onRequest: [verifyJWT] }, listar);
   app.get("/comunidades/:id",   { onRequest: [verifyJWT] }, buscar);
   app.post("/comunidades/:id/entrar", { onRequest: [verifyJWT] }, entrar);

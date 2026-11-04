@@ -1,3 +1,4 @@
+import { bolsasForaDoCatalogo } from "@/lib/mentoria-acesso";
 import prisma from "@/lib/prisma";
 import { FastifyReply, FastifyRequest } from "fastify";
 
@@ -6,9 +7,18 @@ export const listBolsas = async (
   res: FastifyReply
 ) => {
   try {
-    const { search, categoria, nivel, status, page = "1", limit = "10" } = req.query as any;
+    const { search, categoria, nivel, status, ocultarMinhas, page = "1", limit = "10" } = req.query as any;
 
     const where: any = {};
+
+    // Só o catálogo pede isto: a entrevista e as consultorias continuam a precisar destas bolsas.
+    if (ocultarMinhas === "true") {
+      const usuarioId = await req
+        .jwtVerify<{ sub: string }>()
+        .then((token) => token.sub)
+        .catch(() => null);
+      if (usuarioId) where.id = { notIn: await bolsasForaDoCatalogo(usuarioId) };
+    }
 
     if (search) {
       where.OR = [

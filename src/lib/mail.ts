@@ -2,96 +2,212 @@ import nodemailer from "nodemailer";
 import { env } from "@/Env";
 import prisma from "@/lib/prisma";
 
-export const transporter = nodemailer.createTransport({
+const MARCA = "Afroscholars";
+const COR = "#059669";
+const LEMA = "Transformando o potencial angolano em sucesso global.";
+
+/** Os servidores SMTP limitam os destinatários por mensagem: uma lista grande falharia inteira. */
+const DESTINATARIOS_POR_LOTE = 50;
+const PAUSA_ENTRE_LOTES_MS = 1000;
+const TENTATIVAS = 2;
+const PAUSA_ENTRE_TENTATIVAS_MS = 2000;
+
+const transporter = nodemailer.createTransport({
   host: env.SMTP_HOST,
   port: env.SMTP_PORT,
   secure: env.SMTP_PORT === 465,
-  auth: {
-    user: env.SMTP_USER,
-    pass: env.SMTP_PASS,
-  },
+  pool: true,
+  maxConnections: 3,
+  // Sem isto, um servidor SMTP parado prende o envio durante minutos.
+  connectionTimeout: 10_000,
+  greetingTimeout: 10_000,
+  socketTimeout: 30_000,
+  auth: { user: env.SMTP_USER, pass: env.SMTP_PASS },
 });
 
-export async function sendWelcomeEmail(to: string, nome: string) {
-  if (!env.SMTP_USER || !env.SMTP_PASS) {
-    if (process.env.NODE_ENV !== 'production') {
-      console.log("⚠️ SMTP not configured, skipping email to", to);
-    }
-    return;
-  }
+function emailConfigurado() {
+  return Boolean(env.SMTP_USER && env.SMTP_PASS);
+}
 
-  const benefits = [
-    "🎓 Bolsas de estudo no exterior",
-    "✈️ Programas de intercâmbio",
-    "💼 Trabalhos e estágios no exterior",
-    "📚 Cursos preparatórios para bolsas de estudos",
-    "🌍 Comunidade global para networking e interação",
-    "🤖 Inteligência artificial que rastreia oportunidades em tempo real",
-  ];
+function remetente() {
+  return env.EMAIL_FROM || { name: MARCA, address: env.SMTP_USER };
+}
 
-  try {
-    await transporter.sendMail({
-      from: env.EMAIL_FROM || env.SMTP_USER,
-      to,
-      subject: "Bem-vindo à Afroscholars!",
-      html: `
-<!DOCTYPE html>
-<html>
+const esperar = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+function escaparHtml(texto: string) {
+  return texto
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+/** As descrições vêm do editor de texto rico, e um corte a meio deixaria etiquetas partidas. */
+function textoSimples(html: string) {
+  return html
+    .replace(/<[^>]*>?/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+type ConteudoEmail = {
+  titulo: string;
+  /** Aparece na caixa de entrada, ao lado do assunto. */
+  resumo: string;
+  saudacao?: string;
+  paragrafos: string[];
+  lista?: string[];
+  destaque?: { titulo: string; texto: string };
+  botao?: { texto: string; href: string };
+  nota?: string;
+};
+
+/**
+ * Todo o texto é escapado aqui, por isso nome, título ou feedback nunca entram como HTML.
+ * Os estilos ficam em linha e o layout em tabelas porque é o que os clientes de email
+ * respeitam; a versão em texto ajuda a entrega e serve quem não mostra HTML.
+ */
+export function montarEmail(conteudo: ConteudoEmail) {
+  const { titulo, resumo, saudacao, paragrafos, lista, destaque, botao, nota } = conteudo;
+  const ano = new Date().getFullYear();
+  const paragrafo = (texto: string) =>
+    `<p style="margin:0 0 16px;font-size:15px;line-height:1.6;color:#374151;">${escaparHtml(texto)}</p>`;
+
+  const html = `<!DOCTYPE html>
+<html lang="pt">
 <head>
   <meta charset="utf-8">
-  <style>
-    body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
-    .container { max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 12px; overflow: hidden; }
-    .header { background: #059669; padding: 32px 24px; text-align: center; }
-    .header h1 { margin: 0; color: #fff; font-size: 24px; }
-    .body { padding: 32px 24px; color: #333; }
-    .body h2 { margin-top: 0; font-size: 20px; color: #059669; }
-    .body p { line-height: 1.6; font-size: 15px; }
-    .btn { display: inline-block; padding: 12px 28px; background: #059669; color: #fff; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 16px 0; }
-    .footer { padding: 24px; text-align: center; font-size: 12px; color: #888; border-top: 1px solid #eee; }
-    ul { padding-left: 20px; }
-    ul li { margin-bottom: 6px; font-size: 14px; color: #444; }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${escaparHtml(titulo)}</title>
 </head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h1>Bem-vindo à Afroscholars, ${nome}!</h1>
-    </div>
-    <div class="body">
-      <p>A sua conta foi criada com sucesso na plataforma Afroscholars.</p>
-      <p>Agora você já pode acessar um universo de oportunidades internacionais, incluindo:</p>
-      <ul>
-        ${benefits.map((b) => `<li>${b}</li>`).join("\n        ")}
-      </ul>
-      <p>Comece hoje a sua jornada!</p>
-      <a href="${env.FRONTEND_URL}/bolsas" class="btn">Explorar Oportunidades</a>
-      <p>Explore oportunidades que podem transformar o seu futuro acadêmico e profissional.</p>
-      <p style="margin-top: 16px; font-style: italic; color: #666;">
-        A Afroscholars foi criada para conectar estudantes e profissionais africanos às melhores oportunidades do mundo.
-      </p>
-      <p><strong>Desejamos muito sucesso na sua trajetória!</strong></p>
-    </div>
-    <div class="footer">
-      <p>© ${new Date().getFullYear()} Afroscholars — Transformando o potencial angolano em sucesso global.</p>
-    </div>
-  </div>
+<body style="margin:0;padding:0;background-color:#f4f4f5;font-family:Arial,Helvetica,sans-serif;">
+  <div style="display:none;max-height:0;overflow:hidden;">${escaparHtml(resumo)}</div>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f4f5;">
+    <tr>
+      <td align="center" style="padding:24px 12px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background-color:#ffffff;border-radius:12px;overflow:hidden;">
+          <tr>
+            <td style="background-color:${COR};padding:20px 24px;font-size:16px;font-weight:bold;color:#ffffff;">${MARCA}</td>
+          </tr>
+          <tr>
+            <td style="padding:28px 24px 12px;">
+              <h1 style="margin:0 0 16px;font-size:21px;line-height:1.3;color:#111827;">${escaparHtml(titulo)}</h1>
+              ${saudacao ? paragrafo(saudacao) : ""}
+              ${paragrafos.map(paragrafo).join("\n              ")}
+              ${lista ? `<ul style="margin:0 0 16px;padding-left:20px;font-size:14px;line-height:1.7;color:#374151;">${lista.map((item) => `<li>${escaparHtml(item)}</li>`).join("")}</ul>` : ""}
+              ${destaque ? `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 16px;"><tr><td style="background-color:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:14px 16px;font-size:14px;line-height:1.6;color:#374151;"><strong>${escaparHtml(destaque.titulo)}</strong><br>${escaparHtml(destaque.texto)}</td></tr></table>` : ""}
+              ${botao ? `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:8px 0 20px;"><tr><td style="background-color:${COR};border-radius:8px;"><a href="${escaparHtml(botao.href)}" style="display:inline-block;padding:13px 26px;font-size:15px;font-weight:bold;color:#ffffff;text-decoration:none;">${escaparHtml(botao.texto)}</a></td></tr></table>
+              <p style="margin:0 0 16px;font-size:12px;line-height:1.5;color:#6b7280;">Se o botão não funcionar, copie este endereço para o navegador:<br><a href="${escaparHtml(botao.href)}" style="color:${COR};word-break:break-all;">${escaparHtml(botao.href)}</a></p>` : ""}
+              ${nota ? `<p style="margin:0 0 16px;font-size:12px;line-height:1.5;color:#6b7280;">${escaparHtml(nota)}</p>` : ""}
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:18px 24px;border-top:1px solid #e5e7eb;font-size:12px;line-height:1.5;color:#6b7280;text-align:center;">
+              © ${ano} ${MARCA} — ${LEMA}
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
 </body>
-</html>
-      `,
-    });
+</html>`;
 
-    if (process.env.NODE_ENV !== 'production') {
-      console.log(`✅ Welcome email sent to ${to}`);
+  const text = [
+    titulo,
+    saudacao,
+    ...paragrafos,
+    ...(lista ?? []).map((item) => `- ${item}`),
+    destaque && `${destaque.titulo}\n${destaque.texto}`,
+    botao && `${botao.texto}: ${botao.href}`,
+    nota,
+    `© ${ano} ${MARCA}`,
+  ]
+    .filter(Boolean)
+    .join("\n\n");
+
+  return { html, text };
+}
+
+function falhaTemporaria(erro: unknown) {
+  const { code, responseCode } = erro as { code?: string; responseCode?: number };
+  if (responseCode) return responseCode >= 400 && responseCode < 500;
+  return ["ETIMEDOUT", "ECONNECTION", "ESOCKET", "EDNS", "ECONNRESET"].includes(code ?? "");
+}
+
+/** Lança o erro: é quem chama que decide se uma falha chega ao utilizador. */
+async function entregar(mensagem: nodemailer.SendMailOptions) {
+  for (let tentativa = 1; ; tentativa++) {
+    try {
+      return await transporter.sendMail({ from: remetente(), ...mensagem });
+    } catch (erro) {
+      if (tentativa >= TENTATIVAS || !falhaTemporaria(erro)) throw erro;
+      await esperar(PAUSA_ENTRE_TENTATIVAS_MS);
     }
-  } catch (error) {
-    console.error(`❌ Failed to send welcome email to ${to}:`, error);
   }
 }
 
+/** Para emails que não podem travar o pedido do utilizador: uma falha só fica registada. */
+async function enviar(descricao: string, to: string, assunto: string, conteudo: ConteudoEmail) {
+  if (!emailConfigurado()) {
+    if (process.env.NODE_ENV !== "production") {
+      console.log(`⚠️ SMTP not configured, skipping ${descricao} to`, to);
+    }
+    return false;
+  }
+
+  try {
+    await entregar({ to, subject: assunto, ...montarEmail(conteudo) });
+    if (process.env.NODE_ENV !== "production") {
+      console.log(`✅ ${descricao} sent to ${to}`);
+    }
+    return true;
+  } catch (erro) {
+    console.error(`❌ Failed to send ${descricao} to ${to}:`, erro);
+    return false;
+  }
+}
+
+/** Avisa no arranque, em vez de só se descobrir o problema quando um utilizador não recebe nada. */
+export async function verificarEmail() {
+  if (!emailConfigurado()) {
+    console.warn("⚠️ SMTP não configurado: os emails não serão enviados.");
+    return;
+  }
+  try {
+    await transporter.verify();
+  } catch (erro) {
+    console.error("❌ O servidor SMTP não aceitou a ligação:", erro);
+  }
+}
+
+export function sendWelcomeEmail(to: string, nome: string) {
+  return enviar("welcome email", to, `Bem-vindo à ${MARCA}!`, {
+    titulo: `Bem-vindo à ${MARCA}, ${nome}!`,
+    resumo: "A sua conta foi criada. Veja as oportunidades à sua espera.",
+    paragrafos: [
+      `A sua conta foi criada com sucesso na plataforma ${MARCA}.`,
+      "Agora já pode aceder a um universo de oportunidades internacionais, incluindo:",
+    ],
+    lista: [
+      "Bolsas de estudo no exterior",
+      "Programas de intercâmbio",
+      "Trabalhos e estágios no exterior",
+      "Cursos preparatórios para bolsas de estudos",
+      "Comunidade global para networking e interação",
+      "Inteligência artificial que rastreia oportunidades em tempo real",
+    ],
+    botao: { texto: "Explorar oportunidades", href: `${env.FRONTEND_URL}/bolsas` },
+    nota: `A ${MARCA} foi criada para conectar estudantes e profissionais africanos às melhores oportunidades do mundo.`,
+  });
+}
+
 export async function sendNewBolsaToAllUsers(titulo: string, descricao: string, link: string) {
-  if (!env.SMTP_USER || !env.SMTP_PASS) {
-    if (process.env.NODE_ENV !== 'production') {
+  if (!emailConfigurado()) {
+    if (process.env.NODE_ENV !== "production") {
       console.log("⚠️ SMTP not configured, skipping bolsa notification");
     }
     return;
@@ -102,189 +218,99 @@ export async function sendNewBolsaToAllUsers(titulo: string, descricao: string, 
       where: { estado_conta: "ACTIVA" },
       select: { email: true },
     });
+    if (users.length === 0) return;
 
-    if (users.length === 0) {
-      if (process.env.NODE_ENV !== 'production') {
-        console.log("⚠️ No active users to notify");
-      }
-      return;
-    }
-
-    const emails = users.map((u) => u.email);
-
-    await transporter.sendMail({
-      from: env.EMAIL_FROM || env.SMTP_USER,
-      bcc: emails,
-      subject: `Nova Bolsa: ${titulo}`,
-      html: `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <style>
-    body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
-    .container { max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 12px; overflow: hidden; }
-    .header { background: #059669; padding: 32px 24px; text-align: center; }
-    .header h1 { margin: 0; color: #fff; font-size: 24px; }
-    .body { padding: 32px 24px; color: #333; }
-    .body h2 { margin-top: 0; font-size: 20px; color: #059669; }
-    .body p { line-height: 1.6; font-size: 15px; }
-    .btn { display: inline-block; padding: 12px 28px; background: #059669; color: #fff; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 16px 0; }
-    .footer { padding: 24px; text-align: center; font-size: 12px; color: #888; border-top: 1px solid #eee; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h1>🎓 Nova Oportunidade</h1>
-    </div>
-    <div class="body">
-      <h2>${titulo}</h2>
-      <p>${descricao}</p>
-      <a href="${link}" class="btn">Ver Bolsa</a>
-      <p style="margin-top: 24px; font-size: 13px; color: #666;">
-        Não perca esta oportunidade! Candidate-se o quanto antes.
-      </p>
-    </div>
-    <div class="footer">
-      <p>© ${new Date().getFullYear()} Afroscholars — Transformando o potencial angolano em sucesso global.</p>
-    </div>
-  </div>
-</body>
-</html>
-      `,
+    const conteudo = montarEmail({
+      titulo,
+      resumo: "Há uma nova oportunidade disponível na plataforma.",
+      paragrafos: [textoSimples(descricao), "Não perca esta oportunidade! Candidate-se o quanto antes."],
+      botao: { texto: "Ver bolsa", href: link },
     });
 
-    if (process.env.NODE_ENV !== 'production') {
-      console.log(`✅ New bolsa notification sent to ${emails.length} users`);
+    // Um lote que falha não impede os seguintes, e os endereços continuam escondidos em Bcc.
+    let enviados = 0;
+    for (let inicio = 0; inicio < users.length; inicio += DESTINATARIOS_POR_LOTE) {
+      const lote = users.slice(inicio, inicio + DESTINATARIOS_POR_LOTE).map((u) => u.email);
+      try {
+        await entregar({
+          to: env.EMAIL_FROM || env.SMTP_USER,
+          bcc: lote,
+          subject: `Nova bolsa: ${titulo}`,
+          ...conteudo,
+        });
+        enviados += lote.length;
+      } catch (erro) {
+        console.error(`❌ Failed to send bolsa notification batch of ${lote.length}:`, erro);
+      }
+      if (inicio + DESTINATARIOS_POR_LOTE < users.length) await esperar(PAUSA_ENTRE_LOTES_MS);
     }
-  } catch (error) {
-    console.error(`❌ Failed to send bolsa notification:`, error);
+
+    if (process.env.NODE_ENV !== "production") {
+      console.log(`✅ New bolsa notification sent to ${enviados}/${users.length} users`);
+    }
+  } catch (erro) {
+    console.error("❌ Failed to send bolsa notification:", erro);
   }
 }
 
-export async function sendAnaliseConcluidaEmail(to: string, nome: string, tipoDocumento: string, status: string, feedback?: string) {
-  if (!env.SMTP_USER || !env.SMTP_PASS) {
-    if (process.env.NODE_ENV !== 'production') {
-      console.log("⚠️ SMTP not configured, skipping analise email to", to);
-    }
-    return;
-  }
-
-  const statusLabel = status === "CONCLUIDO" ? "Concluída" : "Rejeitada";
-  const tipoLabel = tipoDocumento === "CV" ? "Currículo (CV)" :
+export function sendAnaliseConcluidaEmail(to: string, nome: string, tipoDocumento: string, status: string, feedback?: string) {
+  const statusLabel = status === "CONCLUIDO" ? "concluída" : "rejeitada";
+  const tipoLabel =
+    tipoDocumento === "CV" ? "Currículo (CV)" :
     tipoDocumento === "CARTA_MOTIVACAO" ? "Carta de Motivação" :
     tipoDocumento === "CERTIFICADO" ? "Certificado" : tipoDocumento;
 
-  try {
-    await transporter.sendMail({
-      from: env.EMAIL_FROM || env.SMTP_USER,
-      to,
-      subject: `Análise de Documento ${statusLabel} — Afroscholars`,
-      html: `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <style>
-    body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
-    .container { max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 12px; overflow: hidden; }
-    .header { background: #059669; padding: 32px 24px; text-align: center; }
-    .header h1 { margin: 0; color: #fff; font-size: 24px; }
-    .body { padding: 32px 24px; color: #333; }
-    .body h2 { margin-top: 0; font-size: 20px; color: #059669; }
-    .body p { line-height: 1.6; font-size: 15px; }
-    .footer { padding: 24px; text-align: center; font-size: 12px; color: #888; border-top: 1px solid #eee; }
-    .feedback { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px; margin: 16px 0; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h1>Análise de Documento ${statusLabel}</h1>
-    </div>
-    <div class="body">
-      <h2>Olá, ${nome}!</h2>
-      <p>A análise do seu documento <strong>${tipoLabel}</strong> foi <strong>${statusLabel.toLowerCase()}</strong>.</p>
-      ${feedback ? `<div class="feedback"><strong>Feedback da equipa:</strong><p>${feedback}</p></div>` : ""}
-      <p>Faça login na plataforma para mais detalhes.</p>
-      <p style="margin-top: 24px; font-size: 13px; color: #666;">
-        Equipa Afroscholars — Criada por Ageu Zenguela
-      </p>
-    </div>
-    <div class="footer">
-      <p>© ${new Date().getFullYear()} Afroscholars</p>
-    </div>
-  </div>
-</body>
-</html>
-      `,
-    });
-
-    if (process.env.NODE_ENV !== 'production') {
-      console.log(`✅ Analise document email sent to ${to}`);
-    }
-  } catch (error) {
-    console.error(`❌ Failed to send analise document email to ${to}:`, error);
-  }
+  return enviar("analise document email", to, `Análise de documento ${statusLabel} — ${MARCA}`, {
+    titulo: `Análise de documento ${statusLabel}`,
+    resumo: `A análise do seu documento ${tipoLabel} foi ${statusLabel}.`,
+    saudacao: `Olá, ${nome}!`,
+    paragrafos: [`A análise do seu documento ${tipoLabel} foi ${statusLabel}.`],
+    destaque: feedback ? { titulo: "Feedback da equipa", texto: feedback } : undefined,
+    botao: { texto: "Ver na plataforma", href: `${env.FRONTEND_URL}/analise-documento` },
+    nota: `Equipa ${MARCA} — Criada por Ageu Zenguela`,
+  });
 }
 
-export async function sendMagicLinkEmail(to: string, link: string) {
-  if (!env.SMTP_USER || !env.SMTP_PASS) {
-    if (process.env.NODE_ENV !== 'production') {
-      console.log("⚠️ SMTP not configured, skipping magic link email to", to);
-    }
-    return;
-  }
+export function sendMagicLinkEmail(to: string, link: string) {
+  return enviar("magic link email", to, `O seu link de acesso — ${MARCA}`, {
+    titulo: "O seu link de acesso",
+    resumo: "Use este link para entrar. Expira em 10 minutos.",
+    saudacao: "Olá!",
+    paragrafos: [
+      `Recebemos o seu pedido de acesso à plataforma ${MARCA}.`,
+      "Clique no botão abaixo para entrar na sua conta:",
+    ],
+    botao: { texto: "Aceder à minha conta", href: link },
+    nota: "Este link expira em 10 minutos. Se não foi você que pediu, ignore este email.",
+  });
+}
 
-  try {
-    await transporter.sendMail({
-      from: env.EMAIL_FROM || env.SMTP_USER,
-      to,
-      subject: "Seu link de acesso — Afroscholars",
-      html: `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <style>
-    body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
-    .container { max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 12px; overflow: hidden; }
-    .header { background: #059669; padding: 32px 24px; text-align: center; }
-    .header h1 { margin: 0; color: #fff; font-size: 24px; }
-    .body { padding: 32px 24px; color: #333; }
-    .body h2 { margin-top: 0; font-size: 20px; color: #059669; }
-    .body p { line-height: 1.6; font-size: 15px; }
-    .btn { display: inline-block; padding: 14px 32px; background: #059669; color: #fff; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px; margin: 16px 0; }
-    .footer { padding: 24px; text-align: center; font-size: 12px; color: #888; border-top: 1px solid #eee; }
-    .note { font-size: 12px; color: #999; margin-top: 16px; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h1>🔗 Afroscholars</h1>
-    </div>
-    <div class="body">
-      <h2>Olá!</h2>
-      <p>Recebemos o seu pedido de acesso à plataforma <strong>Afroscholars</strong>.</p>
-      <p>Clique no botão abaixo para entrar na sua conta:</p>
-      <a href="${link}" class="btn">Acessar minha conta</a>
-      <p class="note">Este link expira em 10 minutos. Se não foi você que pediu, ignore este email.</p>
-    </div>
-    <div class="footer">
-      <p>© ${new Date().getFullYear()} Afroscholars</p>
-    </div>
-  </div>
-</body>
-</html>
-      `,
-    });
+export function sendPasswordResetEmail(to: string, link: string) {
+  return enviar("password reset email", to, `Recuperação de palavra-passe — ${MARCA}`, {
+    titulo: "Recuperação de palavra-passe",
+    resumo: "Defina uma nova palavra-passe. O link expira em 1 hora.",
+    paragrafos: [
+      "Recebemos um pedido de recuperação de palavra-passe para a sua conta.",
+      "Clique no botão abaixo para definir uma nova palavra-passe:",
+    ],
+    botao: { texto: "Redefinir palavra-passe", href: link },
+    nota: "Este link expira em 1 hora. Se não foi você que pediu, ignore este email.",
+  });
+}
 
-    if (process.env.NODE_ENV !== 'production') {
-      console.log(`✅ Magic link email sent to ${to}`);
-    }
-  } catch (error) {
-    console.error(`❌ Failed to send magic link email to ${to}:`, error);
-  }
+/** Lança o erro de propósito: o diagnóstico existe para o mostrar. */
+export async function sendTestEmail(to: string) {
+  await entregar({
+    to,
+    subject: `Teste de email — ${MARCA}`,
+    ...montarEmail({
+      titulo: "Teste de email",
+      resumo: "O serviço de email está a funcionar.",
+      saudacao: "Olá!",
+      paragrafos: [
+        `Este é um email de teste enviado pelo servidor da ${MARCA}.`,
+        "Se recebeu este email, o serviço está a funcionar correctamente.",
+      ],
+    }),
+  });
 }

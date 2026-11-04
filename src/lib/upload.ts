@@ -20,7 +20,24 @@ const storage = multer.diskStorage({
   },
 });
 
+// A pasta de uploads é pública e serve o mesmo domínio da aplicação: um .html ou .svg
+// carregado aqui correria como página do site e poderia ler a sessão de quem o abrisse.
+const EXTENSOES_PERMITIDAS = new Set([
+  ".jpg", ".jpeg", ".png", ".gif", ".webp", ".avif", ".heic",
+  ".mp4", ".webm", ".mov",
+  ".mp3", ".wav", ".ogg", ".m4a", ".aac", ".opus",
+  ".pdf", ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".txt", ".csv", ".zip",
+]);
+
+/** Áudio gravado no navegador pode vir sem extensão: nesse caso é servido como ficheiro binário. */
+export const filtroDeFicheiros: multer.Options["fileFilter"] = (_req, file, cb) => {
+  const extensao = path.extname(file.originalname).toLowerCase();
+  if (!extensao || EXTENSOES_PERMITIDAS.has(extensao)) return cb(null, true);
+  cb(new Error(`Formato de ficheiro não permitido: ${extensao}`));
+};
+
 export const upload = multer({
   storage,
   limits: { fileSize: 10 * 1024 * 1024 },
+  fileFilter: filtroDeFicheiros,
 });

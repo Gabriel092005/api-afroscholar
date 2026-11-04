@@ -4,7 +4,13 @@ import { z } from "zod";
 
 const updateAulaSchema = z.object({
   status: z.enum(["AGENDADA", "AO_VIVO", "FINALIZADA", "CANCELADA"]).optional(),
-  gravacaoUrl: z.string().url("URL inválida").optional().nullable(),
+  // Esta URL vai para um iframe na sala: só http(s), nunca javascript: ou data:.
+  gravacaoUrl: z
+    .string()
+    .url("URL inválida")
+    .refine((url) => /^https?:\/\//i.test(url), "URL inválida")
+    .optional()
+    .nullable(),
 });
 
 export async function updateAulaStatus(req: FastifyRequest, res: FastifyReply) {

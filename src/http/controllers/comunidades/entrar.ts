@@ -1,3 +1,4 @@
+import { temMentoriaNaBolsa } from "@/lib/mentoria-acesso";
 import prisma from "@/lib/prisma";
 import { FastifyReply, FastifyRequest } from "fastify";
 
@@ -22,11 +23,6 @@ export async function entrar(req: FastifyRequest, res: FastifyReply) {
       if (membroExistente.status === "APROVADO") {
         return res.status(400).send({ error: "Bad Request", message: "Já é membro desta comunidade." });
       }
-      if (membroExistente.status === "REJEITADO") {
-        await prisma.communityMember.delete({
-          where: { id: membroExistente.id },
-        });
-      }
     }
 
     const usuario = await prisma.user.findUnique({
@@ -36,11 +32,21 @@ export async function entrar(req: FastifyRequest, res: FastifyReply) {
 
     const isAdmin = usuario?.role === "ADMIN" || usuario?.role === "GESTOR";
 
+    const temMentoria = comunidade.bolsaId ? await temMentoriaNaBolsa(usuarioId, comunidade.bolsaId) : false;
+
+    if (comunidade.bolsaId && !isAdmin && !temMentoria) {
+      return res.status(403).send({ error: "Forbidden", message: "Esta comunidade está incluída na mentoria da bolsa." });
+    }
+
+    if (membroExistente?.status === "REJEITADO") {
+      await prisma.communityMember.delete({ where: { id: membroExistente.id } });
+    }
+
     await prisma.communityMember.create({
-      data: { comunidadeId: id, usuarioId, status: isAdmin ? "APROVADO" : "PENDENTE" },
+      data: { comunidadeId: id, usuarioId, status: isAdmin || temMentoria ? "APROVADO" : "PENDENTE" },
     });
 
-    if (isAdmin) {
+    if (isAdmin || temMentoria) {
       return res.status(201).send({ message: "Entrou na comunidade!" });
     }
     return res.status(201).send({ message: "Solicitação enviada. Aguarde aprovação de um administrador." });

@@ -8,8 +8,11 @@ services:
     environment:
       DATABASE_URL: "postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:?Defina POSTGRES_PASSWORD no .env}@db:5432/${POSTGRES_DB:-postgres}?schema=public"
       UPLOAD_DIR: /usr/src/app/uploads
+      DOCUMENTOS_DIR: /usr/src/app/documentos-privados
     volumes:
       - uploads:/usr/src/app/uploads
+      # Os ficheiros dos documentos à venda: sem volume, perdiam-se a cada novo build.
+      - documentos-privados:/usr/src/app/documentos-privados
     depends_on:
       db:
         condition: service_healthy
@@ -22,7 +25,8 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Defina POSTGRES_PASSWORD no .env}
       POSTGRES_DB: ${POSTGRES_DB:-postgres}
     ports:
-      - "${POSTGRES_PORT:-5432}:5432"
+      # Só na própria VPS: o Docker passa à frente do firewall e abriria a base à internet.
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -33,4 +37,5 @@ services:
 
 volumes:
   uploads:
+  documentos-privados:
   pgdata:

@@ -21,6 +21,8 @@ export class SuspendUsuarioUseCase {
       data: {
         estado_conta: novoEstado,
       },
+      // A resposta vai para o browser: nunca pode incluir a palavra-passe.
+      select: { id: true, nome: true, email: true, role: true, estado_conta: true },
     });
 
     return { user: updated };

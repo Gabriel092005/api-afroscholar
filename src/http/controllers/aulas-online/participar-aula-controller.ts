@@ -1,3 +1,4 @@
+import { podeEntrarNaAula } from "@/lib/mentoria-acesso";
 import prisma from "@/lib/prisma";
 import { FastifyReply, FastifyRequest } from "fastify";
 
@@ -14,21 +15,17 @@ export async function participarAula(req: FastifyRequest, res: FastifyReply) {
 
     const user = await prisma.user.findUnique({ where: { id: usuarioId }, select: { role: true } });
 
-    if (user && user.role !== "ADMIN" && user.role !== "GESTOR" && aula.hostId !== usuarioId && aula.bolsaId) {
-      const inscricao = await prisma.bolsaInscricao.findFirst({
-        where: {
-          bolsaId: aula.bolsaId,
-          usuarioId,
-          status: "APROVADA",
-        },
+    if (
+      user &&
+      user.role !== "ADMIN" &&
+      user.role !== "GESTOR" &&
+      aula.hostId !== usuarioId &&
+      !(await podeEntrarNaAula(usuarioId, aula))
+    ) {
+      return res.status(403).send({
+        error: "Forbidden",
+        message: "Esta aula é para quem tem a inscrição ou a mentoria desta bolsa.",
       });
-
-      if (!inscricao) {
-        return res.status(403).send({
-          error: "Forbidden",
-          message: "É necessário estar inscrito na bolsa desta aula para participar.",
-        });
-      }
     }
 
     const existing = await prisma.aulaOnlineParticipante.findUnique({

@@ -6,6 +6,10 @@ const createMentoriaSchema = z.object({
   nome: z.string().min(1, "Nome é obrigatório"),
   descricao: z.string().optional(),
   bolsaId: z.string().uuid().optional(),
+  preco: z
+    .number()
+    .refine((v) => v === 0 || v >= 100, "O preço deve ser 0 (gratuito) ou pelo menos 100 Kz")
+    .optional(),
 });
 
 export async function createMentoria(req: FastifyRequest, res: FastifyReply) {
@@ -24,6 +28,7 @@ export async function createMentoria(req: FastifyRequest, res: FastifyReply) {
         nome: body.nome,
         descricao: body.descricao,
         bolsaId: body.bolsaId,
+        preco: body.preco,
       },
     });
 

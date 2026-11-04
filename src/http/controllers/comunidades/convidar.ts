@@ -1,3 +1,4 @@
+import { podeVerComunidade } from "@/lib/mentoria-acesso";
 import prisma from "@/lib/prisma";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
@@ -17,7 +18,7 @@ export async function convidar(req: FastifyRequest, res: FastifyReply) {
       include: { usuario: true },
     });
 
-    if (!convidador) {
+    if (!convidador || convidador.status !== "APROVADO") {
       return res.status(403).send({ error: "Forbidden", message: "Não é membro desta comunidade." });
     }
 
@@ -40,6 +41,11 @@ export async function convidar(req: FastifyRequest, res: FastifyReply) {
 
     if (membroExistente) {
       return res.status(400).send({ error: "Bad Request", message: "Este usuário já é membro da comunidade." });
+    }
+
+    // Um convite não pode abrir uma comunidade que está incluída na mentoria da bolsa.
+    if (!(await podeVerComunidade(convidadoId, comunidade))) {
+      return res.status(403).send({ error: "Forbidden", message: "Este usuário não tem a mentoria da bolsa desta comunidade." });
     }
 
     await prisma.communityMember.create({

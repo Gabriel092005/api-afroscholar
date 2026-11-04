@@ -20,14 +20,25 @@ export type MentoriaModel = runtime.Types.Result.DefaultSelection<Prisma.$Mentor
 
 export type AggregateMentoria = {
   _count: MentoriaCountAggregateOutputType | null
+  _avg: MentoriaAvgAggregateOutputType | null
+  _sum: MentoriaSumAggregateOutputType | null
   _min: MentoriaMinAggregateOutputType | null
   _max: MentoriaMaxAggregateOutputType | null
+}
+
+export type MentoriaAvgAggregateOutputType = {
+  preco: number | null
+}
+
+export type MentoriaSumAggregateOutputType = {
+  preco: number | null
 }
 
 export type MentoriaMinAggregateOutputType = {
   id: string | null
   nome: string | null
   descricao: string | null
+  preco: number | null
   created_at: Date | null
   updated_at: Date | null
   bolsaId: string | null
@@ -37,6 +48,7 @@ export type MentoriaMaxAggregateOutputType = {
   id: string | null
   nome: string | null
   descricao: string | null
+  preco: number | null
   created_at: Date | null
   updated_at: Date | null
   bolsaId: string | null
@@ -46,6 +58,7 @@ export type MentoriaCountAggregateOutputType = {
   id: number
   nome: number
   descricao: number
+  preco: number
   created_at: number
   updated_at: number
   bolsaId: number
@@ -53,10 +66,19 @@ export type MentoriaCountAggregateOutputType = {
 }
 
 
+export type MentoriaAvgAggregateInputType = {
+  preco?: true
+}
+
+export type MentoriaSumAggregateInputType = {
+  preco?: true
+}
+
 export type MentoriaMinAggregateInputType = {
   id?: true
   nome?: true
   descricao?: true
+  preco?: true
   created_at?: true
   updated_at?: true
   bolsaId?: true
@@ -66,6 +88,7 @@ export type MentoriaMaxAggregateInputType = {
   id?: true
   nome?: true
   descricao?: true
+  preco?: true
   created_at?: true
   updated_at?: true
   bolsaId?: true
@@ -75,6 +98,7 @@ export type MentoriaCountAggregateInputType = {
   id?: true
   nome?: true
   descricao?: true
+  preco?: true
   created_at?: true
   updated_at?: true
   bolsaId?: true
@@ -119,6 +143,18 @@ export type MentoriaAggregateArgs<ExtArgs extends runtime.Types.Extensions.Inter
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: MentoriaAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: MentoriaSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: MentoriaMinAggregateInputType
@@ -149,6 +185,8 @@ export type MentoriaGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   _count?: MentoriaCountAggregateInputType | true
+  _avg?: MentoriaAvgAggregateInputType
+  _sum?: MentoriaSumAggregateInputType
   _min?: MentoriaMinAggregateInputType
   _max?: MentoriaMaxAggregateInputType
 }
@@ -157,10 +195,13 @@ export type MentoriaGroupByOutputType = {
   id: string
   nome: string
   descricao: string | null
+  preco: number
   created_at: Date
   updated_at: Date
   bolsaId: string | null
   _count: MentoriaCountAggregateOutputType | null
+  _avg: MentoriaAvgAggregateOutputType | null
+  _sum: MentoriaSumAggregateOutputType | null
   _min: MentoriaMinAggregateOutputType | null
   _max: MentoriaMaxAggregateOutputType | null
 }
@@ -187,24 +228,28 @@ export type MentoriaWhereInput = {
   id?: Prisma.StringFilter<"Mentoria"> | string
   nome?: Prisma.StringFilter<"Mentoria"> | string
   descricao?: Prisma.StringNullableFilter<"Mentoria"> | string | null
+  preco?: Prisma.FloatFilter<"Mentoria"> | number
   created_at?: Prisma.DateTimeFilter<"Mentoria"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Mentoria"> | Date | string
   bolsaId?: Prisma.StringNullableFilter<"Mentoria"> | string | null
   bolsa?: Prisma.XOR<Prisma.BolsaNullableScalarRelationFilter, Prisma.BolsaWhereInput> | null
   aulas?: Prisma.AulaOnlineListRelationFilter
   inscricoes?: Prisma.MentoriaInscricaoListRelationFilter
+  acessos?: Prisma.MentoriaAcessoListRelationFilter
 }
 
 export type MentoriaOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
   descricao?: Prisma.SortOrderInput | Prisma.SortOrder
+  preco?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   bolsaId?: Prisma.SortOrderInput | Prisma.SortOrder
   bolsa?: Prisma.BolsaOrderByWithRelationInput
   aulas?: Prisma.AulaOnlineOrderByRelationAggregateInput
   inscricoes?: Prisma.MentoriaInscricaoOrderByRelationAggregateInput
+  acessos?: Prisma.MentoriaAcessoOrderByRelationAggregateInput
 }
 
 export type MentoriaWhereUniqueInput = Prisma.AtLeast<{
@@ -214,24 +259,29 @@ export type MentoriaWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.MentoriaWhereInput | Prisma.MentoriaWhereInput[]
   nome?: Prisma.StringFilter<"Mentoria"> | string
   descricao?: Prisma.StringNullableFilter<"Mentoria"> | string | null
+  preco?: Prisma.FloatFilter<"Mentoria"> | number
   created_at?: Prisma.DateTimeFilter<"Mentoria"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Mentoria"> | Date | string
   bolsaId?: Prisma.StringNullableFilter<"Mentoria"> | string | null
   bolsa?: Prisma.XOR<Prisma.BolsaNullableScalarRelationFilter, Prisma.BolsaWhereInput> | null
   aulas?: Prisma.AulaOnlineListRelationFilter
   inscricoes?: Prisma.MentoriaInscricaoListRelationFilter
+  acessos?: Prisma.MentoriaAcessoListRelationFilter
 }, "id">
 
 export type MentoriaOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
   descricao?: Prisma.SortOrderInput | Prisma.SortOrder
+  preco?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   bolsaId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.MentoriaCountOrderByAggregateInput
+  _avg?: Prisma.MentoriaAvgOrderByAggregateInput
   _max?: Prisma.MentoriaMaxOrderByAggregateInput
   _min?: Prisma.MentoriaMinOrderByAggregateInput
+  _sum?: Prisma.MentoriaSumOrderByAggregateInput
 }
 
 export type MentoriaScalarWhereWithAggregatesInput = {
@@ -241,6 +291,7 @@ export type MentoriaScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Mentoria"> | string
   nome?: Prisma.StringWithAggregatesFilter<"Mentoria"> | string
   descricao?: Prisma.StringNullableWithAggregatesFilter<"Mentoria"> | string | null
+  preco?: Prisma.FloatWithAggregatesFilter<"Mentoria"> | number
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Mentoria"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Mentoria"> | Date | string
   bolsaId?: Prisma.StringNullableWithAggregatesFilter<"Mentoria"> | string | null
@@ -250,50 +301,59 @@ export type MentoriaCreateInput = {
   id?: string
   nome: string
   descricao?: string | null
+  preco?: number
   created_at?: Date | string
   updated_at?: Date | string
   bolsa?: Prisma.BolsaCreateNestedOneWithoutMentoriasInput
   aulas?: Prisma.AulaOnlineCreateNestedManyWithoutMentoriaInput
   inscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutMentoriaInput
+  acessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutMentoriaInput
 }
 
 export type MentoriaUncheckedCreateInput = {
   id?: string
   nome: string
   descricao?: string | null
+  preco?: number
   created_at?: Date | string
   updated_at?: Date | string
   bolsaId?: string | null
   aulas?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutMentoriaInput
   inscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutMentoriaInput
+  acessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutMentoriaInput
 }
 
 export type MentoriaUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preco?: Prisma.FloatFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bolsa?: Prisma.BolsaUpdateOneWithoutMentoriasNestedInput
   aulas?: Prisma.AulaOnlineUpdateManyWithoutMentoriaNestedInput
   inscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutMentoriaNestedInput
+  acessos?: Prisma.MentoriaAcessoUpdateManyWithoutMentoriaNestedInput
 }
 
 export type MentoriaUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preco?: Prisma.FloatFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bolsaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aulas?: Prisma.AulaOnlineUncheckedUpdateManyWithoutMentoriaNestedInput
   inscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutMentoriaNestedInput
+  acessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutMentoriaNestedInput
 }
 
 export type MentoriaCreateManyInput = {
   id?: string
   nome: string
   descricao?: string | null
+  preco?: number
   created_at?: Date | string
   updated_at?: Date | string
   bolsaId?: string | null
@@ -303,6 +363,7 @@ export type MentoriaUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preco?: Prisma.FloatFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -311,6 +372,7 @@ export type MentoriaUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preco?: Prisma.FloatFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bolsaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -335,15 +397,21 @@ export type MentoriaCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
   descricao?: Prisma.SortOrder
+  preco?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   bolsaId?: Prisma.SortOrder
+}
+
+export type MentoriaAvgOrderByAggregateInput = {
+  preco?: Prisma.SortOrder
 }
 
 export type MentoriaMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
   descricao?: Prisma.SortOrder
+  preco?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   bolsaId?: Prisma.SortOrder
@@ -353,9 +421,14 @@ export type MentoriaMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
   descricao?: Prisma.SortOrder
+  preco?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   bolsaId?: Prisma.SortOrder
+}
+
+export type MentoriaSumOrderByAggregateInput = {
+  preco?: Prisma.SortOrder
 }
 
 export type MentoriaScalarRelationFilter = {
@@ -421,6 +494,22 @@ export type MentoriaUpdateOneWithoutAulasNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.MentoriaUpdateToOneWithWhereWithoutAulasInput, Prisma.MentoriaUpdateWithoutAulasInput>, Prisma.MentoriaUncheckedUpdateWithoutAulasInput>
 }
 
+export type MentoriaCreateNestedOneWithoutAcessosInput = {
+  create?: Prisma.XOR<Prisma.MentoriaCreateWithoutAcessosInput, Prisma.MentoriaUncheckedCreateWithoutAcessosInput>
+  connectOrCreate?: Prisma.MentoriaCreateOrConnectWithoutAcessosInput
+  connect?: Prisma.MentoriaWhereUniqueInput
+}
+
+export type MentoriaUpdateOneWithoutAcessosNestedInput = {
+  create?: Prisma.XOR<Prisma.MentoriaCreateWithoutAcessosInput, Prisma.MentoriaUncheckedCreateWithoutAcessosInput>
+  connectOrCreate?: Prisma.MentoriaCreateOrConnectWithoutAcessosInput
+  upsert?: Prisma.MentoriaUpsertWithoutAcessosInput
+  disconnect?: Prisma.MentoriaWhereInput | boolean
+  delete?: Prisma.MentoriaWhereInput | boolean
+  connect?: Prisma.MentoriaWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MentoriaUpdateToOneWithWhereWithoutAcessosInput, Prisma.MentoriaUpdateWithoutAcessosInput>, Prisma.MentoriaUncheckedUpdateWithoutAcessosInput>
+}
+
 export type MentoriaCreateNestedOneWithoutInscricoesInput = {
   create?: Prisma.XOR<Prisma.MentoriaCreateWithoutInscricoesInput, Prisma.MentoriaUncheckedCreateWithoutInscricoesInput>
   connectOrCreate?: Prisma.MentoriaCreateOrConnectWithoutInscricoesInput
@@ -439,20 +528,24 @@ export type MentoriaCreateWithoutBolsaInput = {
   id?: string
   nome: string
   descricao?: string | null
+  preco?: number
   created_at?: Date | string
   updated_at?: Date | string
   aulas?: Prisma.AulaOnlineCreateNestedManyWithoutMentoriaInput
   inscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutMentoriaInput
+  acessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutMentoriaInput
 }
 
 export type MentoriaUncheckedCreateWithoutBolsaInput = {
   id?: string
   nome: string
   descricao?: string | null
+  preco?: number
   created_at?: Date | string
   updated_at?: Date | string
   aulas?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutMentoriaInput
   inscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutMentoriaInput
+  acessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutMentoriaInput
 }
 
 export type MentoriaCreateOrConnectWithoutBolsaInput = {
@@ -488,6 +581,7 @@ export type MentoriaScalarWhereInput = {
   id?: Prisma.StringFilter<"Mentoria"> | string
   nome?: Prisma.StringFilter<"Mentoria"> | string
   descricao?: Prisma.StringNullableFilter<"Mentoria"> | string | null
+  preco?: Prisma.FloatFilter<"Mentoria"> | number
   created_at?: Prisma.DateTimeFilter<"Mentoria"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Mentoria"> | Date | string
   bolsaId?: Prisma.StringNullableFilter<"Mentoria"> | string | null
@@ -497,20 +591,24 @@ export type MentoriaCreateWithoutAulasInput = {
   id?: string
   nome: string
   descricao?: string | null
+  preco?: number
   created_at?: Date | string
   updated_at?: Date | string
   bolsa?: Prisma.BolsaCreateNestedOneWithoutMentoriasInput
   inscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutMentoriaInput
+  acessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutMentoriaInput
 }
 
 export type MentoriaUncheckedCreateWithoutAulasInput = {
   id?: string
   nome: string
   descricao?: string | null
+  preco?: number
   created_at?: Date | string
   updated_at?: Date | string
   bolsaId?: string | null
   inscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutMentoriaInput
+  acessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutMentoriaInput
 }
 
 export type MentoriaCreateOrConnectWithoutAulasInput = {
@@ -533,19 +631,87 @@ export type MentoriaUpdateWithoutAulasInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preco?: Prisma.FloatFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bolsa?: Prisma.BolsaUpdateOneWithoutMentoriasNestedInput
   inscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutMentoriaNestedInput
+  acessos?: Prisma.MentoriaAcessoUpdateManyWithoutMentoriaNestedInput
 }
 
 export type MentoriaUncheckedUpdateWithoutAulasInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preco?: Prisma.FloatFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bolsaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutMentoriaNestedInput
+  acessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutMentoriaNestedInput
+}
+
+export type MentoriaCreateWithoutAcessosInput = {
+  id?: string
+  nome: string
+  descricao?: string | null
+  preco?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  bolsa?: Prisma.BolsaCreateNestedOneWithoutMentoriasInput
+  aulas?: Prisma.AulaOnlineCreateNestedManyWithoutMentoriaInput
+  inscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutMentoriaInput
+}
+
+export type MentoriaUncheckedCreateWithoutAcessosInput = {
+  id?: string
+  nome: string
+  descricao?: string | null
+  preco?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  bolsaId?: string | null
+  aulas?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutMentoriaInput
+  inscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutMentoriaInput
+}
+
+export type MentoriaCreateOrConnectWithoutAcessosInput = {
+  where: Prisma.MentoriaWhereUniqueInput
+  create: Prisma.XOR<Prisma.MentoriaCreateWithoutAcessosInput, Prisma.MentoriaUncheckedCreateWithoutAcessosInput>
+}
+
+export type MentoriaUpsertWithoutAcessosInput = {
+  update: Prisma.XOR<Prisma.MentoriaUpdateWithoutAcessosInput, Prisma.MentoriaUncheckedUpdateWithoutAcessosInput>
+  create: Prisma.XOR<Prisma.MentoriaCreateWithoutAcessosInput, Prisma.MentoriaUncheckedCreateWithoutAcessosInput>
+  where?: Prisma.MentoriaWhereInput
+}
+
+export type MentoriaUpdateToOneWithWhereWithoutAcessosInput = {
+  where?: Prisma.MentoriaWhereInput
+  data: Prisma.XOR<Prisma.MentoriaUpdateWithoutAcessosInput, Prisma.MentoriaUncheckedUpdateWithoutAcessosInput>
+}
+
+export type MentoriaUpdateWithoutAcessosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bolsa?: Prisma.BolsaUpdateOneWithoutMentoriasNestedInput
+  aulas?: Prisma.AulaOnlineUpdateManyWithoutMentoriaNestedInput
+  inscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutMentoriaNestedInput
+}
+
+export type MentoriaUncheckedUpdateWithoutAcessosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bolsaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aulas?: Prisma.AulaOnlineUncheckedUpdateManyWithoutMentoriaNestedInput
   inscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutMentoriaNestedInput
 }
 
@@ -553,20 +719,24 @@ export type MentoriaCreateWithoutInscricoesInput = {
   id?: string
   nome: string
   descricao?: string | null
+  preco?: number
   created_at?: Date | string
   updated_at?: Date | string
   bolsa?: Prisma.BolsaCreateNestedOneWithoutMentoriasInput
   aulas?: Prisma.AulaOnlineCreateNestedManyWithoutMentoriaInput
+  acessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutMentoriaInput
 }
 
 export type MentoriaUncheckedCreateWithoutInscricoesInput = {
   id?: string
   nome: string
   descricao?: string | null
+  preco?: number
   created_at?: Date | string
   updated_at?: Date | string
   bolsaId?: string | null
   aulas?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutMentoriaInput
+  acessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutMentoriaInput
 }
 
 export type MentoriaCreateOrConnectWithoutInscricoesInput = {
@@ -589,26 +759,31 @@ export type MentoriaUpdateWithoutInscricoesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preco?: Prisma.FloatFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bolsa?: Prisma.BolsaUpdateOneWithoutMentoriasNestedInput
   aulas?: Prisma.AulaOnlineUpdateManyWithoutMentoriaNestedInput
+  acessos?: Prisma.MentoriaAcessoUpdateManyWithoutMentoriaNestedInput
 }
 
 export type MentoriaUncheckedUpdateWithoutInscricoesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preco?: Prisma.FloatFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bolsaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aulas?: Prisma.AulaOnlineUncheckedUpdateManyWithoutMentoriaNestedInput
+  acessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutMentoriaNestedInput
 }
 
 export type MentoriaCreateManyBolsaInput = {
   id?: string
   nome: string
   descricao?: string | null
+  preco?: number
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -617,26 +792,31 @@ export type MentoriaUpdateWithoutBolsaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preco?: Prisma.FloatFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   aulas?: Prisma.AulaOnlineUpdateManyWithoutMentoriaNestedInput
   inscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutMentoriaNestedInput
+  acessos?: Prisma.MentoriaAcessoUpdateManyWithoutMentoriaNestedInput
 }
 
 export type MentoriaUncheckedUpdateWithoutBolsaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preco?: Prisma.FloatFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   aulas?: Prisma.AulaOnlineUncheckedUpdateManyWithoutMentoriaNestedInput
   inscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutMentoriaNestedInput
+  acessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutMentoriaNestedInput
 }
 
 export type MentoriaUncheckedUpdateManyWithoutBolsaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preco?: Prisma.FloatFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -649,11 +829,13 @@ export type MentoriaUncheckedUpdateManyWithoutBolsaInput = {
 export type MentoriaCountOutputType = {
   aulas: number
   inscricoes: number
+  acessos: number
 }
 
 export type MentoriaCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   aulas?: boolean | MentoriaCountOutputTypeCountAulasArgs
   inscricoes?: boolean | MentoriaCountOutputTypeCountInscricoesArgs
+  acessos?: boolean | MentoriaCountOutputTypeCountAcessosArgs
 }
 
 /**
@@ -680,17 +862,26 @@ export type MentoriaCountOutputTypeCountInscricoesArgs<ExtArgs extends runtime.T
   where?: Prisma.MentoriaInscricaoWhereInput
 }
 
+/**
+ * MentoriaCountOutputType without action
+ */
+export type MentoriaCountOutputTypeCountAcessosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MentoriaAcessoWhereInput
+}
+
 
 export type MentoriaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nome?: boolean
   descricao?: boolean
+  preco?: boolean
   created_at?: boolean
   updated_at?: boolean
   bolsaId?: boolean
   bolsa?: boolean | Prisma.Mentoria$bolsaArgs<ExtArgs>
   aulas?: boolean | Prisma.Mentoria$aulasArgs<ExtArgs>
   inscricoes?: boolean | Prisma.Mentoria$inscricoesArgs<ExtArgs>
+  acessos?: boolean | Prisma.Mentoria$acessosArgs<ExtArgs>
   _count?: boolean | Prisma.MentoriaCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["mentoria"]>
 
@@ -698,6 +889,7 @@ export type MentoriaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   id?: boolean
   nome?: boolean
   descricao?: boolean
+  preco?: boolean
   created_at?: boolean
   updated_at?: boolean
   bolsaId?: boolean
@@ -708,6 +900,7 @@ export type MentoriaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   id?: boolean
   nome?: boolean
   descricao?: boolean
+  preco?: boolean
   created_at?: boolean
   updated_at?: boolean
   bolsaId?: boolean
@@ -718,16 +911,18 @@ export type MentoriaSelectScalar = {
   id?: boolean
   nome?: boolean
   descricao?: boolean
+  preco?: boolean
   created_at?: boolean
   updated_at?: boolean
   bolsaId?: boolean
 }
 
-export type MentoriaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "descricao" | "created_at" | "updated_at" | "bolsaId", ExtArgs["result"]["mentoria"]>
+export type MentoriaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "descricao" | "preco" | "created_at" | "updated_at" | "bolsaId", ExtArgs["result"]["mentoria"]>
 export type MentoriaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   bolsa?: boolean | Prisma.Mentoria$bolsaArgs<ExtArgs>
   aulas?: boolean | Prisma.Mentoria$aulasArgs<ExtArgs>
   inscricoes?: boolean | Prisma.Mentoria$inscricoesArgs<ExtArgs>
+  acessos?: boolean | Prisma.Mentoria$acessosArgs<ExtArgs>
   _count?: boolean | Prisma.MentoriaCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type MentoriaIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -743,11 +938,13 @@ export type $MentoriaPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     bolsa: Prisma.$BolsaPayload<ExtArgs> | null
     aulas: Prisma.$AulaOnlinePayload<ExtArgs>[]
     inscricoes: Prisma.$MentoriaInscricaoPayload<ExtArgs>[]
+    acessos: Prisma.$MentoriaAcessoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     nome: string
     descricao: string | null
+    preco: number
     created_at: Date
     updated_at: Date
     bolsaId: string | null
@@ -1148,6 +1345,7 @@ export interface Prisma__MentoriaClient<T, Null = never, ExtArgs extends runtime
   bolsa<T extends Prisma.Mentoria$bolsaArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Mentoria$bolsaArgs<ExtArgs>>): Prisma.Prisma__BolsaClient<runtime.Types.Result.GetResult<Prisma.$BolsaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   aulas<T extends Prisma.Mentoria$aulasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Mentoria$aulasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AulaOnlinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   inscricoes<T extends Prisma.Mentoria$inscricoesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Mentoria$inscricoesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MentoriaInscricaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  acessos<T extends Prisma.Mentoria$acessosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Mentoria$acessosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MentoriaAcessoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1180,6 +1378,7 @@ export interface MentoriaFieldRefs {
   readonly id: Prisma.FieldRef<"Mentoria", 'String'>
   readonly nome: Prisma.FieldRef<"Mentoria", 'String'>
   readonly descricao: Prisma.FieldRef<"Mentoria", 'String'>
+  readonly preco: Prisma.FieldRef<"Mentoria", 'Float'>
   readonly created_at: Prisma.FieldRef<"Mentoria", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Mentoria", 'DateTime'>
   readonly bolsaId: Prisma.FieldRef<"Mentoria", 'String'>
@@ -1643,6 +1842,30 @@ export type Mentoria$inscricoesArgs<ExtArgs extends runtime.Types.Extensions.Int
   take?: number
   skip?: number
   distinct?: Prisma.MentoriaInscricaoScalarFieldEnum | Prisma.MentoriaInscricaoScalarFieldEnum[]
+}
+
+/**
+ * Mentoria.acessos
+ */
+export type Mentoria$acessosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MentoriaAcesso
+   */
+  select?: Prisma.MentoriaAcessoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MentoriaAcesso
+   */
+  omit?: Prisma.MentoriaAcessoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MentoriaAcessoInclude<ExtArgs> | null
+  where?: Prisma.MentoriaAcessoWhereInput
+  orderBy?: Prisma.MentoriaAcessoOrderByWithRelationInput | Prisma.MentoriaAcessoOrderByWithRelationInput[]
+  cursor?: Prisma.MentoriaAcessoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MentoriaAcessoScalarFieldEnum | Prisma.MentoriaAcessoScalarFieldEnum[]
 }
 
 /**

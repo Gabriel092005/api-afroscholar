@@ -70,6 +70,7 @@ export type BolsaMinAggregateOutputType = {
   imagemBg: string | null
   created_at: Date | null
   updated_at: Date | null
+  criadoPorId: string | null
 }
 
 export type BolsaMaxAggregateOutputType = {
@@ -98,6 +99,7 @@ export type BolsaMaxAggregateOutputType = {
   imagemBg: string | null
   created_at: Date | null
   updated_at: Date | null
+  criadoPorId: string | null
 }
 
 export type BolsaCountAggregateOutputType = {
@@ -128,6 +130,7 @@ export type BolsaCountAggregateOutputType = {
   datasImportantes: number
   created_at: number
   updated_at: number
+  criadoPorId: number
   _all: number
 }
 
@@ -176,6 +179,7 @@ export type BolsaMinAggregateInputType = {
   imagemBg?: true
   created_at?: true
   updated_at?: true
+  criadoPorId?: true
 }
 
 export type BolsaMaxAggregateInputType = {
@@ -204,6 +208,7 @@ export type BolsaMaxAggregateInputType = {
   imagemBg?: true
   created_at?: true
   updated_at?: true
+  criadoPorId?: true
 }
 
 export type BolsaCountAggregateInputType = {
@@ -234,6 +239,7 @@ export type BolsaCountAggregateInputType = {
   datasImportantes?: true
   created_at?: true
   updated_at?: true
+  criadoPorId?: true
   _all?: true
 }
 
@@ -351,6 +357,7 @@ export type BolsaGroupByOutputType = {
   datasImportantes: runtime.JsonValue | null
   created_at: Date
   updated_at: Date
+  criadoPorId: string | null
   _count: BolsaCountAggregateOutputType | null
   _avg: BolsaAvgAggregateOutputType | null
   _sum: BolsaSumAggregateOutputType | null
@@ -404,10 +411,15 @@ export type BolsaWhereInput = {
   datasImportantes?: Prisma.JsonNullableFilter<"Bolsa">
   created_at?: Prisma.DateTimeFilter<"Bolsa"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Bolsa"> | Date | string
+  criadoPorId?: Prisma.StringNullableFilter<"Bolsa"> | string | null
+  criadoPor?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   inscricoes?: Prisma.BolsaInscricaoListRelationFilter
   aulas?: Prisma.AulaOnlineListRelationFilter
   comunidades?: Prisma.CommunityListRelationFilter
   mentorias?: Prisma.MentoriaListRelationFilter
+  materiais?: Prisma.DocumentoListRelationFilter
+  mentoriaAcessos?: Prisma.MentoriaAcessoListRelationFilter
+  cursos?: Prisma.CursoListRelationFilter
 }
 
 export type BolsaOrderByWithRelationInput = {
@@ -438,10 +450,15 @@ export type BolsaOrderByWithRelationInput = {
   datasImportantes?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  criadoPorId?: Prisma.SortOrderInput | Prisma.SortOrder
+  criadoPor?: Prisma.UserOrderByWithRelationInput
   inscricoes?: Prisma.BolsaInscricaoOrderByRelationAggregateInput
   aulas?: Prisma.AulaOnlineOrderByRelationAggregateInput
   comunidades?: Prisma.CommunityOrderByRelationAggregateInput
   mentorias?: Prisma.MentoriaOrderByRelationAggregateInput
+  materiais?: Prisma.DocumentoOrderByRelationAggregateInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoOrderByRelationAggregateInput
+  cursos?: Prisma.CursoOrderByRelationAggregateInput
 }
 
 export type BolsaWhereUniqueInput = Prisma.AtLeast<{
@@ -475,10 +492,15 @@ export type BolsaWhereUniqueInput = Prisma.AtLeast<{
   datasImportantes?: Prisma.JsonNullableFilter<"Bolsa">
   created_at?: Prisma.DateTimeFilter<"Bolsa"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Bolsa"> | Date | string
+  criadoPorId?: Prisma.StringNullableFilter<"Bolsa"> | string | null
+  criadoPor?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   inscricoes?: Prisma.BolsaInscricaoListRelationFilter
   aulas?: Prisma.AulaOnlineListRelationFilter
   comunidades?: Prisma.CommunityListRelationFilter
   mentorias?: Prisma.MentoriaListRelationFilter
+  materiais?: Prisma.DocumentoListRelationFilter
+  mentoriaAcessos?: Prisma.MentoriaAcessoListRelationFilter
+  cursos?: Prisma.CursoListRelationFilter
 }, "id">
 
 export type BolsaOrderByWithAggregationInput = {
@@ -509,6 +531,7 @@ export type BolsaOrderByWithAggregationInput = {
   datasImportantes?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  criadoPorId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.BolsaCountOrderByAggregateInput
   _avg?: Prisma.BolsaAvgOrderByAggregateInput
   _max?: Prisma.BolsaMaxOrderByAggregateInput
@@ -547,6 +570,7 @@ export type BolsaScalarWhereWithAggregatesInput = {
   datasImportantes?: Prisma.JsonNullableWithAggregatesFilter<"Bolsa">
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Bolsa"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Bolsa"> | Date | string
+  criadoPorId?: Prisma.StringNullableWithAggregatesFilter<"Bolsa"> | string | null
 }
 
 export type BolsaCreateInput = {
@@ -577,10 +601,14 @@ export type BolsaCreateInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
+  criadoPor?: Prisma.UserCreateNestedOneWithoutBolsasCriadasInput
   inscricoes?: Prisma.BolsaInscricaoCreateNestedManyWithoutBolsaInput
   aulas?: Prisma.AulaOnlineCreateNestedManyWithoutBolsaInput
   comunidades?: Prisma.CommunityCreateNestedManyWithoutBolsaInput
   mentorias?: Prisma.MentoriaCreateNestedManyWithoutBolsaInput
+  materiais?: Prisma.DocumentoCreateNestedManyWithoutBolsaInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutBolsaInput
+  cursos?: Prisma.CursoCreateNestedManyWithoutBolsaInput
 }
 
 export type BolsaUncheckedCreateInput = {
@@ -611,10 +639,14 @@ export type BolsaUncheckedCreateInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
+  criadoPorId?: string | null
   inscricoes?: Prisma.BolsaInscricaoUncheckedCreateNestedManyWithoutBolsaInput
   aulas?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutBolsaInput
   comunidades?: Prisma.CommunityUncheckedCreateNestedManyWithoutBolsaInput
   mentorias?: Prisma.MentoriaUncheckedCreateNestedManyWithoutBolsaInput
+  materiais?: Prisma.DocumentoUncheckedCreateNestedManyWithoutBolsaInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutBolsaInput
+  cursos?: Prisma.CursoUncheckedCreateNestedManyWithoutBolsaInput
 }
 
 export type BolsaUpdateInput = {
@@ -645,10 +677,14 @@ export type BolsaUpdateInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPor?: Prisma.UserUpdateOneWithoutBolsasCriadasNestedInput
   inscricoes?: Prisma.BolsaInscricaoUpdateManyWithoutBolsaNestedInput
   aulas?: Prisma.AulaOnlineUpdateManyWithoutBolsaNestedInput
   comunidades?: Prisma.CommunityUpdateManyWithoutBolsaNestedInput
   mentorias?: Prisma.MentoriaUpdateManyWithoutBolsaNestedInput
+  materiais?: Prisma.DocumentoUpdateManyWithoutBolsaNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutBolsaNestedInput
+  cursos?: Prisma.CursoUpdateManyWithoutBolsaNestedInput
 }
 
 export type BolsaUncheckedUpdateInput = {
@@ -679,10 +715,14 @@ export type BolsaUncheckedUpdateInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   inscricoes?: Prisma.BolsaInscricaoUncheckedUpdateManyWithoutBolsaNestedInput
   aulas?: Prisma.AulaOnlineUncheckedUpdateManyWithoutBolsaNestedInput
   comunidades?: Prisma.CommunityUncheckedUpdateManyWithoutBolsaNestedInput
   mentorias?: Prisma.MentoriaUncheckedUpdateManyWithoutBolsaNestedInput
+  materiais?: Prisma.DocumentoUncheckedUpdateManyWithoutBolsaNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutBolsaNestedInput
+  cursos?: Prisma.CursoUncheckedUpdateManyWithoutBolsaNestedInput
 }
 
 export type BolsaCreateManyInput = {
@@ -713,6 +753,7 @@ export type BolsaCreateManyInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
+  criadoPorId?: string | null
 }
 
 export type BolsaUpdateManyMutationInput = {
@@ -773,6 +814,17 @@ export type BolsaUncheckedUpdateManyInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type BolsaListRelationFilter = {
+  every?: Prisma.BolsaWhereInput
+  some?: Prisma.BolsaWhereInput
+  none?: Prisma.BolsaWhereInput
+}
+
+export type BolsaOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type BolsaCountOrderByAggregateInput = {
@@ -803,6 +855,7 @@ export type BolsaCountOrderByAggregateInput = {
   datasImportantes?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  criadoPorId?: Prisma.SortOrder
 }
 
 export type BolsaAvgOrderByAggregateInput = {
@@ -840,6 +893,7 @@ export type BolsaMaxOrderByAggregateInput = {
   imagemBg?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  criadoPorId?: Prisma.SortOrder
 }
 
 export type BolsaMinOrderByAggregateInput = {
@@ -868,6 +922,7 @@ export type BolsaMinOrderByAggregateInput = {
   imagemBg?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  criadoPorId?: Prisma.SortOrder
 }
 
 export type BolsaSumOrderByAggregateInput = {
@@ -887,6 +942,48 @@ export type BolsaScalarRelationFilter = {
 export type BolsaNullableScalarRelationFilter = {
   is?: Prisma.BolsaWhereInput | null
   isNot?: Prisma.BolsaWhereInput | null
+}
+
+export type BolsaCreateNestedManyWithoutCriadoPorInput = {
+  create?: Prisma.XOR<Prisma.BolsaCreateWithoutCriadoPorInput, Prisma.BolsaUncheckedCreateWithoutCriadoPorInput> | Prisma.BolsaCreateWithoutCriadoPorInput[] | Prisma.BolsaUncheckedCreateWithoutCriadoPorInput[]
+  connectOrCreate?: Prisma.BolsaCreateOrConnectWithoutCriadoPorInput | Prisma.BolsaCreateOrConnectWithoutCriadoPorInput[]
+  createMany?: Prisma.BolsaCreateManyCriadoPorInputEnvelope
+  connect?: Prisma.BolsaWhereUniqueInput | Prisma.BolsaWhereUniqueInput[]
+}
+
+export type BolsaUncheckedCreateNestedManyWithoutCriadoPorInput = {
+  create?: Prisma.XOR<Prisma.BolsaCreateWithoutCriadoPorInput, Prisma.BolsaUncheckedCreateWithoutCriadoPorInput> | Prisma.BolsaCreateWithoutCriadoPorInput[] | Prisma.BolsaUncheckedCreateWithoutCriadoPorInput[]
+  connectOrCreate?: Prisma.BolsaCreateOrConnectWithoutCriadoPorInput | Prisma.BolsaCreateOrConnectWithoutCriadoPorInput[]
+  createMany?: Prisma.BolsaCreateManyCriadoPorInputEnvelope
+  connect?: Prisma.BolsaWhereUniqueInput | Prisma.BolsaWhereUniqueInput[]
+}
+
+export type BolsaUpdateManyWithoutCriadoPorNestedInput = {
+  create?: Prisma.XOR<Prisma.BolsaCreateWithoutCriadoPorInput, Prisma.BolsaUncheckedCreateWithoutCriadoPorInput> | Prisma.BolsaCreateWithoutCriadoPorInput[] | Prisma.BolsaUncheckedCreateWithoutCriadoPorInput[]
+  connectOrCreate?: Prisma.BolsaCreateOrConnectWithoutCriadoPorInput | Prisma.BolsaCreateOrConnectWithoutCriadoPorInput[]
+  upsert?: Prisma.BolsaUpsertWithWhereUniqueWithoutCriadoPorInput | Prisma.BolsaUpsertWithWhereUniqueWithoutCriadoPorInput[]
+  createMany?: Prisma.BolsaCreateManyCriadoPorInputEnvelope
+  set?: Prisma.BolsaWhereUniqueInput | Prisma.BolsaWhereUniqueInput[]
+  disconnect?: Prisma.BolsaWhereUniqueInput | Prisma.BolsaWhereUniqueInput[]
+  delete?: Prisma.BolsaWhereUniqueInput | Prisma.BolsaWhereUniqueInput[]
+  connect?: Prisma.BolsaWhereUniqueInput | Prisma.BolsaWhereUniqueInput[]
+  update?: Prisma.BolsaUpdateWithWhereUniqueWithoutCriadoPorInput | Prisma.BolsaUpdateWithWhereUniqueWithoutCriadoPorInput[]
+  updateMany?: Prisma.BolsaUpdateManyWithWhereWithoutCriadoPorInput | Prisma.BolsaUpdateManyWithWhereWithoutCriadoPorInput[]
+  deleteMany?: Prisma.BolsaScalarWhereInput | Prisma.BolsaScalarWhereInput[]
+}
+
+export type BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput = {
+  create?: Prisma.XOR<Prisma.BolsaCreateWithoutCriadoPorInput, Prisma.BolsaUncheckedCreateWithoutCriadoPorInput> | Prisma.BolsaCreateWithoutCriadoPorInput[] | Prisma.BolsaUncheckedCreateWithoutCriadoPorInput[]
+  connectOrCreate?: Prisma.BolsaCreateOrConnectWithoutCriadoPorInput | Prisma.BolsaCreateOrConnectWithoutCriadoPorInput[]
+  upsert?: Prisma.BolsaUpsertWithWhereUniqueWithoutCriadoPorInput | Prisma.BolsaUpsertWithWhereUniqueWithoutCriadoPorInput[]
+  createMany?: Prisma.BolsaCreateManyCriadoPorInputEnvelope
+  set?: Prisma.BolsaWhereUniqueInput | Prisma.BolsaWhereUniqueInput[]
+  disconnect?: Prisma.BolsaWhereUniqueInput | Prisma.BolsaWhereUniqueInput[]
+  delete?: Prisma.BolsaWhereUniqueInput | Prisma.BolsaWhereUniqueInput[]
+  connect?: Prisma.BolsaWhereUniqueInput | Prisma.BolsaWhereUniqueInput[]
+  update?: Prisma.BolsaUpdateWithWhereUniqueWithoutCriadoPorInput | Prisma.BolsaUpdateWithWhereUniqueWithoutCriadoPorInput[]
+  updateMany?: Prisma.BolsaUpdateManyWithWhereWithoutCriadoPorInput | Prisma.BolsaUpdateManyWithWhereWithoutCriadoPorInput[]
+  deleteMany?: Prisma.BolsaScalarWhereInput | Prisma.BolsaScalarWhereInput[]
 }
 
 export type BolsaCreatetagsInput = {
@@ -922,6 +1019,38 @@ export type BolsaUpdateOneRequiredWithoutInscricoesNestedInput = {
   upsert?: Prisma.BolsaUpsertWithoutInscricoesInput
   connect?: Prisma.BolsaWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.BolsaUpdateToOneWithWhereWithoutInscricoesInput, Prisma.BolsaUpdateWithoutInscricoesInput>, Prisma.BolsaUncheckedUpdateWithoutInscricoesInput>
+}
+
+export type BolsaCreateNestedOneWithoutCursosInput = {
+  create?: Prisma.XOR<Prisma.BolsaCreateWithoutCursosInput, Prisma.BolsaUncheckedCreateWithoutCursosInput>
+  connectOrCreate?: Prisma.BolsaCreateOrConnectWithoutCursosInput
+  connect?: Prisma.BolsaWhereUniqueInput
+}
+
+export type BolsaUpdateOneWithoutCursosNestedInput = {
+  create?: Prisma.XOR<Prisma.BolsaCreateWithoutCursosInput, Prisma.BolsaUncheckedCreateWithoutCursosInput>
+  connectOrCreate?: Prisma.BolsaCreateOrConnectWithoutCursosInput
+  upsert?: Prisma.BolsaUpsertWithoutCursosInput
+  disconnect?: Prisma.BolsaWhereInput | boolean
+  delete?: Prisma.BolsaWhereInput | boolean
+  connect?: Prisma.BolsaWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BolsaUpdateToOneWithWhereWithoutCursosInput, Prisma.BolsaUpdateWithoutCursosInput>, Prisma.BolsaUncheckedUpdateWithoutCursosInput>
+}
+
+export type BolsaCreateNestedOneWithoutMateriaisInput = {
+  create?: Prisma.XOR<Prisma.BolsaCreateWithoutMateriaisInput, Prisma.BolsaUncheckedCreateWithoutMateriaisInput>
+  connectOrCreate?: Prisma.BolsaCreateOrConnectWithoutMateriaisInput
+  connect?: Prisma.BolsaWhereUniqueInput
+}
+
+export type BolsaUpdateOneWithoutMateriaisNestedInput = {
+  create?: Prisma.XOR<Prisma.BolsaCreateWithoutMateriaisInput, Prisma.BolsaUncheckedCreateWithoutMateriaisInput>
+  connectOrCreate?: Prisma.BolsaCreateOrConnectWithoutMateriaisInput
+  upsert?: Prisma.BolsaUpsertWithoutMateriaisInput
+  disconnect?: Prisma.BolsaWhereInput | boolean
+  delete?: Prisma.BolsaWhereInput | boolean
+  connect?: Prisma.BolsaWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BolsaUpdateToOneWithWhereWithoutMateriaisInput, Prisma.BolsaUpdateWithoutMateriaisInput>, Prisma.BolsaUncheckedUpdateWithoutMateriaisInput>
 }
 
 export type BolsaCreateNestedOneWithoutComunidadesInput = {
@@ -972,6 +1101,156 @@ export type BolsaUpdateOneWithoutMentoriasNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.BolsaUpdateToOneWithWhereWithoutMentoriasInput, Prisma.BolsaUpdateWithoutMentoriasInput>, Prisma.BolsaUncheckedUpdateWithoutMentoriasInput>
 }
 
+export type BolsaCreateNestedOneWithoutMentoriaAcessosInput = {
+  create?: Prisma.XOR<Prisma.BolsaCreateWithoutMentoriaAcessosInput, Prisma.BolsaUncheckedCreateWithoutMentoriaAcessosInput>
+  connectOrCreate?: Prisma.BolsaCreateOrConnectWithoutMentoriaAcessosInput
+  connect?: Prisma.BolsaWhereUniqueInput
+}
+
+export type BolsaUpdateOneWithoutMentoriaAcessosNestedInput = {
+  create?: Prisma.XOR<Prisma.BolsaCreateWithoutMentoriaAcessosInput, Prisma.BolsaUncheckedCreateWithoutMentoriaAcessosInput>
+  connectOrCreate?: Prisma.BolsaCreateOrConnectWithoutMentoriaAcessosInput
+  upsert?: Prisma.BolsaUpsertWithoutMentoriaAcessosInput
+  disconnect?: Prisma.BolsaWhereInput | boolean
+  delete?: Prisma.BolsaWhereInput | boolean
+  connect?: Prisma.BolsaWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BolsaUpdateToOneWithWhereWithoutMentoriaAcessosInput, Prisma.BolsaUpdateWithoutMentoriaAcessosInput>, Prisma.BolsaUncheckedUpdateWithoutMentoriaAcessosInput>
+}
+
+export type BolsaCreateWithoutCriadoPorInput = {
+  id?: string
+  titulo: string
+  subtitulo?: string | null
+  categoria?: string | null
+  instituicao?: string | null
+  pais?: string | null
+  nivel?: string | null
+  requisitos?: string | null
+  valor: number
+  moeda?: string
+  precoOriginal?: number | null
+  precoInscricao?: number | null
+  precoConsultoria?: number | null
+  precoMentoria?: number | null
+  idioma?: string | null
+  tags?: Prisma.BolsaCreatetagsInput | string[]
+  descricao?: string | null
+  imagemUrl?: string | null
+  linkAplicar?: string | null
+  prazo?: Date | string | null
+  numeroVagas?: number | null
+  status?: $Enums.BolsaStatus
+  modalidade?: string | null
+  imagemBg?: string | null
+  datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  created_at?: Date | string
+  updated_at?: Date | string
+  inscricoes?: Prisma.BolsaInscricaoCreateNestedManyWithoutBolsaInput
+  aulas?: Prisma.AulaOnlineCreateNestedManyWithoutBolsaInput
+  comunidades?: Prisma.CommunityCreateNestedManyWithoutBolsaInput
+  mentorias?: Prisma.MentoriaCreateNestedManyWithoutBolsaInput
+  materiais?: Prisma.DocumentoCreateNestedManyWithoutBolsaInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutBolsaInput
+  cursos?: Prisma.CursoCreateNestedManyWithoutBolsaInput
+}
+
+export type BolsaUncheckedCreateWithoutCriadoPorInput = {
+  id?: string
+  titulo: string
+  subtitulo?: string | null
+  categoria?: string | null
+  instituicao?: string | null
+  pais?: string | null
+  nivel?: string | null
+  requisitos?: string | null
+  valor: number
+  moeda?: string
+  precoOriginal?: number | null
+  precoInscricao?: number | null
+  precoConsultoria?: number | null
+  precoMentoria?: number | null
+  idioma?: string | null
+  tags?: Prisma.BolsaCreatetagsInput | string[]
+  descricao?: string | null
+  imagemUrl?: string | null
+  linkAplicar?: string | null
+  prazo?: Date | string | null
+  numeroVagas?: number | null
+  status?: $Enums.BolsaStatus
+  modalidade?: string | null
+  imagemBg?: string | null
+  datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  created_at?: Date | string
+  updated_at?: Date | string
+  inscricoes?: Prisma.BolsaInscricaoUncheckedCreateNestedManyWithoutBolsaInput
+  aulas?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutBolsaInput
+  comunidades?: Prisma.CommunityUncheckedCreateNestedManyWithoutBolsaInput
+  mentorias?: Prisma.MentoriaUncheckedCreateNestedManyWithoutBolsaInput
+  materiais?: Prisma.DocumentoUncheckedCreateNestedManyWithoutBolsaInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutBolsaInput
+  cursos?: Prisma.CursoUncheckedCreateNestedManyWithoutBolsaInput
+}
+
+export type BolsaCreateOrConnectWithoutCriadoPorInput = {
+  where: Prisma.BolsaWhereUniqueInput
+  create: Prisma.XOR<Prisma.BolsaCreateWithoutCriadoPorInput, Prisma.BolsaUncheckedCreateWithoutCriadoPorInput>
+}
+
+export type BolsaCreateManyCriadoPorInputEnvelope = {
+  data: Prisma.BolsaCreateManyCriadoPorInput | Prisma.BolsaCreateManyCriadoPorInput[]
+  skipDuplicates?: boolean
+}
+
+export type BolsaUpsertWithWhereUniqueWithoutCriadoPorInput = {
+  where: Prisma.BolsaWhereUniqueInput
+  update: Prisma.XOR<Prisma.BolsaUpdateWithoutCriadoPorInput, Prisma.BolsaUncheckedUpdateWithoutCriadoPorInput>
+  create: Prisma.XOR<Prisma.BolsaCreateWithoutCriadoPorInput, Prisma.BolsaUncheckedCreateWithoutCriadoPorInput>
+}
+
+export type BolsaUpdateWithWhereUniqueWithoutCriadoPorInput = {
+  where: Prisma.BolsaWhereUniqueInput
+  data: Prisma.XOR<Prisma.BolsaUpdateWithoutCriadoPorInput, Prisma.BolsaUncheckedUpdateWithoutCriadoPorInput>
+}
+
+export type BolsaUpdateManyWithWhereWithoutCriadoPorInput = {
+  where: Prisma.BolsaScalarWhereInput
+  data: Prisma.XOR<Prisma.BolsaUpdateManyMutationInput, Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorInput>
+}
+
+export type BolsaScalarWhereInput = {
+  AND?: Prisma.BolsaScalarWhereInput | Prisma.BolsaScalarWhereInput[]
+  OR?: Prisma.BolsaScalarWhereInput[]
+  NOT?: Prisma.BolsaScalarWhereInput | Prisma.BolsaScalarWhereInput[]
+  id?: Prisma.StringFilter<"Bolsa"> | string
+  titulo?: Prisma.StringFilter<"Bolsa"> | string
+  subtitulo?: Prisma.StringNullableFilter<"Bolsa"> | string | null
+  categoria?: Prisma.StringNullableFilter<"Bolsa"> | string | null
+  instituicao?: Prisma.StringNullableFilter<"Bolsa"> | string | null
+  pais?: Prisma.StringNullableFilter<"Bolsa"> | string | null
+  nivel?: Prisma.StringNullableFilter<"Bolsa"> | string | null
+  requisitos?: Prisma.StringNullableFilter<"Bolsa"> | string | null
+  valor?: Prisma.FloatFilter<"Bolsa"> | number
+  moeda?: Prisma.StringFilter<"Bolsa"> | string
+  precoOriginal?: Prisma.FloatNullableFilter<"Bolsa"> | number | null
+  precoInscricao?: Prisma.FloatNullableFilter<"Bolsa"> | number | null
+  precoConsultoria?: Prisma.FloatNullableFilter<"Bolsa"> | number | null
+  precoMentoria?: Prisma.FloatNullableFilter<"Bolsa"> | number | null
+  idioma?: Prisma.StringNullableFilter<"Bolsa"> | string | null
+  tags?: Prisma.StringNullableListFilter<"Bolsa">
+  descricao?: Prisma.StringNullableFilter<"Bolsa"> | string | null
+  imagemUrl?: Prisma.StringNullableFilter<"Bolsa"> | string | null
+  linkAplicar?: Prisma.StringNullableFilter<"Bolsa"> | string | null
+  prazo?: Prisma.DateTimeNullableFilter<"Bolsa"> | Date | string | null
+  numeroVagas?: Prisma.IntNullableFilter<"Bolsa"> | number | null
+  status?: Prisma.EnumBolsaStatusFilter<"Bolsa"> | $Enums.BolsaStatus
+  modalidade?: Prisma.StringNullableFilter<"Bolsa"> | string | null
+  imagemBg?: Prisma.StringNullableFilter<"Bolsa"> | string | null
+  datasImportantes?: Prisma.JsonNullableFilter<"Bolsa">
+  created_at?: Prisma.DateTimeFilter<"Bolsa"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"Bolsa"> | Date | string
+  criadoPorId?: Prisma.StringNullableFilter<"Bolsa"> | string | null
+}
+
 export type BolsaCreateWithoutInscricoesInput = {
   id?: string
   titulo: string
@@ -1000,9 +1279,13 @@ export type BolsaCreateWithoutInscricoesInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
+  criadoPor?: Prisma.UserCreateNestedOneWithoutBolsasCriadasInput
   aulas?: Prisma.AulaOnlineCreateNestedManyWithoutBolsaInput
   comunidades?: Prisma.CommunityCreateNestedManyWithoutBolsaInput
   mentorias?: Prisma.MentoriaCreateNestedManyWithoutBolsaInput
+  materiais?: Prisma.DocumentoCreateNestedManyWithoutBolsaInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutBolsaInput
+  cursos?: Prisma.CursoCreateNestedManyWithoutBolsaInput
 }
 
 export type BolsaUncheckedCreateWithoutInscricoesInput = {
@@ -1033,9 +1316,13 @@ export type BolsaUncheckedCreateWithoutInscricoesInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
+  criadoPorId?: string | null
   aulas?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutBolsaInput
   comunidades?: Prisma.CommunityUncheckedCreateNestedManyWithoutBolsaInput
   mentorias?: Prisma.MentoriaUncheckedCreateNestedManyWithoutBolsaInput
+  materiais?: Prisma.DocumentoUncheckedCreateNestedManyWithoutBolsaInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutBolsaInput
+  cursos?: Prisma.CursoUncheckedCreateNestedManyWithoutBolsaInput
 }
 
 export type BolsaCreateOrConnectWithoutInscricoesInput = {
@@ -1082,9 +1369,13 @@ export type BolsaUpdateWithoutInscricoesInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPor?: Prisma.UserUpdateOneWithoutBolsasCriadasNestedInput
   aulas?: Prisma.AulaOnlineUpdateManyWithoutBolsaNestedInput
   comunidades?: Prisma.CommunityUpdateManyWithoutBolsaNestedInput
   mentorias?: Prisma.MentoriaUpdateManyWithoutBolsaNestedInput
+  materiais?: Prisma.DocumentoUpdateManyWithoutBolsaNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutBolsaNestedInput
+  cursos?: Prisma.CursoUpdateManyWithoutBolsaNestedInput
 }
 
 export type BolsaUncheckedUpdateWithoutInscricoesInput = {
@@ -1115,9 +1406,341 @@ export type BolsaUncheckedUpdateWithoutInscricoesInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aulas?: Prisma.AulaOnlineUncheckedUpdateManyWithoutBolsaNestedInput
   comunidades?: Prisma.CommunityUncheckedUpdateManyWithoutBolsaNestedInput
   mentorias?: Prisma.MentoriaUncheckedUpdateManyWithoutBolsaNestedInput
+  materiais?: Prisma.DocumentoUncheckedUpdateManyWithoutBolsaNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutBolsaNestedInput
+  cursos?: Prisma.CursoUncheckedUpdateManyWithoutBolsaNestedInput
+}
+
+export type BolsaCreateWithoutCursosInput = {
+  id?: string
+  titulo: string
+  subtitulo?: string | null
+  categoria?: string | null
+  instituicao?: string | null
+  pais?: string | null
+  nivel?: string | null
+  requisitos?: string | null
+  valor: number
+  moeda?: string
+  precoOriginal?: number | null
+  precoInscricao?: number | null
+  precoConsultoria?: number | null
+  precoMentoria?: number | null
+  idioma?: string | null
+  tags?: Prisma.BolsaCreatetagsInput | string[]
+  descricao?: string | null
+  imagemUrl?: string | null
+  linkAplicar?: string | null
+  prazo?: Date | string | null
+  numeroVagas?: number | null
+  status?: $Enums.BolsaStatus
+  modalidade?: string | null
+  imagemBg?: string | null
+  datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  created_at?: Date | string
+  updated_at?: Date | string
+  criadoPor?: Prisma.UserCreateNestedOneWithoutBolsasCriadasInput
+  inscricoes?: Prisma.BolsaInscricaoCreateNestedManyWithoutBolsaInput
+  aulas?: Prisma.AulaOnlineCreateNestedManyWithoutBolsaInput
+  comunidades?: Prisma.CommunityCreateNestedManyWithoutBolsaInput
+  mentorias?: Prisma.MentoriaCreateNestedManyWithoutBolsaInput
+  materiais?: Prisma.DocumentoCreateNestedManyWithoutBolsaInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutBolsaInput
+}
+
+export type BolsaUncheckedCreateWithoutCursosInput = {
+  id?: string
+  titulo: string
+  subtitulo?: string | null
+  categoria?: string | null
+  instituicao?: string | null
+  pais?: string | null
+  nivel?: string | null
+  requisitos?: string | null
+  valor: number
+  moeda?: string
+  precoOriginal?: number | null
+  precoInscricao?: number | null
+  precoConsultoria?: number | null
+  precoMentoria?: number | null
+  idioma?: string | null
+  tags?: Prisma.BolsaCreatetagsInput | string[]
+  descricao?: string | null
+  imagemUrl?: string | null
+  linkAplicar?: string | null
+  prazo?: Date | string | null
+  numeroVagas?: number | null
+  status?: $Enums.BolsaStatus
+  modalidade?: string | null
+  imagemBg?: string | null
+  datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  created_at?: Date | string
+  updated_at?: Date | string
+  criadoPorId?: string | null
+  inscricoes?: Prisma.BolsaInscricaoUncheckedCreateNestedManyWithoutBolsaInput
+  aulas?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutBolsaInput
+  comunidades?: Prisma.CommunityUncheckedCreateNestedManyWithoutBolsaInput
+  mentorias?: Prisma.MentoriaUncheckedCreateNestedManyWithoutBolsaInput
+  materiais?: Prisma.DocumentoUncheckedCreateNestedManyWithoutBolsaInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutBolsaInput
+}
+
+export type BolsaCreateOrConnectWithoutCursosInput = {
+  where: Prisma.BolsaWhereUniqueInput
+  create: Prisma.XOR<Prisma.BolsaCreateWithoutCursosInput, Prisma.BolsaUncheckedCreateWithoutCursosInput>
+}
+
+export type BolsaUpsertWithoutCursosInput = {
+  update: Prisma.XOR<Prisma.BolsaUpdateWithoutCursosInput, Prisma.BolsaUncheckedUpdateWithoutCursosInput>
+  create: Prisma.XOR<Prisma.BolsaCreateWithoutCursosInput, Prisma.BolsaUncheckedCreateWithoutCursosInput>
+  where?: Prisma.BolsaWhereInput
+}
+
+export type BolsaUpdateToOneWithWhereWithoutCursosInput = {
+  where?: Prisma.BolsaWhereInput
+  data: Prisma.XOR<Prisma.BolsaUpdateWithoutCursosInput, Prisma.BolsaUncheckedUpdateWithoutCursosInput>
+}
+
+export type BolsaUpdateWithoutCursosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instituicao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pais?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nivel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requisitos?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valor?: Prisma.FloatFieldUpdateOperationsInput | number
+  moeda?: Prisma.StringFieldUpdateOperationsInput | string
+  precoOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.BolsaUpdatetagsInput | string[]
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagemUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkAplicar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prazo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  numeroVagas?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.EnumBolsaStatusFieldUpdateOperationsInput | $Enums.BolsaStatus
+  modalidade?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagemBg?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPor?: Prisma.UserUpdateOneWithoutBolsasCriadasNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUpdateManyWithoutBolsaNestedInput
+  aulas?: Prisma.AulaOnlineUpdateManyWithoutBolsaNestedInput
+  comunidades?: Prisma.CommunityUpdateManyWithoutBolsaNestedInput
+  mentorias?: Prisma.MentoriaUpdateManyWithoutBolsaNestedInput
+  materiais?: Prisma.DocumentoUpdateManyWithoutBolsaNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutBolsaNestedInput
+}
+
+export type BolsaUncheckedUpdateWithoutCursosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instituicao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pais?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nivel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requisitos?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valor?: Prisma.FloatFieldUpdateOperationsInput | number
+  moeda?: Prisma.StringFieldUpdateOperationsInput | string
+  precoOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.BolsaUpdatetagsInput | string[]
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagemUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkAplicar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prazo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  numeroVagas?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.EnumBolsaStatusFieldUpdateOperationsInput | $Enums.BolsaStatus
+  modalidade?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagemBg?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inscricoes?: Prisma.BolsaInscricaoUncheckedUpdateManyWithoutBolsaNestedInput
+  aulas?: Prisma.AulaOnlineUncheckedUpdateManyWithoutBolsaNestedInput
+  comunidades?: Prisma.CommunityUncheckedUpdateManyWithoutBolsaNestedInput
+  mentorias?: Prisma.MentoriaUncheckedUpdateManyWithoutBolsaNestedInput
+  materiais?: Prisma.DocumentoUncheckedUpdateManyWithoutBolsaNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutBolsaNestedInput
+}
+
+export type BolsaCreateWithoutMateriaisInput = {
+  id?: string
+  titulo: string
+  subtitulo?: string | null
+  categoria?: string | null
+  instituicao?: string | null
+  pais?: string | null
+  nivel?: string | null
+  requisitos?: string | null
+  valor: number
+  moeda?: string
+  precoOriginal?: number | null
+  precoInscricao?: number | null
+  precoConsultoria?: number | null
+  precoMentoria?: number | null
+  idioma?: string | null
+  tags?: Prisma.BolsaCreatetagsInput | string[]
+  descricao?: string | null
+  imagemUrl?: string | null
+  linkAplicar?: string | null
+  prazo?: Date | string | null
+  numeroVagas?: number | null
+  status?: $Enums.BolsaStatus
+  modalidade?: string | null
+  imagemBg?: string | null
+  datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  created_at?: Date | string
+  updated_at?: Date | string
+  criadoPor?: Prisma.UserCreateNestedOneWithoutBolsasCriadasInput
+  inscricoes?: Prisma.BolsaInscricaoCreateNestedManyWithoutBolsaInput
+  aulas?: Prisma.AulaOnlineCreateNestedManyWithoutBolsaInput
+  comunidades?: Prisma.CommunityCreateNestedManyWithoutBolsaInput
+  mentorias?: Prisma.MentoriaCreateNestedManyWithoutBolsaInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutBolsaInput
+  cursos?: Prisma.CursoCreateNestedManyWithoutBolsaInput
+}
+
+export type BolsaUncheckedCreateWithoutMateriaisInput = {
+  id?: string
+  titulo: string
+  subtitulo?: string | null
+  categoria?: string | null
+  instituicao?: string | null
+  pais?: string | null
+  nivel?: string | null
+  requisitos?: string | null
+  valor: number
+  moeda?: string
+  precoOriginal?: number | null
+  precoInscricao?: number | null
+  precoConsultoria?: number | null
+  precoMentoria?: number | null
+  idioma?: string | null
+  tags?: Prisma.BolsaCreatetagsInput | string[]
+  descricao?: string | null
+  imagemUrl?: string | null
+  linkAplicar?: string | null
+  prazo?: Date | string | null
+  numeroVagas?: number | null
+  status?: $Enums.BolsaStatus
+  modalidade?: string | null
+  imagemBg?: string | null
+  datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  created_at?: Date | string
+  updated_at?: Date | string
+  criadoPorId?: string | null
+  inscricoes?: Prisma.BolsaInscricaoUncheckedCreateNestedManyWithoutBolsaInput
+  aulas?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutBolsaInput
+  comunidades?: Prisma.CommunityUncheckedCreateNestedManyWithoutBolsaInput
+  mentorias?: Prisma.MentoriaUncheckedCreateNestedManyWithoutBolsaInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutBolsaInput
+  cursos?: Prisma.CursoUncheckedCreateNestedManyWithoutBolsaInput
+}
+
+export type BolsaCreateOrConnectWithoutMateriaisInput = {
+  where: Prisma.BolsaWhereUniqueInput
+  create: Prisma.XOR<Prisma.BolsaCreateWithoutMateriaisInput, Prisma.BolsaUncheckedCreateWithoutMateriaisInput>
+}
+
+export type BolsaUpsertWithoutMateriaisInput = {
+  update: Prisma.XOR<Prisma.BolsaUpdateWithoutMateriaisInput, Prisma.BolsaUncheckedUpdateWithoutMateriaisInput>
+  create: Prisma.XOR<Prisma.BolsaCreateWithoutMateriaisInput, Prisma.BolsaUncheckedCreateWithoutMateriaisInput>
+  where?: Prisma.BolsaWhereInput
+}
+
+export type BolsaUpdateToOneWithWhereWithoutMateriaisInput = {
+  where?: Prisma.BolsaWhereInput
+  data: Prisma.XOR<Prisma.BolsaUpdateWithoutMateriaisInput, Prisma.BolsaUncheckedUpdateWithoutMateriaisInput>
+}
+
+export type BolsaUpdateWithoutMateriaisInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instituicao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pais?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nivel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requisitos?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valor?: Prisma.FloatFieldUpdateOperationsInput | number
+  moeda?: Prisma.StringFieldUpdateOperationsInput | string
+  precoOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.BolsaUpdatetagsInput | string[]
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagemUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkAplicar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prazo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  numeroVagas?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.EnumBolsaStatusFieldUpdateOperationsInput | $Enums.BolsaStatus
+  modalidade?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagemBg?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPor?: Prisma.UserUpdateOneWithoutBolsasCriadasNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUpdateManyWithoutBolsaNestedInput
+  aulas?: Prisma.AulaOnlineUpdateManyWithoutBolsaNestedInput
+  comunidades?: Prisma.CommunityUpdateManyWithoutBolsaNestedInput
+  mentorias?: Prisma.MentoriaUpdateManyWithoutBolsaNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutBolsaNestedInput
+  cursos?: Prisma.CursoUpdateManyWithoutBolsaNestedInput
+}
+
+export type BolsaUncheckedUpdateWithoutMateriaisInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instituicao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pais?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nivel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requisitos?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valor?: Prisma.FloatFieldUpdateOperationsInput | number
+  moeda?: Prisma.StringFieldUpdateOperationsInput | string
+  precoOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.BolsaUpdatetagsInput | string[]
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagemUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkAplicar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prazo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  numeroVagas?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.EnumBolsaStatusFieldUpdateOperationsInput | $Enums.BolsaStatus
+  modalidade?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagemBg?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inscricoes?: Prisma.BolsaInscricaoUncheckedUpdateManyWithoutBolsaNestedInput
+  aulas?: Prisma.AulaOnlineUncheckedUpdateManyWithoutBolsaNestedInput
+  comunidades?: Prisma.CommunityUncheckedUpdateManyWithoutBolsaNestedInput
+  mentorias?: Prisma.MentoriaUncheckedUpdateManyWithoutBolsaNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutBolsaNestedInput
+  cursos?: Prisma.CursoUncheckedUpdateManyWithoutBolsaNestedInput
 }
 
 export type BolsaCreateWithoutComunidadesInput = {
@@ -1148,9 +1771,13 @@ export type BolsaCreateWithoutComunidadesInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
+  criadoPor?: Prisma.UserCreateNestedOneWithoutBolsasCriadasInput
   inscricoes?: Prisma.BolsaInscricaoCreateNestedManyWithoutBolsaInput
   aulas?: Prisma.AulaOnlineCreateNestedManyWithoutBolsaInput
   mentorias?: Prisma.MentoriaCreateNestedManyWithoutBolsaInput
+  materiais?: Prisma.DocumentoCreateNestedManyWithoutBolsaInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutBolsaInput
+  cursos?: Prisma.CursoCreateNestedManyWithoutBolsaInput
 }
 
 export type BolsaUncheckedCreateWithoutComunidadesInput = {
@@ -1181,9 +1808,13 @@ export type BolsaUncheckedCreateWithoutComunidadesInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
+  criadoPorId?: string | null
   inscricoes?: Prisma.BolsaInscricaoUncheckedCreateNestedManyWithoutBolsaInput
   aulas?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutBolsaInput
   mentorias?: Prisma.MentoriaUncheckedCreateNestedManyWithoutBolsaInput
+  materiais?: Prisma.DocumentoUncheckedCreateNestedManyWithoutBolsaInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutBolsaInput
+  cursos?: Prisma.CursoUncheckedCreateNestedManyWithoutBolsaInput
 }
 
 export type BolsaCreateOrConnectWithoutComunidadesInput = {
@@ -1230,9 +1861,13 @@ export type BolsaUpdateWithoutComunidadesInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPor?: Prisma.UserUpdateOneWithoutBolsasCriadasNestedInput
   inscricoes?: Prisma.BolsaInscricaoUpdateManyWithoutBolsaNestedInput
   aulas?: Prisma.AulaOnlineUpdateManyWithoutBolsaNestedInput
   mentorias?: Prisma.MentoriaUpdateManyWithoutBolsaNestedInput
+  materiais?: Prisma.DocumentoUpdateManyWithoutBolsaNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutBolsaNestedInput
+  cursos?: Prisma.CursoUpdateManyWithoutBolsaNestedInput
 }
 
 export type BolsaUncheckedUpdateWithoutComunidadesInput = {
@@ -1263,9 +1898,13 @@ export type BolsaUncheckedUpdateWithoutComunidadesInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   inscricoes?: Prisma.BolsaInscricaoUncheckedUpdateManyWithoutBolsaNestedInput
   aulas?: Prisma.AulaOnlineUncheckedUpdateManyWithoutBolsaNestedInput
   mentorias?: Prisma.MentoriaUncheckedUpdateManyWithoutBolsaNestedInput
+  materiais?: Prisma.DocumentoUncheckedUpdateManyWithoutBolsaNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutBolsaNestedInput
+  cursos?: Prisma.CursoUncheckedUpdateManyWithoutBolsaNestedInput
 }
 
 export type BolsaCreateWithoutAulasInput = {
@@ -1296,9 +1935,13 @@ export type BolsaCreateWithoutAulasInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
+  criadoPor?: Prisma.UserCreateNestedOneWithoutBolsasCriadasInput
   inscricoes?: Prisma.BolsaInscricaoCreateNestedManyWithoutBolsaInput
   comunidades?: Prisma.CommunityCreateNestedManyWithoutBolsaInput
   mentorias?: Prisma.MentoriaCreateNestedManyWithoutBolsaInput
+  materiais?: Prisma.DocumentoCreateNestedManyWithoutBolsaInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutBolsaInput
+  cursos?: Prisma.CursoCreateNestedManyWithoutBolsaInput
 }
 
 export type BolsaUncheckedCreateWithoutAulasInput = {
@@ -1329,9 +1972,13 @@ export type BolsaUncheckedCreateWithoutAulasInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
+  criadoPorId?: string | null
   inscricoes?: Prisma.BolsaInscricaoUncheckedCreateNestedManyWithoutBolsaInput
   comunidades?: Prisma.CommunityUncheckedCreateNestedManyWithoutBolsaInput
   mentorias?: Prisma.MentoriaUncheckedCreateNestedManyWithoutBolsaInput
+  materiais?: Prisma.DocumentoUncheckedCreateNestedManyWithoutBolsaInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutBolsaInput
+  cursos?: Prisma.CursoUncheckedCreateNestedManyWithoutBolsaInput
 }
 
 export type BolsaCreateOrConnectWithoutAulasInput = {
@@ -1378,9 +2025,13 @@ export type BolsaUpdateWithoutAulasInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPor?: Prisma.UserUpdateOneWithoutBolsasCriadasNestedInput
   inscricoes?: Prisma.BolsaInscricaoUpdateManyWithoutBolsaNestedInput
   comunidades?: Prisma.CommunityUpdateManyWithoutBolsaNestedInput
   mentorias?: Prisma.MentoriaUpdateManyWithoutBolsaNestedInput
+  materiais?: Prisma.DocumentoUpdateManyWithoutBolsaNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutBolsaNestedInput
+  cursos?: Prisma.CursoUpdateManyWithoutBolsaNestedInput
 }
 
 export type BolsaUncheckedUpdateWithoutAulasInput = {
@@ -1411,9 +2062,13 @@ export type BolsaUncheckedUpdateWithoutAulasInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   inscricoes?: Prisma.BolsaInscricaoUncheckedUpdateManyWithoutBolsaNestedInput
   comunidades?: Prisma.CommunityUncheckedUpdateManyWithoutBolsaNestedInput
   mentorias?: Prisma.MentoriaUncheckedUpdateManyWithoutBolsaNestedInput
+  materiais?: Prisma.DocumentoUncheckedUpdateManyWithoutBolsaNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutBolsaNestedInput
+  cursos?: Prisma.CursoUncheckedUpdateManyWithoutBolsaNestedInput
 }
 
 export type BolsaCreateWithoutMentoriasInput = {
@@ -1444,9 +2099,13 @@ export type BolsaCreateWithoutMentoriasInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
+  criadoPor?: Prisma.UserCreateNestedOneWithoutBolsasCriadasInput
   inscricoes?: Prisma.BolsaInscricaoCreateNestedManyWithoutBolsaInput
   aulas?: Prisma.AulaOnlineCreateNestedManyWithoutBolsaInput
   comunidades?: Prisma.CommunityCreateNestedManyWithoutBolsaInput
+  materiais?: Prisma.DocumentoCreateNestedManyWithoutBolsaInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutBolsaInput
+  cursos?: Prisma.CursoCreateNestedManyWithoutBolsaInput
 }
 
 export type BolsaUncheckedCreateWithoutMentoriasInput = {
@@ -1477,9 +2136,13 @@ export type BolsaUncheckedCreateWithoutMentoriasInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
+  criadoPorId?: string | null
   inscricoes?: Prisma.BolsaInscricaoUncheckedCreateNestedManyWithoutBolsaInput
   aulas?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutBolsaInput
   comunidades?: Prisma.CommunityUncheckedCreateNestedManyWithoutBolsaInput
+  materiais?: Prisma.DocumentoUncheckedCreateNestedManyWithoutBolsaInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutBolsaInput
+  cursos?: Prisma.CursoUncheckedCreateNestedManyWithoutBolsaInput
 }
 
 export type BolsaCreateOrConnectWithoutMentoriasInput = {
@@ -1526,9 +2189,13 @@ export type BolsaUpdateWithoutMentoriasInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPor?: Prisma.UserUpdateOneWithoutBolsasCriadasNestedInput
   inscricoes?: Prisma.BolsaInscricaoUpdateManyWithoutBolsaNestedInput
   aulas?: Prisma.AulaOnlineUpdateManyWithoutBolsaNestedInput
   comunidades?: Prisma.CommunityUpdateManyWithoutBolsaNestedInput
+  materiais?: Prisma.DocumentoUpdateManyWithoutBolsaNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutBolsaNestedInput
+  cursos?: Prisma.CursoUpdateManyWithoutBolsaNestedInput
 }
 
 export type BolsaUncheckedUpdateWithoutMentoriasInput = {
@@ -1559,9 +2226,311 @@ export type BolsaUncheckedUpdateWithoutMentoriasInput = {
   datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   inscricoes?: Prisma.BolsaInscricaoUncheckedUpdateManyWithoutBolsaNestedInput
   aulas?: Prisma.AulaOnlineUncheckedUpdateManyWithoutBolsaNestedInput
   comunidades?: Prisma.CommunityUncheckedUpdateManyWithoutBolsaNestedInput
+  materiais?: Prisma.DocumentoUncheckedUpdateManyWithoutBolsaNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutBolsaNestedInput
+  cursos?: Prisma.CursoUncheckedUpdateManyWithoutBolsaNestedInput
+}
+
+export type BolsaCreateWithoutMentoriaAcessosInput = {
+  id?: string
+  titulo: string
+  subtitulo?: string | null
+  categoria?: string | null
+  instituicao?: string | null
+  pais?: string | null
+  nivel?: string | null
+  requisitos?: string | null
+  valor: number
+  moeda?: string
+  precoOriginal?: number | null
+  precoInscricao?: number | null
+  precoConsultoria?: number | null
+  precoMentoria?: number | null
+  idioma?: string | null
+  tags?: Prisma.BolsaCreatetagsInput | string[]
+  descricao?: string | null
+  imagemUrl?: string | null
+  linkAplicar?: string | null
+  prazo?: Date | string | null
+  numeroVagas?: number | null
+  status?: $Enums.BolsaStatus
+  modalidade?: string | null
+  imagemBg?: string | null
+  datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  created_at?: Date | string
+  updated_at?: Date | string
+  criadoPor?: Prisma.UserCreateNestedOneWithoutBolsasCriadasInput
+  inscricoes?: Prisma.BolsaInscricaoCreateNestedManyWithoutBolsaInput
+  aulas?: Prisma.AulaOnlineCreateNestedManyWithoutBolsaInput
+  comunidades?: Prisma.CommunityCreateNestedManyWithoutBolsaInput
+  mentorias?: Prisma.MentoriaCreateNestedManyWithoutBolsaInput
+  materiais?: Prisma.DocumentoCreateNestedManyWithoutBolsaInput
+  cursos?: Prisma.CursoCreateNestedManyWithoutBolsaInput
+}
+
+export type BolsaUncheckedCreateWithoutMentoriaAcessosInput = {
+  id?: string
+  titulo: string
+  subtitulo?: string | null
+  categoria?: string | null
+  instituicao?: string | null
+  pais?: string | null
+  nivel?: string | null
+  requisitos?: string | null
+  valor: number
+  moeda?: string
+  precoOriginal?: number | null
+  precoInscricao?: number | null
+  precoConsultoria?: number | null
+  precoMentoria?: number | null
+  idioma?: string | null
+  tags?: Prisma.BolsaCreatetagsInput | string[]
+  descricao?: string | null
+  imagemUrl?: string | null
+  linkAplicar?: string | null
+  prazo?: Date | string | null
+  numeroVagas?: number | null
+  status?: $Enums.BolsaStatus
+  modalidade?: string | null
+  imagemBg?: string | null
+  datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  created_at?: Date | string
+  updated_at?: Date | string
+  criadoPorId?: string | null
+  inscricoes?: Prisma.BolsaInscricaoUncheckedCreateNestedManyWithoutBolsaInput
+  aulas?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutBolsaInput
+  comunidades?: Prisma.CommunityUncheckedCreateNestedManyWithoutBolsaInput
+  mentorias?: Prisma.MentoriaUncheckedCreateNestedManyWithoutBolsaInput
+  materiais?: Prisma.DocumentoUncheckedCreateNestedManyWithoutBolsaInput
+  cursos?: Prisma.CursoUncheckedCreateNestedManyWithoutBolsaInput
+}
+
+export type BolsaCreateOrConnectWithoutMentoriaAcessosInput = {
+  where: Prisma.BolsaWhereUniqueInput
+  create: Prisma.XOR<Prisma.BolsaCreateWithoutMentoriaAcessosInput, Prisma.BolsaUncheckedCreateWithoutMentoriaAcessosInput>
+}
+
+export type BolsaUpsertWithoutMentoriaAcessosInput = {
+  update: Prisma.XOR<Prisma.BolsaUpdateWithoutMentoriaAcessosInput, Prisma.BolsaUncheckedUpdateWithoutMentoriaAcessosInput>
+  create: Prisma.XOR<Prisma.BolsaCreateWithoutMentoriaAcessosInput, Prisma.BolsaUncheckedCreateWithoutMentoriaAcessosInput>
+  where?: Prisma.BolsaWhereInput
+}
+
+export type BolsaUpdateToOneWithWhereWithoutMentoriaAcessosInput = {
+  where?: Prisma.BolsaWhereInput
+  data: Prisma.XOR<Prisma.BolsaUpdateWithoutMentoriaAcessosInput, Prisma.BolsaUncheckedUpdateWithoutMentoriaAcessosInput>
+}
+
+export type BolsaUpdateWithoutMentoriaAcessosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instituicao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pais?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nivel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requisitos?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valor?: Prisma.FloatFieldUpdateOperationsInput | number
+  moeda?: Prisma.StringFieldUpdateOperationsInput | string
+  precoOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.BolsaUpdatetagsInput | string[]
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagemUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkAplicar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prazo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  numeroVagas?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.EnumBolsaStatusFieldUpdateOperationsInput | $Enums.BolsaStatus
+  modalidade?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagemBg?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPor?: Prisma.UserUpdateOneWithoutBolsasCriadasNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUpdateManyWithoutBolsaNestedInput
+  aulas?: Prisma.AulaOnlineUpdateManyWithoutBolsaNestedInput
+  comunidades?: Prisma.CommunityUpdateManyWithoutBolsaNestedInput
+  mentorias?: Prisma.MentoriaUpdateManyWithoutBolsaNestedInput
+  materiais?: Prisma.DocumentoUpdateManyWithoutBolsaNestedInput
+  cursos?: Prisma.CursoUpdateManyWithoutBolsaNestedInput
+}
+
+export type BolsaUncheckedUpdateWithoutMentoriaAcessosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instituicao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pais?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nivel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requisitos?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valor?: Prisma.FloatFieldUpdateOperationsInput | number
+  moeda?: Prisma.StringFieldUpdateOperationsInput | string
+  precoOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.BolsaUpdatetagsInput | string[]
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagemUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkAplicar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prazo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  numeroVagas?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.EnumBolsaStatusFieldUpdateOperationsInput | $Enums.BolsaStatus
+  modalidade?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagemBg?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inscricoes?: Prisma.BolsaInscricaoUncheckedUpdateManyWithoutBolsaNestedInput
+  aulas?: Prisma.AulaOnlineUncheckedUpdateManyWithoutBolsaNestedInput
+  comunidades?: Prisma.CommunityUncheckedUpdateManyWithoutBolsaNestedInput
+  mentorias?: Prisma.MentoriaUncheckedUpdateManyWithoutBolsaNestedInput
+  materiais?: Prisma.DocumentoUncheckedUpdateManyWithoutBolsaNestedInput
+  cursos?: Prisma.CursoUncheckedUpdateManyWithoutBolsaNestedInput
+}
+
+export type BolsaCreateManyCriadoPorInput = {
+  id?: string
+  titulo: string
+  subtitulo?: string | null
+  categoria?: string | null
+  instituicao?: string | null
+  pais?: string | null
+  nivel?: string | null
+  requisitos?: string | null
+  valor: number
+  moeda?: string
+  precoOriginal?: number | null
+  precoInscricao?: number | null
+  precoConsultoria?: number | null
+  precoMentoria?: number | null
+  idioma?: string | null
+  tags?: Prisma.BolsaCreatetagsInput | string[]
+  descricao?: string | null
+  imagemUrl?: string | null
+  linkAplicar?: string | null
+  prazo?: Date | string | null
+  numeroVagas?: number | null
+  status?: $Enums.BolsaStatus
+  modalidade?: string | null
+  imagemBg?: string | null
+  datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  created_at?: Date | string
+  updated_at?: Date | string
+}
+
+export type BolsaUpdateWithoutCriadoPorInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instituicao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pais?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nivel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requisitos?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valor?: Prisma.FloatFieldUpdateOperationsInput | number
+  moeda?: Prisma.StringFieldUpdateOperationsInput | string
+  precoOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.BolsaUpdatetagsInput | string[]
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagemUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkAplicar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prazo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  numeroVagas?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.EnumBolsaStatusFieldUpdateOperationsInput | $Enums.BolsaStatus
+  modalidade?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagemBg?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  inscricoes?: Prisma.BolsaInscricaoUpdateManyWithoutBolsaNestedInput
+  aulas?: Prisma.AulaOnlineUpdateManyWithoutBolsaNestedInput
+  comunidades?: Prisma.CommunityUpdateManyWithoutBolsaNestedInput
+  mentorias?: Prisma.MentoriaUpdateManyWithoutBolsaNestedInput
+  materiais?: Prisma.DocumentoUpdateManyWithoutBolsaNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutBolsaNestedInput
+  cursos?: Prisma.CursoUpdateManyWithoutBolsaNestedInput
+}
+
+export type BolsaUncheckedUpdateWithoutCriadoPorInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instituicao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pais?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nivel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requisitos?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valor?: Prisma.FloatFieldUpdateOperationsInput | number
+  moeda?: Prisma.StringFieldUpdateOperationsInput | string
+  precoOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.BolsaUpdatetagsInput | string[]
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagemUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkAplicar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prazo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  numeroVagas?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.EnumBolsaStatusFieldUpdateOperationsInput | $Enums.BolsaStatus
+  modalidade?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagemBg?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  inscricoes?: Prisma.BolsaInscricaoUncheckedUpdateManyWithoutBolsaNestedInput
+  aulas?: Prisma.AulaOnlineUncheckedUpdateManyWithoutBolsaNestedInput
+  comunidades?: Prisma.CommunityUncheckedUpdateManyWithoutBolsaNestedInput
+  mentorias?: Prisma.MentoriaUncheckedUpdateManyWithoutBolsaNestedInput
+  materiais?: Prisma.DocumentoUncheckedUpdateManyWithoutBolsaNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutBolsaNestedInput
+  cursos?: Prisma.CursoUncheckedUpdateManyWithoutBolsaNestedInput
+}
+
+export type BolsaUncheckedUpdateManyWithoutCriadoPorInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instituicao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pais?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nivel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requisitos?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valor?: Prisma.FloatFieldUpdateOperationsInput | number
+  moeda?: Prisma.StringFieldUpdateOperationsInput | string
+  precoOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.BolsaUpdatetagsInput | string[]
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagemUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkAplicar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prazo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  numeroVagas?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.EnumBolsaStatusFieldUpdateOperationsInput | $Enums.BolsaStatus
+  modalidade?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagemBg?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  datasImportantes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -1574,6 +2543,9 @@ export type BolsaCountOutputType = {
   aulas: number
   comunidades: number
   mentorias: number
+  materiais: number
+  mentoriaAcessos: number
+  cursos: number
 }
 
 export type BolsaCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1581,6 +2553,9 @@ export type BolsaCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.
   aulas?: boolean | BolsaCountOutputTypeCountAulasArgs
   comunidades?: boolean | BolsaCountOutputTypeCountComunidadesArgs
   mentorias?: boolean | BolsaCountOutputTypeCountMentoriasArgs
+  materiais?: boolean | BolsaCountOutputTypeCountMateriaisArgs
+  mentoriaAcessos?: boolean | BolsaCountOutputTypeCountMentoriaAcessosArgs
+  cursos?: boolean | BolsaCountOutputTypeCountCursosArgs
 }
 
 /**
@@ -1621,6 +2596,27 @@ export type BolsaCountOutputTypeCountMentoriasArgs<ExtArgs extends runtime.Types
   where?: Prisma.MentoriaWhereInput
 }
 
+/**
+ * BolsaCountOutputType without action
+ */
+export type BolsaCountOutputTypeCountMateriaisArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DocumentoWhereInput
+}
+
+/**
+ * BolsaCountOutputType without action
+ */
+export type BolsaCountOutputTypeCountMentoriaAcessosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MentoriaAcessoWhereInput
+}
+
+/**
+ * BolsaCountOutputType without action
+ */
+export type BolsaCountOutputTypeCountCursosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CursoWhereInput
+}
+
 
 export type BolsaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1650,10 +2646,15 @@ export type BolsaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   datasImportantes?: boolean
   created_at?: boolean
   updated_at?: boolean
+  criadoPorId?: boolean
+  criadoPor?: boolean | Prisma.Bolsa$criadoPorArgs<ExtArgs>
   inscricoes?: boolean | Prisma.Bolsa$inscricoesArgs<ExtArgs>
   aulas?: boolean | Prisma.Bolsa$aulasArgs<ExtArgs>
   comunidades?: boolean | Prisma.Bolsa$comunidadesArgs<ExtArgs>
   mentorias?: boolean | Prisma.Bolsa$mentoriasArgs<ExtArgs>
+  materiais?: boolean | Prisma.Bolsa$materiaisArgs<ExtArgs>
+  mentoriaAcessos?: boolean | Prisma.Bolsa$mentoriaAcessosArgs<ExtArgs>
+  cursos?: boolean | Prisma.Bolsa$cursosArgs<ExtArgs>
   _count?: boolean | Prisma.BolsaCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["bolsa"]>
 
@@ -1685,6 +2686,8 @@ export type BolsaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   datasImportantes?: boolean
   created_at?: boolean
   updated_at?: boolean
+  criadoPorId?: boolean
+  criadoPor?: boolean | Prisma.Bolsa$criadoPorArgs<ExtArgs>
 }, ExtArgs["result"]["bolsa"]>
 
 export type BolsaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1715,6 +2718,8 @@ export type BolsaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   datasImportantes?: boolean
   created_at?: boolean
   updated_at?: boolean
+  criadoPorId?: boolean
+  criadoPor?: boolean | Prisma.Bolsa$criadoPorArgs<ExtArgs>
 }, ExtArgs["result"]["bolsa"]>
 
 export type BolsaSelectScalar = {
@@ -1745,26 +2750,39 @@ export type BolsaSelectScalar = {
   datasImportantes?: boolean
   created_at?: boolean
   updated_at?: boolean
+  criadoPorId?: boolean
 }
 
-export type BolsaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "titulo" | "subtitulo" | "categoria" | "instituicao" | "pais" | "nivel" | "requisitos" | "valor" | "moeda" | "precoOriginal" | "precoInscricao" | "precoConsultoria" | "precoMentoria" | "idioma" | "tags" | "descricao" | "imagemUrl" | "linkAplicar" | "prazo" | "numeroVagas" | "status" | "modalidade" | "imagemBg" | "datasImportantes" | "created_at" | "updated_at", ExtArgs["result"]["bolsa"]>
+export type BolsaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "titulo" | "subtitulo" | "categoria" | "instituicao" | "pais" | "nivel" | "requisitos" | "valor" | "moeda" | "precoOriginal" | "precoInscricao" | "precoConsultoria" | "precoMentoria" | "idioma" | "tags" | "descricao" | "imagemUrl" | "linkAplicar" | "prazo" | "numeroVagas" | "status" | "modalidade" | "imagemBg" | "datasImportantes" | "created_at" | "updated_at" | "criadoPorId", ExtArgs["result"]["bolsa"]>
 export type BolsaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  criadoPor?: boolean | Prisma.Bolsa$criadoPorArgs<ExtArgs>
   inscricoes?: boolean | Prisma.Bolsa$inscricoesArgs<ExtArgs>
   aulas?: boolean | Prisma.Bolsa$aulasArgs<ExtArgs>
   comunidades?: boolean | Prisma.Bolsa$comunidadesArgs<ExtArgs>
   mentorias?: boolean | Prisma.Bolsa$mentoriasArgs<ExtArgs>
+  materiais?: boolean | Prisma.Bolsa$materiaisArgs<ExtArgs>
+  mentoriaAcessos?: boolean | Prisma.Bolsa$mentoriaAcessosArgs<ExtArgs>
+  cursos?: boolean | Prisma.Bolsa$cursosArgs<ExtArgs>
   _count?: boolean | Prisma.BolsaCountOutputTypeDefaultArgs<ExtArgs>
 }
-export type BolsaIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
-export type BolsaIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type BolsaIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  criadoPor?: boolean | Prisma.Bolsa$criadoPorArgs<ExtArgs>
+}
+export type BolsaIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  criadoPor?: boolean | Prisma.Bolsa$criadoPorArgs<ExtArgs>
+}
 
 export type $BolsaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Bolsa"
   objects: {
+    criadoPor: Prisma.$UserPayload<ExtArgs> | null
     inscricoes: Prisma.$BolsaInscricaoPayload<ExtArgs>[]
     aulas: Prisma.$AulaOnlinePayload<ExtArgs>[]
     comunidades: Prisma.$CommunityPayload<ExtArgs>[]
     mentorias: Prisma.$MentoriaPayload<ExtArgs>[]
+    materiais: Prisma.$DocumentoPayload<ExtArgs>[]
+    mentoriaAcessos: Prisma.$MentoriaAcessoPayload<ExtArgs>[]
+    cursos: Prisma.$CursoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1794,6 +2812,7 @@ export type $BolsaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     datasImportantes: runtime.JsonValue | null
     created_at: Date
     updated_at: Date
+    criadoPorId: string | null
   }, ExtArgs["result"]["bolsa"]>
   composites: {}
 }
@@ -2188,10 +3207,14 @@ readonly fields: BolsaFieldRefs;
  */
 export interface Prisma__BolsaClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  criadoPor<T extends Prisma.Bolsa$criadoPorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Bolsa$criadoPorArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   inscricoes<T extends Prisma.Bolsa$inscricoesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Bolsa$inscricoesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BolsaInscricaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   aulas<T extends Prisma.Bolsa$aulasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Bolsa$aulasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AulaOnlinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   comunidades<T extends Prisma.Bolsa$comunidadesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Bolsa$comunidadesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommunityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   mentorias<T extends Prisma.Bolsa$mentoriasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Bolsa$mentoriasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MentoriaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  materiais<T extends Prisma.Bolsa$materiaisArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Bolsa$materiaisArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DocumentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  mentoriaAcessos<T extends Prisma.Bolsa$mentoriaAcessosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Bolsa$mentoriaAcessosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MentoriaAcessoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  cursos<T extends Prisma.Bolsa$cursosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Bolsa$cursosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CursoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2248,6 +3271,7 @@ export interface BolsaFieldRefs {
   readonly datasImportantes: Prisma.FieldRef<"Bolsa", 'Json'>
   readonly created_at: Prisma.FieldRef<"Bolsa", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Bolsa", 'DateTime'>
+  readonly criadoPorId: Prisma.FieldRef<"Bolsa", 'String'>
 }
     
 
@@ -2497,6 +3521,10 @@ export type BolsaCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extension
    */
   data: Prisma.BolsaCreateManyInput | Prisma.BolsaCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BolsaIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -2567,6 +3595,10 @@ export type BolsaUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extension
    * Limit how many Bolsas to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BolsaIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -2633,6 +3665,25 @@ export type BolsaDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Limit how many Bolsas to delete.
    */
   limit?: number
+}
+
+/**
+ * Bolsa.criadoPor
+ */
+export type Bolsa$criadoPorArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
 }
 
 /**
@@ -2729,6 +3780,78 @@ export type Bolsa$mentoriasArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   distinct?: Prisma.MentoriaScalarFieldEnum | Prisma.MentoriaScalarFieldEnum[]
+}
+
+/**
+ * Bolsa.materiais
+ */
+export type Bolsa$materiaisArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Documento
+   */
+  select?: Prisma.DocumentoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Documento
+   */
+  omit?: Prisma.DocumentoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DocumentoInclude<ExtArgs> | null
+  where?: Prisma.DocumentoWhereInput
+  orderBy?: Prisma.DocumentoOrderByWithRelationInput | Prisma.DocumentoOrderByWithRelationInput[]
+  cursor?: Prisma.DocumentoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DocumentoScalarFieldEnum | Prisma.DocumentoScalarFieldEnum[]
+}
+
+/**
+ * Bolsa.mentoriaAcessos
+ */
+export type Bolsa$mentoriaAcessosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MentoriaAcesso
+   */
+  select?: Prisma.MentoriaAcessoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MentoriaAcesso
+   */
+  omit?: Prisma.MentoriaAcessoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MentoriaAcessoInclude<ExtArgs> | null
+  where?: Prisma.MentoriaAcessoWhereInput
+  orderBy?: Prisma.MentoriaAcessoOrderByWithRelationInput | Prisma.MentoriaAcessoOrderByWithRelationInput[]
+  cursor?: Prisma.MentoriaAcessoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MentoriaAcessoScalarFieldEnum | Prisma.MentoriaAcessoScalarFieldEnum[]
+}
+
+/**
+ * Bolsa.cursos
+ */
+export type Bolsa$cursosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Curso
+   */
+  select?: Prisma.CursoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Curso
+   */
+  omit?: Prisma.CursoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CursoInclude<ExtArgs> | null
+  where?: Prisma.CursoWhereInput
+  orderBy?: Prisma.CursoOrderByWithRelationInput | Prisma.CursoOrderByWithRelationInput[]
+  cursor?: Prisma.CursoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CursoScalarFieldEnum | Prisma.CursoScalarFieldEnum[]
 }
 
 /**

@@ -538,6 +538,23 @@ export type EnumPagamentoStatusWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumPagamentoStatusFilter<$PrismaModel>
 }
 
+export type EnumDocumentoStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.DocumentoStatus | Prisma.EnumDocumentoStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DocumentoStatus[] | Prisma.ListEnumDocumentoStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DocumentoStatus[] | Prisma.ListEnumDocumentoStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDocumentoStatusFilter<$PrismaModel> | $Enums.DocumentoStatus
+}
+
+export type EnumDocumentoStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DocumentoStatus | Prisma.EnumDocumentoStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DocumentoStatus[] | Prisma.ListEnumDocumentoStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DocumentoStatus[] | Prisma.ListEnumDocumentoStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDocumentoStatusWithAggregatesFilter<$PrismaModel> | $Enums.DocumentoStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDocumentoStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDocumentoStatusFilter<$PrismaModel>
+}
+
 export type EnumDepoimentoStatusFilter<$PrismaModel = never> = {
   equals?: $Enums.DepoimentoStatus | Prisma.EnumDepoimentoStatusFieldRefInput<$PrismaModel>
   in?: $Enums.DepoimentoStatus[] | Prisma.ListEnumDepoimentoStatusFieldRefInput<$PrismaModel>
@@ -621,6 +638,40 @@ export type EnumAulaOnlineStatusWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumAulaOnlineStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumAulaOnlineStatusFilter<$PrismaModel>
+}
+
+export type EnumTipoPagamentoMomenuFilter<$PrismaModel = never> = {
+  equals?: $Enums.TipoPagamentoMomenu | Prisma.EnumTipoPagamentoMomenuFieldRefInput<$PrismaModel>
+  in?: $Enums.TipoPagamentoMomenu[] | Prisma.ListEnumTipoPagamentoMomenuFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TipoPagamentoMomenu[] | Prisma.ListEnumTipoPagamentoMomenuFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTipoPagamentoMomenuFilter<$PrismaModel> | $Enums.TipoPagamentoMomenu
+}
+
+export type EnumPagamentoMomenuStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.PagamentoMomenuStatus | Prisma.EnumPagamentoMomenuStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.PagamentoMomenuStatus[] | Prisma.ListEnumPagamentoMomenuStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PagamentoMomenuStatus[] | Prisma.ListEnumPagamentoMomenuStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPagamentoMomenuStatusFilter<$PrismaModel> | $Enums.PagamentoMomenuStatus
+}
+
+export type EnumTipoPagamentoMomenuWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TipoPagamentoMomenu | Prisma.EnumTipoPagamentoMomenuFieldRefInput<$PrismaModel>
+  in?: $Enums.TipoPagamentoMomenu[] | Prisma.ListEnumTipoPagamentoMomenuFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TipoPagamentoMomenu[] | Prisma.ListEnumTipoPagamentoMomenuFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTipoPagamentoMomenuWithAggregatesFilter<$PrismaModel> | $Enums.TipoPagamentoMomenu
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTipoPagamentoMomenuFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTipoPagamentoMomenuFilter<$PrismaModel>
+}
+
+export type EnumPagamentoMomenuStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PagamentoMomenuStatus | Prisma.EnumPagamentoMomenuStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.PagamentoMomenuStatus[] | Prisma.ListEnumPagamentoMomenuStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PagamentoMomenuStatus[] | Prisma.ListEnumPagamentoMomenuStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPagamentoMomenuStatusWithAggregatesFilter<$PrismaModel> | $Enums.PagamentoMomenuStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPagamentoMomenuStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPagamentoMomenuStatusFilter<$PrismaModel>
 }
 
 export type NestedStringFilter<$PrismaModel = never> = {
@@ -1111,6 +1162,23 @@ export type NestedEnumPagamentoStatusWithAggregatesFilter<$PrismaModel = never> 
   _max?: Prisma.NestedEnumPagamentoStatusFilter<$PrismaModel>
 }
 
+export type NestedEnumDocumentoStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.DocumentoStatus | Prisma.EnumDocumentoStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DocumentoStatus[] | Prisma.ListEnumDocumentoStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DocumentoStatus[] | Prisma.ListEnumDocumentoStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDocumentoStatusFilter<$PrismaModel> | $Enums.DocumentoStatus
+}
+
+export type NestedEnumDocumentoStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DocumentoStatus | Prisma.EnumDocumentoStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DocumentoStatus[] | Prisma.ListEnumDocumentoStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DocumentoStatus[] | Prisma.ListEnumDocumentoStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDocumentoStatusWithAggregatesFilter<$PrismaModel> | $Enums.DocumentoStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDocumentoStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDocumentoStatusFilter<$PrismaModel>
+}
+
 export type NestedEnumDepoimentoStatusFilter<$PrismaModel = never> = {
   equals?: $Enums.DepoimentoStatus | Prisma.EnumDepoimentoStatusFieldRefInput<$PrismaModel>
   in?: $Enums.DepoimentoStatus[] | Prisma.ListEnumDepoimentoStatusFieldRefInput<$PrismaModel>
@@ -1194,6 +1262,40 @@ export type NestedEnumAulaOnlineStatusWithAggregatesFilter<$PrismaModel = never>
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumAulaOnlineStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumAulaOnlineStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumTipoPagamentoMomenuFilter<$PrismaModel = never> = {
+  equals?: $Enums.TipoPagamentoMomenu | Prisma.EnumTipoPagamentoMomenuFieldRefInput<$PrismaModel>
+  in?: $Enums.TipoPagamentoMomenu[] | Prisma.ListEnumTipoPagamentoMomenuFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TipoPagamentoMomenu[] | Prisma.ListEnumTipoPagamentoMomenuFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTipoPagamentoMomenuFilter<$PrismaModel> | $Enums.TipoPagamentoMomenu
+}
+
+export type NestedEnumPagamentoMomenuStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.PagamentoMomenuStatus | Prisma.EnumPagamentoMomenuStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.PagamentoMomenuStatus[] | Prisma.ListEnumPagamentoMomenuStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PagamentoMomenuStatus[] | Prisma.ListEnumPagamentoMomenuStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPagamentoMomenuStatusFilter<$PrismaModel> | $Enums.PagamentoMomenuStatus
+}
+
+export type NestedEnumTipoPagamentoMomenuWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TipoPagamentoMomenu | Prisma.EnumTipoPagamentoMomenuFieldRefInput<$PrismaModel>
+  in?: $Enums.TipoPagamentoMomenu[] | Prisma.ListEnumTipoPagamentoMomenuFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TipoPagamentoMomenu[] | Prisma.ListEnumTipoPagamentoMomenuFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTipoPagamentoMomenuWithAggregatesFilter<$PrismaModel> | $Enums.TipoPagamentoMomenu
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTipoPagamentoMomenuFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTipoPagamentoMomenuFilter<$PrismaModel>
+}
+
+export type NestedEnumPagamentoMomenuStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PagamentoMomenuStatus | Prisma.EnumPagamentoMomenuStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.PagamentoMomenuStatus[] | Prisma.ListEnumPagamentoMomenuStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PagamentoMomenuStatus[] | Prisma.ListEnumPagamentoMomenuStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPagamentoMomenuStatusWithAggregatesFilter<$PrismaModel> | $Enums.PagamentoMomenuStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPagamentoMomenuStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPagamentoMomenuStatusFilter<$PrismaModel>
 }
 
 

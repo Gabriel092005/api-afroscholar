@@ -41,6 +41,8 @@ export const cancelarInscricao = async (
       where: { id },
       data: {
         status: "CANCELADA",
+        // Cancelar outro serviço, como uma consultoria, não desfaz a inscrição já feita.
+        ...(inscricao.tipoInteresse === "INSCRICAO" ? { inscritoEm: null } : {}),
       },
     });
 

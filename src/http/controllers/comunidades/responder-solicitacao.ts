@@ -1,3 +1,4 @@
+import { podeVerComunidade } from "@/lib/mentoria-acesso";
 import prisma from "@/lib/prisma";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
@@ -31,6 +32,10 @@ export async function responderSolicitacao(req: FastifyRequest, res: FastifyRepl
     }
 
     if (acao === "APROVAR") {
+      if (!(await podeVerComunidade(solicitacao.usuarioId, solicitacao.comunidade))) {
+        return res.status(403).send({ error: "Forbidden", message: "Este usuário não tem a mentoria da bolsa desta comunidade." });
+      }
+
       await prisma.communityMember.update({
         where: { id: membroId },
         data: { status: "APROVADO" },

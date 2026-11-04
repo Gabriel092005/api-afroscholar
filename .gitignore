@@ -4,6 +4,8 @@ src/lib/*.json
 
 # Adicione isso ao final do arquivo .gitignore
 uploads/
+documentos-privados/
+*.tsbuildinfo
 node_modules/
 
 dist/

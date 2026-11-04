@@ -1,3 +1,4 @@
+import { lerAcessoCursos } from "@/lib/curso-acesso";
 import prisma from "@/lib/prisma";
 import { FastifyReply, FastifyRequest } from "fastify";
 
@@ -43,6 +44,7 @@ export const listCursos = async (
           aulas: {
             orderBy: { ordem: "asc" },
           },
+          bolsa: { select: { id: true, titulo: true } },
         },
         orderBy: { created_at: "desc" },
         skip,
@@ -50,6 +52,8 @@ export const listCursos = async (
       }),
       prisma.curso.count({ where }),
     ]);
+
+    const mediaDaAula = await lerAcessoCursos(req);
 
     const data = cursos.map((curso) => ({
       id: curso.id,
@@ -62,7 +66,6 @@ export const listCursos = async (
       estudantes: curso.estudantes,
       rating: curso.rating,
       preco: curso.preco,
-      precoOriginal: curso.precoOriginal,
       idioma: curso.idioma,
       tags: curso.tags,
       descricao: curso.descricao,
@@ -70,6 +73,8 @@ export const listCursos = async (
       status: curso.status,
       mentorNome: curso.mentorNome,
       mentorAvatar: curso.mentorAvatar,
+      bolsaId: curso.bolsaId,
+      bolsa: curso.bolsa,
       created_at: curso.created_at,
       updated_at: curso.updated_at,
       aulas: curso.aulas.map((aula) => ({
@@ -79,9 +84,7 @@ export const listCursos = async (
         duracao: aula.duracao,
         ordem: aula.ordem,
         gratuito: aula.gratuito,
-        videoUrl: aula.videoUrl,
-        videoLocal: aula.videoLocal,
-        pdfUrl: aula.pdfUrl,
+        ...mediaDaAula(curso, aula),
         created_at: aula.created_at,
       })),
     }));

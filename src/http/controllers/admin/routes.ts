@@ -1,5 +1,6 @@
 import { FastifyInstance } from "fastify";
 import { getAdminDashboard } from "./dashboard-controller";
+import { getReceitaGestores } from "./receita-gestores-controller";
 import { listAllAulasAdmin } from "./list-aulas-admin-controller";
 import { deleteUsuario } from "./delete-usuario-controller";
 import { deleteInscricao } from "./delete-inscricao-controller";
@@ -13,6 +14,11 @@ export async function adminRoutes(fastify: FastifyInstance) {
   fastify.get("/admin/dashboard", {
     onRequest: [verifyJWT, verifyUserRole("ADMIN", "GESTOR")],
   }, getAdminDashboard);
+
+  // Só o administrador: um gestor não pode ver quanto os outros faturam.
+  fastify.get("/admin/receita-gestores", {
+    onRequest: [verifyJWT, verifyUserRole("ADMIN")],
+  }, getReceitaGestores);
 
   fastify.get("/admin/aulas", {
     onRequest: [verifyJWT, verifyUserRole("ADMIN", "GESTOR")],

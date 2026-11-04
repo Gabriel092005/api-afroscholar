@@ -3,6 +3,9 @@ FROM node:20-alpine AS build
 
 WORKDIR /usr/src/app
 
+# O motor do Prisma precisa do OpenSSL, que a imagem alpine não garante.
+RUN apk add --no-cache openssl
+
 # O prisma.config.ts exige DATABASE_URL durante o `prisma generate` (apenas gera código, não conecta).
 ENV DATABASE_URL="postgresql://placeholder:placeholder@localhost:5432/placeholder"
 
@@ -25,6 +28,9 @@ FROM node:20-alpine AS production
 WORKDIR /usr/src/app
 ENV NODE_ENV=production
 ENV UPLOAD_DIR=/usr/src/app/uploads
+ENV DOCUMENTOS_DIR=/usr/src/app/documentos-privados
+
+RUN apk add --no-cache openssl
 
 COPY --from=build /usr/src/app/build ./build
 COPY --from=build /usr/src/app/package.json ./package.json
@@ -35,7 +41,7 @@ COPY --from=build /usr/src/app/prisma.config.ts ./prisma.config.ts
 # @prisma/client e prisma são dependencies (o generated bundlado usa @prisma/client/runtime/library)
 RUN npm ci --omit=dev --ignore-scripts
 
-RUN mkdir -p $UPLOAD_DIR
+RUN mkdir -p $UPLOAD_DIR $DOCUMENTOS_DIR
 
 EXPOSE 3333
 

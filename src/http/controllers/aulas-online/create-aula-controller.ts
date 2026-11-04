@@ -1,3 +1,4 @@
+import { erroAoVincularBolsa } from "@/lib/curso-bolsa";
 import prisma from "@/lib/prisma";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
@@ -16,12 +17,17 @@ export async function createAula(req: FastifyRequest, res: FastifyReply) {
     const userId = req.user.sub;
     const user = await prisma.user.findUnique({ where: { id: userId }, select: { role: true } });
 
-    if (!user || user.role !== "ADMIN") {
-      return res.status(403).send({ error: "Forbidden", message: "Apenas administradores podem criar aulas." });
+    if (!user || (user.role !== "ADMIN" && user.role !== "GESTOR")) {
+      return res.status(403).send({ error: "Forbidden", message: "Apenas administradores e mentores podem criar aulas." });
     }
 
     const body = createAulaSchema.parse(req.body);
     const hostId = req.user.sub;
+
+    if (body.bolsaId) {
+      const erro = await erroAoVincularBolsa(body.bolsaId, userId);
+      if (erro) return res.status(erro.status).send({ error: "Bad Request", message: erro.message });
+    }
 
     const roomId = crypto.randomUUID();
 

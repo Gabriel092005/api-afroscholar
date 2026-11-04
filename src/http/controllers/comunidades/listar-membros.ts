@@ -1,9 +1,18 @@
+import { podeVerComunidade } from "@/lib/mentoria-acesso";
 import prisma from "@/lib/prisma";
 import { FastifyReply, FastifyRequest } from "fastify";
 
 export async function listarMembros(req: FastifyRequest, res: FastifyReply) {
   try {
     const { id } = req.params as { id: string };
+
+    const comunidade = await prisma.community.findUnique({ where: { id }, select: { id: true, bolsaId: true } });
+    if (!comunidade) {
+      return res.status(404).send({ error: "Not Found", message: "Comunidade não encontrada." });
+    }
+    if (!(await podeVerComunidade(req.user.sub, comunidade))) {
+      return res.status(403).send({ error: "Forbidden", message: "Esta comunidade está incluída na mentoria da bolsa." });
+    }
 
     const membros = await prisma.communityMember.findMany({
       where: { comunidadeId: id, status: "APROVADO" },

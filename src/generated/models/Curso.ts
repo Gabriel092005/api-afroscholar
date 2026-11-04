@@ -31,7 +31,6 @@ export type CursoAvgAggregateOutputType = {
   estudantes: number | null
   rating: number | null
   preco: number | null
-  precoOriginal: number | null
 }
 
 export type CursoSumAggregateOutputType = {
@@ -39,7 +38,6 @@ export type CursoSumAggregateOutputType = {
   estudantes: number | null
   rating: number | null
   preco: number | null
-  precoOriginal: number | null
 }
 
 export type CursoMinAggregateOutputType = {
@@ -53,7 +51,6 @@ export type CursoMinAggregateOutputType = {
   estudantes: number | null
   rating: number | null
   preco: number | null
-  precoOriginal: number | null
   idioma: string | null
   descricao: string | null
   capaUrl: string | null
@@ -62,6 +59,8 @@ export type CursoMinAggregateOutputType = {
   mentorAvatar: string | null
   created_at: Date | null
   updated_at: Date | null
+  criadoPorId: string | null
+  bolsaId: string | null
 }
 
 export type CursoMaxAggregateOutputType = {
@@ -75,7 +74,6 @@ export type CursoMaxAggregateOutputType = {
   estudantes: number | null
   rating: number | null
   preco: number | null
-  precoOriginal: number | null
   idioma: string | null
   descricao: string | null
   capaUrl: string | null
@@ -84,6 +82,8 @@ export type CursoMaxAggregateOutputType = {
   mentorAvatar: string | null
   created_at: Date | null
   updated_at: Date | null
+  criadoPorId: string | null
+  bolsaId: string | null
 }
 
 export type CursoCountAggregateOutputType = {
@@ -97,7 +97,6 @@ export type CursoCountAggregateOutputType = {
   estudantes: number
   rating: number
   preco: number
-  precoOriginal: number
   idioma: number
   tags: number
   descricao: number
@@ -107,6 +106,8 @@ export type CursoCountAggregateOutputType = {
   mentorAvatar: number
   created_at: number
   updated_at: number
+  criadoPorId: number
+  bolsaId: number
   _all: number
 }
 
@@ -116,7 +117,6 @@ export type CursoAvgAggregateInputType = {
   estudantes?: true
   rating?: true
   preco?: true
-  precoOriginal?: true
 }
 
 export type CursoSumAggregateInputType = {
@@ -124,7 +124,6 @@ export type CursoSumAggregateInputType = {
   estudantes?: true
   rating?: true
   preco?: true
-  precoOriginal?: true
 }
 
 export type CursoMinAggregateInputType = {
@@ -138,7 +137,6 @@ export type CursoMinAggregateInputType = {
   estudantes?: true
   rating?: true
   preco?: true
-  precoOriginal?: true
   idioma?: true
   descricao?: true
   capaUrl?: true
@@ -147,6 +145,8 @@ export type CursoMinAggregateInputType = {
   mentorAvatar?: true
   created_at?: true
   updated_at?: true
+  criadoPorId?: true
+  bolsaId?: true
 }
 
 export type CursoMaxAggregateInputType = {
@@ -160,7 +160,6 @@ export type CursoMaxAggregateInputType = {
   estudantes?: true
   rating?: true
   preco?: true
-  precoOriginal?: true
   idioma?: true
   descricao?: true
   capaUrl?: true
@@ -169,6 +168,8 @@ export type CursoMaxAggregateInputType = {
   mentorAvatar?: true
   created_at?: true
   updated_at?: true
+  criadoPorId?: true
+  bolsaId?: true
 }
 
 export type CursoCountAggregateInputType = {
@@ -182,7 +183,6 @@ export type CursoCountAggregateInputType = {
   estudantes?: true
   rating?: true
   preco?: true
-  precoOriginal?: true
   idioma?: true
   tags?: true
   descricao?: true
@@ -192,6 +192,8 @@ export type CursoCountAggregateInputType = {
   mentorAvatar?: true
   created_at?: true
   updated_at?: true
+  criadoPorId?: true
+  bolsaId?: true
   _all?: true
 }
 
@@ -292,7 +294,6 @@ export type CursoGroupByOutputType = {
   estudantes: number
   rating: number
   preco: number
-  precoOriginal: number | null
   idioma: string | null
   tags: string[]
   descricao: string | null
@@ -302,6 +303,8 @@ export type CursoGroupByOutputType = {
   mentorAvatar: string | null
   created_at: Date
   updated_at: Date
+  criadoPorId: string | null
+  bolsaId: string | null
   _count: CursoCountAggregateOutputType | null
   _avg: CursoAvgAggregateOutputType | null
   _sum: CursoSumAggregateOutputType | null
@@ -338,7 +341,6 @@ export type CursoWhereInput = {
   estudantes?: Prisma.IntFilter<"Curso"> | number
   rating?: Prisma.FloatFilter<"Curso"> | number
   preco?: Prisma.FloatFilter<"Curso"> | number
-  precoOriginal?: Prisma.FloatNullableFilter<"Curso"> | number | null
   idioma?: Prisma.StringNullableFilter<"Curso"> | string | null
   tags?: Prisma.StringNullableListFilter<"Curso">
   descricao?: Prisma.StringNullableFilter<"Curso"> | string | null
@@ -348,6 +350,10 @@ export type CursoWhereInput = {
   mentorAvatar?: Prisma.StringNullableFilter<"Curso"> | string | null
   created_at?: Prisma.DateTimeFilter<"Curso"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Curso"> | Date | string
+  criadoPorId?: Prisma.StringNullableFilter<"Curso"> | string | null
+  bolsaId?: Prisma.StringNullableFilter<"Curso"> | string | null
+  criadoPor?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  bolsa?: Prisma.XOR<Prisma.BolsaNullableScalarRelationFilter, Prisma.BolsaWhereInput> | null
   aulas?: Prisma.AulaListRelationFilter
   pagamentos?: Prisma.CursoPagamentoListRelationFilter
   compras?: Prisma.CursoUsuarioListRelationFilter
@@ -364,7 +370,6 @@ export type CursoOrderByWithRelationInput = {
   estudantes?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   preco?: Prisma.SortOrder
-  precoOriginal?: Prisma.SortOrderInput | Prisma.SortOrder
   idioma?: Prisma.SortOrderInput | Prisma.SortOrder
   tags?: Prisma.SortOrder
   descricao?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -374,6 +379,10 @@ export type CursoOrderByWithRelationInput = {
   mentorAvatar?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  criadoPorId?: Prisma.SortOrderInput | Prisma.SortOrder
+  bolsaId?: Prisma.SortOrderInput | Prisma.SortOrder
+  criadoPor?: Prisma.UserOrderByWithRelationInput
+  bolsa?: Prisma.BolsaOrderByWithRelationInput
   aulas?: Prisma.AulaOrderByRelationAggregateInput
   pagamentos?: Prisma.CursoPagamentoOrderByRelationAggregateInput
   compras?: Prisma.CursoUsuarioOrderByRelationAggregateInput
@@ -393,7 +402,6 @@ export type CursoWhereUniqueInput = Prisma.AtLeast<{
   estudantes?: Prisma.IntFilter<"Curso"> | number
   rating?: Prisma.FloatFilter<"Curso"> | number
   preco?: Prisma.FloatFilter<"Curso"> | number
-  precoOriginal?: Prisma.FloatNullableFilter<"Curso"> | number | null
   idioma?: Prisma.StringNullableFilter<"Curso"> | string | null
   tags?: Prisma.StringNullableListFilter<"Curso">
   descricao?: Prisma.StringNullableFilter<"Curso"> | string | null
@@ -403,6 +411,10 @@ export type CursoWhereUniqueInput = Prisma.AtLeast<{
   mentorAvatar?: Prisma.StringNullableFilter<"Curso"> | string | null
   created_at?: Prisma.DateTimeFilter<"Curso"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Curso"> | Date | string
+  criadoPorId?: Prisma.StringNullableFilter<"Curso"> | string | null
+  bolsaId?: Prisma.StringNullableFilter<"Curso"> | string | null
+  criadoPor?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  bolsa?: Prisma.XOR<Prisma.BolsaNullableScalarRelationFilter, Prisma.BolsaWhereInput> | null
   aulas?: Prisma.AulaListRelationFilter
   pagamentos?: Prisma.CursoPagamentoListRelationFilter
   compras?: Prisma.CursoUsuarioListRelationFilter
@@ -419,7 +431,6 @@ export type CursoOrderByWithAggregationInput = {
   estudantes?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   preco?: Prisma.SortOrder
-  precoOriginal?: Prisma.SortOrderInput | Prisma.SortOrder
   idioma?: Prisma.SortOrderInput | Prisma.SortOrder
   tags?: Prisma.SortOrder
   descricao?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -429,6 +440,8 @@ export type CursoOrderByWithAggregationInput = {
   mentorAvatar?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  criadoPorId?: Prisma.SortOrderInput | Prisma.SortOrder
+  bolsaId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.CursoCountOrderByAggregateInput
   _avg?: Prisma.CursoAvgOrderByAggregateInput
   _max?: Prisma.CursoMaxOrderByAggregateInput
@@ -450,7 +463,6 @@ export type CursoScalarWhereWithAggregatesInput = {
   estudantes?: Prisma.IntWithAggregatesFilter<"Curso"> | number
   rating?: Prisma.FloatWithAggregatesFilter<"Curso"> | number
   preco?: Prisma.FloatWithAggregatesFilter<"Curso"> | number
-  precoOriginal?: Prisma.FloatNullableWithAggregatesFilter<"Curso"> | number | null
   idioma?: Prisma.StringNullableWithAggregatesFilter<"Curso"> | string | null
   tags?: Prisma.StringNullableListFilter<"Curso">
   descricao?: Prisma.StringNullableWithAggregatesFilter<"Curso"> | string | null
@@ -460,6 +472,8 @@ export type CursoScalarWhereWithAggregatesInput = {
   mentorAvatar?: Prisma.StringNullableWithAggregatesFilter<"Curso"> | string | null
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Curso"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Curso"> | Date | string
+  criadoPorId?: Prisma.StringNullableWithAggregatesFilter<"Curso"> | string | null
+  bolsaId?: Prisma.StringNullableWithAggregatesFilter<"Curso"> | string | null
 }
 
 export type CursoCreateInput = {
@@ -473,7 +487,6 @@ export type CursoCreateInput = {
   estudantes?: number
   rating?: number
   preco: number
-  precoOriginal?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -483,6 +496,8 @@ export type CursoCreateInput = {
   mentorAvatar?: string | null
   created_at?: Date | string
   updated_at?: Date | string
+  criadoPor?: Prisma.UserCreateNestedOneWithoutCursosCriadosInput
+  bolsa?: Prisma.BolsaCreateNestedOneWithoutCursosInput
   aulas?: Prisma.AulaCreateNestedManyWithoutCursoInput
   pagamentos?: Prisma.CursoPagamentoCreateNestedManyWithoutCursoInput
   compras?: Prisma.CursoUsuarioCreateNestedManyWithoutCursoInput
@@ -499,7 +514,6 @@ export type CursoUncheckedCreateInput = {
   estudantes?: number
   rating?: number
   preco: number
-  precoOriginal?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -509,6 +523,8 @@ export type CursoUncheckedCreateInput = {
   mentorAvatar?: string | null
   created_at?: Date | string
   updated_at?: Date | string
+  criadoPorId?: string | null
+  bolsaId?: string | null
   aulas?: Prisma.AulaUncheckedCreateNestedManyWithoutCursoInput
   pagamentos?: Prisma.CursoPagamentoUncheckedCreateNestedManyWithoutCursoInput
   compras?: Prisma.CursoUsuarioUncheckedCreateNestedManyWithoutCursoInput
@@ -525,7 +541,6 @@ export type CursoUpdateInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
-  precoOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -535,6 +550,8 @@ export type CursoUpdateInput = {
   mentorAvatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPor?: Prisma.UserUpdateOneWithoutCursosCriadosNestedInput
+  bolsa?: Prisma.BolsaUpdateOneWithoutCursosNestedInput
   aulas?: Prisma.AulaUpdateManyWithoutCursoNestedInput
   pagamentos?: Prisma.CursoPagamentoUpdateManyWithoutCursoNestedInput
   compras?: Prisma.CursoUsuarioUpdateManyWithoutCursoNestedInput
@@ -551,7 +568,6 @@ export type CursoUncheckedUpdateInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
-  precoOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -561,6 +577,8 @@ export type CursoUncheckedUpdateInput = {
   mentorAvatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bolsaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aulas?: Prisma.AulaUncheckedUpdateManyWithoutCursoNestedInput
   pagamentos?: Prisma.CursoPagamentoUncheckedUpdateManyWithoutCursoNestedInput
   compras?: Prisma.CursoUsuarioUncheckedUpdateManyWithoutCursoNestedInput
@@ -577,7 +595,6 @@ export type CursoCreateManyInput = {
   estudantes?: number
   rating?: number
   preco: number
-  precoOriginal?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -587,6 +604,8 @@ export type CursoCreateManyInput = {
   mentorAvatar?: string | null
   created_at?: Date | string
   updated_at?: Date | string
+  criadoPorId?: string | null
+  bolsaId?: string | null
 }
 
 export type CursoUpdateManyMutationInput = {
@@ -600,7 +619,6 @@ export type CursoUpdateManyMutationInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
-  precoOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -623,7 +641,6 @@ export type CursoUncheckedUpdateManyInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
-  precoOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -633,6 +650,18 @@ export type CursoUncheckedUpdateManyInput = {
   mentorAvatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bolsaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type CursoListRelationFilter = {
+  every?: Prisma.CursoWhereInput
+  some?: Prisma.CursoWhereInput
+  none?: Prisma.CursoWhereInput
+}
+
+export type CursoOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type CursoCountOrderByAggregateInput = {
@@ -646,7 +675,6 @@ export type CursoCountOrderByAggregateInput = {
   estudantes?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   preco?: Prisma.SortOrder
-  precoOriginal?: Prisma.SortOrder
   idioma?: Prisma.SortOrder
   tags?: Prisma.SortOrder
   descricao?: Prisma.SortOrder
@@ -656,6 +684,8 @@ export type CursoCountOrderByAggregateInput = {
   mentorAvatar?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  criadoPorId?: Prisma.SortOrder
+  bolsaId?: Prisma.SortOrder
 }
 
 export type CursoAvgOrderByAggregateInput = {
@@ -663,7 +693,6 @@ export type CursoAvgOrderByAggregateInput = {
   estudantes?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   preco?: Prisma.SortOrder
-  precoOriginal?: Prisma.SortOrder
 }
 
 export type CursoMaxOrderByAggregateInput = {
@@ -677,7 +706,6 @@ export type CursoMaxOrderByAggregateInput = {
   estudantes?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   preco?: Prisma.SortOrder
-  precoOriginal?: Prisma.SortOrder
   idioma?: Prisma.SortOrder
   descricao?: Prisma.SortOrder
   capaUrl?: Prisma.SortOrder
@@ -686,6 +714,8 @@ export type CursoMaxOrderByAggregateInput = {
   mentorAvatar?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  criadoPorId?: Prisma.SortOrder
+  bolsaId?: Prisma.SortOrder
 }
 
 export type CursoMinOrderByAggregateInput = {
@@ -699,7 +729,6 @@ export type CursoMinOrderByAggregateInput = {
   estudantes?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   preco?: Prisma.SortOrder
-  precoOriginal?: Prisma.SortOrder
   idioma?: Prisma.SortOrder
   descricao?: Prisma.SortOrder
   capaUrl?: Prisma.SortOrder
@@ -708,6 +737,8 @@ export type CursoMinOrderByAggregateInput = {
   mentorAvatar?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  criadoPorId?: Prisma.SortOrder
+  bolsaId?: Prisma.SortOrder
 }
 
 export type CursoSumOrderByAggregateInput = {
@@ -715,12 +746,95 @@ export type CursoSumOrderByAggregateInput = {
   estudantes?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   preco?: Prisma.SortOrder
-  precoOriginal?: Prisma.SortOrder
 }
 
 export type CursoScalarRelationFilter = {
   is?: Prisma.CursoWhereInput
   isNot?: Prisma.CursoWhereInput
+}
+
+export type CursoCreateNestedManyWithoutCriadoPorInput = {
+  create?: Prisma.XOR<Prisma.CursoCreateWithoutCriadoPorInput, Prisma.CursoUncheckedCreateWithoutCriadoPorInput> | Prisma.CursoCreateWithoutCriadoPorInput[] | Prisma.CursoUncheckedCreateWithoutCriadoPorInput[]
+  connectOrCreate?: Prisma.CursoCreateOrConnectWithoutCriadoPorInput | Prisma.CursoCreateOrConnectWithoutCriadoPorInput[]
+  createMany?: Prisma.CursoCreateManyCriadoPorInputEnvelope
+  connect?: Prisma.CursoWhereUniqueInput | Prisma.CursoWhereUniqueInput[]
+}
+
+export type CursoUncheckedCreateNestedManyWithoutCriadoPorInput = {
+  create?: Prisma.XOR<Prisma.CursoCreateWithoutCriadoPorInput, Prisma.CursoUncheckedCreateWithoutCriadoPorInput> | Prisma.CursoCreateWithoutCriadoPorInput[] | Prisma.CursoUncheckedCreateWithoutCriadoPorInput[]
+  connectOrCreate?: Prisma.CursoCreateOrConnectWithoutCriadoPorInput | Prisma.CursoCreateOrConnectWithoutCriadoPorInput[]
+  createMany?: Prisma.CursoCreateManyCriadoPorInputEnvelope
+  connect?: Prisma.CursoWhereUniqueInput | Prisma.CursoWhereUniqueInput[]
+}
+
+export type CursoUpdateManyWithoutCriadoPorNestedInput = {
+  create?: Prisma.XOR<Prisma.CursoCreateWithoutCriadoPorInput, Prisma.CursoUncheckedCreateWithoutCriadoPorInput> | Prisma.CursoCreateWithoutCriadoPorInput[] | Prisma.CursoUncheckedCreateWithoutCriadoPorInput[]
+  connectOrCreate?: Prisma.CursoCreateOrConnectWithoutCriadoPorInput | Prisma.CursoCreateOrConnectWithoutCriadoPorInput[]
+  upsert?: Prisma.CursoUpsertWithWhereUniqueWithoutCriadoPorInput | Prisma.CursoUpsertWithWhereUniqueWithoutCriadoPorInput[]
+  createMany?: Prisma.CursoCreateManyCriadoPorInputEnvelope
+  set?: Prisma.CursoWhereUniqueInput | Prisma.CursoWhereUniqueInput[]
+  disconnect?: Prisma.CursoWhereUniqueInput | Prisma.CursoWhereUniqueInput[]
+  delete?: Prisma.CursoWhereUniqueInput | Prisma.CursoWhereUniqueInput[]
+  connect?: Prisma.CursoWhereUniqueInput | Prisma.CursoWhereUniqueInput[]
+  update?: Prisma.CursoUpdateWithWhereUniqueWithoutCriadoPorInput | Prisma.CursoUpdateWithWhereUniqueWithoutCriadoPorInput[]
+  updateMany?: Prisma.CursoUpdateManyWithWhereWithoutCriadoPorInput | Prisma.CursoUpdateManyWithWhereWithoutCriadoPorInput[]
+  deleteMany?: Prisma.CursoScalarWhereInput | Prisma.CursoScalarWhereInput[]
+}
+
+export type CursoUncheckedUpdateManyWithoutCriadoPorNestedInput = {
+  create?: Prisma.XOR<Prisma.CursoCreateWithoutCriadoPorInput, Prisma.CursoUncheckedCreateWithoutCriadoPorInput> | Prisma.CursoCreateWithoutCriadoPorInput[] | Prisma.CursoUncheckedCreateWithoutCriadoPorInput[]
+  connectOrCreate?: Prisma.CursoCreateOrConnectWithoutCriadoPorInput | Prisma.CursoCreateOrConnectWithoutCriadoPorInput[]
+  upsert?: Prisma.CursoUpsertWithWhereUniqueWithoutCriadoPorInput | Prisma.CursoUpsertWithWhereUniqueWithoutCriadoPorInput[]
+  createMany?: Prisma.CursoCreateManyCriadoPorInputEnvelope
+  set?: Prisma.CursoWhereUniqueInput | Prisma.CursoWhereUniqueInput[]
+  disconnect?: Prisma.CursoWhereUniqueInput | Prisma.CursoWhereUniqueInput[]
+  delete?: Prisma.CursoWhereUniqueInput | Prisma.CursoWhereUniqueInput[]
+  connect?: Prisma.CursoWhereUniqueInput | Prisma.CursoWhereUniqueInput[]
+  update?: Prisma.CursoUpdateWithWhereUniqueWithoutCriadoPorInput | Prisma.CursoUpdateWithWhereUniqueWithoutCriadoPorInput[]
+  updateMany?: Prisma.CursoUpdateManyWithWhereWithoutCriadoPorInput | Prisma.CursoUpdateManyWithWhereWithoutCriadoPorInput[]
+  deleteMany?: Prisma.CursoScalarWhereInput | Prisma.CursoScalarWhereInput[]
+}
+
+export type CursoCreateNestedManyWithoutBolsaInput = {
+  create?: Prisma.XOR<Prisma.CursoCreateWithoutBolsaInput, Prisma.CursoUncheckedCreateWithoutBolsaInput> | Prisma.CursoCreateWithoutBolsaInput[] | Prisma.CursoUncheckedCreateWithoutBolsaInput[]
+  connectOrCreate?: Prisma.CursoCreateOrConnectWithoutBolsaInput | Prisma.CursoCreateOrConnectWithoutBolsaInput[]
+  createMany?: Prisma.CursoCreateManyBolsaInputEnvelope
+  connect?: Prisma.CursoWhereUniqueInput | Prisma.CursoWhereUniqueInput[]
+}
+
+export type CursoUncheckedCreateNestedManyWithoutBolsaInput = {
+  create?: Prisma.XOR<Prisma.CursoCreateWithoutBolsaInput, Prisma.CursoUncheckedCreateWithoutBolsaInput> | Prisma.CursoCreateWithoutBolsaInput[] | Prisma.CursoUncheckedCreateWithoutBolsaInput[]
+  connectOrCreate?: Prisma.CursoCreateOrConnectWithoutBolsaInput | Prisma.CursoCreateOrConnectWithoutBolsaInput[]
+  createMany?: Prisma.CursoCreateManyBolsaInputEnvelope
+  connect?: Prisma.CursoWhereUniqueInput | Prisma.CursoWhereUniqueInput[]
+}
+
+export type CursoUpdateManyWithoutBolsaNestedInput = {
+  create?: Prisma.XOR<Prisma.CursoCreateWithoutBolsaInput, Prisma.CursoUncheckedCreateWithoutBolsaInput> | Prisma.CursoCreateWithoutBolsaInput[] | Prisma.CursoUncheckedCreateWithoutBolsaInput[]
+  connectOrCreate?: Prisma.CursoCreateOrConnectWithoutBolsaInput | Prisma.CursoCreateOrConnectWithoutBolsaInput[]
+  upsert?: Prisma.CursoUpsertWithWhereUniqueWithoutBolsaInput | Prisma.CursoUpsertWithWhereUniqueWithoutBolsaInput[]
+  createMany?: Prisma.CursoCreateManyBolsaInputEnvelope
+  set?: Prisma.CursoWhereUniqueInput | Prisma.CursoWhereUniqueInput[]
+  disconnect?: Prisma.CursoWhereUniqueInput | Prisma.CursoWhereUniqueInput[]
+  delete?: Prisma.CursoWhereUniqueInput | Prisma.CursoWhereUniqueInput[]
+  connect?: Prisma.CursoWhereUniqueInput | Prisma.CursoWhereUniqueInput[]
+  update?: Prisma.CursoUpdateWithWhereUniqueWithoutBolsaInput | Prisma.CursoUpdateWithWhereUniqueWithoutBolsaInput[]
+  updateMany?: Prisma.CursoUpdateManyWithWhereWithoutBolsaInput | Prisma.CursoUpdateManyWithWhereWithoutBolsaInput[]
+  deleteMany?: Prisma.CursoScalarWhereInput | Prisma.CursoScalarWhereInput[]
+}
+
+export type CursoUncheckedUpdateManyWithoutBolsaNestedInput = {
+  create?: Prisma.XOR<Prisma.CursoCreateWithoutBolsaInput, Prisma.CursoUncheckedCreateWithoutBolsaInput> | Prisma.CursoCreateWithoutBolsaInput[] | Prisma.CursoUncheckedCreateWithoutBolsaInput[]
+  connectOrCreate?: Prisma.CursoCreateOrConnectWithoutBolsaInput | Prisma.CursoCreateOrConnectWithoutBolsaInput[]
+  upsert?: Prisma.CursoUpsertWithWhereUniqueWithoutBolsaInput | Prisma.CursoUpsertWithWhereUniqueWithoutBolsaInput[]
+  createMany?: Prisma.CursoCreateManyBolsaInputEnvelope
+  set?: Prisma.CursoWhereUniqueInput | Prisma.CursoWhereUniqueInput[]
+  disconnect?: Prisma.CursoWhereUniqueInput | Prisma.CursoWhereUniqueInput[]
+  delete?: Prisma.CursoWhereUniqueInput | Prisma.CursoWhereUniqueInput[]
+  connect?: Prisma.CursoWhereUniqueInput | Prisma.CursoWhereUniqueInput[]
+  update?: Prisma.CursoUpdateWithWhereUniqueWithoutBolsaInput | Prisma.CursoUpdateWithWhereUniqueWithoutBolsaInput[]
+  updateMany?: Prisma.CursoUpdateManyWithWhereWithoutBolsaInput | Prisma.CursoUpdateManyWithWhereWithoutBolsaInput[]
+  deleteMany?: Prisma.CursoScalarWhereInput | Prisma.CursoScalarWhereInput[]
 }
 
 export type CursoCreatetagsInput = {
@@ -778,6 +892,189 @@ export type CursoUpdateOneRequiredWithoutComprasNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CursoUpdateToOneWithWhereWithoutComprasInput, Prisma.CursoUpdateWithoutComprasInput>, Prisma.CursoUncheckedUpdateWithoutComprasInput>
 }
 
+export type CursoCreateWithoutCriadoPorInput = {
+  id?: string
+  titulo: string
+  subtitulo?: string | null
+  categoria?: string | null
+  nivel?: string | null
+  duracao?: string | null
+  quantAulas?: number
+  estudantes?: number
+  rating?: number
+  preco: number
+  idioma?: string | null
+  tags?: Prisma.CursoCreatetagsInput | string[]
+  descricao?: string | null
+  capaUrl?: string | null
+  status?: $Enums.CursoStatus
+  mentorNome?: string | null
+  mentorAvatar?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  bolsa?: Prisma.BolsaCreateNestedOneWithoutCursosInput
+  aulas?: Prisma.AulaCreateNestedManyWithoutCursoInput
+  pagamentos?: Prisma.CursoPagamentoCreateNestedManyWithoutCursoInput
+  compras?: Prisma.CursoUsuarioCreateNestedManyWithoutCursoInput
+}
+
+export type CursoUncheckedCreateWithoutCriadoPorInput = {
+  id?: string
+  titulo: string
+  subtitulo?: string | null
+  categoria?: string | null
+  nivel?: string | null
+  duracao?: string | null
+  quantAulas?: number
+  estudantes?: number
+  rating?: number
+  preco: number
+  idioma?: string | null
+  tags?: Prisma.CursoCreatetagsInput | string[]
+  descricao?: string | null
+  capaUrl?: string | null
+  status?: $Enums.CursoStatus
+  mentorNome?: string | null
+  mentorAvatar?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  bolsaId?: string | null
+  aulas?: Prisma.AulaUncheckedCreateNestedManyWithoutCursoInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedCreateNestedManyWithoutCursoInput
+  compras?: Prisma.CursoUsuarioUncheckedCreateNestedManyWithoutCursoInput
+}
+
+export type CursoCreateOrConnectWithoutCriadoPorInput = {
+  where: Prisma.CursoWhereUniqueInput
+  create: Prisma.XOR<Prisma.CursoCreateWithoutCriadoPorInput, Prisma.CursoUncheckedCreateWithoutCriadoPorInput>
+}
+
+export type CursoCreateManyCriadoPorInputEnvelope = {
+  data: Prisma.CursoCreateManyCriadoPorInput | Prisma.CursoCreateManyCriadoPorInput[]
+  skipDuplicates?: boolean
+}
+
+export type CursoUpsertWithWhereUniqueWithoutCriadoPorInput = {
+  where: Prisma.CursoWhereUniqueInput
+  update: Prisma.XOR<Prisma.CursoUpdateWithoutCriadoPorInput, Prisma.CursoUncheckedUpdateWithoutCriadoPorInput>
+  create: Prisma.XOR<Prisma.CursoCreateWithoutCriadoPorInput, Prisma.CursoUncheckedCreateWithoutCriadoPorInput>
+}
+
+export type CursoUpdateWithWhereUniqueWithoutCriadoPorInput = {
+  where: Prisma.CursoWhereUniqueInput
+  data: Prisma.XOR<Prisma.CursoUpdateWithoutCriadoPorInput, Prisma.CursoUncheckedUpdateWithoutCriadoPorInput>
+}
+
+export type CursoUpdateManyWithWhereWithoutCriadoPorInput = {
+  where: Prisma.CursoScalarWhereInput
+  data: Prisma.XOR<Prisma.CursoUpdateManyMutationInput, Prisma.CursoUncheckedUpdateManyWithoutCriadoPorInput>
+}
+
+export type CursoScalarWhereInput = {
+  AND?: Prisma.CursoScalarWhereInput | Prisma.CursoScalarWhereInput[]
+  OR?: Prisma.CursoScalarWhereInput[]
+  NOT?: Prisma.CursoScalarWhereInput | Prisma.CursoScalarWhereInput[]
+  id?: Prisma.StringFilter<"Curso"> | string
+  titulo?: Prisma.StringFilter<"Curso"> | string
+  subtitulo?: Prisma.StringNullableFilter<"Curso"> | string | null
+  categoria?: Prisma.StringNullableFilter<"Curso"> | string | null
+  nivel?: Prisma.StringNullableFilter<"Curso"> | string | null
+  duracao?: Prisma.StringNullableFilter<"Curso"> | string | null
+  quantAulas?: Prisma.IntFilter<"Curso"> | number
+  estudantes?: Prisma.IntFilter<"Curso"> | number
+  rating?: Prisma.FloatFilter<"Curso"> | number
+  preco?: Prisma.FloatFilter<"Curso"> | number
+  idioma?: Prisma.StringNullableFilter<"Curso"> | string | null
+  tags?: Prisma.StringNullableListFilter<"Curso">
+  descricao?: Prisma.StringNullableFilter<"Curso"> | string | null
+  capaUrl?: Prisma.StringNullableFilter<"Curso"> | string | null
+  status?: Prisma.EnumCursoStatusFilter<"Curso"> | $Enums.CursoStatus
+  mentorNome?: Prisma.StringNullableFilter<"Curso"> | string | null
+  mentorAvatar?: Prisma.StringNullableFilter<"Curso"> | string | null
+  created_at?: Prisma.DateTimeFilter<"Curso"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"Curso"> | Date | string
+  criadoPorId?: Prisma.StringNullableFilter<"Curso"> | string | null
+  bolsaId?: Prisma.StringNullableFilter<"Curso"> | string | null
+}
+
+export type CursoCreateWithoutBolsaInput = {
+  id?: string
+  titulo: string
+  subtitulo?: string | null
+  categoria?: string | null
+  nivel?: string | null
+  duracao?: string | null
+  quantAulas?: number
+  estudantes?: number
+  rating?: number
+  preco: number
+  idioma?: string | null
+  tags?: Prisma.CursoCreatetagsInput | string[]
+  descricao?: string | null
+  capaUrl?: string | null
+  status?: $Enums.CursoStatus
+  mentorNome?: string | null
+  mentorAvatar?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  criadoPor?: Prisma.UserCreateNestedOneWithoutCursosCriadosInput
+  aulas?: Prisma.AulaCreateNestedManyWithoutCursoInput
+  pagamentos?: Prisma.CursoPagamentoCreateNestedManyWithoutCursoInput
+  compras?: Prisma.CursoUsuarioCreateNestedManyWithoutCursoInput
+}
+
+export type CursoUncheckedCreateWithoutBolsaInput = {
+  id?: string
+  titulo: string
+  subtitulo?: string | null
+  categoria?: string | null
+  nivel?: string | null
+  duracao?: string | null
+  quantAulas?: number
+  estudantes?: number
+  rating?: number
+  preco: number
+  idioma?: string | null
+  tags?: Prisma.CursoCreatetagsInput | string[]
+  descricao?: string | null
+  capaUrl?: string | null
+  status?: $Enums.CursoStatus
+  mentorNome?: string | null
+  mentorAvatar?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  criadoPorId?: string | null
+  aulas?: Prisma.AulaUncheckedCreateNestedManyWithoutCursoInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedCreateNestedManyWithoutCursoInput
+  compras?: Prisma.CursoUsuarioUncheckedCreateNestedManyWithoutCursoInput
+}
+
+export type CursoCreateOrConnectWithoutBolsaInput = {
+  where: Prisma.CursoWhereUniqueInput
+  create: Prisma.XOR<Prisma.CursoCreateWithoutBolsaInput, Prisma.CursoUncheckedCreateWithoutBolsaInput>
+}
+
+export type CursoCreateManyBolsaInputEnvelope = {
+  data: Prisma.CursoCreateManyBolsaInput | Prisma.CursoCreateManyBolsaInput[]
+  skipDuplicates?: boolean
+}
+
+export type CursoUpsertWithWhereUniqueWithoutBolsaInput = {
+  where: Prisma.CursoWhereUniqueInput
+  update: Prisma.XOR<Prisma.CursoUpdateWithoutBolsaInput, Prisma.CursoUncheckedUpdateWithoutBolsaInput>
+  create: Prisma.XOR<Prisma.CursoCreateWithoutBolsaInput, Prisma.CursoUncheckedCreateWithoutBolsaInput>
+}
+
+export type CursoUpdateWithWhereUniqueWithoutBolsaInput = {
+  where: Prisma.CursoWhereUniqueInput
+  data: Prisma.XOR<Prisma.CursoUpdateWithoutBolsaInput, Prisma.CursoUncheckedUpdateWithoutBolsaInput>
+}
+
+export type CursoUpdateManyWithWhereWithoutBolsaInput = {
+  where: Prisma.CursoScalarWhereInput
+  data: Prisma.XOR<Prisma.CursoUpdateManyMutationInput, Prisma.CursoUncheckedUpdateManyWithoutBolsaInput>
+}
+
 export type CursoCreateWithoutAulasInput = {
   id?: string
   titulo: string
@@ -789,7 +1086,6 @@ export type CursoCreateWithoutAulasInput = {
   estudantes?: number
   rating?: number
   preco: number
-  precoOriginal?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -799,6 +1095,8 @@ export type CursoCreateWithoutAulasInput = {
   mentorAvatar?: string | null
   created_at?: Date | string
   updated_at?: Date | string
+  criadoPor?: Prisma.UserCreateNestedOneWithoutCursosCriadosInput
+  bolsa?: Prisma.BolsaCreateNestedOneWithoutCursosInput
   pagamentos?: Prisma.CursoPagamentoCreateNestedManyWithoutCursoInput
   compras?: Prisma.CursoUsuarioCreateNestedManyWithoutCursoInput
 }
@@ -814,7 +1112,6 @@ export type CursoUncheckedCreateWithoutAulasInput = {
   estudantes?: number
   rating?: number
   preco: number
-  precoOriginal?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -824,6 +1121,8 @@ export type CursoUncheckedCreateWithoutAulasInput = {
   mentorAvatar?: string | null
   created_at?: Date | string
   updated_at?: Date | string
+  criadoPorId?: string | null
+  bolsaId?: string | null
   pagamentos?: Prisma.CursoPagamentoUncheckedCreateNestedManyWithoutCursoInput
   compras?: Prisma.CursoUsuarioUncheckedCreateNestedManyWithoutCursoInput
 }
@@ -855,7 +1154,6 @@ export type CursoUpdateWithoutAulasInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
-  precoOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -865,6 +1163,8 @@ export type CursoUpdateWithoutAulasInput = {
   mentorAvatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPor?: Prisma.UserUpdateOneWithoutCursosCriadosNestedInput
+  bolsa?: Prisma.BolsaUpdateOneWithoutCursosNestedInput
   pagamentos?: Prisma.CursoPagamentoUpdateManyWithoutCursoNestedInput
   compras?: Prisma.CursoUsuarioUpdateManyWithoutCursoNestedInput
 }
@@ -880,7 +1180,6 @@ export type CursoUncheckedUpdateWithoutAulasInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
-  precoOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -890,6 +1189,8 @@ export type CursoUncheckedUpdateWithoutAulasInput = {
   mentorAvatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bolsaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pagamentos?: Prisma.CursoPagamentoUncheckedUpdateManyWithoutCursoNestedInput
   compras?: Prisma.CursoUsuarioUncheckedUpdateManyWithoutCursoNestedInput
 }
@@ -905,7 +1206,6 @@ export type CursoCreateWithoutPagamentosInput = {
   estudantes?: number
   rating?: number
   preco: number
-  precoOriginal?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -915,6 +1215,8 @@ export type CursoCreateWithoutPagamentosInput = {
   mentorAvatar?: string | null
   created_at?: Date | string
   updated_at?: Date | string
+  criadoPor?: Prisma.UserCreateNestedOneWithoutCursosCriadosInput
+  bolsa?: Prisma.BolsaCreateNestedOneWithoutCursosInput
   aulas?: Prisma.AulaCreateNestedManyWithoutCursoInput
   compras?: Prisma.CursoUsuarioCreateNestedManyWithoutCursoInput
 }
@@ -930,7 +1232,6 @@ export type CursoUncheckedCreateWithoutPagamentosInput = {
   estudantes?: number
   rating?: number
   preco: number
-  precoOriginal?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -940,6 +1241,8 @@ export type CursoUncheckedCreateWithoutPagamentosInput = {
   mentorAvatar?: string | null
   created_at?: Date | string
   updated_at?: Date | string
+  criadoPorId?: string | null
+  bolsaId?: string | null
   aulas?: Prisma.AulaUncheckedCreateNestedManyWithoutCursoInput
   compras?: Prisma.CursoUsuarioUncheckedCreateNestedManyWithoutCursoInput
 }
@@ -971,7 +1274,6 @@ export type CursoUpdateWithoutPagamentosInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
-  precoOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -981,6 +1283,8 @@ export type CursoUpdateWithoutPagamentosInput = {
   mentorAvatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPor?: Prisma.UserUpdateOneWithoutCursosCriadosNestedInput
+  bolsa?: Prisma.BolsaUpdateOneWithoutCursosNestedInput
   aulas?: Prisma.AulaUpdateManyWithoutCursoNestedInput
   compras?: Prisma.CursoUsuarioUpdateManyWithoutCursoNestedInput
 }
@@ -996,7 +1300,6 @@ export type CursoUncheckedUpdateWithoutPagamentosInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
-  precoOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1006,6 +1309,8 @@ export type CursoUncheckedUpdateWithoutPagamentosInput = {
   mentorAvatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bolsaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aulas?: Prisma.AulaUncheckedUpdateManyWithoutCursoNestedInput
   compras?: Prisma.CursoUsuarioUncheckedUpdateManyWithoutCursoNestedInput
 }
@@ -1021,7 +1326,6 @@ export type CursoCreateWithoutComprasInput = {
   estudantes?: number
   rating?: number
   preco: number
-  precoOriginal?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -1031,6 +1335,8 @@ export type CursoCreateWithoutComprasInput = {
   mentorAvatar?: string | null
   created_at?: Date | string
   updated_at?: Date | string
+  criadoPor?: Prisma.UserCreateNestedOneWithoutCursosCriadosInput
+  bolsa?: Prisma.BolsaCreateNestedOneWithoutCursosInput
   aulas?: Prisma.AulaCreateNestedManyWithoutCursoInput
   pagamentos?: Prisma.CursoPagamentoCreateNestedManyWithoutCursoInput
 }
@@ -1046,7 +1352,6 @@ export type CursoUncheckedCreateWithoutComprasInput = {
   estudantes?: number
   rating?: number
   preco: number
-  precoOriginal?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -1056,6 +1361,8 @@ export type CursoUncheckedCreateWithoutComprasInput = {
   mentorAvatar?: string | null
   created_at?: Date | string
   updated_at?: Date | string
+  criadoPorId?: string | null
+  bolsaId?: string | null
   aulas?: Prisma.AulaUncheckedCreateNestedManyWithoutCursoInput
   pagamentos?: Prisma.CursoPagamentoUncheckedCreateNestedManyWithoutCursoInput
 }
@@ -1087,7 +1394,6 @@ export type CursoUpdateWithoutComprasInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
-  precoOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1097,6 +1403,8 @@ export type CursoUpdateWithoutComprasInput = {
   mentorAvatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPor?: Prisma.UserUpdateOneWithoutCursosCriadosNestedInput
+  bolsa?: Prisma.BolsaUpdateOneWithoutCursosNestedInput
   aulas?: Prisma.AulaUpdateManyWithoutCursoNestedInput
   pagamentos?: Prisma.CursoPagamentoUpdateManyWithoutCursoNestedInput
 }
@@ -1112,7 +1420,6 @@ export type CursoUncheckedUpdateWithoutComprasInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
-  precoOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1122,8 +1429,206 @@ export type CursoUncheckedUpdateWithoutComprasInput = {
   mentorAvatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bolsaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aulas?: Prisma.AulaUncheckedUpdateManyWithoutCursoNestedInput
   pagamentos?: Prisma.CursoPagamentoUncheckedUpdateManyWithoutCursoNestedInput
+}
+
+export type CursoCreateManyCriadoPorInput = {
+  id?: string
+  titulo: string
+  subtitulo?: string | null
+  categoria?: string | null
+  nivel?: string | null
+  duracao?: string | null
+  quantAulas?: number
+  estudantes?: number
+  rating?: number
+  preco: number
+  idioma?: string | null
+  tags?: Prisma.CursoCreatetagsInput | string[]
+  descricao?: string | null
+  capaUrl?: string | null
+  status?: $Enums.CursoStatus
+  mentorNome?: string | null
+  mentorAvatar?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  bolsaId?: string | null
+}
+
+export type CursoUpdateWithoutCriadoPorInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nivel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  quantAulas?: Prisma.IntFieldUpdateOperationsInput | number
+  estudantes?: Prisma.IntFieldUpdateOperationsInput | number
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.CursoUpdatetagsInput | string[]
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  capaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumCursoStatusFieldUpdateOperationsInput | $Enums.CursoStatus
+  mentorNome?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mentorAvatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bolsa?: Prisma.BolsaUpdateOneWithoutCursosNestedInput
+  aulas?: Prisma.AulaUpdateManyWithoutCursoNestedInput
+  pagamentos?: Prisma.CursoPagamentoUpdateManyWithoutCursoNestedInput
+  compras?: Prisma.CursoUsuarioUpdateManyWithoutCursoNestedInput
+}
+
+export type CursoUncheckedUpdateWithoutCriadoPorInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nivel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  quantAulas?: Prisma.IntFieldUpdateOperationsInput | number
+  estudantes?: Prisma.IntFieldUpdateOperationsInput | number
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.CursoUpdatetagsInput | string[]
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  capaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumCursoStatusFieldUpdateOperationsInput | $Enums.CursoStatus
+  mentorNome?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mentorAvatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bolsaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aulas?: Prisma.AulaUncheckedUpdateManyWithoutCursoNestedInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedUpdateManyWithoutCursoNestedInput
+  compras?: Prisma.CursoUsuarioUncheckedUpdateManyWithoutCursoNestedInput
+}
+
+export type CursoUncheckedUpdateManyWithoutCriadoPorInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nivel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  quantAulas?: Prisma.IntFieldUpdateOperationsInput | number
+  estudantes?: Prisma.IntFieldUpdateOperationsInput | number
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.CursoUpdatetagsInput | string[]
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  capaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumCursoStatusFieldUpdateOperationsInput | $Enums.CursoStatus
+  mentorNome?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mentorAvatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bolsaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type CursoCreateManyBolsaInput = {
+  id?: string
+  titulo: string
+  subtitulo?: string | null
+  categoria?: string | null
+  nivel?: string | null
+  duracao?: string | null
+  quantAulas?: number
+  estudantes?: number
+  rating?: number
+  preco: number
+  idioma?: string | null
+  tags?: Prisma.CursoCreatetagsInput | string[]
+  descricao?: string | null
+  capaUrl?: string | null
+  status?: $Enums.CursoStatus
+  mentorNome?: string | null
+  mentorAvatar?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  criadoPorId?: string | null
+}
+
+export type CursoUpdateWithoutBolsaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nivel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  quantAulas?: Prisma.IntFieldUpdateOperationsInput | number
+  estudantes?: Prisma.IntFieldUpdateOperationsInput | number
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.CursoUpdatetagsInput | string[]
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  capaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumCursoStatusFieldUpdateOperationsInput | $Enums.CursoStatus
+  mentorNome?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mentorAvatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPor?: Prisma.UserUpdateOneWithoutCursosCriadosNestedInput
+  aulas?: Prisma.AulaUpdateManyWithoutCursoNestedInput
+  pagamentos?: Prisma.CursoPagamentoUpdateManyWithoutCursoNestedInput
+  compras?: Prisma.CursoUsuarioUpdateManyWithoutCursoNestedInput
+}
+
+export type CursoUncheckedUpdateWithoutBolsaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nivel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  quantAulas?: Prisma.IntFieldUpdateOperationsInput | number
+  estudantes?: Prisma.IntFieldUpdateOperationsInput | number
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.CursoUpdatetagsInput | string[]
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  capaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumCursoStatusFieldUpdateOperationsInput | $Enums.CursoStatus
+  mentorNome?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mentorAvatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aulas?: Prisma.AulaUncheckedUpdateManyWithoutCursoNestedInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedUpdateManyWithoutCursoNestedInput
+  compras?: Prisma.CursoUsuarioUncheckedUpdateManyWithoutCursoNestedInput
+}
+
+export type CursoUncheckedUpdateManyWithoutBolsaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nivel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  quantAulas?: Prisma.IntFieldUpdateOperationsInput | number
+  estudantes?: Prisma.IntFieldUpdateOperationsInput | number
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.CursoUpdatetagsInput | string[]
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  capaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumCursoStatusFieldUpdateOperationsInput | $Enums.CursoStatus
+  mentorNome?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mentorAvatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  criadoPorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -1186,7 +1691,6 @@ export type CursoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   estudantes?: boolean
   rating?: boolean
   preco?: boolean
-  precoOriginal?: boolean
   idioma?: boolean
   tags?: boolean
   descricao?: boolean
@@ -1196,6 +1700,10 @@ export type CursoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   mentorAvatar?: boolean
   created_at?: boolean
   updated_at?: boolean
+  criadoPorId?: boolean
+  bolsaId?: boolean
+  criadoPor?: boolean | Prisma.Curso$criadoPorArgs<ExtArgs>
+  bolsa?: boolean | Prisma.Curso$bolsaArgs<ExtArgs>
   aulas?: boolean | Prisma.Curso$aulasArgs<ExtArgs>
   pagamentos?: boolean | Prisma.Curso$pagamentosArgs<ExtArgs>
   compras?: boolean | Prisma.Curso$comprasArgs<ExtArgs>
@@ -1213,7 +1721,6 @@ export type CursoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   estudantes?: boolean
   rating?: boolean
   preco?: boolean
-  precoOriginal?: boolean
   idioma?: boolean
   tags?: boolean
   descricao?: boolean
@@ -1223,6 +1730,10 @@ export type CursoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   mentorAvatar?: boolean
   created_at?: boolean
   updated_at?: boolean
+  criadoPorId?: boolean
+  bolsaId?: boolean
+  criadoPor?: boolean | Prisma.Curso$criadoPorArgs<ExtArgs>
+  bolsa?: boolean | Prisma.Curso$bolsaArgs<ExtArgs>
 }, ExtArgs["result"]["curso"]>
 
 export type CursoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1236,7 +1747,6 @@ export type CursoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   estudantes?: boolean
   rating?: boolean
   preco?: boolean
-  precoOriginal?: boolean
   idioma?: boolean
   tags?: boolean
   descricao?: boolean
@@ -1246,6 +1756,10 @@ export type CursoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   mentorAvatar?: boolean
   created_at?: boolean
   updated_at?: boolean
+  criadoPorId?: boolean
+  bolsaId?: boolean
+  criadoPor?: boolean | Prisma.Curso$criadoPorArgs<ExtArgs>
+  bolsa?: boolean | Prisma.Curso$bolsaArgs<ExtArgs>
 }, ExtArgs["result"]["curso"]>
 
 export type CursoSelectScalar = {
@@ -1259,7 +1773,6 @@ export type CursoSelectScalar = {
   estudantes?: boolean
   rating?: boolean
   preco?: boolean
-  precoOriginal?: boolean
   idioma?: boolean
   tags?: boolean
   descricao?: boolean
@@ -1269,21 +1782,33 @@ export type CursoSelectScalar = {
   mentorAvatar?: boolean
   created_at?: boolean
   updated_at?: boolean
+  criadoPorId?: boolean
+  bolsaId?: boolean
 }
 
-export type CursoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "titulo" | "subtitulo" | "categoria" | "nivel" | "duracao" | "quantAulas" | "estudantes" | "rating" | "preco" | "precoOriginal" | "idioma" | "tags" | "descricao" | "capaUrl" | "status" | "mentorNome" | "mentorAvatar" | "created_at" | "updated_at", ExtArgs["result"]["curso"]>
+export type CursoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "titulo" | "subtitulo" | "categoria" | "nivel" | "duracao" | "quantAulas" | "estudantes" | "rating" | "preco" | "idioma" | "tags" | "descricao" | "capaUrl" | "status" | "mentorNome" | "mentorAvatar" | "created_at" | "updated_at" | "criadoPorId" | "bolsaId", ExtArgs["result"]["curso"]>
 export type CursoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  criadoPor?: boolean | Prisma.Curso$criadoPorArgs<ExtArgs>
+  bolsa?: boolean | Prisma.Curso$bolsaArgs<ExtArgs>
   aulas?: boolean | Prisma.Curso$aulasArgs<ExtArgs>
   pagamentos?: boolean | Prisma.Curso$pagamentosArgs<ExtArgs>
   compras?: boolean | Prisma.Curso$comprasArgs<ExtArgs>
   _count?: boolean | Prisma.CursoCountOutputTypeDefaultArgs<ExtArgs>
 }
-export type CursoIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
-export type CursoIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type CursoIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  criadoPor?: boolean | Prisma.Curso$criadoPorArgs<ExtArgs>
+  bolsa?: boolean | Prisma.Curso$bolsaArgs<ExtArgs>
+}
+export type CursoIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  criadoPor?: boolean | Prisma.Curso$criadoPorArgs<ExtArgs>
+  bolsa?: boolean | Prisma.Curso$bolsaArgs<ExtArgs>
+}
 
 export type $CursoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Curso"
   objects: {
+    criadoPor: Prisma.$UserPayload<ExtArgs> | null
+    bolsa: Prisma.$BolsaPayload<ExtArgs> | null
     aulas: Prisma.$AulaPayload<ExtArgs>[]
     pagamentos: Prisma.$CursoPagamentoPayload<ExtArgs>[]
     compras: Prisma.$CursoUsuarioPayload<ExtArgs>[]
@@ -1299,7 +1824,6 @@ export type $CursoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     estudantes: number
     rating: number
     preco: number
-    precoOriginal: number | null
     idioma: string | null
     tags: string[]
     descricao: string | null
@@ -1309,6 +1833,8 @@ export type $CursoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     mentorAvatar: string | null
     created_at: Date
     updated_at: Date
+    criadoPorId: string | null
+    bolsaId: string | null
   }, ExtArgs["result"]["curso"]>
   composites: {}
 }
@@ -1703,6 +2229,8 @@ readonly fields: CursoFieldRefs;
  */
 export interface Prisma__CursoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  criadoPor<T extends Prisma.Curso$criadoPorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Curso$criadoPorArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  bolsa<T extends Prisma.Curso$bolsaArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Curso$bolsaArgs<ExtArgs>>): Prisma.Prisma__BolsaClient<runtime.Types.Result.GetResult<Prisma.$BolsaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   aulas<T extends Prisma.Curso$aulasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Curso$aulasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AulaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   pagamentos<T extends Prisma.Curso$pagamentosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Curso$pagamentosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CursoPagamentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   compras<T extends Prisma.Curso$comprasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Curso$comprasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CursoUsuarioPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -1745,7 +2273,6 @@ export interface CursoFieldRefs {
   readonly estudantes: Prisma.FieldRef<"Curso", 'Int'>
   readonly rating: Prisma.FieldRef<"Curso", 'Float'>
   readonly preco: Prisma.FieldRef<"Curso", 'Float'>
-  readonly precoOriginal: Prisma.FieldRef<"Curso", 'Float'>
   readonly idioma: Prisma.FieldRef<"Curso", 'String'>
   readonly tags: Prisma.FieldRef<"Curso", 'String[]'>
   readonly descricao: Prisma.FieldRef<"Curso", 'String'>
@@ -1755,6 +2282,8 @@ export interface CursoFieldRefs {
   readonly mentorAvatar: Prisma.FieldRef<"Curso", 'String'>
   readonly created_at: Prisma.FieldRef<"Curso", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Curso", 'DateTime'>
+  readonly criadoPorId: Prisma.FieldRef<"Curso", 'String'>
+  readonly bolsaId: Prisma.FieldRef<"Curso", 'String'>
 }
     
 
@@ -2004,6 +2533,10 @@ export type CursoCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extension
    */
   data: Prisma.CursoCreateManyInput | Prisma.CursoCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CursoIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -2074,6 +2607,10 @@ export type CursoUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extension
    * Limit how many Cursos to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CursoIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -2140,6 +2677,44 @@ export type CursoDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Limit how many Cursos to delete.
    */
   limit?: number
+}
+
+/**
+ * Curso.criadoPor
+ */
+export type Curso$criadoPorArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
+ * Curso.bolsa
+ */
+export type Curso$bolsaArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Bolsa
+   */
+  select?: Prisma.BolsaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Bolsa
+   */
+  omit?: Prisma.BolsaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BolsaInclude<ExtArgs> | null
+  where?: Prisma.BolsaWhereInput
 }
 
 /**

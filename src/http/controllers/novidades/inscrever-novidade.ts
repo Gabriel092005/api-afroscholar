@@ -9,7 +9,6 @@ export async function inscreverNovidadeController(request: FastifyRequest, reply
 
     await new Promise<void>((resolve, reject) => {
       upload.fields([
-        { name: "comprovativo", maxCount: 1 },
         { name: "docFile", maxCount: 10 },
       ])(request.raw as any, reply.raw as any, (err: any) => {
         if (err) return reject(err);
@@ -19,7 +18,6 @@ export async function inscreverNovidadeController(request: FastifyRequest, reply
 
     const rawReq = request.raw as any;
     const files = rawReq.files as { [fieldname: string]: Express.Multer.File[] } || {};
-    const comprovativoFile = files["comprovativo"]?.[0];
     const docFiles = files["docFile"] || [];
     const docNomes = rawReq.body.docNome
       ? (Array.isArray(rawReq.body.docNome) ? rawReq.body.docNome : [rawReq.body.docNome])
@@ -30,9 +28,6 @@ export async function inscreverNovidadeController(request: FastifyRequest, reply
       email: z.string().email(),
       telefone: z.string().optional(),
       observacao: z.string().optional(),
-      metodoPagamento: z.string().optional(),
-      referenciaPagamento: z.string().optional(),
-      valorPago: z.string().optional(),
     });
 
     const body = bodySchema.parse(rawReq.body);
@@ -50,10 +45,6 @@ export async function inscreverNovidadeController(request: FastifyRequest, reply
       email: body.email,
       telefone: body.telefone,
       observacao: body.observacao,
-      metodoPagamento: body.metodoPagamento,
-      referenciaPagamento: body.referenciaPagamento,
-      comprovativoUrl: comprovativoFile ? comprovativoFile.filename : undefined,
-      valorPago: body.valorPago ? parseFloat(body.valorPago) : undefined,
       documentos,
     });
 

@@ -56,6 +56,7 @@ export type BolsaInscricaoMinAggregateOutputType = {
   valorPago: number | null
   dataAgendada: Date | null
   duracaoMinutos: number | null
+  inscritoEm: Date | null
   created_at: Date | null
   updated_at: Date | null
 }
@@ -80,6 +81,7 @@ export type BolsaInscricaoMaxAggregateOutputType = {
   valorPago: number | null
   dataAgendada: Date | null
   duracaoMinutos: number | null
+  inscritoEm: Date | null
   created_at: Date | null
   updated_at: Date | null
 }
@@ -104,6 +106,7 @@ export type BolsaInscricaoCountAggregateOutputType = {
   valorPago: number
   dataAgendada: number
   duracaoMinutos: number
+  inscritoEm: number
   created_at: number
   updated_at: number
   _all: number
@@ -140,6 +143,7 @@ export type BolsaInscricaoMinAggregateInputType = {
   valorPago?: true
   dataAgendada?: true
   duracaoMinutos?: true
+  inscritoEm?: true
   created_at?: true
   updated_at?: true
 }
@@ -164,6 +168,7 @@ export type BolsaInscricaoMaxAggregateInputType = {
   valorPago?: true
   dataAgendada?: true
   duracaoMinutos?: true
+  inscritoEm?: true
   created_at?: true
   updated_at?: true
 }
@@ -188,6 +193,7 @@ export type BolsaInscricaoCountAggregateInputType = {
   valorPago?: true
   dataAgendada?: true
   duracaoMinutos?: true
+  inscritoEm?: true
   created_at?: true
   updated_at?: true
   _all?: true
@@ -299,6 +305,7 @@ export type BolsaInscricaoGroupByOutputType = {
   valorPago: number | null
   dataAgendada: Date | null
   duracaoMinutos: number | null
+  inscritoEm: Date | null
   created_at: Date
   updated_at: Date
   _count: BolsaInscricaoCountAggregateOutputType | null
@@ -346,6 +353,7 @@ export type BolsaInscricaoWhereInput = {
   valorPago?: Prisma.FloatNullableFilter<"BolsaInscricao"> | number | null
   dataAgendada?: Prisma.DateTimeNullableFilter<"BolsaInscricao"> | Date | string | null
   duracaoMinutos?: Prisma.IntNullableFilter<"BolsaInscricao"> | number | null
+  inscritoEm?: Prisma.DateTimeNullableFilter<"BolsaInscricao"> | Date | string | null
   created_at?: Prisma.DateTimeFilter<"BolsaInscricao"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"BolsaInscricao"> | Date | string
   bolsa?: Prisma.XOR<Prisma.BolsaScalarRelationFilter, Prisma.BolsaWhereInput>
@@ -373,6 +381,7 @@ export type BolsaInscricaoOrderByWithRelationInput = {
   valorPago?: Prisma.SortOrderInput | Prisma.SortOrder
   dataAgendada?: Prisma.SortOrderInput | Prisma.SortOrder
   duracaoMinutos?: Prisma.SortOrderInput | Prisma.SortOrder
+  inscritoEm?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   bolsa?: Prisma.BolsaOrderByWithRelationInput
@@ -404,6 +413,7 @@ export type BolsaInscricaoWhereUniqueInput = Prisma.AtLeast<{
   valorPago?: Prisma.FloatNullableFilter<"BolsaInscricao"> | number | null
   dataAgendada?: Prisma.DateTimeNullableFilter<"BolsaInscricao"> | Date | string | null
   duracaoMinutos?: Prisma.IntNullableFilter<"BolsaInscricao"> | number | null
+  inscritoEm?: Prisma.DateTimeNullableFilter<"BolsaInscricao"> | Date | string | null
   created_at?: Prisma.DateTimeFilter<"BolsaInscricao"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"BolsaInscricao"> | Date | string
   bolsa?: Prisma.XOR<Prisma.BolsaScalarRelationFilter, Prisma.BolsaWhereInput>
@@ -431,6 +441,7 @@ export type BolsaInscricaoOrderByWithAggregationInput = {
   valorPago?: Prisma.SortOrderInput | Prisma.SortOrder
   dataAgendada?: Prisma.SortOrderInput | Prisma.SortOrder
   duracaoMinutos?: Prisma.SortOrderInput | Prisma.SortOrder
+  inscritoEm?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   _count?: Prisma.BolsaInscricaoCountOrderByAggregateInput
@@ -463,6 +474,7 @@ export type BolsaInscricaoScalarWhereWithAggregatesInput = {
   valorPago?: Prisma.FloatNullableWithAggregatesFilter<"BolsaInscricao"> | number | null
   dataAgendada?: Prisma.DateTimeNullableWithAggregatesFilter<"BolsaInscricao"> | Date | string | null
   duracaoMinutos?: Prisma.IntNullableWithAggregatesFilter<"BolsaInscricao"> | number | null
+  inscritoEm?: Prisma.DateTimeNullableWithAggregatesFilter<"BolsaInscricao"> | Date | string | null
   created_at?: Prisma.DateTimeWithAggregatesFilter<"BolsaInscricao"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"BolsaInscricao"> | Date | string
 }
@@ -485,6 +497,7 @@ export type BolsaInscricaoCreateInput = {
   valorPago?: number | null
   dataAgendada?: Date | string | null
   duracaoMinutos?: number | null
+  inscritoEm?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
   bolsa: Prisma.BolsaCreateNestedOneWithoutInscricoesInput
@@ -512,6 +525,7 @@ export type BolsaInscricaoUncheckedCreateInput = {
   valorPago?: number | null
   dataAgendada?: Date | string | null
   duracaoMinutos?: number | null
+  inscritoEm?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
   documentos?: Prisma.BolsaInscricaoDocumentoUncheckedCreateNestedManyWithoutInscricaoInput
@@ -535,6 +549,7 @@ export type BolsaInscricaoUpdateInput = {
   valorPago?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   dataAgendada?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   duracaoMinutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  inscritoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bolsa?: Prisma.BolsaUpdateOneRequiredWithoutInscricoesNestedInput
@@ -562,6 +577,7 @@ export type BolsaInscricaoUncheckedUpdateInput = {
   valorPago?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   dataAgendada?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   duracaoMinutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  inscritoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   documentos?: Prisma.BolsaInscricaoDocumentoUncheckedUpdateManyWithoutInscricaoNestedInput
@@ -587,6 +603,7 @@ export type BolsaInscricaoCreateManyInput = {
   valorPago?: number | null
   dataAgendada?: Date | string | null
   duracaoMinutos?: number | null
+  inscritoEm?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -609,6 +626,7 @@ export type BolsaInscricaoUpdateManyMutationInput = {
   valorPago?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   dataAgendada?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   duracaoMinutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  inscritoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -633,6 +651,7 @@ export type BolsaInscricaoUncheckedUpdateManyInput = {
   valorPago?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   dataAgendada?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   duracaoMinutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  inscritoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -672,6 +691,7 @@ export type BolsaInscricaoCountOrderByAggregateInput = {
   valorPago?: Prisma.SortOrder
   dataAgendada?: Prisma.SortOrder
   duracaoMinutos?: Prisma.SortOrder
+  inscritoEm?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -701,6 +721,7 @@ export type BolsaInscricaoMaxOrderByAggregateInput = {
   valorPago?: Prisma.SortOrder
   dataAgendada?: Prisma.SortOrder
   duracaoMinutos?: Prisma.SortOrder
+  inscritoEm?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -725,6 +746,7 @@ export type BolsaInscricaoMinOrderByAggregateInput = {
   valorPago?: Prisma.SortOrder
   dataAgendada?: Prisma.SortOrder
   duracaoMinutos?: Prisma.SortOrder
+  inscritoEm?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -863,6 +885,7 @@ export type BolsaInscricaoCreateWithoutUsuarioInput = {
   valorPago?: number | null
   dataAgendada?: Date | string | null
   duracaoMinutos?: number | null
+  inscritoEm?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
   bolsa: Prisma.BolsaCreateNestedOneWithoutInscricoesInput
@@ -888,6 +911,7 @@ export type BolsaInscricaoUncheckedCreateWithoutUsuarioInput = {
   valorPago?: number | null
   dataAgendada?: Date | string | null
   duracaoMinutos?: number | null
+  inscritoEm?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
   documentos?: Prisma.BolsaInscricaoDocumentoUncheckedCreateNestedManyWithoutInscricaoInput
@@ -942,6 +966,7 @@ export type BolsaInscricaoScalarWhereInput = {
   valorPago?: Prisma.FloatNullableFilter<"BolsaInscricao"> | number | null
   dataAgendada?: Prisma.DateTimeNullableFilter<"BolsaInscricao"> | Date | string | null
   duracaoMinutos?: Prisma.IntNullableFilter<"BolsaInscricao"> | number | null
+  inscritoEm?: Prisma.DateTimeNullableFilter<"BolsaInscricao"> | Date | string | null
   created_at?: Prisma.DateTimeFilter<"BolsaInscricao"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"BolsaInscricao"> | Date | string
 }
@@ -964,6 +989,7 @@ export type BolsaInscricaoCreateWithoutBolsaInput = {
   valorPago?: number | null
   dataAgendada?: Date | string | null
   duracaoMinutos?: number | null
+  inscritoEm?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
   usuario: Prisma.UserCreateNestedOneWithoutInscricoesInput
@@ -989,6 +1015,7 @@ export type BolsaInscricaoUncheckedCreateWithoutBolsaInput = {
   valorPago?: number | null
   dataAgendada?: Date | string | null
   duracaoMinutos?: number | null
+  inscritoEm?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
   documentos?: Prisma.BolsaInscricaoDocumentoUncheckedCreateNestedManyWithoutInscricaoInput
@@ -1038,6 +1065,7 @@ export type BolsaInscricaoCreateWithoutDocumentosInput = {
   valorPago?: number | null
   dataAgendada?: Date | string | null
   duracaoMinutos?: number | null
+  inscritoEm?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
   bolsa: Prisma.BolsaCreateNestedOneWithoutInscricoesInput
@@ -1064,6 +1092,7 @@ export type BolsaInscricaoUncheckedCreateWithoutDocumentosInput = {
   valorPago?: number | null
   dataAgendada?: Date | string | null
   duracaoMinutos?: number | null
+  inscritoEm?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -1102,6 +1131,7 @@ export type BolsaInscricaoUpdateWithoutDocumentosInput = {
   valorPago?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   dataAgendada?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   duracaoMinutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  inscritoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bolsa?: Prisma.BolsaUpdateOneRequiredWithoutInscricoesNestedInput
@@ -1128,6 +1158,7 @@ export type BolsaInscricaoUncheckedUpdateWithoutDocumentosInput = {
   valorPago?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   dataAgendada?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   duracaoMinutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  inscritoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1151,6 +1182,7 @@ export type BolsaInscricaoCreateManyUsuarioInput = {
   valorPago?: number | null
   dataAgendada?: Date | string | null
   duracaoMinutos?: number | null
+  inscritoEm?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -1173,6 +1205,7 @@ export type BolsaInscricaoUpdateWithoutUsuarioInput = {
   valorPago?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   dataAgendada?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   duracaoMinutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  inscritoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bolsa?: Prisma.BolsaUpdateOneRequiredWithoutInscricoesNestedInput
@@ -1198,6 +1231,7 @@ export type BolsaInscricaoUncheckedUpdateWithoutUsuarioInput = {
   valorPago?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   dataAgendada?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   duracaoMinutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  inscritoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   documentos?: Prisma.BolsaInscricaoDocumentoUncheckedUpdateManyWithoutInscricaoNestedInput
@@ -1222,6 +1256,7 @@ export type BolsaInscricaoUncheckedUpdateManyWithoutUsuarioInput = {
   valorPago?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   dataAgendada?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   duracaoMinutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  inscritoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1245,6 +1280,7 @@ export type BolsaInscricaoCreateManyBolsaInput = {
   valorPago?: number | null
   dataAgendada?: Date | string | null
   duracaoMinutos?: number | null
+  inscritoEm?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -1267,6 +1303,7 @@ export type BolsaInscricaoUpdateWithoutBolsaInput = {
   valorPago?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   dataAgendada?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   duracaoMinutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  inscritoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usuario?: Prisma.UserUpdateOneRequiredWithoutInscricoesNestedInput
@@ -1292,6 +1329,7 @@ export type BolsaInscricaoUncheckedUpdateWithoutBolsaInput = {
   valorPago?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   dataAgendada?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   duracaoMinutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  inscritoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   documentos?: Prisma.BolsaInscricaoDocumentoUncheckedUpdateManyWithoutInscricaoNestedInput
@@ -1316,6 +1354,7 @@ export type BolsaInscricaoUncheckedUpdateManyWithoutBolsaInput = {
   valorPago?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   dataAgendada?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   duracaoMinutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  inscritoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1371,6 +1410,7 @@ export type BolsaInscricaoSelect<ExtArgs extends runtime.Types.Extensions.Intern
   valorPago?: boolean
   dataAgendada?: boolean
   duracaoMinutos?: boolean
+  inscritoEm?: boolean
   created_at?: boolean
   updated_at?: boolean
   bolsa?: boolean | Prisma.BolsaDefaultArgs<ExtArgs>
@@ -1399,6 +1439,7 @@ export type BolsaInscricaoSelectCreateManyAndReturn<ExtArgs extends runtime.Type
   valorPago?: boolean
   dataAgendada?: boolean
   duracaoMinutos?: boolean
+  inscritoEm?: boolean
   created_at?: boolean
   updated_at?: boolean
   bolsa?: boolean | Prisma.BolsaDefaultArgs<ExtArgs>
@@ -1425,6 +1466,7 @@ export type BolsaInscricaoSelectUpdateManyAndReturn<ExtArgs extends runtime.Type
   valorPago?: boolean
   dataAgendada?: boolean
   duracaoMinutos?: boolean
+  inscritoEm?: boolean
   created_at?: boolean
   updated_at?: boolean
   bolsa?: boolean | Prisma.BolsaDefaultArgs<ExtArgs>
@@ -1451,11 +1493,12 @@ export type BolsaInscricaoSelectScalar = {
   valorPago?: boolean
   dataAgendada?: boolean
   duracaoMinutos?: boolean
+  inscritoEm?: boolean
   created_at?: boolean
   updated_at?: boolean
 }
 
-export type BolsaInscricaoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bolsaId" | "usuarioId" | "tipoInteresse" | "status" | "observacoes" | "nome" | "email" | "telefone" | "documentoUrl" | "certificadoUrl" | "historicoUrl" | "biUrl" | "metodoPagamento" | "referenciaPagamento" | "comprovativoUrl" | "valorPago" | "dataAgendada" | "duracaoMinutos" | "created_at" | "updated_at", ExtArgs["result"]["bolsaInscricao"]>
+export type BolsaInscricaoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bolsaId" | "usuarioId" | "tipoInteresse" | "status" | "observacoes" | "nome" | "email" | "telefone" | "documentoUrl" | "certificadoUrl" | "historicoUrl" | "biUrl" | "metodoPagamento" | "referenciaPagamento" | "comprovativoUrl" | "valorPago" | "dataAgendada" | "duracaoMinutos" | "inscritoEm" | "created_at" | "updated_at", ExtArgs["result"]["bolsaInscricao"]>
 export type BolsaInscricaoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   bolsa?: boolean | Prisma.BolsaDefaultArgs<ExtArgs>
   usuario?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1498,6 +1541,11 @@ export type $BolsaInscricaoPayload<ExtArgs extends runtime.Types.Extensions.Inte
     valorPago: number | null
     dataAgendada: Date | null
     duracaoMinutos: number | null
+    /**
+     * Quando a inscrição foi confirmada. tipoInteresse guarda só o último serviço pedido,
+     * e comprar depois uma consultoria não pode apagar o facto de já estar inscrito.
+     */
+    inscritoEm: Date | null
     created_at: Date
     updated_at: Date
   }, ExtArgs["result"]["bolsaInscricao"]>
@@ -1945,6 +1993,7 @@ export interface BolsaInscricaoFieldRefs {
   readonly valorPago: Prisma.FieldRef<"BolsaInscricao", 'Float'>
   readonly dataAgendada: Prisma.FieldRef<"BolsaInscricao", 'DateTime'>
   readonly duracaoMinutos: Prisma.FieldRef<"BolsaInscricao", 'Int'>
+  readonly inscritoEm: Prisma.FieldRef<"BolsaInscricao", 'DateTime'>
   readonly created_at: Prisma.FieldRef<"BolsaInscricao", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"BolsaInscricao", 'DateTime'>
 }

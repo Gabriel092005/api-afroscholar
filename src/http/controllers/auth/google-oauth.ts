@@ -1,6 +1,7 @@
 import { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
 import { prisma } from "@/lib/prisma";
 import { env } from "@/Env";
+import { sendWelcomeEmail } from "@/lib/mail";
 
 function failRedirect(reply: FastifyReply, reason: string) {
   const url = `${env.FRONTEND_URL}/sign-in?error=google_auth_failed&reason=${encodeURIComponent(reason)}`;
@@ -8,6 +9,11 @@ function failRedirect(reply: FastifyReply, reason: string) {
 }
 
 export async function googleOAuthRoutes(app: FastifyInstance) {
+  // Sem credenciais o plugin não regista esta rota, e o botão levaria a um 404 em JSON.
+  if (!env.GOOGLE_CLIENT_ID) {
+    app.get("/auth/google", async (_request, reply) => failRedirect(reply, "google_not_configured"));
+  }
+
   app.get("/auth/google/callback", async (request: FastifyRequest, reply: FastifyReply) => {
     if (!env.GOOGLE_CLIENT_ID) {
       console.error("Google OAuth não configurado: GOOGLE_CLIENT_ID em falta.");
@@ -35,22 +41,30 @@ export async function googleOAuthRoutes(app: FastifyInstance) {
       const googleUser = (await userInfoResponse.json()) as {
         id: string;
         email: string;
+        verified_email?: boolean;
         name: string;
         picture: string;
       };
 
-      let user = await prisma.user.findUnique({ where: { email: googleUser.email } });
+      // Entramos na conta com o mesmo email: um endereço por confirmar daria acesso à conta de outra pessoa.
+      if (!googleUser.verified_email) {
+        return failRedirect(reply, "email_nao_verificado");
+      }
+
+      const email = googleUser.email.toLowerCase();
+      let user = await prisma.user.findUnique({ where: { email } });
 
       if (!user) {
         user = await prisma.user.create({
           data: {
             nome: googleUser.name,
-            email: googleUser.email,
+            email,
             password: crypto.randomUUID(),
             image_path: googleUser.picture || null,
             role: "USUARIO",
           },
         });
+        void sendWelcomeEmail(email, user.nome);
       }
 
       if (user.estado_conta === "INACTIVA") {
