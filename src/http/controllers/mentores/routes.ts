@@ -1,7 +1,7 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import prisma from "@/lib/prisma";
 
-type Mentor = { id: string; nome: string; imagem: string | null; pais: string | null };
+type Mentor = { id: string; nome: string; imagem: string | null; pais: string | null; bio: string | null };
 
 function chaveDoNome(nome: string): string {
   return nome
@@ -12,13 +12,13 @@ function chaveDoNome(nome: string): string {
     .replace(/\s+/g, " ");
 }
 
-// Rota pública: expõe apenas o nome, a fotografia e o país, nunca o e-mail ou o telefone.
+// Rota pública: expõe apenas o nome, a fotografia, o país e a biografia, nunca o e-mail ou o telefone.
 async function listMentores(req: FastifyRequest, res: FastifyReply) {
   try {
     const [gestores, cursos] = await Promise.all([
       prisma.user.findMany({
         where: { role: "GESTOR", estado_conta: "ACTIVA" },
-        select: { id: true, nome: true, image_path: true, paisMentoria: true },
+        select: { id: true, nome: true, image_path: true, paisMentoria: true, bio: true },
       }),
       prisma.curso.findMany({
         where: { status: "PUBLICADO", mentorNome: { not: null } },
@@ -34,6 +34,7 @@ async function listMentores(req: FastifyRequest, res: FastifyReply) {
         nome: gestor.nome.trim(),
         imagem: gestor.image_path,
         pais: gestor.paisMentoria,
+        bio: gestor.bio?.trim() || null,
       });
     }
 
@@ -45,7 +46,7 @@ async function listMentores(req: FastifyRequest, res: FastifyReply) {
       const chave = chaveDoNome(nome);
       const existente = mentores.get(chave);
       if (!existente) {
-        mentores.set(chave, { id: curso.id, nome, imagem: curso.mentorAvatar, pais: null });
+        mentores.set(chave, { id: curso.id, nome, imagem: curso.mentorAvatar, pais: null, bio: null });
       } else if (!existente.imagem && curso.mentorAvatar) {
         existente.imagem = curso.mentorAvatar;
       }

@@ -258,6 +258,31 @@ export type MapaGlobal = Prisma.MapaGlobalModel
  */
 export type Atividade = Prisma.AtividadeModel
 /**
+ * Model AnaliseTipoDocumento
+ * Documento que o administrador aceita analisar, com o respetivo preço.
+ */
+export type AnaliseTipoDocumento = Prisma.AnaliseTipoDocumentoModel
+/**
+ * Model AnalisePedido
+ * Uma cobrança pode cobrir vários documentos: cada um é uma AnaliseDocumento.
+ */
+export type AnalisePedido = Prisma.AnalisePedidoModel
+/**
+ * Model AfiliadoLink
+ * Link de um utilizador para divulgar um produto (bolsa ou documento).
+ */
+export type AfiliadoLink = Prisma.AfiliadoLinkModel
+/**
+ * Model AfiliadoComissao
+ * Criada na transação que confirma o pagamento: uma por cobrança.
+ */
+export type AfiliadoComissao = Prisma.AfiliadoComissaoModel
+/**
+ * Model AfiliadoSaque
+ * O administrador transfere para o IBAN fora do sistema e marca como pago.
+ */
+export type AfiliadoSaque = Prisma.AfiliadoSaqueModel
+/**
  * Model PagamentoMomenu
  * 
  */

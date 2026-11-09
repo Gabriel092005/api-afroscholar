@@ -179,11 +179,21 @@ export const AulaOnlineStatus = {
 export type AulaOnlineStatus = (typeof AulaOnlineStatus)[keyof typeof AulaOnlineStatus]
 
 
+export const SaqueAfiliadoStatus = {
+  PENDENTE: 'PENDENTE',
+  PAGO: 'PAGO',
+  REJEITADO: 'REJEITADO'
+} as const
+
+export type SaqueAfiliadoStatus = (typeof SaqueAfiliadoStatus)[keyof typeof SaqueAfiliadoStatus]
+
+
 export const TipoPagamentoMomenu = {
   CURSO: 'CURSO',
   BOLSA: 'BOLSA',
   MENTORIA: 'MENTORIA',
-  DOCUMENTO: 'DOCUMENTO'
+  DOCUMENTO: 'DOCUMENTO',
+  ANALISE: 'ANALISE'
 } as const
 
 export type TipoPagamentoMomenu = (typeof TipoPagamentoMomenu)[keyof typeof TipoPagamentoMomenu]

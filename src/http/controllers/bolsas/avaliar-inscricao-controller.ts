@@ -57,9 +57,9 @@ export const avaliarInscricao = async (
     });
 
     if (body.status === "APROVADA") {
-      // Só a mentoria abre conteúdos. Aprovar de novo não pode somar mais um mês.
+      // Só a mentoria abre conteúdos. Aprovar de novo não pode somar mais tempo.
       if (inscricao.tipoInteresse === "MENTORIA" && inscricao.status !== "APROVADA") {
-        await concederMentoria({ usuarioId: inscricao.usuarioId, bolsaId: inscricao.bolsaId, pago: true });
+        await concederMentoria({ usuarioId: inscricao.usuarioId, bolsaId: inscricao.bolsaId, pago: true, meses: inscricao.mesesMentoria });
       }
 
       await prisma.notification.create({

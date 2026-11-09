@@ -14,15 +14,16 @@ const ativa = () => ({ expiraEm: { gt: new Date() } });
  *
  * Fica numa tabela própria porque cada pessoa tem uma só inscrição por bolsa: comprar
  * depois uma consultoria reescreve essa linha, e a mentoria já paga não se pode perder.
- * Só a mentoria abre conteúdos, e por um mês: pagar a inscrição não dá acesso a nada.
+ * Só a mentoria abre conteúdos, e pelo tempo comprado: pagar a inscrição não dá acesso a nada.
  */
 export async function concederMentoria(
-  alvo: { usuarioId: string; bolsaId?: string | null; mentoriaId?: string | null; pago: boolean },
+  alvo: { usuarioId: string; bolsaId?: string | null; mentoriaId?: string | null; pago: boolean; meses?: number | null },
   db: Db = prisma
 ) {
   const { usuarioId, pago } = alvo;
   const bolsaId = alvo.bolsaId ?? null;
   const mentoriaId = alvo.mentoriaId ?? null;
+  const meses = alvo.meses ?? DURACAO_MENTORIA_MESES;
 
   const existente = await db.mentoriaAcesso.findFirst({
     where: {
@@ -45,13 +46,13 @@ export async function concederMentoria(
         pago: (existente.expiraEm > agora && existente.pago) || pago,
         bolsaId: existente.bolsaId ?? bolsaId,
         mentoriaId: existente.mentoriaId ?? mentoriaId,
-        expiraEm: addMonths(inicio, DURACAO_MENTORIA_MESES),
+        expiraEm: addMonths(inicio, meses),
         encerradoEm: null,
       },
     });
   } else {
     await db.mentoriaAcesso.create({
-      data: { usuarioId, bolsaId, mentoriaId, pago, expiraEm: addMonths(agora, DURACAO_MENTORIA_MESES) },
+      data: { usuarioId, bolsaId, mentoriaId, pago, expiraEm: addMonths(agora, meses) },
     });
   }
 

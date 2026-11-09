@@ -1,5 +1,6 @@
 import crypto from "node:crypto";
 import { cursosComAcesso } from "@/lib/mentoria-acesso";
+import { codigoAfiliadoDoPedido } from "@/lib/afiliados";
 import prisma from "@/lib/prisma";
 import {
   iniciarCobranca,
@@ -122,6 +123,7 @@ export const aderirCurso = async (
       phoneNumber: body.phoneNumber,
       produto: curso.titulo || "Curso",
       link: `/cursos/${id}`,
+      afiliadoCodigo: codigoAfiliadoDoPedido(req),
       persistirAlvo: (tx, cobranca) =>
         tx.cursoPagamento.upsert({
           where: chave,

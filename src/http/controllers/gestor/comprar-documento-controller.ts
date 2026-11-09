@@ -8,6 +8,7 @@ import {
   serializarPagamento,
   telefoneSchema,
 } from "@/lib/pagamentos-momenu";
+import { codigoAfiliadoDoPedido } from "@/lib/afiliados";
 import prisma from "@/lib/prisma";
 
 const bodySchema = z.object({
@@ -50,6 +51,7 @@ export const comprarDocumento = async (req: FastifyRequest, res: FastifyReply) =
       phoneNumber: body.phoneNumber,
       produto: documento.titulo,
       link: "/documentos",
+      afiliadoCodigo: codigoAfiliadoDoPedido(req),
       persistirAlvo: (tx, cobranca) =>
         tx.documentoCompra.upsert({
           where: chave,

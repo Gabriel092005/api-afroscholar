@@ -20,8 +20,18 @@ export type AnaliseDocumentoModel = runtime.Types.Result.DefaultSelection<Prisma
 
 export type AggregateAnaliseDocumento = {
   _count: AnaliseDocumentoCountAggregateOutputType | null
+  _avg: AnaliseDocumentoAvgAggregateOutputType | null
+  _sum: AnaliseDocumentoSumAggregateOutputType | null
   _min: AnaliseDocumentoMinAggregateOutputType | null
   _max: AnaliseDocumentoMaxAggregateOutputType | null
+}
+
+export type AnaliseDocumentoAvgAggregateOutputType = {
+  valor: number | null
+}
+
+export type AnaliseDocumentoSumAggregateOutputType = {
+  valor: number | null
 }
 
 export type AnaliseDocumentoMinAggregateOutputType = {
@@ -36,6 +46,8 @@ export type AnaliseDocumentoMinAggregateOutputType = {
   status: string | null
   feedback: string | null
   arquivoUrl: string | null
+  valor: number | null
+  pedidoId: string | null
   created_at: Date | null
   updated_at: Date | null
 }
@@ -52,6 +64,8 @@ export type AnaliseDocumentoMaxAggregateOutputType = {
   status: string | null
   feedback: string | null
   arquivoUrl: string | null
+  valor: number | null
+  pedidoId: string | null
   created_at: Date | null
   updated_at: Date | null
 }
@@ -68,11 +82,21 @@ export type AnaliseDocumentoCountAggregateOutputType = {
   status: number
   feedback: number
   arquivoUrl: number
+  valor: number
+  pedidoId: number
   created_at: number
   updated_at: number
   _all: number
 }
 
+
+export type AnaliseDocumentoAvgAggregateInputType = {
+  valor?: true
+}
+
+export type AnaliseDocumentoSumAggregateInputType = {
+  valor?: true
+}
 
 export type AnaliseDocumentoMinAggregateInputType = {
   id?: true
@@ -86,6 +110,8 @@ export type AnaliseDocumentoMinAggregateInputType = {
   status?: true
   feedback?: true
   arquivoUrl?: true
+  valor?: true
+  pedidoId?: true
   created_at?: true
   updated_at?: true
 }
@@ -102,6 +128,8 @@ export type AnaliseDocumentoMaxAggregateInputType = {
   status?: true
   feedback?: true
   arquivoUrl?: true
+  valor?: true
+  pedidoId?: true
   created_at?: true
   updated_at?: true
 }
@@ -118,6 +146,8 @@ export type AnaliseDocumentoCountAggregateInputType = {
   status?: true
   feedback?: true
   arquivoUrl?: true
+  valor?: true
+  pedidoId?: true
   created_at?: true
   updated_at?: true
   _all?: true
@@ -161,6 +191,18 @@ export type AnaliseDocumentoAggregateArgs<ExtArgs extends runtime.Types.Extensio
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: AnaliseDocumentoAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: AnaliseDocumentoSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: AnaliseDocumentoMinAggregateInputType
@@ -191,6 +233,8 @@ export type AnaliseDocumentoGroupByArgs<ExtArgs extends runtime.Types.Extensions
   take?: number
   skip?: number
   _count?: AnaliseDocumentoCountAggregateInputType | true
+  _avg?: AnaliseDocumentoAvgAggregateInputType
+  _sum?: AnaliseDocumentoSumAggregateInputType
   _min?: AnaliseDocumentoMinAggregateInputType
   _max?: AnaliseDocumentoMaxAggregateInputType
 }
@@ -207,9 +251,13 @@ export type AnaliseDocumentoGroupByOutputType = {
   status: string
   feedback: string | null
   arquivoUrl: string | null
+  valor: number | null
+  pedidoId: string | null
   created_at: Date
   updated_at: Date
   _count: AnaliseDocumentoCountAggregateOutputType | null
+  _avg: AnaliseDocumentoAvgAggregateOutputType | null
+  _sum: AnaliseDocumentoSumAggregateOutputType | null
   _min: AnaliseDocumentoMinAggregateOutputType | null
   _max: AnaliseDocumentoMaxAggregateOutputType | null
 }
@@ -244,8 +292,11 @@ export type AnaliseDocumentoWhereInput = {
   status?: Prisma.StringFilter<"AnaliseDocumento"> | string
   feedback?: Prisma.StringNullableFilter<"AnaliseDocumento"> | string | null
   arquivoUrl?: Prisma.StringNullableFilter<"AnaliseDocumento"> | string | null
+  valor?: Prisma.FloatNullableFilter<"AnaliseDocumento"> | number | null
+  pedidoId?: Prisma.StringNullableFilter<"AnaliseDocumento"> | string | null
   created_at?: Prisma.DateTimeFilter<"AnaliseDocumento"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"AnaliseDocumento"> | Date | string
+  pedido?: Prisma.XOR<Prisma.AnalisePedidoNullableScalarRelationFilter, Prisma.AnalisePedidoWhereInput> | null
   usuario?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
@@ -261,8 +312,11 @@ export type AnaliseDocumentoOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   feedback?: Prisma.SortOrderInput | Prisma.SortOrder
   arquivoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  valor?: Prisma.SortOrderInput | Prisma.SortOrder
+  pedidoId?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  pedido?: Prisma.AnalisePedidoOrderByWithRelationInput
   usuario?: Prisma.UserOrderByWithRelationInput
 }
 
@@ -281,8 +335,11 @@ export type AnaliseDocumentoWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.StringFilter<"AnaliseDocumento"> | string
   feedback?: Prisma.StringNullableFilter<"AnaliseDocumento"> | string | null
   arquivoUrl?: Prisma.StringNullableFilter<"AnaliseDocumento"> | string | null
+  valor?: Prisma.FloatNullableFilter<"AnaliseDocumento"> | number | null
+  pedidoId?: Prisma.StringNullableFilter<"AnaliseDocumento"> | string | null
   created_at?: Prisma.DateTimeFilter<"AnaliseDocumento"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"AnaliseDocumento"> | Date | string
+  pedido?: Prisma.XOR<Prisma.AnalisePedidoNullableScalarRelationFilter, Prisma.AnalisePedidoWhereInput> | null
   usuario?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
 
@@ -298,11 +355,15 @@ export type AnaliseDocumentoOrderByWithAggregationInput = {
   status?: Prisma.SortOrder
   feedback?: Prisma.SortOrderInput | Prisma.SortOrder
   arquivoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  valor?: Prisma.SortOrderInput | Prisma.SortOrder
+  pedidoId?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   _count?: Prisma.AnaliseDocumentoCountOrderByAggregateInput
+  _avg?: Prisma.AnaliseDocumentoAvgOrderByAggregateInput
   _max?: Prisma.AnaliseDocumentoMaxOrderByAggregateInput
   _min?: Prisma.AnaliseDocumentoMinOrderByAggregateInput
+  _sum?: Prisma.AnaliseDocumentoSumOrderByAggregateInput
 }
 
 export type AnaliseDocumentoScalarWhereWithAggregatesInput = {
@@ -320,6 +381,8 @@ export type AnaliseDocumentoScalarWhereWithAggregatesInput = {
   status?: Prisma.StringWithAggregatesFilter<"AnaliseDocumento"> | string
   feedback?: Prisma.StringNullableWithAggregatesFilter<"AnaliseDocumento"> | string | null
   arquivoUrl?: Prisma.StringNullableWithAggregatesFilter<"AnaliseDocumento"> | string | null
+  valor?: Prisma.FloatNullableWithAggregatesFilter<"AnaliseDocumento"> | number | null
+  pedidoId?: Prisma.StringNullableWithAggregatesFilter<"AnaliseDocumento"> | string | null
   created_at?: Prisma.DateTimeWithAggregatesFilter<"AnaliseDocumento"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"AnaliseDocumento"> | Date | string
 }
@@ -335,8 +398,10 @@ export type AnaliseDocumentoCreateInput = {
   status?: string
   feedback?: string | null
   arquivoUrl?: string | null
+  valor?: number | null
   created_at?: Date | string
   updated_at?: Date | string
+  pedido?: Prisma.AnalisePedidoCreateNestedOneWithoutDocumentosInput
   usuario: Prisma.UserCreateNestedOneWithoutAnalisesInput
 }
 
@@ -352,6 +417,8 @@ export type AnaliseDocumentoUncheckedCreateInput = {
   status?: string
   feedback?: string | null
   arquivoUrl?: string | null
+  valor?: number | null
+  pedidoId?: string | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -367,8 +434,10 @@ export type AnaliseDocumentoUpdateInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   arquivoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valor?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  pedido?: Prisma.AnalisePedidoUpdateOneWithoutDocumentosNestedInput
   usuario?: Prisma.UserUpdateOneRequiredWithoutAnalisesNestedInput
 }
 
@@ -384,6 +453,8 @@ export type AnaliseDocumentoUncheckedUpdateInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   arquivoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valor?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pedidoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -400,6 +471,8 @@ export type AnaliseDocumentoCreateManyInput = {
   status?: string
   feedback?: string | null
   arquivoUrl?: string | null
+  valor?: number | null
+  pedidoId?: string | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -415,6 +488,7 @@ export type AnaliseDocumentoUpdateManyMutationInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   arquivoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valor?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -431,6 +505,8 @@ export type AnaliseDocumentoUncheckedUpdateManyInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   arquivoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valor?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pedidoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -457,8 +533,14 @@ export type AnaliseDocumentoCountOrderByAggregateInput = {
   status?: Prisma.SortOrder
   feedback?: Prisma.SortOrder
   arquivoUrl?: Prisma.SortOrder
+  valor?: Prisma.SortOrder
+  pedidoId?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+}
+
+export type AnaliseDocumentoAvgOrderByAggregateInput = {
+  valor?: Prisma.SortOrder
 }
 
 export type AnaliseDocumentoMaxOrderByAggregateInput = {
@@ -473,6 +555,8 @@ export type AnaliseDocumentoMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   feedback?: Prisma.SortOrder
   arquivoUrl?: Prisma.SortOrder
+  valor?: Prisma.SortOrder
+  pedidoId?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -489,8 +573,14 @@ export type AnaliseDocumentoMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   feedback?: Prisma.SortOrder
   arquivoUrl?: Prisma.SortOrder
+  valor?: Prisma.SortOrder
+  pedidoId?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+}
+
+export type AnaliseDocumentoSumOrderByAggregateInput = {
+  valor?: Prisma.SortOrder
 }
 
 export type AnaliseDocumentoCreateNestedManyWithoutUsuarioInput = {
@@ -535,6 +625,48 @@ export type AnaliseDocumentoUncheckedUpdateManyWithoutUsuarioNestedInput = {
   deleteMany?: Prisma.AnaliseDocumentoScalarWhereInput | Prisma.AnaliseDocumentoScalarWhereInput[]
 }
 
+export type AnaliseDocumentoCreateNestedManyWithoutPedidoInput = {
+  create?: Prisma.XOR<Prisma.AnaliseDocumentoCreateWithoutPedidoInput, Prisma.AnaliseDocumentoUncheckedCreateWithoutPedidoInput> | Prisma.AnaliseDocumentoCreateWithoutPedidoInput[] | Prisma.AnaliseDocumentoUncheckedCreateWithoutPedidoInput[]
+  connectOrCreate?: Prisma.AnaliseDocumentoCreateOrConnectWithoutPedidoInput | Prisma.AnaliseDocumentoCreateOrConnectWithoutPedidoInput[]
+  createMany?: Prisma.AnaliseDocumentoCreateManyPedidoInputEnvelope
+  connect?: Prisma.AnaliseDocumentoWhereUniqueInput | Prisma.AnaliseDocumentoWhereUniqueInput[]
+}
+
+export type AnaliseDocumentoUncheckedCreateNestedManyWithoutPedidoInput = {
+  create?: Prisma.XOR<Prisma.AnaliseDocumentoCreateWithoutPedidoInput, Prisma.AnaliseDocumentoUncheckedCreateWithoutPedidoInput> | Prisma.AnaliseDocumentoCreateWithoutPedidoInput[] | Prisma.AnaliseDocumentoUncheckedCreateWithoutPedidoInput[]
+  connectOrCreate?: Prisma.AnaliseDocumentoCreateOrConnectWithoutPedidoInput | Prisma.AnaliseDocumentoCreateOrConnectWithoutPedidoInput[]
+  createMany?: Prisma.AnaliseDocumentoCreateManyPedidoInputEnvelope
+  connect?: Prisma.AnaliseDocumentoWhereUniqueInput | Prisma.AnaliseDocumentoWhereUniqueInput[]
+}
+
+export type AnaliseDocumentoUpdateManyWithoutPedidoNestedInput = {
+  create?: Prisma.XOR<Prisma.AnaliseDocumentoCreateWithoutPedidoInput, Prisma.AnaliseDocumentoUncheckedCreateWithoutPedidoInput> | Prisma.AnaliseDocumentoCreateWithoutPedidoInput[] | Prisma.AnaliseDocumentoUncheckedCreateWithoutPedidoInput[]
+  connectOrCreate?: Prisma.AnaliseDocumentoCreateOrConnectWithoutPedidoInput | Prisma.AnaliseDocumentoCreateOrConnectWithoutPedidoInput[]
+  upsert?: Prisma.AnaliseDocumentoUpsertWithWhereUniqueWithoutPedidoInput | Prisma.AnaliseDocumentoUpsertWithWhereUniqueWithoutPedidoInput[]
+  createMany?: Prisma.AnaliseDocumentoCreateManyPedidoInputEnvelope
+  set?: Prisma.AnaliseDocumentoWhereUniqueInput | Prisma.AnaliseDocumentoWhereUniqueInput[]
+  disconnect?: Prisma.AnaliseDocumentoWhereUniqueInput | Prisma.AnaliseDocumentoWhereUniqueInput[]
+  delete?: Prisma.AnaliseDocumentoWhereUniqueInput | Prisma.AnaliseDocumentoWhereUniqueInput[]
+  connect?: Prisma.AnaliseDocumentoWhereUniqueInput | Prisma.AnaliseDocumentoWhereUniqueInput[]
+  update?: Prisma.AnaliseDocumentoUpdateWithWhereUniqueWithoutPedidoInput | Prisma.AnaliseDocumentoUpdateWithWhereUniqueWithoutPedidoInput[]
+  updateMany?: Prisma.AnaliseDocumentoUpdateManyWithWhereWithoutPedidoInput | Prisma.AnaliseDocumentoUpdateManyWithWhereWithoutPedidoInput[]
+  deleteMany?: Prisma.AnaliseDocumentoScalarWhereInput | Prisma.AnaliseDocumentoScalarWhereInput[]
+}
+
+export type AnaliseDocumentoUncheckedUpdateManyWithoutPedidoNestedInput = {
+  create?: Prisma.XOR<Prisma.AnaliseDocumentoCreateWithoutPedidoInput, Prisma.AnaliseDocumentoUncheckedCreateWithoutPedidoInput> | Prisma.AnaliseDocumentoCreateWithoutPedidoInput[] | Prisma.AnaliseDocumentoUncheckedCreateWithoutPedidoInput[]
+  connectOrCreate?: Prisma.AnaliseDocumentoCreateOrConnectWithoutPedidoInput | Prisma.AnaliseDocumentoCreateOrConnectWithoutPedidoInput[]
+  upsert?: Prisma.AnaliseDocumentoUpsertWithWhereUniqueWithoutPedidoInput | Prisma.AnaliseDocumentoUpsertWithWhereUniqueWithoutPedidoInput[]
+  createMany?: Prisma.AnaliseDocumentoCreateManyPedidoInputEnvelope
+  set?: Prisma.AnaliseDocumentoWhereUniqueInput | Prisma.AnaliseDocumentoWhereUniqueInput[]
+  disconnect?: Prisma.AnaliseDocumentoWhereUniqueInput | Prisma.AnaliseDocumentoWhereUniqueInput[]
+  delete?: Prisma.AnaliseDocumentoWhereUniqueInput | Prisma.AnaliseDocumentoWhereUniqueInput[]
+  connect?: Prisma.AnaliseDocumentoWhereUniqueInput | Prisma.AnaliseDocumentoWhereUniqueInput[]
+  update?: Prisma.AnaliseDocumentoUpdateWithWhereUniqueWithoutPedidoInput | Prisma.AnaliseDocumentoUpdateWithWhereUniqueWithoutPedidoInput[]
+  updateMany?: Prisma.AnaliseDocumentoUpdateManyWithWhereWithoutPedidoInput | Prisma.AnaliseDocumentoUpdateManyWithWhereWithoutPedidoInput[]
+  deleteMany?: Prisma.AnaliseDocumentoScalarWhereInput | Prisma.AnaliseDocumentoScalarWhereInput[]
+}
+
 export type AnaliseDocumentoCreateWithoutUsuarioInput = {
   id?: string
   nome: string
@@ -546,8 +678,10 @@ export type AnaliseDocumentoCreateWithoutUsuarioInput = {
   status?: string
   feedback?: string | null
   arquivoUrl?: string | null
+  valor?: number | null
   created_at?: Date | string
   updated_at?: Date | string
+  pedido?: Prisma.AnalisePedidoCreateNestedOneWithoutDocumentosInput
 }
 
 export type AnaliseDocumentoUncheckedCreateWithoutUsuarioInput = {
@@ -561,6 +695,8 @@ export type AnaliseDocumentoUncheckedCreateWithoutUsuarioInput = {
   status?: string
   feedback?: string | null
   arquivoUrl?: string | null
+  valor?: number | null
+  pedidoId?: string | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -606,8 +742,70 @@ export type AnaliseDocumentoScalarWhereInput = {
   status?: Prisma.StringFilter<"AnaliseDocumento"> | string
   feedback?: Prisma.StringNullableFilter<"AnaliseDocumento"> | string | null
   arquivoUrl?: Prisma.StringNullableFilter<"AnaliseDocumento"> | string | null
+  valor?: Prisma.FloatNullableFilter<"AnaliseDocumento"> | number | null
+  pedidoId?: Prisma.StringNullableFilter<"AnaliseDocumento"> | string | null
   created_at?: Prisma.DateTimeFilter<"AnaliseDocumento"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"AnaliseDocumento"> | Date | string
+}
+
+export type AnaliseDocumentoCreateWithoutPedidoInput = {
+  id?: string
+  nome: string
+  email: string
+  telefone?: string | null
+  tipoDocumento: string
+  areaPretendida: string
+  observacao?: string | null
+  status?: string
+  feedback?: string | null
+  arquivoUrl?: string | null
+  valor?: number | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  usuario: Prisma.UserCreateNestedOneWithoutAnalisesInput
+}
+
+export type AnaliseDocumentoUncheckedCreateWithoutPedidoInput = {
+  id?: string
+  usuarioId: string
+  nome: string
+  email: string
+  telefone?: string | null
+  tipoDocumento: string
+  areaPretendida: string
+  observacao?: string | null
+  status?: string
+  feedback?: string | null
+  arquivoUrl?: string | null
+  valor?: number | null
+  created_at?: Date | string
+  updated_at?: Date | string
+}
+
+export type AnaliseDocumentoCreateOrConnectWithoutPedidoInput = {
+  where: Prisma.AnaliseDocumentoWhereUniqueInput
+  create: Prisma.XOR<Prisma.AnaliseDocumentoCreateWithoutPedidoInput, Prisma.AnaliseDocumentoUncheckedCreateWithoutPedidoInput>
+}
+
+export type AnaliseDocumentoCreateManyPedidoInputEnvelope = {
+  data: Prisma.AnaliseDocumentoCreateManyPedidoInput | Prisma.AnaliseDocumentoCreateManyPedidoInput[]
+  skipDuplicates?: boolean
+}
+
+export type AnaliseDocumentoUpsertWithWhereUniqueWithoutPedidoInput = {
+  where: Prisma.AnaliseDocumentoWhereUniqueInput
+  update: Prisma.XOR<Prisma.AnaliseDocumentoUpdateWithoutPedidoInput, Prisma.AnaliseDocumentoUncheckedUpdateWithoutPedidoInput>
+  create: Prisma.XOR<Prisma.AnaliseDocumentoCreateWithoutPedidoInput, Prisma.AnaliseDocumentoUncheckedCreateWithoutPedidoInput>
+}
+
+export type AnaliseDocumentoUpdateWithWhereUniqueWithoutPedidoInput = {
+  where: Prisma.AnaliseDocumentoWhereUniqueInput
+  data: Prisma.XOR<Prisma.AnaliseDocumentoUpdateWithoutPedidoInput, Prisma.AnaliseDocumentoUncheckedUpdateWithoutPedidoInput>
+}
+
+export type AnaliseDocumentoUpdateManyWithWhereWithoutPedidoInput = {
+  where: Prisma.AnaliseDocumentoScalarWhereInput
+  data: Prisma.XOR<Prisma.AnaliseDocumentoUpdateManyMutationInput, Prisma.AnaliseDocumentoUncheckedUpdateManyWithoutPedidoInput>
 }
 
 export type AnaliseDocumentoCreateManyUsuarioInput = {
@@ -621,6 +819,8 @@ export type AnaliseDocumentoCreateManyUsuarioInput = {
   status?: string
   feedback?: string | null
   arquivoUrl?: string | null
+  valor?: number | null
+  pedidoId?: string | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -636,8 +836,10 @@ export type AnaliseDocumentoUpdateWithoutUsuarioInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   arquivoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valor?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  pedido?: Prisma.AnalisePedidoUpdateOneWithoutDocumentosNestedInput
 }
 
 export type AnaliseDocumentoUncheckedUpdateWithoutUsuarioInput = {
@@ -651,6 +853,8 @@ export type AnaliseDocumentoUncheckedUpdateWithoutUsuarioInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   arquivoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valor?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pedidoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -666,6 +870,76 @@ export type AnaliseDocumentoUncheckedUpdateManyWithoutUsuarioInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   arquivoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valor?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pedidoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type AnaliseDocumentoCreateManyPedidoInput = {
+  id?: string
+  usuarioId: string
+  nome: string
+  email: string
+  telefone?: string | null
+  tipoDocumento: string
+  areaPretendida: string
+  observacao?: string | null
+  status?: string
+  feedback?: string | null
+  arquivoUrl?: string | null
+  valor?: number | null
+  created_at?: Date | string
+  updated_at?: Date | string
+}
+
+export type AnaliseDocumentoUpdateWithoutPedidoInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  telefone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoDocumento?: Prisma.StringFieldUpdateOperationsInput | string
+  areaPretendida?: Prisma.StringFieldUpdateOperationsInput | string
+  observacao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  arquivoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valor?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  usuario?: Prisma.UserUpdateOneRequiredWithoutAnalisesNestedInput
+}
+
+export type AnaliseDocumentoUncheckedUpdateWithoutPedidoInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  telefone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoDocumento?: Prisma.StringFieldUpdateOperationsInput | string
+  areaPretendida?: Prisma.StringFieldUpdateOperationsInput | string
+  observacao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  arquivoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valor?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type AnaliseDocumentoUncheckedUpdateManyWithoutPedidoInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  telefone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoDocumento?: Prisma.StringFieldUpdateOperationsInput | string
+  areaPretendida?: Prisma.StringFieldUpdateOperationsInput | string
+  observacao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  arquivoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valor?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -684,8 +958,11 @@ export type AnaliseDocumentoSelect<ExtArgs extends runtime.Types.Extensions.Inte
   status?: boolean
   feedback?: boolean
   arquivoUrl?: boolean
+  valor?: boolean
+  pedidoId?: boolean
   created_at?: boolean
   updated_at?: boolean
+  pedido?: boolean | Prisma.AnaliseDocumento$pedidoArgs<ExtArgs>
   usuario?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["analiseDocumento"]>
 
@@ -701,8 +978,11 @@ export type AnaliseDocumentoSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
   status?: boolean
   feedback?: boolean
   arquivoUrl?: boolean
+  valor?: boolean
+  pedidoId?: boolean
   created_at?: boolean
   updated_at?: boolean
+  pedido?: boolean | Prisma.AnaliseDocumento$pedidoArgs<ExtArgs>
   usuario?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["analiseDocumento"]>
 
@@ -718,8 +998,11 @@ export type AnaliseDocumentoSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
   status?: boolean
   feedback?: boolean
   arquivoUrl?: boolean
+  valor?: boolean
+  pedidoId?: boolean
   created_at?: boolean
   updated_at?: boolean
+  pedido?: boolean | Prisma.AnaliseDocumento$pedidoArgs<ExtArgs>
   usuario?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["analiseDocumento"]>
 
@@ -735,24 +1018,30 @@ export type AnaliseDocumentoSelectScalar = {
   status?: boolean
   feedback?: boolean
   arquivoUrl?: boolean
+  valor?: boolean
+  pedidoId?: boolean
   created_at?: boolean
   updated_at?: boolean
 }
 
-export type AnaliseDocumentoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "usuarioId" | "nome" | "email" | "telefone" | "tipoDocumento" | "areaPretendida" | "observacao" | "status" | "feedback" | "arquivoUrl" | "created_at" | "updated_at", ExtArgs["result"]["analiseDocumento"]>
+export type AnaliseDocumentoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "usuarioId" | "nome" | "email" | "telefone" | "tipoDocumento" | "areaPretendida" | "observacao" | "status" | "feedback" | "arquivoUrl" | "valor" | "pedidoId" | "created_at" | "updated_at", ExtArgs["result"]["analiseDocumento"]>
 export type AnaliseDocumentoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  pedido?: boolean | Prisma.AnaliseDocumento$pedidoArgs<ExtArgs>
   usuario?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type AnaliseDocumentoIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  pedido?: boolean | Prisma.AnaliseDocumento$pedidoArgs<ExtArgs>
   usuario?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type AnaliseDocumentoIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  pedido?: boolean | Prisma.AnaliseDocumento$pedidoArgs<ExtArgs>
   usuario?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $AnaliseDocumentoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "AnaliseDocumento"
   objects: {
+    pedido: Prisma.$AnalisePedidoPayload<ExtArgs> | null
     usuario: Prisma.$UserPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -767,6 +1056,8 @@ export type $AnaliseDocumentoPayload<ExtArgs extends runtime.Types.Extensions.In
     status: string
     feedback: string | null
     arquivoUrl: string | null
+    valor: number | null
+    pedidoId: string | null
     created_at: Date
     updated_at: Date
   }, ExtArgs["result"]["analiseDocumento"]>
@@ -1163,6 +1454,7 @@ readonly fields: AnaliseDocumentoFieldRefs;
  */
 export interface Prisma__AnaliseDocumentoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  pedido<T extends Prisma.AnaliseDocumento$pedidoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AnaliseDocumento$pedidoArgs<ExtArgs>>): Prisma.Prisma__AnalisePedidoClient<runtime.Types.Result.GetResult<Prisma.$AnalisePedidoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   usuario<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1204,6 +1496,8 @@ export interface AnaliseDocumentoFieldRefs {
   readonly status: Prisma.FieldRef<"AnaliseDocumento", 'String'>
   readonly feedback: Prisma.FieldRef<"AnaliseDocumento", 'String'>
   readonly arquivoUrl: Prisma.FieldRef<"AnaliseDocumento", 'String'>
+  readonly valor: Prisma.FieldRef<"AnaliseDocumento", 'Float'>
+  readonly pedidoId: Prisma.FieldRef<"AnaliseDocumento", 'String'>
   readonly created_at: Prisma.FieldRef<"AnaliseDocumento", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"AnaliseDocumento", 'DateTime'>
 }
@@ -1599,6 +1893,25 @@ export type AnaliseDocumentoDeleteManyArgs<ExtArgs extends runtime.Types.Extensi
    * Limit how many AnaliseDocumentos to delete.
    */
   limit?: number
+}
+
+/**
+ * AnaliseDocumento.pedido
+ */
+export type AnaliseDocumento$pedidoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AnalisePedido
+   */
+  select?: Prisma.AnalisePedidoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AnalisePedido
+   */
+  omit?: Prisma.AnalisePedidoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AnalisePedidoInclude<ExtArgs> | null
+  where?: Prisma.AnalisePedidoWhereInput
 }
 
 /**

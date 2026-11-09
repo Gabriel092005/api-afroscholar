@@ -2,8 +2,10 @@ import prisma from "@/lib/prisma";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { sendNewBolsaToAllUsers } from "@/lib/mail";
+import { notificarNovaBolsa } from "@/lib/notificar-nova-bolsa";
 import { env } from "@/Env";
 import { upload } from "@/lib/upload";
+import { pacotesFormularioSchema } from "@/lib/pacotes-mentoria";
 
 const bodySchema = z.object({
   titulo: z.string().min(1),
@@ -19,6 +21,7 @@ const bodySchema = z.object({
   precoInscricao: z.string().optional(),
   precoConsultoria: z.string().optional(),
   precoMentoria: z.string().optional(),
+  pacotesMentoria: pacotesFormularioSchema.optional(),
   idioma: z.string().optional(),
   tags: z.string().optional(),
   descricao: z.string().optional(),
@@ -84,6 +87,7 @@ export const createBolsa = async (
         precoInscricao: parseFloatOptional(parsedBody.precoInscricao),
         precoConsultoria: parseFloatOptional(parsedBody.precoConsultoria),
         precoMentoria: parseFloatOptional(parsedBody.precoMentoria),
+        pacotesMentoria: parsedBody.pacotesMentoria,
         idioma: parsedBody.idioma,
         tags,
         descricao: parsedBody.descricao,
@@ -104,6 +108,7 @@ export const createBolsa = async (
         bolsa.descricao?.substring(0, 200) || "Nova bolsa de estudo disponível na plataforma.",
         `${env.FRONTEND_URL}/bolsas/${bolsa.id}`
       ).catch((err) => console.error("⚠️ Failed to send bolsa notification:", err?.message));
+      notificarNovaBolsa(bolsa.id).catch((err) => console.error("⚠️ Failed to push bolsa notification:", err?.message));
     }
 
     return res.status(201).send({
@@ -115,6 +120,7 @@ export const createBolsa = async (
     if (error instanceof z.ZodError) {
       return res.status(400).send({
         error: "Validation Error",
+        message: error.issues[0]?.message,
         issues: error.format(),
       });
     }

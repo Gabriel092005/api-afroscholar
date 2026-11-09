@@ -438,6 +438,11 @@ export const ModelName = {
   HomeBanner: 'HomeBanner',
   MapaGlobal: 'MapaGlobal',
   Atividade: 'Atividade',
+  AnaliseTipoDocumento: 'AnaliseTipoDocumento',
+  AnalisePedido: 'AnalisePedido',
+  AfiliadoLink: 'AfiliadoLink',
+  AfiliadoComissao: 'AfiliadoComissao',
+  AfiliadoSaque: 'AfiliadoSaque',
   PagamentoMomenu: 'PagamentoMomenu'
 } as const
 
@@ -454,7 +459,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "notification" | "usuario" | "notificacao" | "empresa" | "departamento" | "bot" | "botAsset" | "botEmpresa" | "folhaBot" | "transacao" | "arquivo" | "assinatura" | "carrinhoItem" | "feedback" | "mensagem" | "setting" | "whatBotCanDo" | "whatBotCanNotDo" | "bolsa" | "bolsaInscricao" | "bolsaInscricaoDocumento" | "curso" | "aula" | "cursoPagamento" | "cursoUsuario" | "documento" | "documentoCompra" | "depoimento" | "novidade" | "novidadeInscricao" | "novidadeInscricaoDocumento" | "anexo" | "perfilAcademico" | "analiseDocumento" | "community" | "communityMember" | "communityMessage" | "aulaOnline" | "aulaOnlineParticipante" | "mentoria" | "mentoriaAcesso" | "mentoriaInscricao" | "communityQuestion" | "communityAnswer" | "homeBanner" | "mapaGlobal" | "atividade" | "pagamentoMomenu"
+    modelProps: "user" | "notification" | "usuario" | "notificacao" | "empresa" | "departamento" | "bot" | "botAsset" | "botEmpresa" | "folhaBot" | "transacao" | "arquivo" | "assinatura" | "carrinhoItem" | "feedback" | "mensagem" | "setting" | "whatBotCanDo" | "whatBotCanNotDo" | "bolsa" | "bolsaInscricao" | "bolsaInscricaoDocumento" | "curso" | "aula" | "cursoPagamento" | "cursoUsuario" | "documento" | "documentoCompra" | "depoimento" | "novidade" | "novidadeInscricao" | "novidadeInscricaoDocumento" | "anexo" | "perfilAcademico" | "analiseDocumento" | "community" | "communityMember" | "communityMessage" | "aulaOnline" | "aulaOnlineParticipante" | "mentoria" | "mentoriaAcesso" | "mentoriaInscricao" | "communityQuestion" | "communityAnswer" | "homeBanner" | "mapaGlobal" | "atividade" | "analiseTipoDocumento" | "analisePedido" | "afiliadoLink" | "afiliadoComissao" | "afiliadoSaque" | "pagamentoMomenu"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -4010,6 +4015,376 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    AnaliseTipoDocumento: {
+      payload: Prisma.$AnaliseTipoDocumentoPayload<ExtArgs>
+      fields: Prisma.AnaliseTipoDocumentoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AnaliseTipoDocumentoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnaliseTipoDocumentoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AnaliseTipoDocumentoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnaliseTipoDocumentoPayload>
+        }
+        findFirst: {
+          args: Prisma.AnaliseTipoDocumentoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnaliseTipoDocumentoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AnaliseTipoDocumentoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnaliseTipoDocumentoPayload>
+        }
+        findMany: {
+          args: Prisma.AnaliseTipoDocumentoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnaliseTipoDocumentoPayload>[]
+        }
+        create: {
+          args: Prisma.AnaliseTipoDocumentoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnaliseTipoDocumentoPayload>
+        }
+        createMany: {
+          args: Prisma.AnaliseTipoDocumentoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AnaliseTipoDocumentoCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnaliseTipoDocumentoPayload>[]
+        }
+        delete: {
+          args: Prisma.AnaliseTipoDocumentoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnaliseTipoDocumentoPayload>
+        }
+        update: {
+          args: Prisma.AnaliseTipoDocumentoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnaliseTipoDocumentoPayload>
+        }
+        deleteMany: {
+          args: Prisma.AnaliseTipoDocumentoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AnaliseTipoDocumentoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AnaliseTipoDocumentoUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnaliseTipoDocumentoPayload>[]
+        }
+        upsert: {
+          args: Prisma.AnaliseTipoDocumentoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnaliseTipoDocumentoPayload>
+        }
+        aggregate: {
+          args: Prisma.AnaliseTipoDocumentoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAnaliseTipoDocumento>
+        }
+        groupBy: {
+          args: Prisma.AnaliseTipoDocumentoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AnaliseTipoDocumentoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AnaliseTipoDocumentoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AnaliseTipoDocumentoCountAggregateOutputType> | number
+        }
+      }
+    }
+    AnalisePedido: {
+      payload: Prisma.$AnalisePedidoPayload<ExtArgs>
+      fields: Prisma.AnalisePedidoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AnalisePedidoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnalisePedidoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AnalisePedidoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnalisePedidoPayload>
+        }
+        findFirst: {
+          args: Prisma.AnalisePedidoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnalisePedidoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AnalisePedidoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnalisePedidoPayload>
+        }
+        findMany: {
+          args: Prisma.AnalisePedidoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnalisePedidoPayload>[]
+        }
+        create: {
+          args: Prisma.AnalisePedidoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnalisePedidoPayload>
+        }
+        createMany: {
+          args: Prisma.AnalisePedidoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AnalisePedidoCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnalisePedidoPayload>[]
+        }
+        delete: {
+          args: Prisma.AnalisePedidoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnalisePedidoPayload>
+        }
+        update: {
+          args: Prisma.AnalisePedidoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnalisePedidoPayload>
+        }
+        deleteMany: {
+          args: Prisma.AnalisePedidoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AnalisePedidoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AnalisePedidoUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnalisePedidoPayload>[]
+        }
+        upsert: {
+          args: Prisma.AnalisePedidoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AnalisePedidoPayload>
+        }
+        aggregate: {
+          args: Prisma.AnalisePedidoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAnalisePedido>
+        }
+        groupBy: {
+          args: Prisma.AnalisePedidoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AnalisePedidoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AnalisePedidoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AnalisePedidoCountAggregateOutputType> | number
+        }
+      }
+    }
+    AfiliadoLink: {
+      payload: Prisma.$AfiliadoLinkPayload<ExtArgs>
+      fields: Prisma.AfiliadoLinkFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AfiliadoLinkFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoLinkPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AfiliadoLinkFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoLinkPayload>
+        }
+        findFirst: {
+          args: Prisma.AfiliadoLinkFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoLinkPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AfiliadoLinkFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoLinkPayload>
+        }
+        findMany: {
+          args: Prisma.AfiliadoLinkFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoLinkPayload>[]
+        }
+        create: {
+          args: Prisma.AfiliadoLinkCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoLinkPayload>
+        }
+        createMany: {
+          args: Prisma.AfiliadoLinkCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AfiliadoLinkCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoLinkPayload>[]
+        }
+        delete: {
+          args: Prisma.AfiliadoLinkDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoLinkPayload>
+        }
+        update: {
+          args: Prisma.AfiliadoLinkUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoLinkPayload>
+        }
+        deleteMany: {
+          args: Prisma.AfiliadoLinkDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AfiliadoLinkUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AfiliadoLinkUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoLinkPayload>[]
+        }
+        upsert: {
+          args: Prisma.AfiliadoLinkUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoLinkPayload>
+        }
+        aggregate: {
+          args: Prisma.AfiliadoLinkAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAfiliadoLink>
+        }
+        groupBy: {
+          args: Prisma.AfiliadoLinkGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AfiliadoLinkGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AfiliadoLinkCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AfiliadoLinkCountAggregateOutputType> | number
+        }
+      }
+    }
+    AfiliadoComissao: {
+      payload: Prisma.$AfiliadoComissaoPayload<ExtArgs>
+      fields: Prisma.AfiliadoComissaoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AfiliadoComissaoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoComissaoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AfiliadoComissaoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoComissaoPayload>
+        }
+        findFirst: {
+          args: Prisma.AfiliadoComissaoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoComissaoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AfiliadoComissaoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoComissaoPayload>
+        }
+        findMany: {
+          args: Prisma.AfiliadoComissaoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoComissaoPayload>[]
+        }
+        create: {
+          args: Prisma.AfiliadoComissaoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoComissaoPayload>
+        }
+        createMany: {
+          args: Prisma.AfiliadoComissaoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AfiliadoComissaoCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoComissaoPayload>[]
+        }
+        delete: {
+          args: Prisma.AfiliadoComissaoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoComissaoPayload>
+        }
+        update: {
+          args: Prisma.AfiliadoComissaoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoComissaoPayload>
+        }
+        deleteMany: {
+          args: Prisma.AfiliadoComissaoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AfiliadoComissaoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AfiliadoComissaoUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoComissaoPayload>[]
+        }
+        upsert: {
+          args: Prisma.AfiliadoComissaoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoComissaoPayload>
+        }
+        aggregate: {
+          args: Prisma.AfiliadoComissaoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAfiliadoComissao>
+        }
+        groupBy: {
+          args: Prisma.AfiliadoComissaoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AfiliadoComissaoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AfiliadoComissaoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AfiliadoComissaoCountAggregateOutputType> | number
+        }
+      }
+    }
+    AfiliadoSaque: {
+      payload: Prisma.$AfiliadoSaquePayload<ExtArgs>
+      fields: Prisma.AfiliadoSaqueFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AfiliadoSaqueFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoSaquePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AfiliadoSaqueFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoSaquePayload>
+        }
+        findFirst: {
+          args: Prisma.AfiliadoSaqueFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoSaquePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AfiliadoSaqueFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoSaquePayload>
+        }
+        findMany: {
+          args: Prisma.AfiliadoSaqueFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoSaquePayload>[]
+        }
+        create: {
+          args: Prisma.AfiliadoSaqueCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoSaquePayload>
+        }
+        createMany: {
+          args: Prisma.AfiliadoSaqueCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AfiliadoSaqueCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoSaquePayload>[]
+        }
+        delete: {
+          args: Prisma.AfiliadoSaqueDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoSaquePayload>
+        }
+        update: {
+          args: Prisma.AfiliadoSaqueUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoSaquePayload>
+        }
+        deleteMany: {
+          args: Prisma.AfiliadoSaqueDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AfiliadoSaqueUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AfiliadoSaqueUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoSaquePayload>[]
+        }
+        upsert: {
+          args: Prisma.AfiliadoSaqueUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AfiliadoSaquePayload>
+        }
+        aggregate: {
+          args: Prisma.AfiliadoSaqueAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAfiliadoSaque>
+        }
+        groupBy: {
+          args: Prisma.AfiliadoSaqueGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AfiliadoSaqueGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AfiliadoSaqueCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AfiliadoSaqueCountAggregateOutputType> | number
+        }
+      }
+    }
     PagamentoMomenu: {
       payload: Prisma.$PagamentoMomenuPayload<ExtArgs>
       fields: Prisma.PagamentoMomenuFieldRefs
@@ -4403,6 +4778,8 @@ export const BolsaScalarFieldEnum = {
   precoInscricao: 'precoInscricao',
   precoConsultoria: 'precoConsultoria',
   precoMentoria: 'precoMentoria',
+  pacotesMentoria: 'pacotesMentoria',
+  comissaoAfiliado: 'comissaoAfiliado',
   idioma: 'idioma',
   tags: 'tags',
   descricao: 'descricao',
@@ -4443,6 +4820,7 @@ export const BolsaInscricaoScalarFieldEnum = {
   dataAgendada: 'dataAgendada',
   duracaoMinutos: 'duracaoMinutos',
   inscritoEm: 'inscritoEm',
+  mesesMentoria: 'mesesMentoria',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
@@ -4472,6 +4850,7 @@ export const CursoScalarFieldEnum = {
   estudantes: 'estudantes',
   rating: 'rating',
   preco: 'preco',
+  comissaoAfiliado: 'comissaoAfiliado',
   idioma: 'idioma',
   tags: 'tags',
   descricao: 'descricao',
@@ -4545,6 +4924,7 @@ export const DocumentoScalarFieldEnum = {
   criadoPorId: 'criadoPorId',
   bolsaId: 'bolsaId',
   preco: 'preco',
+  comissaoAfiliado: 'comissaoAfiliado',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
@@ -4706,6 +5086,8 @@ export const AnaliseDocumentoScalarFieldEnum = {
   status: 'status',
   feedback: 'feedback',
   arquivoUrl: 'arquivoUrl',
+  valor: 'valor',
+  pedidoId: 'pedidoId',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
@@ -4894,6 +5276,76 @@ export const AtividadeScalarFieldEnum = {
 export type AtividadeScalarFieldEnum = (typeof AtividadeScalarFieldEnum)[keyof typeof AtividadeScalarFieldEnum]
 
 
+export const AnaliseTipoDocumentoScalarFieldEnum = {
+  id: 'id',
+  nome: 'nome',
+  descricao: 'descricao',
+  preco: 'preco',
+  ativo: 'ativo',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type AnaliseTipoDocumentoScalarFieldEnum = (typeof AnaliseTipoDocumentoScalarFieldEnum)[keyof typeof AnaliseTipoDocumentoScalarFieldEnum]
+
+
+export const AnalisePedidoScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  valor: 'valor',
+  metodo: 'metodo',
+  referencia: 'referencia',
+  status: 'status',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type AnalisePedidoScalarFieldEnum = (typeof AnalisePedidoScalarFieldEnum)[keyof typeof AnalisePedidoScalarFieldEnum]
+
+
+export const AfiliadoLinkScalarFieldEnum = {
+  id: 'id',
+  codigo: 'codigo',
+  usuarioId: 'usuarioId',
+  tipo: 'tipo',
+  itemId: 'itemId',
+  cliques: 'cliques',
+  created_at: 'created_at'
+} as const
+
+export type AfiliadoLinkScalarFieldEnum = (typeof AfiliadoLinkScalarFieldEnum)[keyof typeof AfiliadoLinkScalarFieldEnum]
+
+
+export const AfiliadoComissaoScalarFieldEnum = {
+  id: 'id',
+  pagamentoId: 'pagamentoId',
+  afiliadoId: 'afiliadoId',
+  linkId: 'linkId',
+  valorVenda: 'valorVenda',
+  percentual: 'percentual',
+  valor: 'valor',
+  created_at: 'created_at'
+} as const
+
+export type AfiliadoComissaoScalarFieldEnum = (typeof AfiliadoComissaoScalarFieldEnum)[keyof typeof AfiliadoComissaoScalarFieldEnum]
+
+
+export const AfiliadoSaqueScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  valor: 'valor',
+  iban: 'iban',
+  titular: 'titular',
+  status: 'status',
+  observacao: 'observacao',
+  processadoEm: 'processadoEm',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type AfiliadoSaqueScalarFieldEnum = (typeof AfiliadoSaqueScalarFieldEnum)[keyof typeof AfiliadoSaqueScalarFieldEnum]
+
+
 export const PagamentoMomenuScalarFieldEnum = {
   id: 'id',
   transactionId: 'transactionId',
@@ -4911,6 +5363,7 @@ export const PagamentoMomenuScalarFieldEnum = {
   falhaMotivo: 'falhaMotivo',
   ultimaVerificacao: 'ultimaVerificacao',
   pagoEm: 'pagoEm',
+  afiliadoLinkId: 'afiliadoLinkId',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
@@ -5127,20 +5580,6 @@ export type ListEnumSUBS_STATUSFieldRefInput<$PrismaModel> = FieldRefInputType<$
 
 
 /**
- * Reference to a field of type 'BolsaStatus'
- */
-export type EnumBolsaStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BolsaStatus'>
-    
-
-
-/**
- * Reference to a field of type 'BolsaStatus[]'
- */
-export type ListEnumBolsaStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BolsaStatus[]'>
-    
-
-
-/**
  * Reference to a field of type 'Json'
  */
 export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
@@ -5151,6 +5590,20 @@ export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'J
  * Reference to a field of type 'QueryMode'
  */
 export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+/**
+ * Reference to a field of type 'BolsaStatus'
+ */
+export type EnumBolsaStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BolsaStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'BolsaStatus[]'
+ */
+export type ListEnumBolsaStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BolsaStatus[]'>
     
 
 
@@ -5323,6 +5776,20 @@ export type ListEnumTipoPagamentoMomenuFieldRefInput<$PrismaModel> = FieldRefInp
 
 
 /**
+ * Reference to a field of type 'SaqueAfiliadoStatus'
+ */
+export type EnumSaqueAfiliadoStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SaqueAfiliadoStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'SaqueAfiliadoStatus[]'
+ */
+export type ListEnumSaqueAfiliadoStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SaqueAfiliadoStatus[]'>
+    
+
+
+/**
  * Reference to a field of type 'PagamentoMomenuStatus'
  */
 export type EnumPagamentoMomenuStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PagamentoMomenuStatus'>
@@ -5470,6 +5937,11 @@ export type GlobalOmitConfig = {
   homeBanner?: Prisma.HomeBannerOmit
   mapaGlobal?: Prisma.MapaGlobalOmit
   atividade?: Prisma.AtividadeOmit
+  analiseTipoDocumento?: Prisma.AnaliseTipoDocumentoOmit
+  analisePedido?: Prisma.AnalisePedidoOmit
+  afiliadoLink?: Prisma.AfiliadoLinkOmit
+  afiliadoComissao?: Prisma.AfiliadoComissaoOmit
+  afiliadoSaque?: Prisma.AfiliadoSaqueOmit
   pagamentoMomenu?: Prisma.PagamentoMomenuOmit
 }
 

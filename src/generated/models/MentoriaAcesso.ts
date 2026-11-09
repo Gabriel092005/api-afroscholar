@@ -887,7 +887,7 @@ export type $MentoriaAcessoPayload<ExtArgs extends runtime.Types.Extensions.Inte
     pago: boolean
     created_at: Date
     /**
-     * A mentoria dura um mês. Depois disto, deixa de abrir o que lhe está ligado.
+     * A mentoria dura o pacote comprado. Depois disto, deixa de abrir o que lhe está ligado.
      */
     expiraEm: Date
     /**

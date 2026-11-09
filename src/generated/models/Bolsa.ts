@@ -32,6 +32,7 @@ export type BolsaAvgAggregateOutputType = {
   precoInscricao: number | null
   precoConsultoria: number | null
   precoMentoria: number | null
+  comissaoAfiliado: number | null
   numeroVagas: number | null
 }
 
@@ -41,6 +42,7 @@ export type BolsaSumAggregateOutputType = {
   precoInscricao: number | null
   precoConsultoria: number | null
   precoMentoria: number | null
+  comissaoAfiliado: number | null
   numeroVagas: number | null
 }
 
@@ -59,6 +61,7 @@ export type BolsaMinAggregateOutputType = {
   precoInscricao: number | null
   precoConsultoria: number | null
   precoMentoria: number | null
+  comissaoAfiliado: number | null
   idioma: string | null
   descricao: string | null
   imagemUrl: string | null
@@ -88,6 +91,7 @@ export type BolsaMaxAggregateOutputType = {
   precoInscricao: number | null
   precoConsultoria: number | null
   precoMentoria: number | null
+  comissaoAfiliado: number | null
   idioma: string | null
   descricao: string | null
   imagemUrl: string | null
@@ -117,6 +121,8 @@ export type BolsaCountAggregateOutputType = {
   precoInscricao: number
   precoConsultoria: number
   precoMentoria: number
+  pacotesMentoria: number
+  comissaoAfiliado: number
   idioma: number
   tags: number
   descricao: number
@@ -141,6 +147,7 @@ export type BolsaAvgAggregateInputType = {
   precoInscricao?: true
   precoConsultoria?: true
   precoMentoria?: true
+  comissaoAfiliado?: true
   numeroVagas?: true
 }
 
@@ -150,6 +157,7 @@ export type BolsaSumAggregateInputType = {
   precoInscricao?: true
   precoConsultoria?: true
   precoMentoria?: true
+  comissaoAfiliado?: true
   numeroVagas?: true
 }
 
@@ -168,6 +176,7 @@ export type BolsaMinAggregateInputType = {
   precoInscricao?: true
   precoConsultoria?: true
   precoMentoria?: true
+  comissaoAfiliado?: true
   idioma?: true
   descricao?: true
   imagemUrl?: true
@@ -197,6 +206,7 @@ export type BolsaMaxAggregateInputType = {
   precoInscricao?: true
   precoConsultoria?: true
   precoMentoria?: true
+  comissaoAfiliado?: true
   idioma?: true
   descricao?: true
   imagemUrl?: true
@@ -226,6 +236,8 @@ export type BolsaCountAggregateInputType = {
   precoInscricao?: true
   precoConsultoria?: true
   precoMentoria?: true
+  pacotesMentoria?: true
+  comissaoAfiliado?: true
   idioma?: true
   tags?: true
   descricao?: true
@@ -344,6 +356,8 @@ export type BolsaGroupByOutputType = {
   precoInscricao: number | null
   precoConsultoria: number | null
   precoMentoria: number | null
+  pacotesMentoria: runtime.JsonValue | null
+  comissaoAfiliado: number | null
   idioma: string | null
   tags: string[]
   descricao: string | null
@@ -398,6 +412,8 @@ export type BolsaWhereInput = {
   precoInscricao?: Prisma.FloatNullableFilter<"Bolsa"> | number | null
   precoConsultoria?: Prisma.FloatNullableFilter<"Bolsa"> | number | null
   precoMentoria?: Prisma.FloatNullableFilter<"Bolsa"> | number | null
+  pacotesMentoria?: Prisma.JsonNullableFilter<"Bolsa">
+  comissaoAfiliado?: Prisma.FloatNullableFilter<"Bolsa"> | number | null
   idioma?: Prisma.StringNullableFilter<"Bolsa"> | string | null
   tags?: Prisma.StringNullableListFilter<"Bolsa">
   descricao?: Prisma.StringNullableFilter<"Bolsa"> | string | null
@@ -437,6 +453,8 @@ export type BolsaOrderByWithRelationInput = {
   precoInscricao?: Prisma.SortOrderInput | Prisma.SortOrder
   precoConsultoria?: Prisma.SortOrderInput | Prisma.SortOrder
   precoMentoria?: Prisma.SortOrderInput | Prisma.SortOrder
+  pacotesMentoria?: Prisma.SortOrderInput | Prisma.SortOrder
+  comissaoAfiliado?: Prisma.SortOrderInput | Prisma.SortOrder
   idioma?: Prisma.SortOrderInput | Prisma.SortOrder
   tags?: Prisma.SortOrder
   descricao?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -479,6 +497,8 @@ export type BolsaWhereUniqueInput = Prisma.AtLeast<{
   precoInscricao?: Prisma.FloatNullableFilter<"Bolsa"> | number | null
   precoConsultoria?: Prisma.FloatNullableFilter<"Bolsa"> | number | null
   precoMentoria?: Prisma.FloatNullableFilter<"Bolsa"> | number | null
+  pacotesMentoria?: Prisma.JsonNullableFilter<"Bolsa">
+  comissaoAfiliado?: Prisma.FloatNullableFilter<"Bolsa"> | number | null
   idioma?: Prisma.StringNullableFilter<"Bolsa"> | string | null
   tags?: Prisma.StringNullableListFilter<"Bolsa">
   descricao?: Prisma.StringNullableFilter<"Bolsa"> | string | null
@@ -518,6 +538,8 @@ export type BolsaOrderByWithAggregationInput = {
   precoInscricao?: Prisma.SortOrderInput | Prisma.SortOrder
   precoConsultoria?: Prisma.SortOrderInput | Prisma.SortOrder
   precoMentoria?: Prisma.SortOrderInput | Prisma.SortOrder
+  pacotesMentoria?: Prisma.SortOrderInput | Prisma.SortOrder
+  comissaoAfiliado?: Prisma.SortOrderInput | Prisma.SortOrder
   idioma?: Prisma.SortOrderInput | Prisma.SortOrder
   tags?: Prisma.SortOrder
   descricao?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -557,6 +579,8 @@ export type BolsaScalarWhereWithAggregatesInput = {
   precoInscricao?: Prisma.FloatNullableWithAggregatesFilter<"Bolsa"> | number | null
   precoConsultoria?: Prisma.FloatNullableWithAggregatesFilter<"Bolsa"> | number | null
   precoMentoria?: Prisma.FloatNullableWithAggregatesFilter<"Bolsa"> | number | null
+  pacotesMentoria?: Prisma.JsonNullableWithAggregatesFilter<"Bolsa">
+  comissaoAfiliado?: Prisma.FloatNullableWithAggregatesFilter<"Bolsa"> | number | null
   idioma?: Prisma.StringNullableWithAggregatesFilter<"Bolsa"> | string | null
   tags?: Prisma.StringNullableListFilter<"Bolsa">
   descricao?: Prisma.StringNullableWithAggregatesFilter<"Bolsa"> | string | null
@@ -588,6 +612,8 @@ export type BolsaCreateInput = {
   precoInscricao?: number | null
   precoConsultoria?: number | null
   precoMentoria?: number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.BolsaCreatetagsInput | string[]
   descricao?: string | null
@@ -626,6 +652,8 @@ export type BolsaUncheckedCreateInput = {
   precoInscricao?: number | null
   precoConsultoria?: number | null
   precoMentoria?: number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.BolsaCreatetagsInput | string[]
   descricao?: string | null
@@ -664,6 +692,8 @@ export type BolsaUpdateInput = {
   precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.BolsaUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -702,6 +732,8 @@ export type BolsaUncheckedUpdateInput = {
   precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.BolsaUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -740,6 +772,8 @@ export type BolsaCreateManyInput = {
   precoInscricao?: number | null
   precoConsultoria?: number | null
   precoMentoria?: number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.BolsaCreatetagsInput | string[]
   descricao?: string | null
@@ -771,6 +805,8 @@ export type BolsaUpdateManyMutationInput = {
   precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.BolsaUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -801,6 +837,8 @@ export type BolsaUncheckedUpdateManyInput = {
   precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.BolsaUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -842,6 +880,8 @@ export type BolsaCountOrderByAggregateInput = {
   precoInscricao?: Prisma.SortOrder
   precoConsultoria?: Prisma.SortOrder
   precoMentoria?: Prisma.SortOrder
+  pacotesMentoria?: Prisma.SortOrder
+  comissaoAfiliado?: Prisma.SortOrder
   idioma?: Prisma.SortOrder
   tags?: Prisma.SortOrder
   descricao?: Prisma.SortOrder
@@ -864,6 +904,7 @@ export type BolsaAvgOrderByAggregateInput = {
   precoInscricao?: Prisma.SortOrder
   precoConsultoria?: Prisma.SortOrder
   precoMentoria?: Prisma.SortOrder
+  comissaoAfiliado?: Prisma.SortOrder
   numeroVagas?: Prisma.SortOrder
 }
 
@@ -882,6 +923,7 @@ export type BolsaMaxOrderByAggregateInput = {
   precoInscricao?: Prisma.SortOrder
   precoConsultoria?: Prisma.SortOrder
   precoMentoria?: Prisma.SortOrder
+  comissaoAfiliado?: Prisma.SortOrder
   idioma?: Prisma.SortOrder
   descricao?: Prisma.SortOrder
   imagemUrl?: Prisma.SortOrder
@@ -911,6 +953,7 @@ export type BolsaMinOrderByAggregateInput = {
   precoInscricao?: Prisma.SortOrder
   precoConsultoria?: Prisma.SortOrder
   precoMentoria?: Prisma.SortOrder
+  comissaoAfiliado?: Prisma.SortOrder
   idioma?: Prisma.SortOrder
   descricao?: Prisma.SortOrder
   imagemUrl?: Prisma.SortOrder
@@ -931,6 +974,7 @@ export type BolsaSumOrderByAggregateInput = {
   precoInscricao?: Prisma.SortOrder
   precoConsultoria?: Prisma.SortOrder
   precoMentoria?: Prisma.SortOrder
+  comissaoAfiliado?: Prisma.SortOrder
   numeroVagas?: Prisma.SortOrder
 }
 
@@ -1132,6 +1176,8 @@ export type BolsaCreateWithoutCriadoPorInput = {
   precoInscricao?: number | null
   precoConsultoria?: number | null
   precoMentoria?: number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.BolsaCreatetagsInput | string[]
   descricao?: string | null
@@ -1169,6 +1215,8 @@ export type BolsaUncheckedCreateWithoutCriadoPorInput = {
   precoInscricao?: number | null
   precoConsultoria?: number | null
   precoMentoria?: number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.BolsaCreatetagsInput | string[]
   descricao?: string | null
@@ -1235,6 +1283,8 @@ export type BolsaScalarWhereInput = {
   precoInscricao?: Prisma.FloatNullableFilter<"Bolsa"> | number | null
   precoConsultoria?: Prisma.FloatNullableFilter<"Bolsa"> | number | null
   precoMentoria?: Prisma.FloatNullableFilter<"Bolsa"> | number | null
+  pacotesMentoria?: Prisma.JsonNullableFilter<"Bolsa">
+  comissaoAfiliado?: Prisma.FloatNullableFilter<"Bolsa"> | number | null
   idioma?: Prisma.StringNullableFilter<"Bolsa"> | string | null
   tags?: Prisma.StringNullableListFilter<"Bolsa">
   descricao?: Prisma.StringNullableFilter<"Bolsa"> | string | null
@@ -1266,6 +1316,8 @@ export type BolsaCreateWithoutInscricoesInput = {
   precoInscricao?: number | null
   precoConsultoria?: number | null
   precoMentoria?: number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.BolsaCreatetagsInput | string[]
   descricao?: string | null
@@ -1303,6 +1355,8 @@ export type BolsaUncheckedCreateWithoutInscricoesInput = {
   precoInscricao?: number | null
   precoConsultoria?: number | null
   precoMentoria?: number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.BolsaCreatetagsInput | string[]
   descricao?: string | null
@@ -1356,6 +1410,8 @@ export type BolsaUpdateWithoutInscricoesInput = {
   precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.BolsaUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1393,6 +1449,8 @@ export type BolsaUncheckedUpdateWithoutInscricoesInput = {
   precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.BolsaUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1430,6 +1488,8 @@ export type BolsaCreateWithoutCursosInput = {
   precoInscricao?: number | null
   precoConsultoria?: number | null
   precoMentoria?: number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.BolsaCreatetagsInput | string[]
   descricao?: string | null
@@ -1467,6 +1527,8 @@ export type BolsaUncheckedCreateWithoutCursosInput = {
   precoInscricao?: number | null
   precoConsultoria?: number | null
   precoMentoria?: number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.BolsaCreatetagsInput | string[]
   descricao?: string | null
@@ -1520,6 +1582,8 @@ export type BolsaUpdateWithoutCursosInput = {
   precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.BolsaUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1557,6 +1621,8 @@ export type BolsaUncheckedUpdateWithoutCursosInput = {
   precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.BolsaUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1594,6 +1660,8 @@ export type BolsaCreateWithoutMateriaisInput = {
   precoInscricao?: number | null
   precoConsultoria?: number | null
   precoMentoria?: number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.BolsaCreatetagsInput | string[]
   descricao?: string | null
@@ -1631,6 +1699,8 @@ export type BolsaUncheckedCreateWithoutMateriaisInput = {
   precoInscricao?: number | null
   precoConsultoria?: number | null
   precoMentoria?: number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.BolsaCreatetagsInput | string[]
   descricao?: string | null
@@ -1684,6 +1754,8 @@ export type BolsaUpdateWithoutMateriaisInput = {
   precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.BolsaUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1721,6 +1793,8 @@ export type BolsaUncheckedUpdateWithoutMateriaisInput = {
   precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.BolsaUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1758,6 +1832,8 @@ export type BolsaCreateWithoutComunidadesInput = {
   precoInscricao?: number | null
   precoConsultoria?: number | null
   precoMentoria?: number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.BolsaCreatetagsInput | string[]
   descricao?: string | null
@@ -1795,6 +1871,8 @@ export type BolsaUncheckedCreateWithoutComunidadesInput = {
   precoInscricao?: number | null
   precoConsultoria?: number | null
   precoMentoria?: number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.BolsaCreatetagsInput | string[]
   descricao?: string | null
@@ -1848,6 +1926,8 @@ export type BolsaUpdateWithoutComunidadesInput = {
   precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.BolsaUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1885,6 +1965,8 @@ export type BolsaUncheckedUpdateWithoutComunidadesInput = {
   precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.BolsaUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1922,6 +2004,8 @@ export type BolsaCreateWithoutAulasInput = {
   precoInscricao?: number | null
   precoConsultoria?: number | null
   precoMentoria?: number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.BolsaCreatetagsInput | string[]
   descricao?: string | null
@@ -1959,6 +2043,8 @@ export type BolsaUncheckedCreateWithoutAulasInput = {
   precoInscricao?: number | null
   precoConsultoria?: number | null
   precoMentoria?: number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.BolsaCreatetagsInput | string[]
   descricao?: string | null
@@ -2012,6 +2098,8 @@ export type BolsaUpdateWithoutAulasInput = {
   precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.BolsaUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2049,6 +2137,8 @@ export type BolsaUncheckedUpdateWithoutAulasInput = {
   precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.BolsaUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2086,6 +2176,8 @@ export type BolsaCreateWithoutMentoriasInput = {
   precoInscricao?: number | null
   precoConsultoria?: number | null
   precoMentoria?: number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.BolsaCreatetagsInput | string[]
   descricao?: string | null
@@ -2123,6 +2215,8 @@ export type BolsaUncheckedCreateWithoutMentoriasInput = {
   precoInscricao?: number | null
   precoConsultoria?: number | null
   precoMentoria?: number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.BolsaCreatetagsInput | string[]
   descricao?: string | null
@@ -2176,6 +2270,8 @@ export type BolsaUpdateWithoutMentoriasInput = {
   precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.BolsaUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2213,6 +2309,8 @@ export type BolsaUncheckedUpdateWithoutMentoriasInput = {
   precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.BolsaUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2250,6 +2348,8 @@ export type BolsaCreateWithoutMentoriaAcessosInput = {
   precoInscricao?: number | null
   precoConsultoria?: number | null
   precoMentoria?: number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.BolsaCreatetagsInput | string[]
   descricao?: string | null
@@ -2287,6 +2387,8 @@ export type BolsaUncheckedCreateWithoutMentoriaAcessosInput = {
   precoInscricao?: number | null
   precoConsultoria?: number | null
   precoMentoria?: number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.BolsaCreatetagsInput | string[]
   descricao?: string | null
@@ -2340,6 +2442,8 @@ export type BolsaUpdateWithoutMentoriaAcessosInput = {
   precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.BolsaUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2377,6 +2481,8 @@ export type BolsaUncheckedUpdateWithoutMentoriaAcessosInput = {
   precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.BolsaUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2414,6 +2520,8 @@ export type BolsaCreateManyCriadoPorInput = {
   precoInscricao?: number | null
   precoConsultoria?: number | null
   precoMentoria?: number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.BolsaCreatetagsInput | string[]
   descricao?: string | null
@@ -2444,6 +2552,8 @@ export type BolsaUpdateWithoutCriadoPorInput = {
   precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.BolsaUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2481,6 +2591,8 @@ export type BolsaUncheckedUpdateWithoutCriadoPorInput = {
   precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.BolsaUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2518,6 +2630,8 @@ export type BolsaUncheckedUpdateManyWithoutCriadoPorInput = {
   precoInscricao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoConsultoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precoMentoria?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  pacotesMentoria?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.BolsaUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2633,6 +2747,8 @@ export type BolsaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   precoInscricao?: boolean
   precoConsultoria?: boolean
   precoMentoria?: boolean
+  pacotesMentoria?: boolean
+  comissaoAfiliado?: boolean
   idioma?: boolean
   tags?: boolean
   descricao?: boolean
@@ -2673,6 +2789,8 @@ export type BolsaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   precoInscricao?: boolean
   precoConsultoria?: boolean
   precoMentoria?: boolean
+  pacotesMentoria?: boolean
+  comissaoAfiliado?: boolean
   idioma?: boolean
   tags?: boolean
   descricao?: boolean
@@ -2705,6 +2823,8 @@ export type BolsaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   precoInscricao?: boolean
   precoConsultoria?: boolean
   precoMentoria?: boolean
+  pacotesMentoria?: boolean
+  comissaoAfiliado?: boolean
   idioma?: boolean
   tags?: boolean
   descricao?: boolean
@@ -2737,6 +2857,8 @@ export type BolsaSelectScalar = {
   precoInscricao?: boolean
   precoConsultoria?: boolean
   precoMentoria?: boolean
+  pacotesMentoria?: boolean
+  comissaoAfiliado?: boolean
   idioma?: boolean
   tags?: boolean
   descricao?: boolean
@@ -2753,7 +2875,7 @@ export type BolsaSelectScalar = {
   criadoPorId?: boolean
 }
 
-export type BolsaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "titulo" | "subtitulo" | "categoria" | "instituicao" | "pais" | "nivel" | "requisitos" | "valor" | "moeda" | "precoOriginal" | "precoInscricao" | "precoConsultoria" | "precoMentoria" | "idioma" | "tags" | "descricao" | "imagemUrl" | "linkAplicar" | "prazo" | "numeroVagas" | "status" | "modalidade" | "imagemBg" | "datasImportantes" | "created_at" | "updated_at" | "criadoPorId", ExtArgs["result"]["bolsa"]>
+export type BolsaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "titulo" | "subtitulo" | "categoria" | "instituicao" | "pais" | "nivel" | "requisitos" | "valor" | "moeda" | "precoOriginal" | "precoInscricao" | "precoConsultoria" | "precoMentoria" | "pacotesMentoria" | "comissaoAfiliado" | "idioma" | "tags" | "descricao" | "imagemUrl" | "linkAplicar" | "prazo" | "numeroVagas" | "status" | "modalidade" | "imagemBg" | "datasImportantes" | "created_at" | "updated_at" | "criadoPorId", ExtArgs["result"]["bolsa"]>
 export type BolsaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   criadoPor?: boolean | Prisma.Bolsa$criadoPorArgs<ExtArgs>
   inscricoes?: boolean | Prisma.Bolsa$inscricoesArgs<ExtArgs>
@@ -2799,6 +2921,11 @@ export type $BolsaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     precoInscricao: number | null
     precoConsultoria: number | null
     precoMentoria: number | null
+    /**
+     * Pacotes de vários meses: [{ meses, multiplicador }] sobre o preço de 1 mês.
+     */
+    pacotesMentoria: runtime.JsonValue | null
+    comissaoAfiliado: number | null
     idioma: string | null
     tags: string[]
     descricao: string | null
@@ -3258,6 +3385,8 @@ export interface BolsaFieldRefs {
   readonly precoInscricao: Prisma.FieldRef<"Bolsa", 'Float'>
   readonly precoConsultoria: Prisma.FieldRef<"Bolsa", 'Float'>
   readonly precoMentoria: Prisma.FieldRef<"Bolsa", 'Float'>
+  readonly pacotesMentoria: Prisma.FieldRef<"Bolsa", 'Json'>
+  readonly comissaoAfiliado: Prisma.FieldRef<"Bolsa", 'Float'>
   readonly idioma: Prisma.FieldRef<"Bolsa", 'String'>
   readonly tags: Prisma.FieldRef<"Bolsa", 'String[]'>
   readonly descricao: Prisma.FieldRef<"Bolsa", 'String'>

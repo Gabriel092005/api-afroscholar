@@ -97,6 +97,11 @@ export const ModelName = {
   HomeBanner: 'HomeBanner',
   MapaGlobal: 'MapaGlobal',
   Atividade: 'Atividade',
+  AnaliseTipoDocumento: 'AnaliseTipoDocumento',
+  AnalisePedido: 'AnalisePedido',
+  AfiliadoLink: 'AfiliadoLink',
+  AfiliadoComissao: 'AfiliadoComissao',
+  AfiliadoSaque: 'AfiliadoSaque',
   PagamentoMomenu: 'PagamentoMomenu'
 } as const
 
@@ -396,6 +401,8 @@ export const BolsaScalarFieldEnum = {
   precoInscricao: 'precoInscricao',
   precoConsultoria: 'precoConsultoria',
   precoMentoria: 'precoMentoria',
+  pacotesMentoria: 'pacotesMentoria',
+  comissaoAfiliado: 'comissaoAfiliado',
   idioma: 'idioma',
   tags: 'tags',
   descricao: 'descricao',
@@ -436,6 +443,7 @@ export const BolsaInscricaoScalarFieldEnum = {
   dataAgendada: 'dataAgendada',
   duracaoMinutos: 'duracaoMinutos',
   inscritoEm: 'inscritoEm',
+  mesesMentoria: 'mesesMentoria',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
@@ -465,6 +473,7 @@ export const CursoScalarFieldEnum = {
   estudantes: 'estudantes',
   rating: 'rating',
   preco: 'preco',
+  comissaoAfiliado: 'comissaoAfiliado',
   idioma: 'idioma',
   tags: 'tags',
   descricao: 'descricao',
@@ -538,6 +547,7 @@ export const DocumentoScalarFieldEnum = {
   criadoPorId: 'criadoPorId',
   bolsaId: 'bolsaId',
   preco: 'preco',
+  comissaoAfiliado: 'comissaoAfiliado',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
@@ -699,6 +709,8 @@ export const AnaliseDocumentoScalarFieldEnum = {
   status: 'status',
   feedback: 'feedback',
   arquivoUrl: 'arquivoUrl',
+  valor: 'valor',
+  pedidoId: 'pedidoId',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
@@ -887,6 +899,76 @@ export const AtividadeScalarFieldEnum = {
 export type AtividadeScalarFieldEnum = (typeof AtividadeScalarFieldEnum)[keyof typeof AtividadeScalarFieldEnum]
 
 
+export const AnaliseTipoDocumentoScalarFieldEnum = {
+  id: 'id',
+  nome: 'nome',
+  descricao: 'descricao',
+  preco: 'preco',
+  ativo: 'ativo',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type AnaliseTipoDocumentoScalarFieldEnum = (typeof AnaliseTipoDocumentoScalarFieldEnum)[keyof typeof AnaliseTipoDocumentoScalarFieldEnum]
+
+
+export const AnalisePedidoScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  valor: 'valor',
+  metodo: 'metodo',
+  referencia: 'referencia',
+  status: 'status',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type AnalisePedidoScalarFieldEnum = (typeof AnalisePedidoScalarFieldEnum)[keyof typeof AnalisePedidoScalarFieldEnum]
+
+
+export const AfiliadoLinkScalarFieldEnum = {
+  id: 'id',
+  codigo: 'codigo',
+  usuarioId: 'usuarioId',
+  tipo: 'tipo',
+  itemId: 'itemId',
+  cliques: 'cliques',
+  created_at: 'created_at'
+} as const
+
+export type AfiliadoLinkScalarFieldEnum = (typeof AfiliadoLinkScalarFieldEnum)[keyof typeof AfiliadoLinkScalarFieldEnum]
+
+
+export const AfiliadoComissaoScalarFieldEnum = {
+  id: 'id',
+  pagamentoId: 'pagamentoId',
+  afiliadoId: 'afiliadoId',
+  linkId: 'linkId',
+  valorVenda: 'valorVenda',
+  percentual: 'percentual',
+  valor: 'valor',
+  created_at: 'created_at'
+} as const
+
+export type AfiliadoComissaoScalarFieldEnum = (typeof AfiliadoComissaoScalarFieldEnum)[keyof typeof AfiliadoComissaoScalarFieldEnum]
+
+
+export const AfiliadoSaqueScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  valor: 'valor',
+  iban: 'iban',
+  titular: 'titular',
+  status: 'status',
+  observacao: 'observacao',
+  processadoEm: 'processadoEm',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type AfiliadoSaqueScalarFieldEnum = (typeof AfiliadoSaqueScalarFieldEnum)[keyof typeof AfiliadoSaqueScalarFieldEnum]
+
+
 export const PagamentoMomenuScalarFieldEnum = {
   id: 'id',
   transactionId: 'transactionId',
@@ -904,6 +986,7 @@ export const PagamentoMomenuScalarFieldEnum = {
   falhaMotivo: 'falhaMotivo',
   ultimaVerificacao: 'ultimaVerificacao',
   pagoEm: 'pagoEm',
+  afiliadoLinkId: 'afiliadoLinkId',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const

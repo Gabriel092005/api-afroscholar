@@ -31,6 +31,7 @@ export type CursoAvgAggregateOutputType = {
   estudantes: number | null
   rating: number | null
   preco: number | null
+  comissaoAfiliado: number | null
 }
 
 export type CursoSumAggregateOutputType = {
@@ -38,6 +39,7 @@ export type CursoSumAggregateOutputType = {
   estudantes: number | null
   rating: number | null
   preco: number | null
+  comissaoAfiliado: number | null
 }
 
 export type CursoMinAggregateOutputType = {
@@ -51,6 +53,7 @@ export type CursoMinAggregateOutputType = {
   estudantes: number | null
   rating: number | null
   preco: number | null
+  comissaoAfiliado: number | null
   idioma: string | null
   descricao: string | null
   capaUrl: string | null
@@ -74,6 +77,7 @@ export type CursoMaxAggregateOutputType = {
   estudantes: number | null
   rating: number | null
   preco: number | null
+  comissaoAfiliado: number | null
   idioma: string | null
   descricao: string | null
   capaUrl: string | null
@@ -97,6 +101,7 @@ export type CursoCountAggregateOutputType = {
   estudantes: number
   rating: number
   preco: number
+  comissaoAfiliado: number
   idioma: number
   tags: number
   descricao: number
@@ -117,6 +122,7 @@ export type CursoAvgAggregateInputType = {
   estudantes?: true
   rating?: true
   preco?: true
+  comissaoAfiliado?: true
 }
 
 export type CursoSumAggregateInputType = {
@@ -124,6 +130,7 @@ export type CursoSumAggregateInputType = {
   estudantes?: true
   rating?: true
   preco?: true
+  comissaoAfiliado?: true
 }
 
 export type CursoMinAggregateInputType = {
@@ -137,6 +144,7 @@ export type CursoMinAggregateInputType = {
   estudantes?: true
   rating?: true
   preco?: true
+  comissaoAfiliado?: true
   idioma?: true
   descricao?: true
   capaUrl?: true
@@ -160,6 +168,7 @@ export type CursoMaxAggregateInputType = {
   estudantes?: true
   rating?: true
   preco?: true
+  comissaoAfiliado?: true
   idioma?: true
   descricao?: true
   capaUrl?: true
@@ -183,6 +192,7 @@ export type CursoCountAggregateInputType = {
   estudantes?: true
   rating?: true
   preco?: true
+  comissaoAfiliado?: true
   idioma?: true
   tags?: true
   descricao?: true
@@ -294,6 +304,7 @@ export type CursoGroupByOutputType = {
   estudantes: number
   rating: number
   preco: number
+  comissaoAfiliado: number | null
   idioma: string | null
   tags: string[]
   descricao: string | null
@@ -341,6 +352,7 @@ export type CursoWhereInput = {
   estudantes?: Prisma.IntFilter<"Curso"> | number
   rating?: Prisma.FloatFilter<"Curso"> | number
   preco?: Prisma.FloatFilter<"Curso"> | number
+  comissaoAfiliado?: Prisma.FloatNullableFilter<"Curso"> | number | null
   idioma?: Prisma.StringNullableFilter<"Curso"> | string | null
   tags?: Prisma.StringNullableListFilter<"Curso">
   descricao?: Prisma.StringNullableFilter<"Curso"> | string | null
@@ -370,6 +382,7 @@ export type CursoOrderByWithRelationInput = {
   estudantes?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   preco?: Prisma.SortOrder
+  comissaoAfiliado?: Prisma.SortOrderInput | Prisma.SortOrder
   idioma?: Prisma.SortOrderInput | Prisma.SortOrder
   tags?: Prisma.SortOrder
   descricao?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -402,6 +415,7 @@ export type CursoWhereUniqueInput = Prisma.AtLeast<{
   estudantes?: Prisma.IntFilter<"Curso"> | number
   rating?: Prisma.FloatFilter<"Curso"> | number
   preco?: Prisma.FloatFilter<"Curso"> | number
+  comissaoAfiliado?: Prisma.FloatNullableFilter<"Curso"> | number | null
   idioma?: Prisma.StringNullableFilter<"Curso"> | string | null
   tags?: Prisma.StringNullableListFilter<"Curso">
   descricao?: Prisma.StringNullableFilter<"Curso"> | string | null
@@ -431,6 +445,7 @@ export type CursoOrderByWithAggregationInput = {
   estudantes?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   preco?: Prisma.SortOrder
+  comissaoAfiliado?: Prisma.SortOrderInput | Prisma.SortOrder
   idioma?: Prisma.SortOrderInput | Prisma.SortOrder
   tags?: Prisma.SortOrder
   descricao?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -463,6 +478,7 @@ export type CursoScalarWhereWithAggregatesInput = {
   estudantes?: Prisma.IntWithAggregatesFilter<"Curso"> | number
   rating?: Prisma.FloatWithAggregatesFilter<"Curso"> | number
   preco?: Prisma.FloatWithAggregatesFilter<"Curso"> | number
+  comissaoAfiliado?: Prisma.FloatNullableWithAggregatesFilter<"Curso"> | number | null
   idioma?: Prisma.StringNullableWithAggregatesFilter<"Curso"> | string | null
   tags?: Prisma.StringNullableListFilter<"Curso">
   descricao?: Prisma.StringNullableWithAggregatesFilter<"Curso"> | string | null
@@ -487,6 +503,7 @@ export type CursoCreateInput = {
   estudantes?: number
   rating?: number
   preco: number
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -514,6 +531,7 @@ export type CursoUncheckedCreateInput = {
   estudantes?: number
   rating?: number
   preco: number
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -541,6 +559,7 @@ export type CursoUpdateInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -568,6 +587,7 @@ export type CursoUncheckedUpdateInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -595,6 +615,7 @@ export type CursoCreateManyInput = {
   estudantes?: number
   rating?: number
   preco: number
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -619,6 +640,7 @@ export type CursoUpdateManyMutationInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -641,6 +663,7 @@ export type CursoUncheckedUpdateManyInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -675,6 +698,7 @@ export type CursoCountOrderByAggregateInput = {
   estudantes?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   preco?: Prisma.SortOrder
+  comissaoAfiliado?: Prisma.SortOrder
   idioma?: Prisma.SortOrder
   tags?: Prisma.SortOrder
   descricao?: Prisma.SortOrder
@@ -693,6 +717,7 @@ export type CursoAvgOrderByAggregateInput = {
   estudantes?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   preco?: Prisma.SortOrder
+  comissaoAfiliado?: Prisma.SortOrder
 }
 
 export type CursoMaxOrderByAggregateInput = {
@@ -706,6 +731,7 @@ export type CursoMaxOrderByAggregateInput = {
   estudantes?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   preco?: Prisma.SortOrder
+  comissaoAfiliado?: Prisma.SortOrder
   idioma?: Prisma.SortOrder
   descricao?: Prisma.SortOrder
   capaUrl?: Prisma.SortOrder
@@ -729,6 +755,7 @@ export type CursoMinOrderByAggregateInput = {
   estudantes?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   preco?: Prisma.SortOrder
+  comissaoAfiliado?: Prisma.SortOrder
   idioma?: Prisma.SortOrder
   descricao?: Prisma.SortOrder
   capaUrl?: Prisma.SortOrder
@@ -746,6 +773,7 @@ export type CursoSumOrderByAggregateInput = {
   estudantes?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   preco?: Prisma.SortOrder
+  comissaoAfiliado?: Prisma.SortOrder
 }
 
 export type CursoScalarRelationFilter = {
@@ -903,6 +931,7 @@ export type CursoCreateWithoutCriadoPorInput = {
   estudantes?: number
   rating?: number
   preco: number
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -929,6 +958,7 @@ export type CursoUncheckedCreateWithoutCriadoPorInput = {
   estudantes?: number
   rating?: number
   preco: number
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -984,6 +1014,7 @@ export type CursoScalarWhereInput = {
   estudantes?: Prisma.IntFilter<"Curso"> | number
   rating?: Prisma.FloatFilter<"Curso"> | number
   preco?: Prisma.FloatFilter<"Curso"> | number
+  comissaoAfiliado?: Prisma.FloatNullableFilter<"Curso"> | number | null
   idioma?: Prisma.StringNullableFilter<"Curso"> | string | null
   tags?: Prisma.StringNullableListFilter<"Curso">
   descricao?: Prisma.StringNullableFilter<"Curso"> | string | null
@@ -1008,6 +1039,7 @@ export type CursoCreateWithoutBolsaInput = {
   estudantes?: number
   rating?: number
   preco: number
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -1034,6 +1066,7 @@ export type CursoUncheckedCreateWithoutBolsaInput = {
   estudantes?: number
   rating?: number
   preco: number
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -1086,6 +1119,7 @@ export type CursoCreateWithoutAulasInput = {
   estudantes?: number
   rating?: number
   preco: number
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -1112,6 +1146,7 @@ export type CursoUncheckedCreateWithoutAulasInput = {
   estudantes?: number
   rating?: number
   preco: number
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -1154,6 +1189,7 @@ export type CursoUpdateWithoutAulasInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1180,6 +1216,7 @@ export type CursoUncheckedUpdateWithoutAulasInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1206,6 +1243,7 @@ export type CursoCreateWithoutPagamentosInput = {
   estudantes?: number
   rating?: number
   preco: number
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -1232,6 +1270,7 @@ export type CursoUncheckedCreateWithoutPagamentosInput = {
   estudantes?: number
   rating?: number
   preco: number
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -1274,6 +1313,7 @@ export type CursoUpdateWithoutPagamentosInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1300,6 +1340,7 @@ export type CursoUncheckedUpdateWithoutPagamentosInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1326,6 +1367,7 @@ export type CursoCreateWithoutComprasInput = {
   estudantes?: number
   rating?: number
   preco: number
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -1352,6 +1394,7 @@ export type CursoUncheckedCreateWithoutComprasInput = {
   estudantes?: number
   rating?: number
   preco: number
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -1394,6 +1437,7 @@ export type CursoUpdateWithoutComprasInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1420,6 +1464,7 @@ export type CursoUncheckedUpdateWithoutComprasInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1446,6 +1491,7 @@ export type CursoCreateManyCriadoPorInput = {
   estudantes?: number
   rating?: number
   preco: number
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -1469,6 +1515,7 @@ export type CursoUpdateWithoutCriadoPorInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1495,6 +1542,7 @@ export type CursoUncheckedUpdateWithoutCriadoPorInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1521,6 +1569,7 @@ export type CursoUncheckedUpdateManyWithoutCriadoPorInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1544,6 +1593,7 @@ export type CursoCreateManyBolsaInput = {
   estudantes?: number
   rating?: number
   preco: number
+  comissaoAfiliado?: number | null
   idioma?: string | null
   tags?: Prisma.CursoCreatetagsInput | string[]
   descricao?: string | null
@@ -1567,6 +1617,7 @@ export type CursoUpdateWithoutBolsaInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1593,6 +1644,7 @@ export type CursoUncheckedUpdateWithoutBolsaInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1619,6 +1671,7 @@ export type CursoUncheckedUpdateManyWithoutBolsaInput = {
   estudantes?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   idioma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CursoUpdatetagsInput | string[]
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1691,6 +1744,7 @@ export type CursoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   estudantes?: boolean
   rating?: boolean
   preco?: boolean
+  comissaoAfiliado?: boolean
   idioma?: boolean
   tags?: boolean
   descricao?: boolean
@@ -1721,6 +1775,7 @@ export type CursoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   estudantes?: boolean
   rating?: boolean
   preco?: boolean
+  comissaoAfiliado?: boolean
   idioma?: boolean
   tags?: boolean
   descricao?: boolean
@@ -1747,6 +1802,7 @@ export type CursoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   estudantes?: boolean
   rating?: boolean
   preco?: boolean
+  comissaoAfiliado?: boolean
   idioma?: boolean
   tags?: boolean
   descricao?: boolean
@@ -1773,6 +1829,7 @@ export type CursoSelectScalar = {
   estudantes?: boolean
   rating?: boolean
   preco?: boolean
+  comissaoAfiliado?: boolean
   idioma?: boolean
   tags?: boolean
   descricao?: boolean
@@ -1786,7 +1843,7 @@ export type CursoSelectScalar = {
   bolsaId?: boolean
 }
 
-export type CursoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "titulo" | "subtitulo" | "categoria" | "nivel" | "duracao" | "quantAulas" | "estudantes" | "rating" | "preco" | "idioma" | "tags" | "descricao" | "capaUrl" | "status" | "mentorNome" | "mentorAvatar" | "created_at" | "updated_at" | "criadoPorId" | "bolsaId", ExtArgs["result"]["curso"]>
+export type CursoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "titulo" | "subtitulo" | "categoria" | "nivel" | "duracao" | "quantAulas" | "estudantes" | "rating" | "preco" | "comissaoAfiliado" | "idioma" | "tags" | "descricao" | "capaUrl" | "status" | "mentorNome" | "mentorAvatar" | "created_at" | "updated_at" | "criadoPorId" | "bolsaId", ExtArgs["result"]["curso"]>
 export type CursoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   criadoPor?: boolean | Prisma.Curso$criadoPorArgs<ExtArgs>
   bolsa?: boolean | Prisma.Curso$bolsaArgs<ExtArgs>
@@ -1824,6 +1881,7 @@ export type $CursoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     estudantes: number
     rating: number
     preco: number
+    comissaoAfiliado: number | null
     idioma: string | null
     tags: string[]
     descricao: string | null
@@ -2273,6 +2331,7 @@ export interface CursoFieldRefs {
   readonly estudantes: Prisma.FieldRef<"Curso", 'Int'>
   readonly rating: Prisma.FieldRef<"Curso", 'Float'>
   readonly preco: Prisma.FieldRef<"Curso", 'Float'>
+  readonly comissaoAfiliado: Prisma.FieldRef<"Curso", 'Float'>
   readonly idioma: Prisma.FieldRef<"Curso", 'String'>
   readonly tags: Prisma.FieldRef<"Curso", 'String[]'>
   readonly descricao: Prisma.FieldRef<"Curso", 'String'>

@@ -37,7 +37,7 @@ export async function encerrarMentoriasExpiradas(limite = 100): Promise<number> 
     await notificar({
       usuarioId: acesso.usuarioId,
       titulo: "A sua mentoria terminou",
-      conteudo: `O mês de acesso de "${nome}" chegou ao fim. Renove a mentoria para voltar a ter os cursos, documentos, aulas ao vivo e a inteligência artificial.`,
+      conteudo: `O período de acesso de "${nome}" chegou ao fim. Renove a mentoria para voltar a ter os cursos, documentos, aulas ao vivo e a inteligência artificial.`,
       tipo: "INFO",
       link: acesso.bolsaId ? `/bolsas/${acesso.bolsaId}` : "/mentorias",
     });

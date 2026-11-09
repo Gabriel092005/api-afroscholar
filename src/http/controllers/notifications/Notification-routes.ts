@@ -21,10 +21,18 @@ export async function NotificationRoutes(app: FastifyInstance) {
 
     try {
       const { subscription } = schema.parse(req.body);
-      await prisma.user.update({
-        where: { id: req.user.sub },
-        data: { pushSubscription: subscription as any },
-      });
+      const subscricao = JSON.stringify(subscription);
+      // Num aparelho partilhado, a conta anterior deixa de receber avisos neste navegador.
+      await prisma.$transaction([
+        prisma.user.updateMany({
+          where: { pushSubscription: { contains: subscription.endpoint }, id: { not: req.user.sub } },
+          data: { pushSubscription: null },
+        }),
+        prisma.user.update({
+          where: { id: req.user.sub },
+          data: { pushSubscription: subscricao },
+        }),
+      ]);
       return reply.status(201).send({ message: 'Inscrição salva com sucesso!' });
     } catch (error) {
       if (error instanceof z.ZodError) {

@@ -286,6 +286,10 @@ export type UserWhereInput = {
   documentosComprados?: Prisma.DocumentoCompraListRelationFilter
   pagamentosMomenu?: Prisma.PagamentoMomenuListRelationFilter
   mentoriaAcessos?: Prisma.MentoriaAcessoListRelationFilter
+  afiliadoLinks?: Prisma.AfiliadoLinkListRelationFilter
+  afiliadoComissoes?: Prisma.AfiliadoComissaoListRelationFilter
+  afiliadoSaques?: Prisma.AfiliadoSaqueListRelationFilter
+  analisePedidos?: Prisma.AnalisePedidoListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -328,6 +332,10 @@ export type UserOrderByWithRelationInput = {
   documentosComprados?: Prisma.DocumentoCompraOrderByRelationAggregateInput
   pagamentosMomenu?: Prisma.PagamentoMomenuOrderByRelationAggregateInput
   mentoriaAcessos?: Prisma.MentoriaAcessoOrderByRelationAggregateInput
+  afiliadoLinks?: Prisma.AfiliadoLinkOrderByRelationAggregateInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoOrderByRelationAggregateInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueOrderByRelationAggregateInput
+  analisePedidos?: Prisma.AnalisePedidoOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -373,6 +381,10 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   documentosComprados?: Prisma.DocumentoCompraListRelationFilter
   pagamentosMomenu?: Prisma.PagamentoMomenuListRelationFilter
   mentoriaAcessos?: Prisma.MentoriaAcessoListRelationFilter
+  afiliadoLinks?: Prisma.AfiliadoLinkListRelationFilter
+  afiliadoComissoes?: Prisma.AfiliadoComissaoListRelationFilter
+  afiliadoSaques?: Prisma.AfiliadoSaqueListRelationFilter
+  analisePedidos?: Prisma.AnalisePedidoListRelationFilter
 }, "id" | "email" | "resetToken">
 
 export type UserOrderByWithAggregationInput = {
@@ -457,6 +469,10 @@ export type UserCreateInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -499,6 +515,10 @@ export type UserUncheckedCreateInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUpdateInput = {
@@ -541,6 +561,10 @@ export type UserUpdateInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -583,6 +607,10 @@ export type UserUncheckedUpdateInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -1055,6 +1083,62 @@ export type UserUpdateOneRequiredWithoutAtividadesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAtividadesInput, Prisma.UserUpdateWithoutAtividadesInput>, Prisma.UserUncheckedUpdateWithoutAtividadesInput>
 }
 
+export type UserCreateNestedOneWithoutAnalisePedidosInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAnalisePedidosInput, Prisma.UserUncheckedCreateWithoutAnalisePedidosInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAnalisePedidosInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutAnalisePedidosNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAnalisePedidosInput, Prisma.UserUncheckedCreateWithoutAnalisePedidosInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAnalisePedidosInput
+  upsert?: Prisma.UserUpsertWithoutAnalisePedidosInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAnalisePedidosInput, Prisma.UserUpdateWithoutAnalisePedidosInput>, Prisma.UserUncheckedUpdateWithoutAnalisePedidosInput>
+}
+
+export type UserCreateNestedOneWithoutAfiliadoLinksInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAfiliadoLinksInput, Prisma.UserUncheckedCreateWithoutAfiliadoLinksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAfiliadoLinksInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutAfiliadoLinksNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAfiliadoLinksInput, Prisma.UserUncheckedCreateWithoutAfiliadoLinksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAfiliadoLinksInput
+  upsert?: Prisma.UserUpsertWithoutAfiliadoLinksInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAfiliadoLinksInput, Prisma.UserUpdateWithoutAfiliadoLinksInput>, Prisma.UserUncheckedUpdateWithoutAfiliadoLinksInput>
+}
+
+export type UserCreateNestedOneWithoutAfiliadoComissoesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAfiliadoComissoesInput, Prisma.UserUncheckedCreateWithoutAfiliadoComissoesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAfiliadoComissoesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutAfiliadoComissoesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAfiliadoComissoesInput, Prisma.UserUncheckedCreateWithoutAfiliadoComissoesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAfiliadoComissoesInput
+  upsert?: Prisma.UserUpsertWithoutAfiliadoComissoesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAfiliadoComissoesInput, Prisma.UserUpdateWithoutAfiliadoComissoesInput>, Prisma.UserUncheckedUpdateWithoutAfiliadoComissoesInput>
+}
+
+export type UserCreateNestedOneWithoutAfiliadoSaquesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAfiliadoSaquesInput, Prisma.UserUncheckedCreateWithoutAfiliadoSaquesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAfiliadoSaquesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutAfiliadoSaquesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAfiliadoSaquesInput, Prisma.UserUncheckedCreateWithoutAfiliadoSaquesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAfiliadoSaquesInput
+  upsert?: Prisma.UserUpsertWithoutAfiliadoSaquesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAfiliadoSaquesInput, Prisma.UserUpdateWithoutAfiliadoSaquesInput>, Prisma.UserUncheckedUpdateWithoutAfiliadoSaquesInput>
+}
+
 export type UserCreateNestedOneWithoutPagamentosMomenuInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutPagamentosMomenuInput, Prisma.UserUncheckedCreateWithoutPagamentosMomenuInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutPagamentosMomenuInput
@@ -1110,6 +1194,10 @@ export type UserCreateWithoutNotificationsInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -1151,6 +1239,10 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -1208,6 +1300,10 @@ export type UserUpdateWithoutNotificationsInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -1249,6 +1345,10 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutBolsasCriadasInput = {
@@ -1290,6 +1390,10 @@ export type UserCreateWithoutBolsasCriadasInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutBolsasCriadasInput = {
@@ -1331,6 +1435,10 @@ export type UserUncheckedCreateWithoutBolsasCriadasInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutBolsasCriadasInput = {
@@ -1388,6 +1496,10 @@ export type UserUpdateWithoutBolsasCriadasInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBolsasCriadasInput = {
@@ -1429,6 +1541,10 @@ export type UserUncheckedUpdateWithoutBolsasCriadasInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutInscricoesInput = {
@@ -1470,6 +1586,10 @@ export type UserCreateWithoutInscricoesInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutInscricoesInput = {
@@ -1511,6 +1631,10 @@ export type UserUncheckedCreateWithoutInscricoesInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutInscricoesInput = {
@@ -1568,6 +1692,10 @@ export type UserUpdateWithoutInscricoesInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInscricoesInput = {
@@ -1609,6 +1737,10 @@ export type UserUncheckedUpdateWithoutInscricoesInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutCursosCriadosInput = {
@@ -1650,6 +1782,10 @@ export type UserCreateWithoutCursosCriadosInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutCursosCriadosInput = {
@@ -1691,6 +1827,10 @@ export type UserUncheckedCreateWithoutCursosCriadosInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutCursosCriadosInput = {
@@ -1748,6 +1888,10 @@ export type UserUpdateWithoutCursosCriadosInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCursosCriadosInput = {
@@ -1789,6 +1933,10 @@ export type UserUncheckedUpdateWithoutCursosCriadosInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutPagamentosInput = {
@@ -1830,6 +1978,10 @@ export type UserCreateWithoutPagamentosInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutPagamentosInput = {
@@ -1871,6 +2023,10 @@ export type UserUncheckedCreateWithoutPagamentosInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutPagamentosInput = {
@@ -1928,6 +2084,10 @@ export type UserUpdateWithoutPagamentosInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPagamentosInput = {
@@ -1969,6 +2129,10 @@ export type UserUncheckedUpdateWithoutPagamentosInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutCursosCompradosInput = {
@@ -2010,6 +2174,10 @@ export type UserCreateWithoutCursosCompradosInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutCursosCompradosInput = {
@@ -2051,6 +2219,10 @@ export type UserUncheckedCreateWithoutCursosCompradosInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutCursosCompradosInput = {
@@ -2108,6 +2280,10 @@ export type UserUpdateWithoutCursosCompradosInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCursosCompradosInput = {
@@ -2149,6 +2325,10 @@ export type UserUncheckedUpdateWithoutCursosCompradosInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutDocumentosInput = {
@@ -2190,6 +2370,10 @@ export type UserCreateWithoutDocumentosInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutDocumentosInput = {
@@ -2231,6 +2415,10 @@ export type UserUncheckedCreateWithoutDocumentosInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutDocumentosInput = {
@@ -2288,6 +2476,10 @@ export type UserUpdateWithoutDocumentosInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDocumentosInput = {
@@ -2329,6 +2521,10 @@ export type UserUncheckedUpdateWithoutDocumentosInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutDocumentosCompradosInput = {
@@ -2370,6 +2566,10 @@ export type UserCreateWithoutDocumentosCompradosInput = {
   documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutDocumentosCompradosInput = {
@@ -2411,6 +2611,10 @@ export type UserUncheckedCreateWithoutDocumentosCompradosInput = {
   documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutDocumentosCompradosInput = {
@@ -2468,6 +2672,10 @@ export type UserUpdateWithoutDocumentosCompradosInput = {
   documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDocumentosCompradosInput = {
@@ -2509,6 +2717,10 @@ export type UserUncheckedUpdateWithoutDocumentosCompradosInput = {
   documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutDepoimentosInput = {
@@ -2550,6 +2762,10 @@ export type UserCreateWithoutDepoimentosInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutDepoimentosInput = {
@@ -2591,6 +2807,10 @@ export type UserUncheckedCreateWithoutDepoimentosInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutDepoimentosInput = {
@@ -2648,6 +2868,10 @@ export type UserUpdateWithoutDepoimentosInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDepoimentosInput = {
@@ -2689,6 +2913,10 @@ export type UserUncheckedUpdateWithoutDepoimentosInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutNovidadesInput = {
@@ -2730,6 +2958,10 @@ export type UserCreateWithoutNovidadesInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutNovidadesInput = {
@@ -2771,6 +3003,10 @@ export type UserUncheckedCreateWithoutNovidadesInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutNovidadesInput = {
@@ -2828,6 +3064,10 @@ export type UserUpdateWithoutNovidadesInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNovidadesInput = {
@@ -2869,6 +3109,10 @@ export type UserUncheckedUpdateWithoutNovidadesInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutNovidadeInscricoesInput = {
@@ -2910,6 +3154,10 @@ export type UserCreateWithoutNovidadeInscricoesInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutNovidadeInscricoesInput = {
@@ -2951,6 +3199,10 @@ export type UserUncheckedCreateWithoutNovidadeInscricoesInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutNovidadeInscricoesInput = {
@@ -3008,6 +3260,10 @@ export type UserUpdateWithoutNovidadeInscricoesInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNovidadeInscricoesInput = {
@@ -3049,6 +3305,10 @@ export type UserUncheckedUpdateWithoutNovidadeInscricoesInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutPerfilAcademicoInput = {
@@ -3090,6 +3350,10 @@ export type UserCreateWithoutPerfilAcademicoInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutPerfilAcademicoInput = {
@@ -3131,6 +3395,10 @@ export type UserUncheckedCreateWithoutPerfilAcademicoInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutPerfilAcademicoInput = {
@@ -3188,6 +3456,10 @@ export type UserUpdateWithoutPerfilAcademicoInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPerfilAcademicoInput = {
@@ -3229,6 +3501,10 @@ export type UserUncheckedUpdateWithoutPerfilAcademicoInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutAnalisesInput = {
@@ -3270,6 +3546,10 @@ export type UserCreateWithoutAnalisesInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutAnalisesInput = {
@@ -3311,6 +3591,10 @@ export type UserUncheckedCreateWithoutAnalisesInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutAnalisesInput = {
@@ -3368,6 +3652,10 @@ export type UserUpdateWithoutAnalisesInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAnalisesInput = {
@@ -3409,6 +3697,10 @@ export type UserUncheckedUpdateWithoutAnalisesInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutComunidadesInput = {
@@ -3450,6 +3742,10 @@ export type UserCreateWithoutComunidadesInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutComunidadesInput = {
@@ -3491,6 +3787,10 @@ export type UserUncheckedCreateWithoutComunidadesInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutComunidadesInput = {
@@ -3548,6 +3848,10 @@ export type UserUpdateWithoutComunidadesInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutComunidadesInput = {
@@ -3589,6 +3893,10 @@ export type UserUncheckedUpdateWithoutComunidadesInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutMembroEmInput = {
@@ -3630,6 +3938,10 @@ export type UserCreateWithoutMembroEmInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutMembroEmInput = {
@@ -3671,6 +3983,10 @@ export type UserUncheckedCreateWithoutMembroEmInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutMembroEmInput = {
@@ -3728,6 +4044,10 @@ export type UserUpdateWithoutMembroEmInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMembroEmInput = {
@@ -3769,6 +4089,10 @@ export type UserUncheckedUpdateWithoutMembroEmInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutMensagensInput = {
@@ -3810,6 +4134,10 @@ export type UserCreateWithoutMensagensInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutMensagensInput = {
@@ -3851,6 +4179,10 @@ export type UserUncheckedCreateWithoutMensagensInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutMensagensInput = {
@@ -3908,6 +4240,10 @@ export type UserUpdateWithoutMensagensInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMensagensInput = {
@@ -3949,6 +4285,10 @@ export type UserUncheckedUpdateWithoutMensagensInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutAulasOnlineInput = {
@@ -3990,6 +4330,10 @@ export type UserCreateWithoutAulasOnlineInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutAulasOnlineInput = {
@@ -4031,6 +4375,10 @@ export type UserUncheckedCreateWithoutAulasOnlineInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutAulasOnlineInput = {
@@ -4088,6 +4436,10 @@ export type UserUpdateWithoutAulasOnlineInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAulasOnlineInput = {
@@ -4129,6 +4481,10 @@ export type UserUncheckedUpdateWithoutAulasOnlineInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutAulasParticipadasInput = {
@@ -4170,6 +4526,10 @@ export type UserCreateWithoutAulasParticipadasInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutAulasParticipadasInput = {
@@ -4211,6 +4571,10 @@ export type UserUncheckedCreateWithoutAulasParticipadasInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutAulasParticipadasInput = {
@@ -4268,6 +4632,10 @@ export type UserUpdateWithoutAulasParticipadasInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAulasParticipadasInput = {
@@ -4309,6 +4677,10 @@ export type UserUncheckedUpdateWithoutAulasParticipadasInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutMentoriaAcessosInput = {
@@ -4350,6 +4722,10 @@ export type UserCreateWithoutMentoriaAcessosInput = {
   documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutMentoriaAcessosInput = {
@@ -4391,6 +4767,10 @@ export type UserUncheckedCreateWithoutMentoriaAcessosInput = {
   documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutMentoriaAcessosInput = {
@@ -4448,6 +4828,10 @@ export type UserUpdateWithoutMentoriaAcessosInput = {
   documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMentoriaAcessosInput = {
@@ -4489,6 +4873,10 @@ export type UserUncheckedUpdateWithoutMentoriaAcessosInput = {
   documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutMentoriasInscricoesInput = {
@@ -4530,6 +4918,10 @@ export type UserCreateWithoutMentoriasInscricoesInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutMentoriasInscricoesInput = {
@@ -4571,6 +4963,10 @@ export type UserUncheckedCreateWithoutMentoriasInscricoesInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutMentoriasInscricoesInput = {
@@ -4628,6 +5024,10 @@ export type UserUpdateWithoutMentoriasInscricoesInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMentoriasInscricoesInput = {
@@ -4669,6 +5069,10 @@ export type UserUncheckedUpdateWithoutMentoriasInscricoesInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutDuvidasInput = {
@@ -4710,6 +5114,10 @@ export type UserCreateWithoutDuvidasInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutDuvidasInput = {
@@ -4751,6 +5159,10 @@ export type UserUncheckedCreateWithoutDuvidasInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutDuvidasInput = {
@@ -4808,6 +5220,10 @@ export type UserUpdateWithoutDuvidasInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDuvidasInput = {
@@ -4849,6 +5265,10 @@ export type UserUncheckedUpdateWithoutDuvidasInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutRespostasDuvidasInput = {
@@ -4890,6 +5310,10 @@ export type UserCreateWithoutRespostasDuvidasInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutRespostasDuvidasInput = {
@@ -4931,6 +5355,10 @@ export type UserUncheckedCreateWithoutRespostasDuvidasInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutRespostasDuvidasInput = {
@@ -4988,6 +5416,10 @@ export type UserUpdateWithoutRespostasDuvidasInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRespostasDuvidasInput = {
@@ -5029,6 +5461,10 @@ export type UserUncheckedUpdateWithoutRespostasDuvidasInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutAtividadesInput = {
@@ -5070,6 +5506,10 @@ export type UserCreateWithoutAtividadesInput = {
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutAtividadesInput = {
@@ -5111,6 +5551,10 @@ export type UserUncheckedCreateWithoutAtividadesInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutAtividadesInput = {
@@ -5168,6 +5612,10 @@ export type UserUpdateWithoutAtividadesInput = {
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAtividadesInput = {
@@ -5209,6 +5657,794 @@ export type UserUncheckedUpdateWithoutAtividadesInput = {
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UserCreateWithoutAnalisePedidosInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserUncheckedCreateWithoutAnalisePedidosInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityUncheckedCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberUncheckedCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageUncheckedCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoUncheckedCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeUncheckedCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoUncheckedCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserCreateOrConnectWithoutAnalisePedidosInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAnalisePedidosInput, Prisma.UserUncheckedCreateWithoutAnalisePedidosInput>
+}
+
+export type UserUpsertWithoutAnalisePedidosInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAnalisePedidosInput, Prisma.UserUncheckedUpdateWithoutAnalisePedidosInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAnalisePedidosInput, Prisma.UserUncheckedCreateWithoutAnalisePedidosInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAnalisePedidosInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAnalisePedidosInput, Prisma.UserUncheckedUpdateWithoutAnalisePedidosInput>
+}
+
+export type UserUpdateWithoutAnalisePedidosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAnalisePedidosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUncheckedUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUncheckedUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUncheckedUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UserCreateWithoutAfiliadoLinksInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserUncheckedCreateWithoutAfiliadoLinksInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityUncheckedCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberUncheckedCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageUncheckedCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoUncheckedCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeUncheckedCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoUncheckedCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserCreateOrConnectWithoutAfiliadoLinksInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAfiliadoLinksInput, Prisma.UserUncheckedCreateWithoutAfiliadoLinksInput>
+}
+
+export type UserUpsertWithoutAfiliadoLinksInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAfiliadoLinksInput, Prisma.UserUncheckedUpdateWithoutAfiliadoLinksInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAfiliadoLinksInput, Prisma.UserUncheckedCreateWithoutAfiliadoLinksInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAfiliadoLinksInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAfiliadoLinksInput, Prisma.UserUncheckedUpdateWithoutAfiliadoLinksInput>
+}
+
+export type UserUpdateWithoutAfiliadoLinksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAfiliadoLinksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUncheckedUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUncheckedUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUncheckedUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UserCreateWithoutAfiliadoComissoesInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserUncheckedCreateWithoutAfiliadoComissoesInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityUncheckedCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberUncheckedCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageUncheckedCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoUncheckedCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeUncheckedCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoUncheckedCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserCreateOrConnectWithoutAfiliadoComissoesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAfiliadoComissoesInput, Prisma.UserUncheckedCreateWithoutAfiliadoComissoesInput>
+}
+
+export type UserUpsertWithoutAfiliadoComissoesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAfiliadoComissoesInput, Prisma.UserUncheckedUpdateWithoutAfiliadoComissoesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAfiliadoComissoesInput, Prisma.UserUncheckedCreateWithoutAfiliadoComissoesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAfiliadoComissoesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAfiliadoComissoesInput, Prisma.UserUncheckedUpdateWithoutAfiliadoComissoesInput>
+}
+
+export type UserUpdateWithoutAfiliadoComissoesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAfiliadoComissoesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUncheckedUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUncheckedUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUncheckedUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UserCreateWithoutAfiliadoSaquesInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserUncheckedCreateWithoutAfiliadoSaquesInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityUncheckedCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberUncheckedCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageUncheckedCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoUncheckedCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeUncheckedCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoUncheckedCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
+}
+
+export type UserCreateOrConnectWithoutAfiliadoSaquesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAfiliadoSaquesInput, Prisma.UserUncheckedCreateWithoutAfiliadoSaquesInput>
+}
+
+export type UserUpsertWithoutAfiliadoSaquesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAfiliadoSaquesInput, Prisma.UserUncheckedUpdateWithoutAfiliadoSaquesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAfiliadoSaquesInput, Prisma.UserUncheckedCreateWithoutAfiliadoSaquesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAfiliadoSaquesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAfiliadoSaquesInput, Prisma.UserUncheckedUpdateWithoutAfiliadoSaquesInput>
+}
+
+export type UserUpdateWithoutAfiliadoSaquesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAfiliadoSaquesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUncheckedUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUncheckedUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUncheckedUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutPagamentosMomenuInput = {
@@ -5250,6 +6486,10 @@ export type UserCreateWithoutPagamentosMomenuInput = {
   documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
   documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutPagamentosMomenuInput = {
@@ -5291,6 +6531,10 @@ export type UserUncheckedCreateWithoutPagamentosMomenuInput = {
   documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
   documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutPagamentosMomenuInput = {
@@ -5348,6 +6592,10 @@ export type UserUpdateWithoutPagamentosMomenuInput = {
   documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
   documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPagamentosMomenuInput = {
@@ -5389,6 +6637,10 @@ export type UserUncheckedUpdateWithoutPagamentosMomenuInput = {
   documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
   documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
   mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 
@@ -5420,6 +6672,10 @@ export type UserCountOutputType = {
   documentosComprados: number
   pagamentosMomenu: number
   mentoriaAcessos: number
+  afiliadoLinks: number
+  afiliadoComissoes: number
+  afiliadoSaques: number
+  analisePedidos: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -5446,6 +6702,10 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   documentosComprados?: boolean | UserCountOutputTypeCountDocumentosCompradosArgs
   pagamentosMomenu?: boolean | UserCountOutputTypeCountPagamentosMomenuArgs
   mentoriaAcessos?: boolean | UserCountOutputTypeCountMentoriaAcessosArgs
+  afiliadoLinks?: boolean | UserCountOutputTypeCountAfiliadoLinksArgs
+  afiliadoComissoes?: boolean | UserCountOutputTypeCountAfiliadoComissoesArgs
+  afiliadoSaques?: boolean | UserCountOutputTypeCountAfiliadoSaquesArgs
+  analisePedidos?: boolean | UserCountOutputTypeCountAnalisePedidosArgs
 }
 
 /**
@@ -5619,6 +6879,34 @@ export type UserCountOutputTypeCountMentoriaAcessosArgs<ExtArgs extends runtime.
   where?: Prisma.MentoriaAcessoWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAfiliadoLinksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AfiliadoLinkWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAfiliadoComissoesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AfiliadoComissaoWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAfiliadoSaquesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AfiliadoSaqueWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAnalisePedidosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AnalisePedidoWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -5660,6 +6948,10 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   documentosComprados?: boolean | Prisma.User$documentosCompradosArgs<ExtArgs>
   pagamentosMomenu?: boolean | Prisma.User$pagamentosMomenuArgs<ExtArgs>
   mentoriaAcessos?: boolean | Prisma.User$mentoriaAcessosArgs<ExtArgs>
+  afiliadoLinks?: boolean | Prisma.User$afiliadoLinksArgs<ExtArgs>
+  afiliadoComissoes?: boolean | Prisma.User$afiliadoComissoesArgs<ExtArgs>
+  afiliadoSaques?: boolean | Prisma.User$afiliadoSaquesArgs<ExtArgs>
+  analisePedidos?: boolean | Prisma.User$analisePedidosArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -5743,6 +7035,10 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   documentosComprados?: boolean | Prisma.User$documentosCompradosArgs<ExtArgs>
   pagamentosMomenu?: boolean | Prisma.User$pagamentosMomenuArgs<ExtArgs>
   mentoriaAcessos?: boolean | Prisma.User$mentoriaAcessosArgs<ExtArgs>
+  afiliadoLinks?: boolean | Prisma.User$afiliadoLinksArgs<ExtArgs>
+  afiliadoComissoes?: boolean | Prisma.User$afiliadoComissoesArgs<ExtArgs>
+  afiliadoSaques?: boolean | Prisma.User$afiliadoSaquesArgs<ExtArgs>
+  analisePedidos?: boolean | Prisma.User$analisePedidosArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -5775,6 +7071,10 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     documentosComprados: Prisma.$DocumentoCompraPayload<ExtArgs>[]
     pagamentosMomenu: Prisma.$PagamentoMomenuPayload<ExtArgs>[]
     mentoriaAcessos: Prisma.$MentoriaAcessoPayload<ExtArgs>[]
+    afiliadoLinks: Prisma.$AfiliadoLinkPayload<ExtArgs>[]
+    afiliadoComissoes: Prisma.$AfiliadoComissaoPayload<ExtArgs>[]
+    afiliadoSaques: Prisma.$AfiliadoSaquePayload<ExtArgs>[]
+    analisePedidos: Prisma.$AnalisePedidoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -6210,6 +7510,10 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   documentosComprados<T extends Prisma.User$documentosCompradosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$documentosCompradosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DocumentoCompraPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   pagamentosMomenu<T extends Prisma.User$pagamentosMomenuArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$pagamentosMomenuArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PagamentoMomenuPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   mentoriaAcessos<T extends Prisma.User$mentoriaAcessosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$mentoriaAcessosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MentoriaAcessoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  afiliadoLinks<T extends Prisma.User$afiliadoLinksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$afiliadoLinksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AfiliadoLinkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  afiliadoComissoes<T extends Prisma.User$afiliadoComissoesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$afiliadoComissoesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AfiliadoComissaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  afiliadoSaques<T extends Prisma.User$afiliadoSaquesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$afiliadoSaquesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AfiliadoSaquePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  analisePedidos<T extends Prisma.User$analisePedidosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$analisePedidosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AnalisePedidoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7210,6 +8514,102 @@ export type User$mentoriaAcessosArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.MentoriaAcessoScalarFieldEnum | Prisma.MentoriaAcessoScalarFieldEnum[]
+}
+
+/**
+ * User.afiliadoLinks
+ */
+export type User$afiliadoLinksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AfiliadoLink
+   */
+  select?: Prisma.AfiliadoLinkSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AfiliadoLink
+   */
+  omit?: Prisma.AfiliadoLinkOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AfiliadoLinkInclude<ExtArgs> | null
+  where?: Prisma.AfiliadoLinkWhereInput
+  orderBy?: Prisma.AfiliadoLinkOrderByWithRelationInput | Prisma.AfiliadoLinkOrderByWithRelationInput[]
+  cursor?: Prisma.AfiliadoLinkWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AfiliadoLinkScalarFieldEnum | Prisma.AfiliadoLinkScalarFieldEnum[]
+}
+
+/**
+ * User.afiliadoComissoes
+ */
+export type User$afiliadoComissoesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AfiliadoComissao
+   */
+  select?: Prisma.AfiliadoComissaoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AfiliadoComissao
+   */
+  omit?: Prisma.AfiliadoComissaoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AfiliadoComissaoInclude<ExtArgs> | null
+  where?: Prisma.AfiliadoComissaoWhereInput
+  orderBy?: Prisma.AfiliadoComissaoOrderByWithRelationInput | Prisma.AfiliadoComissaoOrderByWithRelationInput[]
+  cursor?: Prisma.AfiliadoComissaoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AfiliadoComissaoScalarFieldEnum | Prisma.AfiliadoComissaoScalarFieldEnum[]
+}
+
+/**
+ * User.afiliadoSaques
+ */
+export type User$afiliadoSaquesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AfiliadoSaque
+   */
+  select?: Prisma.AfiliadoSaqueSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AfiliadoSaque
+   */
+  omit?: Prisma.AfiliadoSaqueOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AfiliadoSaqueInclude<ExtArgs> | null
+  where?: Prisma.AfiliadoSaqueWhereInput
+  orderBy?: Prisma.AfiliadoSaqueOrderByWithRelationInput | Prisma.AfiliadoSaqueOrderByWithRelationInput[]
+  cursor?: Prisma.AfiliadoSaqueWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AfiliadoSaqueScalarFieldEnum | Prisma.AfiliadoSaqueScalarFieldEnum[]
+}
+
+/**
+ * User.analisePedidos
+ */
+export type User$analisePedidosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AnalisePedido
+   */
+  select?: Prisma.AnalisePedidoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AnalisePedido
+   */
+  omit?: Prisma.AnalisePedidoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AnalisePedidoInclude<ExtArgs> | null
+  where?: Prisma.AnalisePedidoWhereInput
+  orderBy?: Prisma.AnalisePedidoOrderByWithRelationInput | Prisma.AnalisePedidoOrderByWithRelationInput[]
+  cursor?: Prisma.AnalisePedidoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AnalisePedidoScalarFieldEnum | Prisma.AnalisePedidoScalarFieldEnum[]
 }
 
 /**

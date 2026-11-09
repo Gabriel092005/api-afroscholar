@@ -167,6 +167,10 @@ model User {
   documentosComprados DocumentoCompra[]
   pagamentosMomenu    PagamentoMomenu[]
   mentoriaAcessos     MentoriaAcesso[]
+  afiliadoLinks       AfiliadoLink[]
+  afiliadoComissoes   AfiliadoComissao[]
+  afiliadoSaques      AfiliadoSaque[]
+  analisePedidos      AnalisePedido[]
 }
 
 model Notification {
@@ -505,6 +509,10 @@ model Bolsa {
   precoInscricao   Float?
   precoConsultoria Float?
   precoMentoria    Float?
+  /// Pacotes de vários meses: [{ meses, multiplicador }] sobre o preço de 1 mês.
+  pacotesMentoria  Json?
+  // Sem valor, aplica-se a percentagem global de afiliados.
+  comissaoAfiliado Float?
   idioma           String?
   tags             String[]
   descricao        String?
@@ -554,6 +562,8 @@ model BolsaInscricao {
   /// Quando a inscrição foi confirmada. tipoInteresse guarda só o último serviço pedido,
   /// e comprar depois uma consultoria não pode apagar o facto de já estar inscrito.
   inscritoEm          DateTime?
+  /// Duração do pacote de mentoria pedido. Guardada na compra, porque os pacotes podem mudar.
+  mesesMentoria       Int?
   created_at          DateTime        @default(now())
   updated_at          DateTime        @updatedAt
 
@@ -589,6 +599,8 @@ model Curso {
   estudantes    Int         @default(0)
   rating        Float       @default(0)
   preco         Float
+  // Sem valor, aplica-se a percentagem global de afiliados.
+  comissaoAfiliado Float?
   idioma        String?
   tags          String[]
   descricao     String?
@@ -678,6 +690,8 @@ model Documento {
   bolsa       Bolsa?          @relation(fields: [bolsaId], references: [id], onDelete: Cascade)
   // 0 é gratuito. Com preço, o ficheiro só se abre depois de comprado.
   preco       Float           @default(0)
+  // Sem valor, aplica-se a percentagem global de afiliados.
+  comissaoAfiliado Float?
   created_at  DateTime        @default(now())
   updated_at  DateTime        @updatedAt
 
@@ -859,6 +873,10 @@ model AnaliseDocumento {
   status         String   @default("PENDENTE")
   feedback       String?
   arquivoUrl     String?
+  // Preço do documento no momento do pedido. Vazio nos pedidos anteriores à cobrança.
+  valor          Float?
+  pedidoId       String?
+  pedido         AnalisePedido? @relation(fields: [pedidoId], references: [id], onDelete: Cascade)
   created_at     DateTime @default(now())
   updated_at     DateTime @updatedAt
 
@@ -995,7 +1013,7 @@ model MentoriaAcesso {
   /// Uma mentoria gratuita abre o que lhe está ligado, mas não a IA.
   pago       Boolean  @default(true)
   created_at DateTime @default(now())
-  /// A mentoria dura um mês. Depois disto, deixa de abrir o que lhe está ligado.
+  /// A mentoria dura o pacote comprado. Depois disto, deixa de abrir o que lhe está ligado.
   expiraEm   DateTime
   /// Quando o fim do acesso já foi tratado (aviso e saída das comunidades). Renovar limpa-o.
   encerradoEm DateTime?
@@ -1106,11 +1124,106 @@ model Atividade {
 // PAGAMENTOS — cobranças criadas na MoMenu (Express e Referência)
 // ═══════════════════════════════════════════════════════════════
 
+/// Documento que o administrador aceita analisar, com o respetivo preço.
+model AnaliseTipoDocumento {
+  id         String   @id @default(uuid())
+  nome       String
+  descricao  String?
+  preco      Float
+  ativo      Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("analise_tipos_documento")
+}
+
+/// Uma cobrança pode cobrir vários documentos: cada um é uma AnaliseDocumento.
+model AnalisePedido {
+  id         String          @id @default(uuid())
+  usuarioId  String
+  valor      Float
+  metodo     String?
+  referencia String?
+  status     PagamentoStatus @default(PENDENTE)
+  created_at DateTime        @default(now())
+  updated_at DateTime        @updatedAt
+
+  usuario    User               @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  documentos AnaliseDocumento[]
+
+  @@index([usuarioId])
+  @@map("analise_pedidos")
+}
+
+enum SaqueAfiliadoStatus {
+  PENDENTE
+  PAGO
+  REJEITADO
+}
+
+/// Link de um utilizador para divulgar um produto (bolsa ou documento).
+model AfiliadoLink {
+  id         String              @id @default(uuid())
+  codigo     String              @unique
+  usuarioId  String
+  tipo       TipoPagamentoMomenu
+  itemId     String
+  cliques    Int                 @default(0)
+  created_at DateTime            @default(now())
+
+  usuario    User               @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  pagamentos PagamentoMomenu[]
+  comissoes  AfiliadoComissao[]
+
+  @@unique([usuarioId, tipo, itemId])
+  @@map("afiliado_links")
+}
+
+/// Criada na transação que confirma o pagamento: uma por cobrança.
+model AfiliadoComissao {
+  id          String   @id @default(uuid())
+  pagamentoId String   @unique
+  afiliadoId  String
+  linkId      String
+  valorVenda  Float
+  percentual  Float
+  valor       Float
+  created_at  DateTime @default(now())
+
+  pagamento PagamentoMomenu @relation(fields: [pagamentoId], references: [id], onDelete: Cascade)
+  afiliado  User            @relation(fields: [afiliadoId], references: [id], onDelete: Cascade)
+  link      AfiliadoLink    @relation(fields: [linkId], references: [id], onDelete: Cascade)
+
+  @@index([afiliadoId])
+  @@map("afiliado_comissoes")
+}
+
+/// O administrador transfere para o IBAN fora do sistema e marca como pago.
+model AfiliadoSaque {
+  id           String              @id @default(uuid())
+  usuarioId    String
+  valor        Float
+  iban         String
+  titular      String
+  status       SaqueAfiliadoStatus @default(PENDENTE)
+  observacao   String?
+  processadoEm DateTime?
+  created_at   DateTime            @default(now())
+  updated_at   DateTime            @updatedAt
+
+  usuario User @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  @@index([usuarioId])
+  @@index([status])
+  @@map("afiliado_saques")
+}
+
 enum TipoPagamentoMomenu {
   CURSO
   BOLSA
   MENTORIA
   DOCUMENTO
+  ANALISE
 }
 
 enum PagamentoMomenuStatus {
@@ -1136,6 +1249,9 @@ model PagamentoMomenu {
   falhaMotivo       String?
   ultimaVerificacao DateTime?
   pagoEm            DateTime?
+  afiliadoLinkId    String?
+  afiliadoLink      AfiliadoLink?         @relation(fields: [afiliadoLinkId], references: [id], onDelete: SetNull)
+  afiliadoComissao  AfiliadoComissao?
   created_at        DateTime              @default(now())
   updated_at        DateTime              @updatedAt
 

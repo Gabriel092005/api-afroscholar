@@ -32,6 +32,8 @@ import { verificarEmail } from "./lib/mail";
 import { verifyJWT } from "./http/controllers/middleware/verify-jwt";
 import { verifyUserRole } from "./http/controllers/middleware/verify-user-role";
 import { gatewayRoutes } from "./http/controllers/gateway/routes";
+import { afiliadosRoutes } from "./http/controllers/afiliados/routes";
+import { tiposAnaliseRoutes } from "./http/controllers/analise-documento/tipos-routes";
 import { mentoresRoutes } from "./http/controllers/mentores/routes";
 import { webhookConfigurado } from "./http/controllers/gateway/webhook-momenu-controller";
 import { setupSincronizacaoPagamentos } from "./Jobs/sincronizar-pagamentos";
@@ -129,6 +131,8 @@ app.register(homeBannersRoutes)
 app.register(mapaGlobalRoutes)
 app.register(atividadesRoutes)
 app.register(gatewayRoutes)
+app.register(afiliadosRoutes)
+app.register(tiposAnaliseRoutes)
 app.register(mentoresRoutes)
 // Só para administradores: aberta, servia para enviar emails a qualquer pessoa em nosso nome.
 app.post('/diagnostico/test-email', { onRequest: [verifyJWT, verifyUserRole("ADMIN")] }, testEmail)

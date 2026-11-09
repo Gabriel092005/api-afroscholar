@@ -95,6 +95,15 @@ export const listMeusPagamentos = async (
           };
         }
 
+        if (c.tipo === "ANALISE") {
+          return {
+            ...base,
+            titulo: "Análise de documentos",
+            servico: "Análise de documentos",
+            link: "/analise-documento",
+          };
+        }
+
         if (c.tipo === "MENTORIA") {
           return {
             ...base,

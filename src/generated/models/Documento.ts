@@ -29,11 +29,13 @@ export type AggregateDocumento = {
 export type DocumentoAvgAggregateOutputType = {
   fileSize: number | null
   preco: number | null
+  comissaoAfiliado: number | null
 }
 
 export type DocumentoSumAggregateOutputType = {
   fileSize: number | null
   preco: number | null
+  comissaoAfiliado: number | null
 }
 
 export type DocumentoMinAggregateOutputType = {
@@ -49,6 +51,7 @@ export type DocumentoMinAggregateOutputType = {
   criadoPorId: string | null
   bolsaId: string | null
   preco: number | null
+  comissaoAfiliado: number | null
   created_at: Date | null
   updated_at: Date | null
 }
@@ -66,6 +69,7 @@ export type DocumentoMaxAggregateOutputType = {
   criadoPorId: string | null
   bolsaId: string | null
   preco: number | null
+  comissaoAfiliado: number | null
   created_at: Date | null
   updated_at: Date | null
 }
@@ -83,6 +87,7 @@ export type DocumentoCountAggregateOutputType = {
   criadoPorId: number
   bolsaId: number
   preco: number
+  comissaoAfiliado: number
   created_at: number
   updated_at: number
   _all: number
@@ -92,11 +97,13 @@ export type DocumentoCountAggregateOutputType = {
 export type DocumentoAvgAggregateInputType = {
   fileSize?: true
   preco?: true
+  comissaoAfiliado?: true
 }
 
 export type DocumentoSumAggregateInputType = {
   fileSize?: true
   preco?: true
+  comissaoAfiliado?: true
 }
 
 export type DocumentoMinAggregateInputType = {
@@ -112,6 +119,7 @@ export type DocumentoMinAggregateInputType = {
   criadoPorId?: true
   bolsaId?: true
   preco?: true
+  comissaoAfiliado?: true
   created_at?: true
   updated_at?: true
 }
@@ -129,6 +137,7 @@ export type DocumentoMaxAggregateInputType = {
   criadoPorId?: true
   bolsaId?: true
   preco?: true
+  comissaoAfiliado?: true
   created_at?: true
   updated_at?: true
 }
@@ -146,6 +155,7 @@ export type DocumentoCountAggregateInputType = {
   criadoPorId?: true
   bolsaId?: true
   preco?: true
+  comissaoAfiliado?: true
   created_at?: true
   updated_at?: true
   _all?: true
@@ -250,6 +260,7 @@ export type DocumentoGroupByOutputType = {
   criadoPorId: string
   bolsaId: string | null
   preco: number
+  comissaoAfiliado: number | null
   created_at: Date
   updated_at: Date
   _count: DocumentoCountAggregateOutputType | null
@@ -290,6 +301,7 @@ export type DocumentoWhereInput = {
   criadoPorId?: Prisma.StringFilter<"Documento"> | string
   bolsaId?: Prisma.StringNullableFilter<"Documento"> | string | null
   preco?: Prisma.FloatFilter<"Documento"> | number
+  comissaoAfiliado?: Prisma.FloatNullableFilter<"Documento"> | number | null
   created_at?: Prisma.DateTimeFilter<"Documento"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Documento"> | Date | string
   criadoPor?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -310,6 +322,7 @@ export type DocumentoOrderByWithRelationInput = {
   criadoPorId?: Prisma.SortOrder
   bolsaId?: Prisma.SortOrderInput | Prisma.SortOrder
   preco?: Prisma.SortOrder
+  comissaoAfiliado?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   criadoPor?: Prisma.UserOrderByWithRelationInput
@@ -333,6 +346,7 @@ export type DocumentoWhereUniqueInput = Prisma.AtLeast<{
   criadoPorId?: Prisma.StringFilter<"Documento"> | string
   bolsaId?: Prisma.StringNullableFilter<"Documento"> | string | null
   preco?: Prisma.FloatFilter<"Documento"> | number
+  comissaoAfiliado?: Prisma.FloatNullableFilter<"Documento"> | number | null
   created_at?: Prisma.DateTimeFilter<"Documento"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Documento"> | Date | string
   criadoPor?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -353,6 +367,7 @@ export type DocumentoOrderByWithAggregationInput = {
   criadoPorId?: Prisma.SortOrder
   bolsaId?: Prisma.SortOrderInput | Prisma.SortOrder
   preco?: Prisma.SortOrder
+  comissaoAfiliado?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   _count?: Prisma.DocumentoCountOrderByAggregateInput
@@ -378,6 +393,7 @@ export type DocumentoScalarWhereWithAggregatesInput = {
   criadoPorId?: Prisma.StringWithAggregatesFilter<"Documento"> | string
   bolsaId?: Prisma.StringNullableWithAggregatesFilter<"Documento"> | string | null
   preco?: Prisma.FloatWithAggregatesFilter<"Documento"> | number
+  comissaoAfiliado?: Prisma.FloatNullableWithAggregatesFilter<"Documento"> | number | null
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Documento"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Documento"> | Date | string
 }
@@ -393,6 +409,7 @@ export type DocumentoCreateInput = {
   fileSize?: number | null
   status?: $Enums.DocumentoStatus
   preco?: number
+  comissaoAfiliado?: number | null
   created_at?: Date | string
   updated_at?: Date | string
   criadoPor: Prisma.UserCreateNestedOneWithoutDocumentosInput
@@ -413,6 +430,7 @@ export type DocumentoUncheckedCreateInput = {
   criadoPorId: string
   bolsaId?: string | null
   preco?: number
+  comissaoAfiliado?: number | null
   created_at?: Date | string
   updated_at?: Date | string
   compras?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutDocumentoInput
@@ -429,6 +447,7 @@ export type DocumentoUpdateInput = {
   fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumDocumentoStatusFieldUpdateOperationsInput | $Enums.DocumentoStatus
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   criadoPor?: Prisma.UserUpdateOneRequiredWithoutDocumentosNestedInput
@@ -449,6 +468,7 @@ export type DocumentoUncheckedUpdateInput = {
   criadoPorId?: Prisma.StringFieldUpdateOperationsInput | string
   bolsaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   compras?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutDocumentoNestedInput
@@ -467,6 +487,7 @@ export type DocumentoCreateManyInput = {
   criadoPorId: string
   bolsaId?: string | null
   preco?: number
+  comissaoAfiliado?: number | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -482,6 +503,7 @@ export type DocumentoUpdateManyMutationInput = {
   fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumDocumentoStatusFieldUpdateOperationsInput | $Enums.DocumentoStatus
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -499,6 +521,7 @@ export type DocumentoUncheckedUpdateManyInput = {
   criadoPorId?: Prisma.StringFieldUpdateOperationsInput | string
   bolsaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -526,6 +549,7 @@ export type DocumentoCountOrderByAggregateInput = {
   criadoPorId?: Prisma.SortOrder
   bolsaId?: Prisma.SortOrder
   preco?: Prisma.SortOrder
+  comissaoAfiliado?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -533,6 +557,7 @@ export type DocumentoCountOrderByAggregateInput = {
 export type DocumentoAvgOrderByAggregateInput = {
   fileSize?: Prisma.SortOrder
   preco?: Prisma.SortOrder
+  comissaoAfiliado?: Prisma.SortOrder
 }
 
 export type DocumentoMaxOrderByAggregateInput = {
@@ -548,6 +573,7 @@ export type DocumentoMaxOrderByAggregateInput = {
   criadoPorId?: Prisma.SortOrder
   bolsaId?: Prisma.SortOrder
   preco?: Prisma.SortOrder
+  comissaoAfiliado?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -565,6 +591,7 @@ export type DocumentoMinOrderByAggregateInput = {
   criadoPorId?: Prisma.SortOrder
   bolsaId?: Prisma.SortOrder
   preco?: Prisma.SortOrder
+  comissaoAfiliado?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -572,6 +599,7 @@ export type DocumentoMinOrderByAggregateInput = {
 export type DocumentoSumOrderByAggregateInput = {
   fileSize?: Prisma.SortOrder
   preco?: Prisma.SortOrder
+  comissaoAfiliado?: Prisma.SortOrder
 }
 
 export type DocumentoScalarRelationFilter = {
@@ -692,6 +720,7 @@ export type DocumentoCreateWithoutCriadoPorInput = {
   fileSize?: number | null
   status?: $Enums.DocumentoStatus
   preco?: number
+  comissaoAfiliado?: number | null
   created_at?: Date | string
   updated_at?: Date | string
   bolsa?: Prisma.BolsaCreateNestedOneWithoutMateriaisInput
@@ -710,6 +739,7 @@ export type DocumentoUncheckedCreateWithoutCriadoPorInput = {
   status?: $Enums.DocumentoStatus
   bolsaId?: string | null
   preco?: number
+  comissaoAfiliado?: number | null
   created_at?: Date | string
   updated_at?: Date | string
   compras?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutDocumentoInput
@@ -757,6 +787,7 @@ export type DocumentoScalarWhereInput = {
   criadoPorId?: Prisma.StringFilter<"Documento"> | string
   bolsaId?: Prisma.StringNullableFilter<"Documento"> | string | null
   preco?: Prisma.FloatFilter<"Documento"> | number
+  comissaoAfiliado?: Prisma.FloatNullableFilter<"Documento"> | number | null
   created_at?: Prisma.DateTimeFilter<"Documento"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Documento"> | Date | string
 }
@@ -772,6 +803,7 @@ export type DocumentoCreateWithoutBolsaInput = {
   fileSize?: number | null
   status?: $Enums.DocumentoStatus
   preco?: number
+  comissaoAfiliado?: number | null
   created_at?: Date | string
   updated_at?: Date | string
   criadoPor: Prisma.UserCreateNestedOneWithoutDocumentosInput
@@ -790,6 +822,7 @@ export type DocumentoUncheckedCreateWithoutBolsaInput = {
   status?: $Enums.DocumentoStatus
   criadoPorId: string
   preco?: number
+  comissaoAfiliado?: number | null
   created_at?: Date | string
   updated_at?: Date | string
   compras?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutDocumentoInput
@@ -832,6 +865,7 @@ export type DocumentoCreateWithoutComprasInput = {
   fileSize?: number | null
   status?: $Enums.DocumentoStatus
   preco?: number
+  comissaoAfiliado?: number | null
   created_at?: Date | string
   updated_at?: Date | string
   criadoPor: Prisma.UserCreateNestedOneWithoutDocumentosInput
@@ -851,6 +885,7 @@ export type DocumentoUncheckedCreateWithoutComprasInput = {
   criadoPorId: string
   bolsaId?: string | null
   preco?: number
+  comissaoAfiliado?: number | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -882,6 +917,7 @@ export type DocumentoUpdateWithoutComprasInput = {
   fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumDocumentoStatusFieldUpdateOperationsInput | $Enums.DocumentoStatus
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   criadoPor?: Prisma.UserUpdateOneRequiredWithoutDocumentosNestedInput
@@ -901,6 +937,7 @@ export type DocumentoUncheckedUpdateWithoutComprasInput = {
   criadoPorId?: Prisma.StringFieldUpdateOperationsInput | string
   bolsaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -917,6 +954,7 @@ export type DocumentoCreateManyCriadoPorInput = {
   status?: $Enums.DocumentoStatus
   bolsaId?: string | null
   preco?: number
+  comissaoAfiliado?: number | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -932,6 +970,7 @@ export type DocumentoUpdateWithoutCriadoPorInput = {
   fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumDocumentoStatusFieldUpdateOperationsInput | $Enums.DocumentoStatus
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bolsa?: Prisma.BolsaUpdateOneWithoutMateriaisNestedInput
@@ -950,6 +989,7 @@ export type DocumentoUncheckedUpdateWithoutCriadoPorInput = {
   status?: Prisma.EnumDocumentoStatusFieldUpdateOperationsInput | $Enums.DocumentoStatus
   bolsaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   compras?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutDocumentoNestedInput
@@ -967,6 +1007,7 @@ export type DocumentoUncheckedUpdateManyWithoutCriadoPorInput = {
   status?: Prisma.EnumDocumentoStatusFieldUpdateOperationsInput | $Enums.DocumentoStatus
   bolsaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -983,6 +1024,7 @@ export type DocumentoCreateManyBolsaInput = {
   status?: $Enums.DocumentoStatus
   criadoPorId: string
   preco?: number
+  comissaoAfiliado?: number | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -998,6 +1040,7 @@ export type DocumentoUpdateWithoutBolsaInput = {
   fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumDocumentoStatusFieldUpdateOperationsInput | $Enums.DocumentoStatus
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   criadoPor?: Prisma.UserUpdateOneRequiredWithoutDocumentosNestedInput
@@ -1016,6 +1059,7 @@ export type DocumentoUncheckedUpdateWithoutBolsaInput = {
   status?: Prisma.EnumDocumentoStatusFieldUpdateOperationsInput | $Enums.DocumentoStatus
   criadoPorId?: Prisma.StringFieldUpdateOperationsInput | string
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   compras?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutDocumentoNestedInput
@@ -1033,6 +1077,7 @@ export type DocumentoUncheckedUpdateManyWithoutBolsaInput = {
   status?: Prisma.EnumDocumentoStatusFieldUpdateOperationsInput | $Enums.DocumentoStatus
   criadoPorId?: Prisma.StringFieldUpdateOperationsInput | string
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
+  comissaoAfiliado?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1081,6 +1126,7 @@ export type DocumentoSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   criadoPorId?: boolean
   bolsaId?: boolean
   preco?: boolean
+  comissaoAfiliado?: boolean
   created_at?: boolean
   updated_at?: boolean
   criadoPor?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1102,6 +1148,7 @@ export type DocumentoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   criadoPorId?: boolean
   bolsaId?: boolean
   preco?: boolean
+  comissaoAfiliado?: boolean
   created_at?: boolean
   updated_at?: boolean
   criadoPor?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1121,6 +1168,7 @@ export type DocumentoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   criadoPorId?: boolean
   bolsaId?: boolean
   preco?: boolean
+  comissaoAfiliado?: boolean
   created_at?: boolean
   updated_at?: boolean
   criadoPor?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1140,11 +1188,12 @@ export type DocumentoSelectScalar = {
   criadoPorId?: boolean
   bolsaId?: boolean
   preco?: boolean
+  comissaoAfiliado?: boolean
   created_at?: boolean
   updated_at?: boolean
 }
 
-export type DocumentoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "titulo" | "descricao" | "categoria" | "fileName" | "fileUrl" | "fileType" | "fileSize" | "status" | "criadoPorId" | "bolsaId" | "preco" | "created_at" | "updated_at", ExtArgs["result"]["documento"]>
+export type DocumentoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "titulo" | "descricao" | "categoria" | "fileName" | "fileUrl" | "fileType" | "fileSize" | "status" | "criadoPorId" | "bolsaId" | "preco" | "comissaoAfiliado" | "created_at" | "updated_at", ExtArgs["result"]["documento"]>
 export type DocumentoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   criadoPor?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   bolsa?: boolean | Prisma.Documento$bolsaArgs<ExtArgs>
@@ -1180,6 +1229,7 @@ export type $DocumentoPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     criadoPorId: string
     bolsaId: string | null
     preco: number
+    comissaoAfiliado: number | null
     created_at: Date
     updated_at: Date
   }, ExtArgs["result"]["documento"]>
@@ -1620,6 +1670,7 @@ export interface DocumentoFieldRefs {
   readonly criadoPorId: Prisma.FieldRef<"Documento", 'String'>
   readonly bolsaId: Prisma.FieldRef<"Documento", 'String'>
   readonly preco: Prisma.FieldRef<"Documento", 'Float'>
+  readonly comissaoAfiliado: Prisma.FieldRef<"Documento", 'Float'>
   readonly created_at: Prisma.FieldRef<"Documento", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Documento", 'DateTime'>
 }

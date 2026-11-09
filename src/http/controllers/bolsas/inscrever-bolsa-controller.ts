@@ -1,10 +1,12 @@
 import crypto from "node:crypto";
 import { upload } from "@/lib/upload";
 import prisma from "@/lib/prisma";
+import { codigoAfiliadoDoPedido } from "@/lib/afiliados";
 import type { Prisma } from "@/generated/client";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { concederMentoria, temMentoriaNaBolsa } from "@/lib/mentoria-acesso";
+import { duracaoEmTexto, opcoesMentoria } from "@/lib/pacotes-mentoria";
 import {
   iniciarCobranca,
   metodoPagamentoSchema,
@@ -24,6 +26,7 @@ const inscribirSchema = z.object({
   telefone: z.string().optional(),
   phoneNumber: telefoneSchema.optional(),
   metodoPagamento: metodoPagamentoSchema.optional(),
+  mesesMentoria: z.coerce.number().int().positive().optional(),
   dataAgendada: z.string().optional(),
 });
 
@@ -155,12 +158,26 @@ export const inscribirBolsa = async (
       });
     }
 
-    const valor = precoDoServico(bolsa, body.tipoInteresse);
+    let valor = precoDoServico(bolsa, body.tipoInteresse);
     if (valor === null) {
       return res.status(400).send({
         error: "Bad Request",
         message: "Este serviço não está disponível nesta bolsa.",
       });
+    }
+
+    let mesesMentoria: number | null = null;
+    if (body.tipoInteresse === "MENTORIA") {
+      // O valor vem sempre da configuração da bolsa, nunca do pedido.
+      const pacote = opcoesMentoria(valor, bolsa.pacotesMentoria).find((o) => o.meses === (body.mesesMentoria ?? 1));
+      if (!pacote) {
+        return res.status(400).send({
+          error: "Bad Request",
+          message: "Este pacote de mentoria já não está disponível.",
+        });
+      }
+      valor = pacote.valor;
+      mesesMentoria = pacote.meses;
     }
 
     const documentosData = docFiles.map((f, i) => ({
@@ -170,6 +187,7 @@ export const inscribirBolsa = async (
 
     const dadosInscricao = {
       tipoInteresse: body.tipoInteresse,
+      mesesMentoria,
       observacoes: body.observacoes,
       nome: body.nome,
       email: body.email,
@@ -239,8 +257,9 @@ export const inscribirBolsa = async (
       valor,
       metodo: body.metodoPagamento,
       phoneNumber: body.phoneNumber,
-      produto: bolsa.titulo || "Bolsa",
+      produto: `${bolsa.titulo || "Bolsa"}${mesesMentoria && mesesMentoria > 1 ? ` (mentoria de ${duracaoEmTexto(mesesMentoria)})` : ""}`,
       link: `/bolsas/${id}`,
+      afiliadoCodigo: codigoAfiliadoDoPedido(req),
       persistirAlvo: (tx, cobranca) =>
         gravarInscricao(tx, alvoId, {
           status: "PENDENTE",

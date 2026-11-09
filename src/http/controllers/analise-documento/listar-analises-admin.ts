@@ -6,7 +6,8 @@ export async function listarAnalisesAdmin(request: FastifyRequest, reply: Fastif
     const { status } = request.query as { status?: string };
 
     const analises = await prisma.analiseDocumento.findMany({
-      where: status ? { status } : {},
+      // Sem pagamento confirmado, o pedido ainda não entra na fila de análise.
+      where: status ? { status } : { status: { notIn: ["AGUARDANDO_PAGAMENTO", "CANCELADO"] } },
       include: {
         usuario: { select: { id: true, nome: true, email: true, image_path: true } },
       },

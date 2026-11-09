@@ -2,8 +2,10 @@ import prisma from "@/lib/prisma";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { sendNewBolsaToAllUsers } from "@/lib/mail";
+import { notificarNovaBolsa } from "@/lib/notificar-nova-bolsa";
 import { env } from "@/Env";
 import { upload } from "@/lib/upload";
+import { pacotesFormularioSchema } from "@/lib/pacotes-mentoria";
 
 const bodySchema = z.object({
   titulo: z.string().min(1).optional(),
@@ -19,6 +21,7 @@ const bodySchema = z.object({
   precoInscricao: z.string().optional(),
   precoConsultoria: z.string().optional(),
   precoMentoria: z.string().optional(),
+  pacotesMentoria: pacotesFormularioSchema.optional(),
   idioma: z.string().optional(),
   tags: z.string().optional(),
   descricao: z.string().optional(),
@@ -35,6 +38,11 @@ function parseFloatOptional(val: string | undefined): number | undefined {
   if (val === undefined || val === "") return undefined;
   const n = parseFloat(val);
   return isNaN(n) ? undefined : n;
+}
+
+/** Ausente não altera o preço; vazio retira o serviço da bolsa. */
+function parsePrecoServico(val: string | undefined): number | null | undefined {
+  return val === "" ? null : parseFloatOptional(val);
 }
 
 function parseIntOptional(val: string | undefined): number | undefined {
@@ -94,9 +102,10 @@ export const updateBolsa = async (
         valor: parseFloatOptional(parsedBody.valor) ?? 0,
         moeda: parsedBody.moeda,
         precoOriginal: parseFloatOptional(parsedBody.precoOriginal),
-        precoInscricao: parseFloatOptional(parsedBody.precoInscricao),
-        precoConsultoria: parseFloatOptional(parsedBody.precoConsultoria),
-        precoMentoria: parseFloatOptional(parsedBody.precoMentoria),
+        precoInscricao: parsePrecoServico(parsedBody.precoInscricao),
+        precoConsultoria: parsePrecoServico(parsedBody.precoConsultoria),
+        precoMentoria: parsePrecoServico(parsedBody.precoMentoria),
+        pacotesMentoria: parsedBody.pacotesMentoria,
         idioma: parsedBody.idioma,
         tags,
         descricao: parsedBody.descricao,
@@ -117,6 +126,7 @@ export const updateBolsa = async (
         bolsa.descricao?.substring(0, 200) || "Nova bolsa de estudo disponível na plataforma.",
         `${env.FRONTEND_URL}/bolsas/${bolsa.id}`
       ).catch((err) => console.error("⚠️ Failed to send bolsa notification:", err?.message));
+      notificarNovaBolsa(bolsa.id).catch((err) => console.error("⚠️ Failed to push bolsa notification:", err?.message));
     }
 
     return res.send({
@@ -128,6 +138,7 @@ export const updateBolsa = async (
     if (error instanceof z.ZodError) {
       return res.status(400).send({
         error: "Validation Error",
+        message: error.issues[0]?.message,
         issues: error.format(),
       });
     }

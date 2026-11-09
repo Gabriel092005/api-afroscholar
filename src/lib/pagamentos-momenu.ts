@@ -4,7 +4,9 @@ import type { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import type { PagamentoMomenu, Prisma } from "@/generated/client";
 import prisma from "@/lib/prisma";
+import { registarComissao, resolverLinkAfiliado } from "@/lib/afiliados";
 import { concederMentoria } from "@/lib/mentoria-acesso";
+import { duracaoEmTexto } from "@/lib/pacotes-mentoria";
 import { faturacaoPorBolsa, faturacaoPorCurso, faturacaoPorDocumento } from "@/lib/faturacao";
 import { MomenuService, type MomenuProduct } from "@/lib/momenu.service";
 import { io } from "@/server";
@@ -154,11 +156,11 @@ async function aplicarConfirmacao(
 
     // Só a mentoria abre conteúdos: a inscrição e a consultoria ficam-se pelo serviço pago.
     if (alvo.tipoInteresse === "MENTORIA") {
-      await concederMentoria({ usuarioId: alvo.usuarioId, bolsaId: alvo.bolsaId, pago: true }, tx);
+      await concederMentoria({ usuarioId: alvo.usuarioId, bolsaId: alvo.bolsaId, pago: true, meses: alvo.mesesMentoria }, tx);
       return {
         usuarioId: alvo.usuarioId,
         titulo: "Mentoria Confirmada ✅",
-        conteudo: `O pagamento da mentoria de "${alvo.bolsa.titulo}" foi confirmado. Durante 1 mês, tem acesso aos documentos, cursos, comunidades, aulas ao vivo e à inteligência artificial!`,
+        conteudo: `O pagamento da mentoria de "${alvo.bolsa.titulo}" foi confirmado. Durante ${duracaoEmTexto(alvo.mesesMentoria ?? 1)}, tem acesso aos documentos, cursos, comunidades, aulas ao vivo e à inteligência artificial!`,
         tipo: "SUCESSO",
         link: `/bolsas/${alvo.bolsaId}`,
       };
@@ -199,6 +201,30 @@ async function aplicarConfirmacao(
       conteudo: `O pagamento do documento "${alvo.documento.titulo}" foi confirmado. Já o pode abrir em Documentos!`,
       tipo: "SUCESSO",
       link: "/documentos",
+    };
+  }
+
+  if (pagamento.tipo === "ANALISE") {
+    const alvo = await tx.analisePedido.findUnique({ where: { id: pagamento.alvoId } });
+    if (!alvo) return null;
+    if (alvo.status === "APROVADO") {
+      console.warn(`[momenu] pagamento duplicado para a análise: ${pagamento.id}`);
+      return null;
+    }
+
+    await tx.analisePedido.update({ where: { id: alvo.id }, data: { status: "APROVADO" } });
+    // CANCELADO incluído: uma referência pode ser paga depois de dada como expirada.
+    await tx.analiseDocumento.updateMany({
+      where: { pedidoId: alvo.id, status: { in: ["AGUARDANDO_PAGAMENTO", "CANCELADO"] } },
+      data: { status: "PENDENTE" },
+    });
+
+    return {
+      usuarioId: alvo.usuarioId,
+      titulo: "Pagamento Aprovado ✅",
+      conteudo: "O pagamento foi confirmado. Os seus documentos já estão na fila de análise.",
+      tipo: "SUCESSO",
+      link: "/analise-documento",
     };
   }
 
@@ -244,6 +270,8 @@ const emKwanzas = (valor: number) => `${valor.toLocaleString("pt-PT")} Kz`;
 
 /** Avisa quem criou a bolsa ou o curso do valor recebido e do total acumulado. */
 async function notificarDono(pagamento: PagamentoMomenu) {
+  // A análise é um serviço da plataforma: não tem dono a quem avisar.
+  if (pagamento.tipo === "ANALISE") return;
   try {
     let venda: { donoId: string | null; descricao: string; total: number; tipo: string; link: string } | null = null;
 
@@ -330,7 +358,7 @@ export async function confirmarPagamento(
     const pagamento = await tx.pagamentoMomenu.findFirst({ where: ondeChave(chave) });
     if (!pagamento) {
       console.error("[momenu] confirmação de uma cobrança desconhecida", chave);
-      return { confirmado: false, notificacao: null, pagamento: null };
+      return { confirmado: false, notificacao: null, avisoAfiliado: null, pagamento: null };
     }
 
     const reclamado = await tx.pagamentoMomenu.updateMany({
@@ -343,16 +371,20 @@ export async function confirmarPagamento(
         ...(invoiceUrl ? { invoiceUrl } : {}),
       },
     });
-    if (reclamado.count === 0) return { confirmado: false, notificacao: null, pagamento: null };
+    if (reclamado.count === 0) return { confirmado: false, notificacao: null, avisoAfiliado: null, pagamento: null };
 
+    const notificacao = await aplicarConfirmacao(tx, pagamento, invoiceUrl);
     return {
       confirmado: true,
-      notificacao: await aplicarConfirmacao(tx, pagamento, invoiceUrl),
+      notificacao,
+      // Sem notificação, a venda não foi aplicada (duplicada ou cobrança substituída).
+      avisoAfiliado: notificacao ? await registarComissao(tx, pagamento) : null,
       pagamento,
     };
   });
 
   if (resultado.notificacao) await notificar(resultado.notificacao);
+  if (resultado.avisoAfiliado) await notificar(resultado.avisoAfiliado);
   // Depois da transação, para o total já incluir este pagamento.
   if (resultado.pagamento) await notificarDono(resultado.pagamento);
   return resultado.confirmado;
@@ -384,6 +416,18 @@ export async function falharPagamento(chave: ChavePagamento, motivo?: string): P
         where: { id: pagamento.alvoId, status: "PENDENTE", referenciaPagamento: { in: referencias } },
         data: { status: "CANCELADA" },
       });
+      cancelados = r.count;
+    } else if (pagamento.tipo === "ANALISE") {
+      const r = await tx.analisePedido.updateMany({
+        where: { id: pagamento.alvoId, status: "PENDENTE", referencia: { in: referencias } },
+        data: { status: "REJEITADO" },
+      });
+      if (r.count > 0) {
+        await tx.analiseDocumento.updateMany({
+          where: { pedidoId: pagamento.alvoId, status: "AGUARDANDO_PAGAMENTO" },
+          data: { status: "CANCELADO" },
+        });
+      }
       cancelados = r.count;
     } else if (pagamento.tipo === "DOCUMENTO") {
       const r = await tx.documentoCompra.updateMany({
@@ -597,6 +641,7 @@ type IniciarCobranca = {
   phoneNumber?: string;
   produto: string;
   link: string;
+  afiliadoCodigo?: string;
   /** Grava a compra na mesma transação da cobrança. */
   persistirAlvo: (
     tx: Prisma.TransactionClient,
@@ -645,6 +690,7 @@ export async function iniciarCobranca(dados: IniciarCobranca): Promise<Pagamento
     }
 
     const id = crypto.randomUUID();
+    const afiliadoLinkId = await resolverLinkAfiliado(dados.afiliadoCodigo, tipo, itemId, usuarioId);
     const produtos = [
       { id: itemId, productName: produto, productPrice: valor, productQuantity: 1 },
     ];
@@ -674,6 +720,7 @@ export async function iniciarCobranca(dados: IniciarCobranca): Promise<Pagamento
             referenceNumber: cobranca.referenceNumber,
             entity: cobranca.entity,
             dueDate: cobranca.dueDate ? new Date(cobranca.dueDate) : null,
+            afiliadoLinkId,
           },
         });
       });
@@ -694,7 +741,7 @@ export async function iniciarCobranca(dados: IniciarCobranca): Promise<Pagamento
     const pagamento = await prisma.$transaction(async (tx) => {
       await dados.persistirAlvo(tx, { referencia: id, metodo });
       return tx.pagamentoMomenu.create({
-        data: { id, tipo, alvoId, usuarioId, valor, metodo },
+        data: { id, tipo, alvoId, usuarioId, valor, metodo, afiliadoLinkId },
       });
     });
 
