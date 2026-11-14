@@ -97,7 +97,20 @@ export async function eStaff(usuarioId: string): Promise<boolean> {
   return user?.role === "ADMIN" || user?.role === "GESTOR";
 }
 
-export async function bolsasComMentoria(usuarioId: string): Promise<string[]> {
+/**
+ * O monitor acompanha os estudantes: vê tudo o que vê quem tem a mentoria paga, em todas
+ * as bolsas e sem prazo. Não gera linhas em mentoriaAcesso; o acesso é decidido aqui.
+ */
+export async function eMonitor(usuarioId: string): Promise<boolean> {
+  const user = await prisma.user.findUnique({ where: { id: usuarioId }, select: { role: true } });
+  return user?.role === "MONITOR";
+}
+
+/** Data devolvida como "fim da mentoria" a um monitor, cujo acesso não expira. */
+export const ACESSO_MONITOR_ATE = new Date("9999-12-31T00:00:00.000Z");
+
+/** Bolsas com mentoria comprada e dentro do prazo (sem contar o acesso de monitor). */
+async function bolsasComMentoriaComprada(usuarioId: string): Promise<string[]> {
   const acessos = await prisma.mentoriaAcesso.findMany({
     where: { usuarioId, bolsaId: { not: null }, ...ativa() },
     select: { bolsaId: true },
@@ -105,12 +118,22 @@ export async function bolsasComMentoria(usuarioId: string): Promise<string[]> {
   return acessos.map((acesso) => acesso.bolsaId as string);
 }
 
+export async function bolsasComMentoria(usuarioId: string): Promise<string[]> {
+  if (await eMonitor(usuarioId)) {
+    const bolsas = await prisma.bolsa.findMany({ select: { id: true } });
+    return bolsas.map((bolsa) => bolsa.id);
+  }
+  return bolsasComMentoriaComprada(usuarioId);
+}
+
 export async function temMentoriaNaBolsa(usuarioId: string, bolsaId: string): Promise<boolean> {
+  if (await eMonitor(usuarioId)) return true;
   return (await prisma.mentoriaAcesso.count({ where: { usuarioId, bolsaId, ...ativa() } })) > 0;
 }
 
 /** Até quando dura a mentoria desta bolsa, se estiver ativa. */
 export async function expiracaoDaMentoriaNaBolsa(usuarioId: string, bolsaId: string): Promise<Date | null> {
+  if (await eMonitor(usuarioId)) return ACESSO_MONITOR_ATE;
   const acesso = await prisma.mentoriaAcesso.findFirst({
     where: { usuarioId, bolsaId, ...ativa() },
     select: { expiraEm: true },
@@ -118,19 +141,23 @@ export async function expiracaoDaMentoriaNaBolsa(usuarioId: string, bolsaId: str
   return acesso?.expiraEm ?? null;
 }
 
-/** O que sai do catálogo para este utilizador: já está inscrito, ou tem a mentoria a decorrer. */
+/**
+ * O que sai do catálogo para este utilizador: já está inscrito, ou tem a mentoria a decorrer.
+ * O acesso de monitor não conta, senão o catálogo ficaria vazio para ele.
+ */
 export async function bolsasForaDoCatalogo(usuarioId: string): Promise<string[]> {
   const [inscritas, comMentoria] = await Promise.all([
     prisma.bolsaInscricao.findMany({
       where: { usuarioId, inscritoEm: { not: null } },
       select: { bolsaId: true },
     }),
-    bolsasComMentoria(usuarioId),
+    bolsasComMentoriaComprada(usuarioId),
   ]);
   return [...new Set([...inscritas.map((i) => i.bolsaId), ...comMentoria])];
 }
 
 export async function temMentoriaAtiva(usuarioId: string, mentoriaId: string): Promise<boolean> {
+  if (await eMonitor(usuarioId)) return true;
   return (await prisma.mentoriaAcesso.count({ where: { usuarioId, mentoriaId, ...ativa() } })) > 0;
 }
 
@@ -152,26 +179,34 @@ export async function podeVerComunidade(
 
 /** A IA tem custo por uso: só conta uma mentoria paga e dentro do prazo. */
 export async function temMentoriaPaga(usuarioId: string): Promise<boolean> {
+  if (await eMonitor(usuarioId)) return true;
   return (await prisma.mentoriaAcesso.count({ where: { usuarioId, pago: true, ...ativa() } })) > 0;
 }
 
 /**
  * Cursos que o utilizador pode ver agora. O que comprou diretamente fica para sempre;
  * o que veio com a mentoria da bolsa (metodo "BOLSA") só enquanto a mentoria durar.
+ * O monitor tem também todos os cursos ligados a uma bolsa.
  */
 export async function cursosComAcesso(usuarioId: string): Promise<Set<string>> {
-  const [pagamentos, bolsas] = await Promise.all([
+  const [pagamentos, bolsas, monitor] = await Promise.all([
     prisma.cursoPagamento.findMany({
       where: { usuarioId, status: "APROVADO" },
       select: { cursoId: true, metodo: true, curso: { select: { bolsaId: true } } },
     }),
     bolsasComMentoria(usuarioId),
+    eMonitor(usuarioId),
   ]);
-  return new Set(
+  const liberados = new Set(
     pagamentos
       .filter((p) => p.metodo !== "BOLSA" || (p.curso.bolsaId && bolsas.includes(p.curso.bolsaId)))
       .map((p) => p.cursoId)
   );
+  if (monitor) {
+    const cursosDeBolsa = await prisma.curso.findMany({ where: { bolsaId: { not: null } }, select: { id: true } });
+    for (const { id } of cursosDeBolsa) liberados.add(id);
+  }
+  return liberados;
 }
 
 /** Aula ligada a uma bolsa ou mentoria: só entra quem tem a mentoria dentro do prazo. */
@@ -180,6 +215,7 @@ export async function podeEntrarNaAula(
   aula: { bolsaId: string | null; mentoriaId: string | null }
 ): Promise<boolean> {
   if (!aula.bolsaId && !aula.mentoriaId) return true;
+  if (await eMonitor(usuarioId)) return true;
 
   const mentoria = aula.mentoriaId
     ? await prisma.mentoria.findUnique({ where: { id: aula.mentoriaId }, select: { bolsaId: true } })

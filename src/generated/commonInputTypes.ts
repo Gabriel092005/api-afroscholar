@@ -80,6 +80,11 @@ export type DateTimeFilter<$PrismaModel = never> = {
   not?: Prisma.NestedDateTimeFilter<$PrismaModel> | Date | string
 }
 
+export type BoolFilter<$PrismaModel = never> = {
+  equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedBoolFilter<$PrismaModel> | boolean
+}
+
 export type SortOrderInput = {
   sort: Prisma.SortOrder
   nulls?: Prisma.NullsOrder
@@ -167,11 +172,6 @@ export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedDateTimeFilter<$PrismaModel>
   _max?: Prisma.NestedDateTimeFilter<$PrismaModel>
-}
-
-export type BoolFilter<$PrismaModel = never> = {
-  equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedBoolFilter<$PrismaModel> | boolean
 }
 
 export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -691,6 +691,23 @@ export type EnumPagamentoMomenuStatusWithAggregatesFilter<$PrismaModel = never> 
   _max?: Prisma.NestedEnumPagamentoMomenuStatusFilter<$PrismaModel>
 }
 
+export type EnumEtapaLeadFilter<$PrismaModel = never> = {
+  equals?: $Enums.EtapaLead | Prisma.EnumEtapaLeadFieldRefInput<$PrismaModel>
+  in?: $Enums.EtapaLead[] | Prisma.ListEnumEtapaLeadFieldRefInput<$PrismaModel>
+  notIn?: $Enums.EtapaLead[] | Prisma.ListEnumEtapaLeadFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumEtapaLeadFilter<$PrismaModel> | $Enums.EtapaLead
+}
+
+export type EnumEtapaLeadWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.EtapaLead | Prisma.EnumEtapaLeadFieldRefInput<$PrismaModel>
+  in?: $Enums.EtapaLead[] | Prisma.ListEnumEtapaLeadFieldRefInput<$PrismaModel>
+  notIn?: $Enums.EtapaLead[] | Prisma.ListEnumEtapaLeadFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumEtapaLeadWithAggregatesFilter<$PrismaModel> | $Enums.EtapaLead
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumEtapaLeadFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumEtapaLeadFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -753,6 +770,11 @@ export type NestedDateTimeFilter<$PrismaModel = never> = {
   gt?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
   gte?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
   not?: Prisma.NestedDateTimeFilter<$PrismaModel> | Date | string
+}
+
+export type NestedBoolFilter<$PrismaModel = never> = {
+  equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedBoolFilter<$PrismaModel> | boolean
 }
 
 export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -857,11 +879,6 @@ export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedDateTimeFilter<$PrismaModel>
   _max?: Prisma.NestedDateTimeFilter<$PrismaModel>
-}
-
-export type NestedBoolFilter<$PrismaModel = never> = {
-  equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedBoolFilter<$PrismaModel> | boolean
 }
 
 export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -1330,6 +1347,23 @@ export type NestedEnumPagamentoMomenuStatusWithAggregatesFilter<$PrismaModel = n
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumPagamentoMomenuStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumPagamentoMomenuStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumEtapaLeadFilter<$PrismaModel = never> = {
+  equals?: $Enums.EtapaLead | Prisma.EnumEtapaLeadFieldRefInput<$PrismaModel>
+  in?: $Enums.EtapaLead[] | Prisma.ListEnumEtapaLeadFieldRefInput<$PrismaModel>
+  notIn?: $Enums.EtapaLead[] | Prisma.ListEnumEtapaLeadFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumEtapaLeadFilter<$PrismaModel> | $Enums.EtapaLead
+}
+
+export type NestedEnumEtapaLeadWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.EtapaLead | Prisma.EnumEtapaLeadFieldRefInput<$PrismaModel>
+  in?: $Enums.EtapaLead[] | Prisma.ListEnumEtapaLeadFieldRefInput<$PrismaModel>
+  notIn?: $Enums.EtapaLead[] | Prisma.ListEnumEtapaLeadFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumEtapaLeadWithAggregatesFilter<$PrismaModel> | $Enums.EtapaLead
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumEtapaLeadFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumEtapaLeadFilter<$PrismaModel>
 }
 
 

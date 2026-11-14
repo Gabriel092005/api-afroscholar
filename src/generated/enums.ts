@@ -12,7 +12,9 @@
 export const Role = {
   ADMIN: 'ADMIN',
   GESTOR: 'GESTOR',
-  USUARIO: 'USUARIO'
+  USUARIO: 'USUARIO',
+  MONITOR: 'MONITOR',
+  ATENDIMENTO: 'ATENDIMENTO'
 } as const
 
 export type Role = (typeof Role)[keyof typeof Role]
@@ -206,3 +208,14 @@ export const PagamentoMomenuStatus = {
 } as const
 
 export type PagamentoMomenuStatus = (typeof PagamentoMomenuStatus)[keyof typeof PagamentoMomenuStatus]
+
+
+export const EtapaLead = {
+  NOVO: 'NOVO',
+  CONTACTADO: 'CONTACTADO',
+  INTERESSADO: 'INTERESSADO',
+  CONVERTIDO: 'CONVERTIDO',
+  PERDIDO: 'PERDIDO'
+} as const
+
+export type EtapaLead = (typeof EtapaLead)[keyof typeof EtapaLead]

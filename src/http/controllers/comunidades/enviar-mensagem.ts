@@ -4,6 +4,7 @@ import { z } from "zod";
 import { io } from "@/server";
 import { upload } from "@/utills/multer";
 import { PushService } from "@/lib/push-service";
+import { avisarMentoresMensagemComunidade } from "@/lib/avisos-equipa";
 
 const mensagemSchema = z.object({
   content: z.string().optional().default(""),
@@ -97,6 +98,8 @@ export async function enviarMensagem(req: FastifyRequest, res: FastifyReply) {
     }
 
     PushService.notifyCommunityMembers(id, mensagem.usuario.nome, content, usuarioId);
+    // Os mentores recebem também email (e push, se não forem membros). Não atrasa a resposta.
+    void avisarMentoresMensagemComunidade(id, usuarioId, mensagem.usuario.nome, content);
 
     return res.status(201).send(mensagem);
   } catch (error: any) {

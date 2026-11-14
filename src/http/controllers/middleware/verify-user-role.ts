@@ -1,7 +1,8 @@
+import type { Role } from "@/generated/client";
 import prisma from "@/lib/prisma";
 import { FastifyReply, FastifyRequest } from "fastify";
 
-export function verifyUserRole(...rolesToVerify: ('ADMIN' | 'GESTOR')[]) {
+export function verifyUserRole(...rolesToVerify: Role[]) {
   return async (request: FastifyRequest, reply: FastifyReply) => {
     if (!request.user) {
       return reply.status(401).send({ message: 'unauthorized' });
@@ -12,7 +13,7 @@ export function verifyUserRole(...rolesToVerify: ('ADMIN' | 'GESTOR')[]) {
       select: { role: true },
     });
 
-    if (!user || !rolesToVerify.includes(user.role as 'ADMIN' | 'GESTOR')) {
+    if (!user || !rolesToVerify.includes(user.role)) {
       return reply.status(401).send({ message: 'unauthorized' });
     }
   };

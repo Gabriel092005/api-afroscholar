@@ -11,6 +11,9 @@ export const listUsuarios = async (req: FastifyRequest, res: FastifyReply) => {
       where.OR = [
         { nome: { contains: search, mode: "insensitive" } },
         { email: { contains: search, mode: "insensitive" } },
+        // Também pelo telefone (sem espaços: "923 456 789" encontra "923456789").
+        { phone: { contains: String(search).replace(/\s/g, "") } },
+        { phone: { contains: search } },
       ];
     }
 

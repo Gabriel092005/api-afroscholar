@@ -8,7 +8,7 @@ export async function alterarRoleController(req: FastifyRequest, res: FastifyRep
   });
 
   const bodySchema = z.object({
-    role: z.enum(["ADMIN", "GESTOR", "USUARIO"]),
+    role: z.enum(["ADMIN", "GESTOR", "USUARIO", "MONITOR", "ATENDIMENTO"]),
   });
 
   try {

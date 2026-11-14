@@ -287,3 +287,35 @@ export type AfiliadoSaque = Prisma.AfiliadoSaqueModel
  * 
  */
 export type PagamentoMomenu = Prisma.PagamentoMomenuModel
+/**
+ * Model EmailFunil
+ * Cada email do funil de vendas enviado. A chave impede repetir o mesmo gatilho
+ * (ex.: o mesmo pagamento abandonado ou o mesmo passo de boas-vindas).
+ */
+export type EmailFunil = Prisma.EmailFunilModel
+/**
+ * Model Lead
+ * Um cliente a acompanhar pela equipa de atendimento. Um lead por cliente: novos eventos
+ * (outro pagamento falhado, mentoria expirada) actualizam o mesmo lead e reabrem-no.
+ */
+export type Lead = Prisma.LeadModel
+/**
+ * Model LeadInteracao
+ * Histórico do lead: notas, chamadas, mensagens e mudanças de etapa.
+ */
+export type LeadInteracao = Prisma.LeadInteracaoModel
+/**
+ * Model Conversa
+ * Uma conversa por cliente, sempre a mesma: o histórico fica todo junto.
+ */
+export type Conversa = Prisma.ConversaModel
+/**
+ * Model MensagemConversa
+ * 
+ */
+export type MensagemConversa = Prisma.MensagemConversaModel
+/**
+ * Model VideoExplicativo
+ * 
+ */
+export type VideoExplicativo = Prisma.VideoExplicativoModel

@@ -53,7 +53,7 @@ function textoSimples(html: string) {
     .trim();
 }
 
-type ConteudoEmail = {
+export type ConteudoEmail = {
   titulo: string;
   /** Aparece na caixa de entrada, ao lado do assunto. */
   resumo: string;
@@ -63,6 +63,8 @@ type ConteudoEmail = {
   destaque?: { titulo: string; texto: string };
   botao?: { texto: string; href: string };
   nota?: string;
+  /** Link para deixar de receber emails de marketing (aparece no rodapé). */
+  cancelarSubscricao?: string;
 };
 
 /**
@@ -71,7 +73,7 @@ type ConteudoEmail = {
  * respeitam; a versão em texto ajuda a entrega e serve quem não mostra HTML.
  */
 export function montarEmail(conteudo: ConteudoEmail) {
-  const { titulo, resumo, saudacao, paragrafos, lista, destaque, botao, nota } = conteudo;
+  const { titulo, resumo, saudacao, paragrafos, lista, destaque, botao, nota, cancelarSubscricao } = conteudo;
   const ano = new Date().getFullYear();
   const paragrafo = (texto: string) =>
     `<p style="margin:0 0 16px;font-size:15px;line-height:1.6;color:#374151;">${escaparHtml(texto)}</p>`;
@@ -107,6 +109,7 @@ export function montarEmail(conteudo: ConteudoEmail) {
           <tr>
             <td style="padding:18px 24px;border-top:1px solid #e5e7eb;font-size:12px;line-height:1.5;color:#6b7280;text-align:center;">
               © ${ano} ${MARCA} — ${LEMA}
+              ${cancelarSubscricao ? `<br><a href="${escaparHtml(cancelarSubscricao)}" style="color:#6b7280;text-decoration:underline;">Deixar de receber estes emails</a>` : ""}
             </td>
           </tr>
         </table>
@@ -125,6 +128,7 @@ export function montarEmail(conteudo: ConteudoEmail) {
     botao && `${botao.texto}: ${botao.href}`,
     nota,
     `© ${ano} ${MARCA}`,
+    cancelarSubscricao && `Deixar de receber estes emails: ${cancelarSubscricao}`,
   ]
     .filter(Boolean)
     .join("\n\n");
@@ -313,4 +317,73 @@ export async function sendTestEmail(to: string) {
       ],
     }),
   });
+}
+
+/**
+ * Email com anexos para uma equipa interna, enviado em lotes com os endereços em Bcc.
+ * Lança se o SMTP não estiver configurado, para quem pediu o envio saber que não saiu nada.
+ * Devolve quantos destinatários receberam.
+ */
+export async function enviarEmailComAnexo(
+  destinatarios: string[],
+  assunto: string,
+  conteudo: ConteudoEmail,
+  anexos: NonNullable<nodemailer.SendMailOptions["attachments"]>
+) {
+  if (!emailConfigurado()) throw new Error("O envio de email não está configurado no servidor (SMTP).");
+
+  const corpo = montarEmail(conteudo);
+  let enviados = 0;
+  let ultimoErro: unknown = null;
+  for (let inicio = 0; inicio < destinatarios.length; inicio += DESTINATARIOS_POR_LOTE) {
+    const lote = destinatarios.slice(inicio, inicio + DESTINATARIOS_POR_LOTE);
+    try {
+      await entregar({ to: env.EMAIL_FROM || env.SMTP_USER, bcc: lote, subject: assunto, ...corpo, attachments: anexos });
+      enviados += lote.length;
+    } catch (erro) {
+      ultimoErro = erro;
+      console.error(`❌ Failed to send "${assunto}" to a batch of ${lote.length}:`, erro);
+    }
+    if (inicio + DESTINATARIOS_POR_LOTE < destinatarios.length) await esperar(PAUSA_ENTRE_LOTES_MS);
+  }
+  if (enviados === 0 && ultimoErro) throw new Error("O servidor de email recusou o envio. Tente novamente.");
+  return enviados;
+}
+
+/**
+ * Email de marketing (funil de vendas): leva o link e o cabeçalho para cancelar a subscrição.
+ * Não lança; devolve se foi entregue, para o funil só registar o que saiu mesmo.
+ */
+export async function enviarEmailMarketing(
+  to: string,
+  assunto: string,
+  conteudo: ConteudoEmail & { cancelarSubscricao: string }
+) {
+  if (!emailConfigurado()) return false;
+  try {
+    await entregar({
+      to,
+      subject: assunto,
+      ...montarEmail(conteudo),
+      headers: {
+        "List-Unsubscribe": `<${conteudo.cancelarSubscricao}>`,
+        "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+      },
+    });
+    return true;
+  } catch (erro) {
+    console.error(`❌ Failed to send marketing email to ${to}:`, erro);
+    return false;
+  }
+}
+
+/** Para o funil saber, antes de começar, se vale a pena correr. */
+export const emailEstaConfigurado = emailConfigurado;
+
+/**
+ * Email de serviço (avisos da conta, mensagens da equipa, alertas internos).
+ * Não é marketing: não depende da subscrição. Não lança; devolve se foi entregue.
+ */
+export function enviarEmailServico(to: string, assunto: string, conteudo: ConteudoEmail) {
+  return enviar("service email", to, assunto, conteudo);
 }

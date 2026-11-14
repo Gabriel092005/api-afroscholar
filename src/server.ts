@@ -17,6 +17,10 @@ import { uploadRoutes } from "./http/controllers/upload/routes";
 import { comunidadesRoutes } from "./http/controllers/comunidades/routes";
 import { depoimentosRoutes } from "./http/controllers/depoimentos/routes";
 import { adminRoutes } from "./http/controllers/admin/routes";
+import { atendimentoRoutes } from "./http/controllers/atendimento/routes";
+import { funilRoutes } from "./http/controllers/funil/routes";
+import { crmRoutes } from "./http/controllers/crm/routes";
+import { videosRoutes } from "./http/controllers/videos/routes";
 import { gestorRoutes } from "./http/controllers/gestor/routes";import { NovidadesRoutes } from "./http/controllers/novidades/routes";
 import { analiseDocumentoRoutes } from "./http/controllers/analise-documento/routes";
 import { perfilAcademicoRoutes } from "./http/controllers/perfil-academico/routes";
@@ -37,6 +41,8 @@ import { tiposAnaliseRoutes } from "./http/controllers/analise-documento/tipos-r
 import { mentoresRoutes } from "./http/controllers/mentores/routes";
 import { webhookConfigurado } from "./http/controllers/gateway/webhook-momenu-controller";
 import { setupSincronizacaoPagamentos } from "./Jobs/sincronizar-pagamentos";
+import { setupFunilEmails } from "./Jobs/funil-emails";
+import { setupCrmDiario } from "./Jobs/crm-diario";
 import { prisma } from "./lib/prisma";
 
 
@@ -119,6 +125,10 @@ app.register(uploadRoutes)
 app.register(comunidadesRoutes)
 app.register(depoimentosRoutes)
 app.register(adminRoutes)
+app.register(atendimentoRoutes)
+app.register(funilRoutes)
+app.register(crmRoutes)
+app.register(videosRoutes)
 app.register(gestorRoutes)
 app.register(NovidadesRoutes)
 app.register(analiseDocumentoRoutes)
@@ -221,6 +231,8 @@ io.on("connection", (socket) => {
 await app.listen({ port: env.PORT, host: '0.0.0.0' });
 void verificarEmail();
 setupSincronizacaoPagamentos();
+setupFunilEmails();
+setupCrmDiario();
 if (!webhookConfigurado()) {
   console.error(' ❌MOMENU_WEBHOOK_SECRET não está configurado: os webhooks da MoMenu serão recusados.');
 }

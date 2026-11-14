@@ -38,6 +38,16 @@ const envSchema =  z.object ({
     MOMENU_API_KEY: z.string().default(""),
     MOMENU_QA: z.enum(["true", "false"]).default("false"),
     MOMENU_WEBHOOK_SECRET: z.string().default(""),
+    /** Funil de vendas por email. Por omissão só corre em produção, para o dev não enviar emails reais. */
+    FUNIL_EMAILS_ATIVO: z.enum(["true", "false"]).optional(),
+    /** Rotinas automáticas da equipa (CRM e boas-vindas dos monitores). Activas, salvo =false. */
+    CRM_AUTOMATICO_ATIVO: z.enum(["true", "false"]).optional(),
+    /** WhatsApp Cloud API (Meta). Sem isto, o admin envia pelos links wa.me. */
+    WHATSAPP_TOKEN: z.string().default(""),
+    WHATSAPP_PHONE_NUMBER_ID: z.string().default(""),
+    /** Modelo aprovado com cabeçalho de documento e uma variável {{1}} no corpo. */
+    WHATSAPP_TEMPLATE_DOCUMENTO: z.string().default(""),
+    WHATSAPP_TEMPLATE_IDIOMA: z.string().default("pt_PT"),
 })
 
 const _env = envSchema.safeParse(process.env)

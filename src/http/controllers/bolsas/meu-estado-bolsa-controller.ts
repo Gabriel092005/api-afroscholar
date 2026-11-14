@@ -1,4 +1,4 @@
-import { expiracaoDaMentoriaNaBolsa } from "@/lib/mentoria-acesso";
+import { eMonitor, expiracaoDaMentoriaNaBolsa } from "@/lib/mentoria-acesso";
 import prisma from "@/lib/prisma";
 import { FastifyReply, FastifyRequest } from "fastify";
 
@@ -8,15 +8,16 @@ export const meuEstadoBolsa = async (req: FastifyRequest, res: FastifyReply) => 
     const { id } = req.params as { id: string };
     const usuarioId = req.user.sub;
 
-    const [inscricao, mentoriaExpiraEm] = await Promise.all([
+    const [inscricao, mentoriaExpiraEm, monitor] = await Promise.all([
       prisma.bolsaInscricao.findUnique({
         where: { bolsaId_usuarioId: { bolsaId: id, usuarioId } },
         select: { inscritoEm: true },
       }),
       expiracaoDaMentoriaNaBolsa(usuarioId, id),
+      eMonitor(usuarioId),
     ]);
 
-    return res.send({ inscrito: Boolean(inscricao?.inscritoEm), mentoriaExpiraEm });
+    return res.send({ inscrito: Boolean(inscricao?.inscritoEm), mentoriaExpiraEm, monitor });
   } catch (error) {
     req.log.error(error);
     return res.status(500).send({

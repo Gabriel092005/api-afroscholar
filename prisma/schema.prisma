@@ -17,6 +17,10 @@ enum Role {
   ADMIN
   GESTOR
   USUARIO
+  /// Acompanha os estudantes: tem o mesmo acesso que um utilizador com mentoria paga, em todas as bolsas.
+  MONITOR
+  /// Equipa de vendas/atendimento: recebe os alertas de vendas canceladas e a lista de contactos.
+  ATENDIMENTO
 }
 
 enum EstadoConta {
@@ -142,6 +146,8 @@ model User {
   resetTokenExpiry DateTime?
   created_at       DateTime    @default(now())
   last_active_at   DateTime    @default(now())
+  /// Emails do funil de vendas (gatilhos diários). O utilizador pode cancelar pelo link no email.
+  recebeEmailsMarketing Boolean @default(true)
 
   notifications       Notification[]
   inscricoes          BolsaInscricao[]
@@ -171,6 +177,12 @@ model User {
   afiliadoComissoes   AfiliadoComissao[]
   afiliadoSaques      AfiliadoSaque[]
   analisePedidos      AnalisePedido[]
+  emailsFunil         EmailFunil[]
+  leadsComoCliente    Lead[]          @relation("LeadCliente")
+  leadsAtribuidos     Lead[]          @relation("LeadAtendente")
+  interacoesLead      LeadInteracao[]
+  conversaSuporte     Conversa?        @relation("ConversaCliente")
+  mensagensSuporte    MensagemConversa[]
 }
 
 model Notification {
@@ -911,6 +923,8 @@ model CommunityMember {
   role      CommunityRole @default(MEMBER)
   status    JoinStatus    @default(APROVADO)
   joined_at DateTime      @default(now())
+  /// Quando os monitores foram avisados para dar as boas-vindas (uma vez por membro).
+  monitoresAvisadosEm DateTime?
 
   comunidadeId String
   comunidade   Community @relation(fields: [comunidadeId], references: [id], onDelete: Cascade)
@@ -1260,4 +1274,141 @@ model PagamentoMomenu {
   @@index([tipo, alvoId])
   @@index([status, ultimaVerificacao])
   @@map("pagamentos_momenu")
+}
+
+/// Cada email do funil de vendas enviado. A chave impede repetir o mesmo gatilho
+/// (ex.: o mesmo pagamento abandonado ou o mesmo passo de boas-vindas).
+model EmailFunil {
+  id        String   @id @default(uuid())
+  usuarioId String
+  gatilho   String
+  chave     String
+  enviadoEm DateTime @default(now())
+
+  usuario User @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  @@unique([usuarioId, gatilho, chave])
+  @@index([enviadoEm])
+  @@map("emails_funil")
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CRM: leads da equipa de atendimento
+// ═══════════════════════════════════════════════════════════════
+
+enum EtapaLead {
+  NOVO
+  CONTACTADO
+  INTERESSADO
+  CONVERTIDO
+  PERDIDO
+}
+
+/// Um cliente a acompanhar pela equipa de atendimento. Um lead por cliente: novos eventos
+/// (outro pagamento falhado, mentoria expirada) actualizam o mesmo lead e reabrem-no.
+model Lead {
+  id               String    @id @default(uuid())
+  usuarioId        String    @unique
+  atendenteId      String?
+  etapa            EtapaLead @default(NOVO)
+  /// PAGAMENTO_FALHADO, PAGAMENTO_PENDENTE, REGISTO, MENTORIA_EXPIRADA
+  origem           String
+  produto          String?
+  /// Caminho no site onde o cliente pode retomar a compra.
+  caminho          String?
+  valorPotencial   Float?
+  proximoContacto  DateTime?
+  ultimoContacto   DateTime?
+  created_at       DateTime  @default(now())
+  updated_at       DateTime  @updatedAt
+
+  usuario    User            @relation("LeadCliente", fields: [usuarioId], references: [id], onDelete: Cascade)
+  atendente  User?           @relation("LeadAtendente", fields: [atendenteId], references: [id], onDelete: SetNull)
+  interacoes LeadInteracao[]
+
+  @@index([atendenteId, etapa])
+  @@index([proximoContacto])
+  @@map("crm_leads")
+}
+
+/// Histórico do lead: notas, chamadas, mensagens e mudanças de etapa.
+model LeadInteracao {
+  id         String   @id @default(uuid())
+  leadId     String
+  /// Null quando foi o sistema (ex.: "novo pagamento falhado").
+  autorId    String?
+  /// NOTA, CHAMADA, WHATSAPP, EMAIL, ETAPA, SISTEMA
+  tipo       String
+  texto      String
+  created_at DateTime @default(now())
+
+  lead  Lead  @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  autor User? @relation(fields: [autorId], references: [id], onDelete: SetNull)
+
+  @@index([leadId, created_at])
+  @@map("crm_lead_interacoes")
+}
+
+// ═══════════════════════════════════════════════════════════════
+// Conversas: canal permanente entre o cliente e a equipa
+// (atendimento, monitores e administração)
+// ═══════════════════════════════════════════════════════════════
+
+/// Uma conversa por cliente, sempre a mesma: o histórico fica todo junto.
+model Conversa {
+  id               String   @id @default(uuid())
+  clienteId        String   @unique
+  /// ABERTA ou RESOLVIDA. Uma mensagem nova do cliente reabre-a.
+  estado           String   @default("ABERTA")
+  ultimaMensagemEm DateTime @default(now())
+  naoLidasCliente  Int      @default(0)
+  naoLidasEquipa   Int      @default(0)
+  created_at       DateTime @default(now())
+  updated_at       DateTime @updatedAt
+
+  cliente   User               @relation("ConversaCliente", fields: [clienteId], references: [id], onDelete: Cascade)
+  mensagens MensagemConversa[]
+
+  @@index([estado, ultimaMensagemEm])
+  @@map("conversas")
+}
+
+model MensagemConversa {
+  id         String   @id @default(uuid())
+  conversaId String
+  autorId    String?
+  /// true quando quem escreveu foi da equipa (atendimento, monitor ou admin).
+  daEquipa   Boolean
+  texto      String
+  created_at DateTime @default(now())
+
+  conversa Conversa @relation(fields: [conversaId], references: [id], onDelete: Cascade)
+  autor    User?    @relation(fields: [autorId], references: [id], onDelete: SetNull)
+
+  @@index([conversaId, created_at])
+  @@map("conversa_mensagens")
+}
+
+// ═══════════════════════════════════════════════════════════════
+// Vídeos explicativos (tutoriais publicados pelo admin)
+// ═══════════════════════════════════════════════════════════════
+
+model VideoExplicativo {
+  id          String   @id @default(uuid())
+  titulo      String
+  descricao   String?
+  /// Link do YouTube (watch, youtu.be ou shorts).
+  url         String
+  /// Para quem: TODOS, USUARIO, MENTORANDO, ATENDIMENTO, MONITOR, GESTOR
+  publico     String   @default("TODOS")
+  /// Onde aparece: GERAL (só em Como funciona), MENTORIA, PAGAMENTOS, CRM
+  local       String   @default("GERAL")
+  ordem       Int      @default(0)
+  publicado   Boolean  @default(true)
+  criadoPorId String?
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  @@index([publicado, local])
+  @@map("videos_explicativos")
 }

@@ -29,6 +29,7 @@ export type CommunityMemberMinAggregateOutputType = {
   role: $Enums.CommunityRole | null
   status: $Enums.JoinStatus | null
   joined_at: Date | null
+  monitoresAvisadosEm: Date | null
   comunidadeId: string | null
   usuarioId: string | null
 }
@@ -38,6 +39,7 @@ export type CommunityMemberMaxAggregateOutputType = {
   role: $Enums.CommunityRole | null
   status: $Enums.JoinStatus | null
   joined_at: Date | null
+  monitoresAvisadosEm: Date | null
   comunidadeId: string | null
   usuarioId: string | null
 }
@@ -47,6 +49,7 @@ export type CommunityMemberCountAggregateOutputType = {
   role: number
   status: number
   joined_at: number
+  monitoresAvisadosEm: number
   comunidadeId: number
   usuarioId: number
   _all: number
@@ -58,6 +61,7 @@ export type CommunityMemberMinAggregateInputType = {
   role?: true
   status?: true
   joined_at?: true
+  monitoresAvisadosEm?: true
   comunidadeId?: true
   usuarioId?: true
 }
@@ -67,6 +71,7 @@ export type CommunityMemberMaxAggregateInputType = {
   role?: true
   status?: true
   joined_at?: true
+  monitoresAvisadosEm?: true
   comunidadeId?: true
   usuarioId?: true
 }
@@ -76,6 +81,7 @@ export type CommunityMemberCountAggregateInputType = {
   role?: true
   status?: true
   joined_at?: true
+  monitoresAvisadosEm?: true
   comunidadeId?: true
   usuarioId?: true
   _all?: true
@@ -158,6 +164,7 @@ export type CommunityMemberGroupByOutputType = {
   role: $Enums.CommunityRole
   status: $Enums.JoinStatus
   joined_at: Date
+  monitoresAvisadosEm: Date | null
   comunidadeId: string
   usuarioId: string
   _count: CommunityMemberCountAggregateOutputType | null
@@ -188,6 +195,7 @@ export type CommunityMemberWhereInput = {
   role?: Prisma.EnumCommunityRoleFilter<"CommunityMember"> | $Enums.CommunityRole
   status?: Prisma.EnumJoinStatusFilter<"CommunityMember"> | $Enums.JoinStatus
   joined_at?: Prisma.DateTimeFilter<"CommunityMember"> | Date | string
+  monitoresAvisadosEm?: Prisma.DateTimeNullableFilter<"CommunityMember"> | Date | string | null
   comunidadeId?: Prisma.StringFilter<"CommunityMember"> | string
   usuarioId?: Prisma.StringFilter<"CommunityMember"> | string
   comunidade?: Prisma.XOR<Prisma.CommunityScalarRelationFilter, Prisma.CommunityWhereInput>
@@ -199,6 +207,7 @@ export type CommunityMemberOrderByWithRelationInput = {
   role?: Prisma.SortOrder
   status?: Prisma.SortOrder
   joined_at?: Prisma.SortOrder
+  monitoresAvisadosEm?: Prisma.SortOrderInput | Prisma.SortOrder
   comunidadeId?: Prisma.SortOrder
   usuarioId?: Prisma.SortOrder
   comunidade?: Prisma.CommunityOrderByWithRelationInput
@@ -214,6 +223,7 @@ export type CommunityMemberWhereUniqueInput = Prisma.AtLeast<{
   role?: Prisma.EnumCommunityRoleFilter<"CommunityMember"> | $Enums.CommunityRole
   status?: Prisma.EnumJoinStatusFilter<"CommunityMember"> | $Enums.JoinStatus
   joined_at?: Prisma.DateTimeFilter<"CommunityMember"> | Date | string
+  monitoresAvisadosEm?: Prisma.DateTimeNullableFilter<"CommunityMember"> | Date | string | null
   comunidadeId?: Prisma.StringFilter<"CommunityMember"> | string
   usuarioId?: Prisma.StringFilter<"CommunityMember"> | string
   comunidade?: Prisma.XOR<Prisma.CommunityScalarRelationFilter, Prisma.CommunityWhereInput>
@@ -225,6 +235,7 @@ export type CommunityMemberOrderByWithAggregationInput = {
   role?: Prisma.SortOrder
   status?: Prisma.SortOrder
   joined_at?: Prisma.SortOrder
+  monitoresAvisadosEm?: Prisma.SortOrderInput | Prisma.SortOrder
   comunidadeId?: Prisma.SortOrder
   usuarioId?: Prisma.SortOrder
   _count?: Prisma.CommunityMemberCountOrderByAggregateInput
@@ -240,6 +251,7 @@ export type CommunityMemberScalarWhereWithAggregatesInput = {
   role?: Prisma.EnumCommunityRoleWithAggregatesFilter<"CommunityMember"> | $Enums.CommunityRole
   status?: Prisma.EnumJoinStatusWithAggregatesFilter<"CommunityMember"> | $Enums.JoinStatus
   joined_at?: Prisma.DateTimeWithAggregatesFilter<"CommunityMember"> | Date | string
+  monitoresAvisadosEm?: Prisma.DateTimeNullableWithAggregatesFilter<"CommunityMember"> | Date | string | null
   comunidadeId?: Prisma.StringWithAggregatesFilter<"CommunityMember"> | string
   usuarioId?: Prisma.StringWithAggregatesFilter<"CommunityMember"> | string
 }
@@ -249,6 +261,7 @@ export type CommunityMemberCreateInput = {
   role?: $Enums.CommunityRole
   status?: $Enums.JoinStatus
   joined_at?: Date | string
+  monitoresAvisadosEm?: Date | string | null
   comunidade: Prisma.CommunityCreateNestedOneWithoutMembrosInput
   usuario: Prisma.UserCreateNestedOneWithoutMembroEmInput
 }
@@ -258,6 +271,7 @@ export type CommunityMemberUncheckedCreateInput = {
   role?: $Enums.CommunityRole
   status?: $Enums.JoinStatus
   joined_at?: Date | string
+  monitoresAvisadosEm?: Date | string | null
   comunidadeId: string
   usuarioId: string
 }
@@ -267,6 +281,7 @@ export type CommunityMemberUpdateInput = {
   role?: Prisma.EnumCommunityRoleFieldUpdateOperationsInput | $Enums.CommunityRole
   status?: Prisma.EnumJoinStatusFieldUpdateOperationsInput | $Enums.JoinStatus
   joined_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  monitoresAvisadosEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   comunidade?: Prisma.CommunityUpdateOneRequiredWithoutMembrosNestedInput
   usuario?: Prisma.UserUpdateOneRequiredWithoutMembroEmNestedInput
 }
@@ -276,6 +291,7 @@ export type CommunityMemberUncheckedUpdateInput = {
   role?: Prisma.EnumCommunityRoleFieldUpdateOperationsInput | $Enums.CommunityRole
   status?: Prisma.EnumJoinStatusFieldUpdateOperationsInput | $Enums.JoinStatus
   joined_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  monitoresAvisadosEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   comunidadeId?: Prisma.StringFieldUpdateOperationsInput | string
   usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -285,6 +301,7 @@ export type CommunityMemberCreateManyInput = {
   role?: $Enums.CommunityRole
   status?: $Enums.JoinStatus
   joined_at?: Date | string
+  monitoresAvisadosEm?: Date | string | null
   comunidadeId: string
   usuarioId: string
 }
@@ -294,6 +311,7 @@ export type CommunityMemberUpdateManyMutationInput = {
   role?: Prisma.EnumCommunityRoleFieldUpdateOperationsInput | $Enums.CommunityRole
   status?: Prisma.EnumJoinStatusFieldUpdateOperationsInput | $Enums.JoinStatus
   joined_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  monitoresAvisadosEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type CommunityMemberUncheckedUpdateManyInput = {
@@ -301,6 +319,7 @@ export type CommunityMemberUncheckedUpdateManyInput = {
   role?: Prisma.EnumCommunityRoleFieldUpdateOperationsInput | $Enums.CommunityRole
   status?: Prisma.EnumJoinStatusFieldUpdateOperationsInput | $Enums.JoinStatus
   joined_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  monitoresAvisadosEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   comunidadeId?: Prisma.StringFieldUpdateOperationsInput | string
   usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -325,6 +344,7 @@ export type CommunityMemberCountOrderByAggregateInput = {
   role?: Prisma.SortOrder
   status?: Prisma.SortOrder
   joined_at?: Prisma.SortOrder
+  monitoresAvisadosEm?: Prisma.SortOrder
   comunidadeId?: Prisma.SortOrder
   usuarioId?: Prisma.SortOrder
 }
@@ -334,6 +354,7 @@ export type CommunityMemberMaxOrderByAggregateInput = {
   role?: Prisma.SortOrder
   status?: Prisma.SortOrder
   joined_at?: Prisma.SortOrder
+  monitoresAvisadosEm?: Prisma.SortOrder
   comunidadeId?: Prisma.SortOrder
   usuarioId?: Prisma.SortOrder
 }
@@ -343,6 +364,7 @@ export type CommunityMemberMinOrderByAggregateInput = {
   role?: Prisma.SortOrder
   status?: Prisma.SortOrder
   joined_at?: Prisma.SortOrder
+  monitoresAvisadosEm?: Prisma.SortOrder
   comunidadeId?: Prisma.SortOrder
   usuarioId?: Prisma.SortOrder
 }
@@ -444,6 +466,7 @@ export type CommunityMemberCreateWithoutUsuarioInput = {
   role?: $Enums.CommunityRole
   status?: $Enums.JoinStatus
   joined_at?: Date | string
+  monitoresAvisadosEm?: Date | string | null
   comunidade: Prisma.CommunityCreateNestedOneWithoutMembrosInput
 }
 
@@ -452,6 +475,7 @@ export type CommunityMemberUncheckedCreateWithoutUsuarioInput = {
   role?: $Enums.CommunityRole
   status?: $Enums.JoinStatus
   joined_at?: Date | string
+  monitoresAvisadosEm?: Date | string | null
   comunidadeId: string
 }
 
@@ -489,6 +513,7 @@ export type CommunityMemberScalarWhereInput = {
   role?: Prisma.EnumCommunityRoleFilter<"CommunityMember"> | $Enums.CommunityRole
   status?: Prisma.EnumJoinStatusFilter<"CommunityMember"> | $Enums.JoinStatus
   joined_at?: Prisma.DateTimeFilter<"CommunityMember"> | Date | string
+  monitoresAvisadosEm?: Prisma.DateTimeNullableFilter<"CommunityMember"> | Date | string | null
   comunidadeId?: Prisma.StringFilter<"CommunityMember"> | string
   usuarioId?: Prisma.StringFilter<"CommunityMember"> | string
 }
@@ -498,6 +523,7 @@ export type CommunityMemberCreateWithoutComunidadeInput = {
   role?: $Enums.CommunityRole
   status?: $Enums.JoinStatus
   joined_at?: Date | string
+  monitoresAvisadosEm?: Date | string | null
   usuario: Prisma.UserCreateNestedOneWithoutMembroEmInput
 }
 
@@ -506,6 +532,7 @@ export type CommunityMemberUncheckedCreateWithoutComunidadeInput = {
   role?: $Enums.CommunityRole
   status?: $Enums.JoinStatus
   joined_at?: Date | string
+  monitoresAvisadosEm?: Date | string | null
   usuarioId: string
 }
 
@@ -540,6 +567,7 @@ export type CommunityMemberCreateManyUsuarioInput = {
   role?: $Enums.CommunityRole
   status?: $Enums.JoinStatus
   joined_at?: Date | string
+  monitoresAvisadosEm?: Date | string | null
   comunidadeId: string
 }
 
@@ -548,6 +576,7 @@ export type CommunityMemberUpdateWithoutUsuarioInput = {
   role?: Prisma.EnumCommunityRoleFieldUpdateOperationsInput | $Enums.CommunityRole
   status?: Prisma.EnumJoinStatusFieldUpdateOperationsInput | $Enums.JoinStatus
   joined_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  monitoresAvisadosEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   comunidade?: Prisma.CommunityUpdateOneRequiredWithoutMembrosNestedInput
 }
 
@@ -556,6 +585,7 @@ export type CommunityMemberUncheckedUpdateWithoutUsuarioInput = {
   role?: Prisma.EnumCommunityRoleFieldUpdateOperationsInput | $Enums.CommunityRole
   status?: Prisma.EnumJoinStatusFieldUpdateOperationsInput | $Enums.JoinStatus
   joined_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  monitoresAvisadosEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   comunidadeId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -564,6 +594,7 @@ export type CommunityMemberUncheckedUpdateManyWithoutUsuarioInput = {
   role?: Prisma.EnumCommunityRoleFieldUpdateOperationsInput | $Enums.CommunityRole
   status?: Prisma.EnumJoinStatusFieldUpdateOperationsInput | $Enums.JoinStatus
   joined_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  monitoresAvisadosEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   comunidadeId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -572,6 +603,7 @@ export type CommunityMemberCreateManyComunidadeInput = {
   role?: $Enums.CommunityRole
   status?: $Enums.JoinStatus
   joined_at?: Date | string
+  monitoresAvisadosEm?: Date | string | null
   usuarioId: string
 }
 
@@ -580,6 +612,7 @@ export type CommunityMemberUpdateWithoutComunidadeInput = {
   role?: Prisma.EnumCommunityRoleFieldUpdateOperationsInput | $Enums.CommunityRole
   status?: Prisma.EnumJoinStatusFieldUpdateOperationsInput | $Enums.JoinStatus
   joined_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  monitoresAvisadosEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   usuario?: Prisma.UserUpdateOneRequiredWithoutMembroEmNestedInput
 }
 
@@ -588,6 +621,7 @@ export type CommunityMemberUncheckedUpdateWithoutComunidadeInput = {
   role?: Prisma.EnumCommunityRoleFieldUpdateOperationsInput | $Enums.CommunityRole
   status?: Prisma.EnumJoinStatusFieldUpdateOperationsInput | $Enums.JoinStatus
   joined_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  monitoresAvisadosEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -596,6 +630,7 @@ export type CommunityMemberUncheckedUpdateManyWithoutComunidadeInput = {
   role?: Prisma.EnumCommunityRoleFieldUpdateOperationsInput | $Enums.CommunityRole
   status?: Prisma.EnumJoinStatusFieldUpdateOperationsInput | $Enums.JoinStatus
   joined_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  monitoresAvisadosEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -606,6 +641,7 @@ export type CommunityMemberSelect<ExtArgs extends runtime.Types.Extensions.Inter
   role?: boolean
   status?: boolean
   joined_at?: boolean
+  monitoresAvisadosEm?: boolean
   comunidadeId?: boolean
   usuarioId?: boolean
   comunidade?: boolean | Prisma.CommunityDefaultArgs<ExtArgs>
@@ -617,6 +653,7 @@ export type CommunityMemberSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
   role?: boolean
   status?: boolean
   joined_at?: boolean
+  monitoresAvisadosEm?: boolean
   comunidadeId?: boolean
   usuarioId?: boolean
   comunidade?: boolean | Prisma.CommunityDefaultArgs<ExtArgs>
@@ -628,6 +665,7 @@ export type CommunityMemberSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
   role?: boolean
   status?: boolean
   joined_at?: boolean
+  monitoresAvisadosEm?: boolean
   comunidadeId?: boolean
   usuarioId?: boolean
   comunidade?: boolean | Prisma.CommunityDefaultArgs<ExtArgs>
@@ -639,11 +677,12 @@ export type CommunityMemberSelectScalar = {
   role?: boolean
   status?: boolean
   joined_at?: boolean
+  monitoresAvisadosEm?: boolean
   comunidadeId?: boolean
   usuarioId?: boolean
 }
 
-export type CommunityMemberOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "role" | "status" | "joined_at" | "comunidadeId" | "usuarioId", ExtArgs["result"]["communityMember"]>
+export type CommunityMemberOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "role" | "status" | "joined_at" | "monitoresAvisadosEm" | "comunidadeId" | "usuarioId", ExtArgs["result"]["communityMember"]>
 export type CommunityMemberInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   comunidade?: boolean | Prisma.CommunityDefaultArgs<ExtArgs>
   usuario?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -668,6 +707,10 @@ export type $CommunityMemberPayload<ExtArgs extends runtime.Types.Extensions.Int
     role: $Enums.CommunityRole
     status: $Enums.JoinStatus
     joined_at: Date
+    /**
+     * Quando os monitores foram avisados para dar as boas-vindas (uma vez por membro).
+     */
+    monitoresAvisadosEm: Date | null
     comunidadeId: string
     usuarioId: string
   }, ExtArgs["result"]["communityMember"]>
@@ -1099,6 +1142,7 @@ export interface CommunityMemberFieldRefs {
   readonly role: Prisma.FieldRef<"CommunityMember", 'CommunityRole'>
   readonly status: Prisma.FieldRef<"CommunityMember", 'JoinStatus'>
   readonly joined_at: Prisma.FieldRef<"CommunityMember", 'DateTime'>
+  readonly monitoresAvisadosEm: Prisma.FieldRef<"CommunityMember", 'DateTime'>
   readonly comunidadeId: Prisma.FieldRef<"CommunityMember", 'String'>
   readonly usuarioId: Prisma.FieldRef<"CommunityMember", 'String'>
 }

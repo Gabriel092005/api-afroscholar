@@ -443,7 +443,13 @@ export const ModelName = {
   AfiliadoLink: 'AfiliadoLink',
   AfiliadoComissao: 'AfiliadoComissao',
   AfiliadoSaque: 'AfiliadoSaque',
-  PagamentoMomenu: 'PagamentoMomenu'
+  PagamentoMomenu: 'PagamentoMomenu',
+  EmailFunil: 'EmailFunil',
+  Lead: 'Lead',
+  LeadInteracao: 'LeadInteracao',
+  Conversa: 'Conversa',
+  MensagemConversa: 'MensagemConversa',
+  VideoExplicativo: 'VideoExplicativo'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -459,7 +465,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "notification" | "usuario" | "notificacao" | "empresa" | "departamento" | "bot" | "botAsset" | "botEmpresa" | "folhaBot" | "transacao" | "arquivo" | "assinatura" | "carrinhoItem" | "feedback" | "mensagem" | "setting" | "whatBotCanDo" | "whatBotCanNotDo" | "bolsa" | "bolsaInscricao" | "bolsaInscricaoDocumento" | "curso" | "aula" | "cursoPagamento" | "cursoUsuario" | "documento" | "documentoCompra" | "depoimento" | "novidade" | "novidadeInscricao" | "novidadeInscricaoDocumento" | "anexo" | "perfilAcademico" | "analiseDocumento" | "community" | "communityMember" | "communityMessage" | "aulaOnline" | "aulaOnlineParticipante" | "mentoria" | "mentoriaAcesso" | "mentoriaInscricao" | "communityQuestion" | "communityAnswer" | "homeBanner" | "mapaGlobal" | "atividade" | "analiseTipoDocumento" | "analisePedido" | "afiliadoLink" | "afiliadoComissao" | "afiliadoSaque" | "pagamentoMomenu"
+    modelProps: "user" | "notification" | "usuario" | "notificacao" | "empresa" | "departamento" | "bot" | "botAsset" | "botEmpresa" | "folhaBot" | "transacao" | "arquivo" | "assinatura" | "carrinhoItem" | "feedback" | "mensagem" | "setting" | "whatBotCanDo" | "whatBotCanNotDo" | "bolsa" | "bolsaInscricao" | "bolsaInscricaoDocumento" | "curso" | "aula" | "cursoPagamento" | "cursoUsuario" | "documento" | "documentoCompra" | "depoimento" | "novidade" | "novidadeInscricao" | "novidadeInscricaoDocumento" | "anexo" | "perfilAcademico" | "analiseDocumento" | "community" | "communityMember" | "communityMessage" | "aulaOnline" | "aulaOnlineParticipante" | "mentoria" | "mentoriaAcesso" | "mentoriaInscricao" | "communityQuestion" | "communityAnswer" | "homeBanner" | "mapaGlobal" | "atividade" | "analiseTipoDocumento" | "analisePedido" | "afiliadoLink" | "afiliadoComissao" | "afiliadoSaque" | "pagamentoMomenu" | "emailFunil" | "lead" | "leadInteracao" | "conversa" | "mensagemConversa" | "videoExplicativo"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -4459,6 +4465,450 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    EmailFunil: {
+      payload: Prisma.$EmailFunilPayload<ExtArgs>
+      fields: Prisma.EmailFunilFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.EmailFunilFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailFunilPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.EmailFunilFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailFunilPayload>
+        }
+        findFirst: {
+          args: Prisma.EmailFunilFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailFunilPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.EmailFunilFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailFunilPayload>
+        }
+        findMany: {
+          args: Prisma.EmailFunilFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailFunilPayload>[]
+        }
+        create: {
+          args: Prisma.EmailFunilCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailFunilPayload>
+        }
+        createMany: {
+          args: Prisma.EmailFunilCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.EmailFunilCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailFunilPayload>[]
+        }
+        delete: {
+          args: Prisma.EmailFunilDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailFunilPayload>
+        }
+        update: {
+          args: Prisma.EmailFunilUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailFunilPayload>
+        }
+        deleteMany: {
+          args: Prisma.EmailFunilDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.EmailFunilUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.EmailFunilUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailFunilPayload>[]
+        }
+        upsert: {
+          args: Prisma.EmailFunilUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailFunilPayload>
+        }
+        aggregate: {
+          args: Prisma.EmailFunilAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateEmailFunil>
+        }
+        groupBy: {
+          args: Prisma.EmailFunilGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EmailFunilGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.EmailFunilCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EmailFunilCountAggregateOutputType> | number
+        }
+      }
+    }
+    Lead: {
+      payload: Prisma.$LeadPayload<ExtArgs>
+      fields: Prisma.LeadFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.LeadFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.LeadFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadPayload>
+        }
+        findFirst: {
+          args: Prisma.LeadFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.LeadFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadPayload>
+        }
+        findMany: {
+          args: Prisma.LeadFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadPayload>[]
+        }
+        create: {
+          args: Prisma.LeadCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadPayload>
+        }
+        createMany: {
+          args: Prisma.LeadCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.LeadCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadPayload>[]
+        }
+        delete: {
+          args: Prisma.LeadDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadPayload>
+        }
+        update: {
+          args: Prisma.LeadUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadPayload>
+        }
+        deleteMany: {
+          args: Prisma.LeadDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.LeadUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.LeadUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadPayload>[]
+        }
+        upsert: {
+          args: Prisma.LeadUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadPayload>
+        }
+        aggregate: {
+          args: Prisma.LeadAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLead>
+        }
+        groupBy: {
+          args: Prisma.LeadGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LeadGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.LeadCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LeadCountAggregateOutputType> | number
+        }
+      }
+    }
+    LeadInteracao: {
+      payload: Prisma.$LeadInteracaoPayload<ExtArgs>
+      fields: Prisma.LeadInteracaoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.LeadInteracaoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadInteracaoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.LeadInteracaoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadInteracaoPayload>
+        }
+        findFirst: {
+          args: Prisma.LeadInteracaoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadInteracaoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.LeadInteracaoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadInteracaoPayload>
+        }
+        findMany: {
+          args: Prisma.LeadInteracaoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadInteracaoPayload>[]
+        }
+        create: {
+          args: Prisma.LeadInteracaoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadInteracaoPayload>
+        }
+        createMany: {
+          args: Prisma.LeadInteracaoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.LeadInteracaoCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadInteracaoPayload>[]
+        }
+        delete: {
+          args: Prisma.LeadInteracaoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadInteracaoPayload>
+        }
+        update: {
+          args: Prisma.LeadInteracaoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadInteracaoPayload>
+        }
+        deleteMany: {
+          args: Prisma.LeadInteracaoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.LeadInteracaoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.LeadInteracaoUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadInteracaoPayload>[]
+        }
+        upsert: {
+          args: Prisma.LeadInteracaoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LeadInteracaoPayload>
+        }
+        aggregate: {
+          args: Prisma.LeadInteracaoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLeadInteracao>
+        }
+        groupBy: {
+          args: Prisma.LeadInteracaoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LeadInteracaoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.LeadInteracaoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LeadInteracaoCountAggregateOutputType> | number
+        }
+      }
+    }
+    Conversa: {
+      payload: Prisma.$ConversaPayload<ExtArgs>
+      fields: Prisma.ConversaFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ConversaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversaPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ConversaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversaPayload>
+        }
+        findFirst: {
+          args: Prisma.ConversaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversaPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ConversaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversaPayload>
+        }
+        findMany: {
+          args: Prisma.ConversaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversaPayload>[]
+        }
+        create: {
+          args: Prisma.ConversaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversaPayload>
+        }
+        createMany: {
+          args: Prisma.ConversaCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ConversaCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversaPayload>[]
+        }
+        delete: {
+          args: Prisma.ConversaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversaPayload>
+        }
+        update: {
+          args: Prisma.ConversaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversaPayload>
+        }
+        deleteMany: {
+          args: Prisma.ConversaDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ConversaUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ConversaUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversaPayload>[]
+        }
+        upsert: {
+          args: Prisma.ConversaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversaPayload>
+        }
+        aggregate: {
+          args: Prisma.ConversaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateConversa>
+        }
+        groupBy: {
+          args: Prisma.ConversaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ConversaGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ConversaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ConversaCountAggregateOutputType> | number
+        }
+      }
+    }
+    MensagemConversa: {
+      payload: Prisma.$MensagemConversaPayload<ExtArgs>
+      fields: Prisma.MensagemConversaFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MensagemConversaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MensagemConversaPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MensagemConversaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MensagemConversaPayload>
+        }
+        findFirst: {
+          args: Prisma.MensagemConversaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MensagemConversaPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MensagemConversaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MensagemConversaPayload>
+        }
+        findMany: {
+          args: Prisma.MensagemConversaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MensagemConversaPayload>[]
+        }
+        create: {
+          args: Prisma.MensagemConversaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MensagemConversaPayload>
+        }
+        createMany: {
+          args: Prisma.MensagemConversaCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MensagemConversaCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MensagemConversaPayload>[]
+        }
+        delete: {
+          args: Prisma.MensagemConversaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MensagemConversaPayload>
+        }
+        update: {
+          args: Prisma.MensagemConversaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MensagemConversaPayload>
+        }
+        deleteMany: {
+          args: Prisma.MensagemConversaDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MensagemConversaUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MensagemConversaUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MensagemConversaPayload>[]
+        }
+        upsert: {
+          args: Prisma.MensagemConversaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MensagemConversaPayload>
+        }
+        aggregate: {
+          args: Prisma.MensagemConversaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMensagemConversa>
+        }
+        groupBy: {
+          args: Prisma.MensagemConversaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MensagemConversaGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MensagemConversaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MensagemConversaCountAggregateOutputType> | number
+        }
+      }
+    }
+    VideoExplicativo: {
+      payload: Prisma.$VideoExplicativoPayload<ExtArgs>
+      fields: Prisma.VideoExplicativoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.VideoExplicativoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideoExplicativoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.VideoExplicativoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideoExplicativoPayload>
+        }
+        findFirst: {
+          args: Prisma.VideoExplicativoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideoExplicativoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.VideoExplicativoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideoExplicativoPayload>
+        }
+        findMany: {
+          args: Prisma.VideoExplicativoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideoExplicativoPayload>[]
+        }
+        create: {
+          args: Prisma.VideoExplicativoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideoExplicativoPayload>
+        }
+        createMany: {
+          args: Prisma.VideoExplicativoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.VideoExplicativoCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideoExplicativoPayload>[]
+        }
+        delete: {
+          args: Prisma.VideoExplicativoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideoExplicativoPayload>
+        }
+        update: {
+          args: Prisma.VideoExplicativoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideoExplicativoPayload>
+        }
+        deleteMany: {
+          args: Prisma.VideoExplicativoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.VideoExplicativoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.VideoExplicativoUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideoExplicativoPayload>[]
+        }
+        upsert: {
+          args: Prisma.VideoExplicativoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideoExplicativoPayload>
+        }
+        aggregate: {
+          args: Prisma.VideoExplicativoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateVideoExplicativo>
+        }
+        groupBy: {
+          args: Prisma.VideoExplicativoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VideoExplicativoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.VideoExplicativoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VideoExplicativoCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -4513,7 +4963,8 @@ export const UserScalarFieldEnum = {
   resetToken: 'resetToken',
   resetTokenExpiry: 'resetTokenExpiry',
   created_at: 'created_at',
-  last_active_at: 'last_active_at'
+  last_active_at: 'last_active_at',
+  recebeEmailsMarketing: 'recebeEmailsMarketing'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -5114,6 +5565,7 @@ export const CommunityMemberScalarFieldEnum = {
   role: 'role',
   status: 'status',
   joined_at: 'joined_at',
+  monitoresAvisadosEm: 'monitoresAvisadosEm',
   comunidadeId: 'comunidadeId',
   usuarioId: 'usuarioId'
 } as const
@@ -5369,6 +5821,90 @@ export const PagamentoMomenuScalarFieldEnum = {
 } as const
 
 export type PagamentoMomenuScalarFieldEnum = (typeof PagamentoMomenuScalarFieldEnum)[keyof typeof PagamentoMomenuScalarFieldEnum]
+
+
+export const EmailFunilScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  gatilho: 'gatilho',
+  chave: 'chave',
+  enviadoEm: 'enviadoEm'
+} as const
+
+export type EmailFunilScalarFieldEnum = (typeof EmailFunilScalarFieldEnum)[keyof typeof EmailFunilScalarFieldEnum]
+
+
+export const LeadScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  atendenteId: 'atendenteId',
+  etapa: 'etapa',
+  origem: 'origem',
+  produto: 'produto',
+  caminho: 'caminho',
+  valorPotencial: 'valorPotencial',
+  proximoContacto: 'proximoContacto',
+  ultimoContacto: 'ultimoContacto',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type LeadScalarFieldEnum = (typeof LeadScalarFieldEnum)[keyof typeof LeadScalarFieldEnum]
+
+
+export const LeadInteracaoScalarFieldEnum = {
+  id: 'id',
+  leadId: 'leadId',
+  autorId: 'autorId',
+  tipo: 'tipo',
+  texto: 'texto',
+  created_at: 'created_at'
+} as const
+
+export type LeadInteracaoScalarFieldEnum = (typeof LeadInteracaoScalarFieldEnum)[keyof typeof LeadInteracaoScalarFieldEnum]
+
+
+export const ConversaScalarFieldEnum = {
+  id: 'id',
+  clienteId: 'clienteId',
+  estado: 'estado',
+  ultimaMensagemEm: 'ultimaMensagemEm',
+  naoLidasCliente: 'naoLidasCliente',
+  naoLidasEquipa: 'naoLidasEquipa',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type ConversaScalarFieldEnum = (typeof ConversaScalarFieldEnum)[keyof typeof ConversaScalarFieldEnum]
+
+
+export const MensagemConversaScalarFieldEnum = {
+  id: 'id',
+  conversaId: 'conversaId',
+  autorId: 'autorId',
+  daEquipa: 'daEquipa',
+  texto: 'texto',
+  created_at: 'created_at'
+} as const
+
+export type MensagemConversaScalarFieldEnum = (typeof MensagemConversaScalarFieldEnum)[keyof typeof MensagemConversaScalarFieldEnum]
+
+
+export const VideoExplicativoScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  descricao: 'descricao',
+  url: 'url',
+  publico: 'publico',
+  local: 'local',
+  ordem: 'ordem',
+  publicado: 'publicado',
+  criadoPorId: 'criadoPorId',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type VideoExplicativoScalarFieldEnum = (typeof VideoExplicativoScalarFieldEnum)[keyof typeof VideoExplicativoScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -5802,6 +6338,20 @@ export type EnumPagamentoMomenuStatusFieldRefInput<$PrismaModel> = FieldRefInput
 export type ListEnumPagamentoMomenuStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PagamentoMomenuStatus[]'>
     
 
+
+/**
+ * Reference to a field of type 'EtapaLead'
+ */
+export type EnumEtapaLeadFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EtapaLead'>
+    
+
+
+/**
+ * Reference to a field of type 'EtapaLead[]'
+ */
+export type ListEnumEtapaLeadFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EtapaLead[]'>
+    
+
 /**
  * Batch Payload for updateMany & deleteMany & createMany
  */
@@ -5943,6 +6493,12 @@ export type GlobalOmitConfig = {
   afiliadoComissao?: Prisma.AfiliadoComissaoOmit
   afiliadoSaque?: Prisma.AfiliadoSaqueOmit
   pagamentoMomenu?: Prisma.PagamentoMomenuOmit
+  emailFunil?: Prisma.EmailFunilOmit
+  lead?: Prisma.LeadOmit
+  leadInteracao?: Prisma.LeadInteracaoOmit
+  conversa?: Prisma.ConversaOmit
+  mensagemConversa?: Prisma.MensagemConversaOmit
+  videoExplicativo?: Prisma.VideoExplicativoOmit
 }
 
 /* Types for Logging */

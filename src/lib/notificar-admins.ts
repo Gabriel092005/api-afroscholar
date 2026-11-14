@@ -1,20 +1,38 @@
 import crypto from "node:crypto";
+import type { Role } from "@/generated/client";
 import prisma from "@/lib/prisma";
 import { io } from "@/server";
 
 export type AvisoAdmin = {
   titulo: string;
   conteudo: string;
-  tipo: "INFO" | "ERRO";
+  tipo: "INFO" | "ERRO" | "ALERTA";
   link?: string;
   entidade?: string;
   entidadeId?: string;
 };
 
 /** Guarda o aviso para cada administrador e mostra-o a quem estiver com a app aberta. */
-export async function notificarAdmins(aviso: AvisoAdmin) {
-  const admins = await prisma.user.findMany({ where: { role: "ADMIN" }, select: { id: true } });
-  const notificacoes = admins.map(({ id }) => ({ id: crypto.randomUUID(), userId: id }));
+export function notificarAdmins(aviso: AvisoAdmin) {
+  return notificarPorRole(["ADMIN"], aviso);
+}
+
+/** O mesmo aviso para todas as contas activas com um destes cargos. */
+export async function notificarPorRole(roles: Role[], aviso: AvisoAdmin) {
+  const destinatarios = await prisma.user.findMany({
+    where: { role: { in: roles }, estado_conta: "ACTIVA" },
+    select: { id: true },
+  });
+  return notificarUtilizadores(
+    destinatarios.map(({ id }) => id),
+    aviso
+  );
+}
+
+/** Guarda o aviso para estes utilizadores e mostra-o a quem estiver com a app aberta. */
+export async function notificarUtilizadores(userIds: string[], aviso: AvisoAdmin) {
+  if (userIds.length === 0) return;
+  const notificacoes = userIds.map((userId) => ({ id: crypto.randomUUID(), userId }));
 
   await prisma.notification.createMany({
     data: notificacoes.map((n) => ({

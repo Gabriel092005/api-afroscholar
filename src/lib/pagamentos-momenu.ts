@@ -5,6 +5,7 @@ import { z } from "zod";
 import type { PagamentoMomenu, Prisma } from "@/generated/client";
 import prisma from "@/lib/prisma";
 import { registarComissao, resolverLinkAfiliado } from "@/lib/afiliados";
+import { marcarLeadConvertido, registarVendaCancelada } from "@/lib/crm";
 import { concederMentoria } from "@/lib/mentoria-acesso";
 import { duracaoEmTexto } from "@/lib/pacotes-mentoria";
 import { faturacaoPorBolsa, faturacaoPorCurso, faturacaoPorDocumento } from "@/lib/faturacao";
@@ -387,6 +388,9 @@ export async function confirmarPagamento(
   if (resultado.avisoAfiliado) await notificar(resultado.avisoAfiliado);
   // Depois da transação, para o total já incluir este pagamento.
   if (resultado.pagamento) await notificarDono(resultado.pagamento);
+  if (resultado.pagamento?.usuarioId && resultado.notificacao) {
+    await marcarLeadConvertido(resultado.pagamento.usuarioId, `Pagamento confirmado: ${resultado.pagamento.valor.toLocaleString("pt-PT")} Kz.`);
+  }
   return resultado.confirmado;
 }
 
@@ -443,17 +447,19 @@ export async function falharPagamento(chave: ChavePagamento, motivo?: string): P
       cancelados = r.count;
     }
 
-    return cancelados > 0 && pagamento.usuarioId ? pagamento.usuarioId : null;
+    return cancelados > 0 && pagamento.usuarioId ? pagamento : null;
   });
 
-  if (!resultado) return false;
+  if (!resultado?.usuarioId) return false;
   await notificar({
-    usuarioId: resultado,
+    usuarioId: resultado.usuarioId,
     titulo: "Pagamento não concluído",
     conteudo: motivo ?? "O pagamento falhou ou expirou. Pode tentar novamente quando quiser.",
     tipo: "ERRO",
     link: "/minhas-atividades",
   });
+  // Vai para o CRM: o atendente responsável liga ao cliente para recuperar a venda.
+  await registarVendaCancelada(resultado, motivo);
   return true;
 }
 

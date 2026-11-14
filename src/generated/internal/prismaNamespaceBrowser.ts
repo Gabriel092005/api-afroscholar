@@ -102,7 +102,13 @@ export const ModelName = {
   AfiliadoLink: 'AfiliadoLink',
   AfiliadoComissao: 'AfiliadoComissao',
   AfiliadoSaque: 'AfiliadoSaque',
-  PagamentoMomenu: 'PagamentoMomenu'
+  PagamentoMomenu: 'PagamentoMomenu',
+  EmailFunil: 'EmailFunil',
+  Lead: 'Lead',
+  LeadInteracao: 'LeadInteracao',
+  Conversa: 'Conversa',
+  MensagemConversa: 'MensagemConversa',
+  VideoExplicativo: 'VideoExplicativo'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -136,7 +142,8 @@ export const UserScalarFieldEnum = {
   resetToken: 'resetToken',
   resetTokenExpiry: 'resetTokenExpiry',
   created_at: 'created_at',
-  last_active_at: 'last_active_at'
+  last_active_at: 'last_active_at',
+  recebeEmailsMarketing: 'recebeEmailsMarketing'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -737,6 +744,7 @@ export const CommunityMemberScalarFieldEnum = {
   role: 'role',
   status: 'status',
   joined_at: 'joined_at',
+  monitoresAvisadosEm: 'monitoresAvisadosEm',
   comunidadeId: 'comunidadeId',
   usuarioId: 'usuarioId'
 } as const
@@ -992,6 +1000,90 @@ export const PagamentoMomenuScalarFieldEnum = {
 } as const
 
 export type PagamentoMomenuScalarFieldEnum = (typeof PagamentoMomenuScalarFieldEnum)[keyof typeof PagamentoMomenuScalarFieldEnum]
+
+
+export const EmailFunilScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  gatilho: 'gatilho',
+  chave: 'chave',
+  enviadoEm: 'enviadoEm'
+} as const
+
+export type EmailFunilScalarFieldEnum = (typeof EmailFunilScalarFieldEnum)[keyof typeof EmailFunilScalarFieldEnum]
+
+
+export const LeadScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  atendenteId: 'atendenteId',
+  etapa: 'etapa',
+  origem: 'origem',
+  produto: 'produto',
+  caminho: 'caminho',
+  valorPotencial: 'valorPotencial',
+  proximoContacto: 'proximoContacto',
+  ultimoContacto: 'ultimoContacto',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type LeadScalarFieldEnum = (typeof LeadScalarFieldEnum)[keyof typeof LeadScalarFieldEnum]
+
+
+export const LeadInteracaoScalarFieldEnum = {
+  id: 'id',
+  leadId: 'leadId',
+  autorId: 'autorId',
+  tipo: 'tipo',
+  texto: 'texto',
+  created_at: 'created_at'
+} as const
+
+export type LeadInteracaoScalarFieldEnum = (typeof LeadInteracaoScalarFieldEnum)[keyof typeof LeadInteracaoScalarFieldEnum]
+
+
+export const ConversaScalarFieldEnum = {
+  id: 'id',
+  clienteId: 'clienteId',
+  estado: 'estado',
+  ultimaMensagemEm: 'ultimaMensagemEm',
+  naoLidasCliente: 'naoLidasCliente',
+  naoLidasEquipa: 'naoLidasEquipa',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type ConversaScalarFieldEnum = (typeof ConversaScalarFieldEnum)[keyof typeof ConversaScalarFieldEnum]
+
+
+export const MensagemConversaScalarFieldEnum = {
+  id: 'id',
+  conversaId: 'conversaId',
+  autorId: 'autorId',
+  daEquipa: 'daEquipa',
+  texto: 'texto',
+  created_at: 'created_at'
+} as const
+
+export type MensagemConversaScalarFieldEnum = (typeof MensagemConversaScalarFieldEnum)[keyof typeof MensagemConversaScalarFieldEnum]
+
+
+export const VideoExplicativoScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  descricao: 'descricao',
+  url: 'url',
+  publico: 'publico',
+  local: 'local',
+  ordem: 'ordem',
+  publicado: 'publicado',
+  criadoPorId: 'criadoPorId',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type VideoExplicativoScalarFieldEnum = (typeof VideoExplicativoScalarFieldEnum)[keyof typeof VideoExplicativoScalarFieldEnum]
 
 
 export const SortOrder = {

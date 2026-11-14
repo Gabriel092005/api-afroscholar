@@ -2,7 +2,7 @@ import prisma from "@/lib/prisma";
 
 interface AlterarRoleRequest {
   userId: string;
-  novaRole: "ADMIN" | "GESTOR" | "USUARIO";
+  novaRole: "ADMIN" | "GESTOR" | "USUARIO" | "MONITOR" | "ATENDIMENTO";
   currentUserId: string;
 }
 
