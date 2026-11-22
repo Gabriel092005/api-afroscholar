@@ -2,6 +2,7 @@ import crypto from "node:crypto";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import {
+  cupomSchema,
   iniciarCobranca,
   metodoPagamentoSchema,
   responderErroPagamento,
@@ -14,6 +15,7 @@ import prisma from "@/lib/prisma";
 const bodySchema = z.object({
   metodo: metodoPagamentoSchema.optional(),
   phoneNumber: telefoneSchema.optional(),
+  cupom: cupomSchema,
 });
 
 export const comprarDocumento = async (req: FastifyRequest, res: FastifyReply) => {
@@ -52,6 +54,7 @@ export const comprarDocumento = async (req: FastifyRequest, res: FastifyReply) =
       produto: documento.titulo,
       link: "/documentos",
       afiliadoCodigo: codigoAfiliadoDoPedido(req),
+      cupom: body.cupom,
       persistirAlvo: (tx, cobranca) =>
         tx.documentoCompra.upsert({
           where: chave,

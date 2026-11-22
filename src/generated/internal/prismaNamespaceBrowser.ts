@@ -108,7 +108,9 @@ export const ModelName = {
   LeadInteracao: 'LeadInteracao',
   Conversa: 'Conversa',
   MensagemConversa: 'MensagemConversa',
-  VideoExplicativo: 'VideoExplicativo'
+  VideoExplicativo: 'VideoExplicativo',
+  MembroSocial: 'MembroSocial',
+  Cupom: 'Cupom'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -995,6 +997,9 @@ export const PagamentoMomenuScalarFieldEnum = {
   ultimaVerificacao: 'ultimaVerificacao',
   pagoEm: 'pagoEm',
   afiliadoLinkId: 'afiliadoLinkId',
+  cupomId: 'cupomId',
+  valorOriginal: 'valorOriginal',
+  desconto: 'desconto',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
@@ -1084,6 +1089,50 @@ export const VideoExplicativoScalarFieldEnum = {
 } as const
 
 export type VideoExplicativoScalarFieldEnum = (typeof VideoExplicativoScalarFieldEnum)[keyof typeof VideoExplicativoScalarFieldEnum]
+
+
+export const MembroSocialScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  todasBolsas: 'todasBolsas',
+  bolsaIds: 'bolsaIds',
+  documentos: 'documentos',
+  cursos: 'cursos',
+  comunidades: 'comunidades',
+  aulas: 'aulas',
+  ia: 'ia',
+  ativo: 'ativo',
+  expiraEm: 'expiraEm',
+  observacao: 'observacao',
+  criadoPorId: 'criadoPorId',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type MembroSocialScalarFieldEnum = (typeof MembroSocialScalarFieldEnum)[keyof typeof MembroSocialScalarFieldEnum]
+
+
+export const CupomScalarFieldEnum = {
+  id: 'id',
+  codigo: 'codigo',
+  descricao: 'descricao',
+  tipoDesconto: 'tipoDesconto',
+  valor: 'valor',
+  tipos: 'tipos',
+  itemId: 'itemId',
+  limiteUsos: 'limiteUsos',
+  limitePorUsuario: 'limitePorUsuario',
+  valorMinimo: 'valorMinimo',
+  validoDesde: 'validoDesde',
+  validoAte: 'validoAte',
+  ativo: 'ativo',
+  usos: 'usos',
+  criadoPorId: 'criadoPorId',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type CupomScalarFieldEnum = (typeof CupomScalarFieldEnum)[keyof typeof CupomScalarFieldEnum]
 
 
 export const SortOrder = {

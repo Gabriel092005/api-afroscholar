@@ -7,6 +7,7 @@ import prisma from "@/lib/prisma";
 import { registarComissao, resolverLinkAfiliado } from "@/lib/afiliados";
 import { marcarLeadConvertido, registarVendaCancelada } from "@/lib/crm";
 import { concederMentoria } from "@/lib/mentoria-acesso";
+import { aplicarCupom, CupomError, registarUsoCupom, type AplicacaoCupom } from "@/lib/cupons";
 import { duracaoEmTexto } from "@/lib/pacotes-mentoria";
 import { faturacaoPorBolsa, faturacaoPorCurso, faturacaoPorDocumento } from "@/lib/faturacao";
 import { MomenuService, type MomenuProduct } from "@/lib/momenu.service";
@@ -19,6 +20,9 @@ export const telefoneSchema = z
   .regex(/^9\d{8}$/, "O telefone deve ter 9 dígitos e começar por 9");
 
 export type MetodoPagamento = z.infer<typeof metodoPagamentoSchema>;
+/** Pago a 100% com cupão: não passa pela MoMenu. */
+export const METODO_CUPOM = "cupom";
+export const cupomSchema = z.string().trim().max(40).optional().transform((c) => c || undefined);
 export type TipoPagamento = PagamentoMomenu["tipo"];
 
 const MCX_EXPIRA_MS = 10 * 60 * 1000;
@@ -103,6 +107,8 @@ async function aplicarConfirmacao(
       where: { id: alvo.id },
       data: {
         status: "APROVADO",
+        // O que foi mesmo cobrado (com cupão pode ser menos do que o preço).
+        valor: pagamento.valor,
         ...(invoiceUrl ? { comprovativo: invoiceUrl } : {}),
       },
     });
@@ -213,7 +219,7 @@ async function aplicarConfirmacao(
       return null;
     }
 
-    await tx.analisePedido.update({ where: { id: alvo.id }, data: { status: "APROVADO" } });
+    await tx.analisePedido.update({ where: { id: alvo.id }, data: { status: "APROVADO", valor: pagamento.valor } });
     // CANCELADO incluído: uma referência pode ser paga depois de dada como expirada.
     await tx.analiseDocumento.updateMany({
       where: { pedidoId: alvo.id, status: { in: ["AGUARDANDO_PAGAMENTO", "CANCELADO"] } },
@@ -375,6 +381,8 @@ export async function confirmarPagamento(
     if (reclamado.count === 0) return { confirmado: false, notificacao: null, avisoAfiliado: null, pagamento: null };
 
     const notificacao = await aplicarConfirmacao(tx, pagamento, invoiceUrl);
+    // Só conta o uso do cupão quando a compra foi mesmo aplicada.
+    if (notificacao) await registarUsoCupom(tx, pagamento.cupomId);
     return {
       confirmado: true,
       notificacao,
@@ -586,6 +594,8 @@ export function serializarPagamento(pagamento: PagamentoMomenu) {
     dueDate: pagamento.dueDate,
     invoiceUrl: pagamento.invoiceUrl,
     falhaMotivo: pagamento.falhaMotivo,
+    valorOriginal: pagamento.valorOriginal,
+    desconto: pagamento.desconto,
   };
 }
 
@@ -648,10 +658,12 @@ type IniciarCobranca = {
   produto: string;
   link: string;
   afiliadoCodigo?: string;
+  /** Código de cupão escrito pelo cliente. */
+  cupom?: string;
   /** Grava a compra na mesma transação da cobrança. */
   persistirAlvo: (
     tx: Prisma.TransactionClient,
-    cobranca: { referencia: string; metodo: MetodoPagamento }
+    cobranca: { referencia: string; metodo: MetodoPagamento | typeof METODO_CUPOM }
   ) => Promise<unknown>;
 };
 
@@ -659,11 +671,33 @@ type IniciarCobranca = {
 const cobrancasEmCurso = new Set<string>();
 
 export async function iniciarCobranca(dados: IniciarCobranca): Promise<PagamentoMomenu> {
-  const { tipo, itemId, alvoId, usuarioId, valor, metodo, phoneNumber, produto } = dados;
+  const { tipo, itemId, alvoId, usuarioId, metodo, phoneNumber, produto } = dados;
+
+  // O desconto é sempre calculado aqui, a partir do preço do servidor.
+  let aplicacao: AplicacaoCupom | null = null;
+  if (dados.cupom) {
+    try {
+      aplicacao = await aplicarCupom(dados.cupom, { tipo, itemId, usuarioId, valor: dados.valor });
+    } catch (error) {
+      if (error instanceof CupomError) throw new PagamentoError(400, error.message);
+      throw error;
+    }
+  }
+  const valor = aplicacao ? aplicacao.valorFinal : dados.valor;
+  const dadosCupom = aplicacao
+    ? { cupomId: aplicacao.cupom.id, valorOriginal: aplicacao.valorOriginal, desconto: aplicacao.desconto }
+    : {};
+
+  if (aplicacao && valor <= 0) return cobrancaGratuitaComCupom(dados, aplicacao);
 
   if (!metodo) throw new PagamentoError(400, "Selecione o método de pagamento.");
   if (valor < VALOR_MINIMO_MOMENU) {
-    throw new PagamentoError(400, `O valor mínimo aceite é de ${VALOR_MINIMO_MOMENU} Kz.`);
+    throw new PagamentoError(
+      400,
+      aplicacao
+        ? `Com este cupão o valor fica abaixo do mínimo aceite (${VALOR_MINIMO_MOMENU} Kz).`
+        : `O valor mínimo aceite é de ${VALOR_MINIMO_MOMENU} Kz.`
+    );
   }
   if (metodo === "momenu-mcx" && !phoneNumber) {
     throw new PagamentoError(400, "Indique o número de telefone do Multicaixa Express.");
@@ -727,6 +761,7 @@ export async function iniciarCobranca(dados: IniciarCobranca): Promise<Pagamento
             entity: cobranca.entity,
             dueDate: cobranca.dueDate ? new Date(cobranca.dueDate) : null,
             afiliadoLinkId,
+            ...dadosCupom,
           },
         });
       });
@@ -747,7 +782,7 @@ export async function iniciarCobranca(dados: IniciarCobranca): Promise<Pagamento
     const pagamento = await prisma.$transaction(async (tx) => {
       await dados.persistirAlvo(tx, { referencia: id, metodo });
       return tx.pagamentoMomenu.create({
-        data: { id, tipo, alvoId, usuarioId, valor, metodo, afiliadoLinkId },
+        data: { id, tipo, alvoId, usuarioId, valor, metodo, afiliadoLinkId, ...dadosCupom },
       });
     });
 
@@ -755,6 +790,42 @@ export async function iniciarCobranca(dados: IniciarCobranca): Promise<Pagamento
     void executarExpress(id, valor, phoneNumber!, produtos);
 
     return pagamento;
+  } finally {
+    cobrancasEmCurso.delete(chave);
+  }
+}
+
+/**
+ * Cupão que cobre o preço todo: grava a compra e confirma-a logo, sem MoMenu.
+ * Passa pelo mesmo confirmarPagamento, para abrir o acesso e contar o uso do cupão.
+ */
+async function cobrancaGratuitaComCupom(dados: IniciarCobranca, aplicacao: AplicacaoCupom) {
+  const { tipo, itemId, alvoId, usuarioId } = dados;
+  const chave = `${tipo}:${itemId}:${usuarioId}`;
+  if (cobrancasEmCurso.has(chave)) {
+    throw new PagamentoError(409, "Já existe um pagamento a ser processado. Aguarde um momento.");
+  }
+  cobrancasEmCurso.add(chave);
+  try {
+    const id = crypto.randomUUID();
+    await prisma.$transaction(async (tx) => {
+      await dados.persistirAlvo(tx, { referencia: id, metodo: METODO_CUPOM });
+      await tx.pagamentoMomenu.create({
+        data: {
+          id,
+          tipo,
+          alvoId,
+          usuarioId,
+          valor: 0,
+          metodo: METODO_CUPOM,
+          cupomId: aplicacao.cupom.id,
+          valorOriginal: aplicacao.valorOriginal,
+          desconto: aplicacao.desconto,
+        },
+      });
+    });
+    await confirmarPagamento({ id });
+    return prisma.pagamentoMomenu.findUniqueOrThrow({ where: { id } });
   } finally {
     cobrancasEmCurso.delete(chave);
   }

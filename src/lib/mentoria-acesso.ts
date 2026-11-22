@@ -109,6 +109,45 @@ export async function eMonitor(usuarioId: string): Promise<boolean> {
 /** Data devolvida como "fim da mentoria" a um monitor, cujo acesso não expira. */
 export const ACESSO_MONITOR_ATE = new Date("9999-12-31T00:00:00.000Z");
 
+/** O que a área social pode abrir. O admin escolhe cada um por pessoa. */
+export const RECURSOS_SOCIAIS = ["documentos", "cursos", "comunidades", "aulas", "ia"] as const;
+export type RecursoSocial = (typeof RECURSOS_SOCIAIS)[number];
+
+/**
+ * Membro da área social: tem o acesso de quem pagou a mentoria, mas só nas bolsas e nas
+ * áreas que o admin escolheu. Como o monitor, não gera linhas em mentoriaAcesso.
+ */
+export async function acessoSocial(usuarioId: string) {
+  return prisma.membroSocial.findFirst({
+    where: { usuarioId, ativo: true, OR: [{ expiraEm: null }, { expiraEm: { gt: new Date() } }] },
+  });
+}
+
+type AcessoSocial = NonNullable<Awaited<ReturnType<typeof acessoSocial>>>;
+
+/** Sem recurso indicado, basta uma das áreas estar aberta. */
+function socialPermite(social: AcessoSocial, recurso?: RecursoSocial): boolean {
+  return recurso ? social[recurso] : RECURSOS_SOCIAIS.some((r) => social[r]);
+}
+
+function socialAbrangeBolsa(social: AcessoSocial, bolsaId: string): boolean {
+  return social.todasBolsas || social.bolsaIds.includes(bolsaId);
+}
+
+/** Bolsas que a área social abre neste recurso. */
+async function bolsasSociais(usuarioId: string, recurso?: RecursoSocial): Promise<string[]> {
+  const social = await acessoSocial(usuarioId);
+  if (!social || !socialPermite(social, recurso)) return [];
+  if (!social.todasBolsas) return social.bolsaIds;
+  const bolsas = await prisma.bolsa.findMany({ select: { id: true } });
+  return bolsas.map((bolsa) => bolsa.id);
+}
+
+export async function socialNaBolsa(usuarioId: string, bolsaId: string, recurso?: RecursoSocial): Promise<boolean> {
+  const social = await acessoSocial(usuarioId);
+  return Boolean(social && socialPermite(social, recurso) && socialAbrangeBolsa(social, bolsaId));
+}
+
 /** Bolsas com mentoria comprada e dentro do prazo (sem contar o acesso de monitor). */
 async function bolsasComMentoriaComprada(usuarioId: string): Promise<string[]> {
   const acessos = await prisma.mentoriaAcesso.findMany({
@@ -118,17 +157,35 @@ async function bolsasComMentoriaComprada(usuarioId: string): Promise<string[]> {
   return acessos.map((acesso) => acesso.bolsaId as string);
 }
 
-export async function bolsasComMentoria(usuarioId: string): Promise<string[]> {
+/**
+ * Bolsas onde o utilizador tem o acesso da mentoria. Com recurso, conta a área social só
+ * se o admin lhe abriu esse recurso; sem recurso, basta uma área aberta.
+ */
+export async function bolsasComMentoria(usuarioId: string, recurso?: RecursoSocial): Promise<string[]> {
   if (await eMonitor(usuarioId)) {
     const bolsas = await prisma.bolsa.findMany({ select: { id: true } });
     return bolsas.map((bolsa) => bolsa.id);
   }
-  return bolsasComMentoriaComprada(usuarioId);
+  const [compradas, sociais] = await Promise.all([
+    bolsasComMentoriaComprada(usuarioId),
+    bolsasSociais(usuarioId, recurso),
+  ]);
+  return [...new Set([...compradas, ...sociais])];
 }
 
-export async function temMentoriaNaBolsa(usuarioId: string, bolsaId: string): Promise<boolean> {
+/** Mentoria comprada e ativa (ou monitor). Decide se pode comprar outra vez; a área social não conta. */
+export async function temMentoriaCompradaNaBolsa(usuarioId: string, bolsaId: string): Promise<boolean> {
   if (await eMonitor(usuarioId)) return true;
   return (await prisma.mentoriaAcesso.count({ where: { usuarioId, bolsaId, ...ativa() } })) > 0;
+}
+
+export async function temMentoriaNaBolsa(
+  usuarioId: string,
+  bolsaId: string,
+  recurso?: RecursoSocial
+): Promise<boolean> {
+  if (await temMentoriaCompradaNaBolsa(usuarioId, bolsaId)) return true;
+  return socialNaBolsa(usuarioId, bolsaId, recurso);
 }
 
 /** Até quando dura a mentoria desta bolsa, se estiver ativa. */
@@ -138,7 +195,12 @@ export async function expiracaoDaMentoriaNaBolsa(usuarioId: string, bolsaId: str
     where: { usuarioId, bolsaId, ...ativa() },
     select: { expiraEm: true },
   });
-  return acesso?.expiraEm ?? null;
+  if (acesso) return acesso.expiraEm;
+  const social = await acessoSocial(usuarioId);
+  if (social && socialPermite(social) && socialAbrangeBolsa(social, bolsaId)) {
+    return social.expiraEm ?? ACESSO_MONITOR_ATE;
+  }
+  return null;
 }
 
 /**
@@ -174,13 +236,15 @@ export async function podeVerComunidade(
   });
   if (membro?.status === "APROVADO") return true;
 
-  return (await eStaff(usuarioId)) || temMentoriaNaBolsa(usuarioId, comunidade.bolsaId);
+  return (await eStaff(usuarioId)) || temMentoriaNaBolsa(usuarioId, comunidade.bolsaId, "comunidades");
 }
 
 /** A IA tem custo por uso: só conta uma mentoria paga e dentro do prazo. */
 export async function temMentoriaPaga(usuarioId: string): Promise<boolean> {
   if (await eMonitor(usuarioId)) return true;
-  return (await prisma.mentoriaAcesso.count({ where: { usuarioId, pago: true, ...ativa() } })) > 0;
+  if ((await prisma.mentoriaAcesso.count({ where: { usuarioId, pago: true, ...ativa() } })) > 0) return true;
+  // A área social com a IA aberta conta como paga: o admin decidiu assumir esse custo.
+  return Boolean((await acessoSocial(usuarioId))?.ia);
 }
 
 /**
@@ -194,7 +258,7 @@ export async function cursosComAcesso(usuarioId: string): Promise<Set<string>> {
       where: { usuarioId, status: "APROVADO" },
       select: { cursoId: true, metodo: true, curso: { select: { bolsaId: true } } },
     }),
-    bolsasComMentoria(usuarioId),
+    bolsasComMentoria(usuarioId, "cursos"),
     eMonitor(usuarioId),
   ]);
   const liberados = new Set(
@@ -202,10 +266,12 @@ export async function cursosComAcesso(usuarioId: string): Promise<Set<string>> {
       .filter((p) => p.metodo !== "BOLSA" || (p.curso.bolsaId && bolsas.includes(p.curso.bolsaId)))
       .map((p) => p.cursoId)
   );
-  if (monitor) {
-    const cursosDeBolsa = await prisma.curso.findMany({ where: { bolsaId: { not: null } }, select: { id: true } });
-    for (const { id } of cursosDeBolsa) liberados.add(id);
-  }
+  // Monitor e área social: os cursos das bolsas abrangidas, sem precisar de linha de pagamento.
+  const cursosDeBolsa = await prisma.curso.findMany({
+    where: monitor ? { bolsaId: { not: null } } : { bolsaId: { in: bolsas } },
+    select: { id: true },
+  });
+  for (const { id } of cursosDeBolsa) liberados.add(id);
   return liberados;
 }
 
@@ -232,5 +298,50 @@ export async function podeEntrarNaAula(
       ],
     },
   });
-  return acessos > 0;
+  if (acessos > 0) return true;
+
+  const social = await acessoSocial(usuarioId);
+  if (!social?.aulas) return false;
+  // Mentoria sem bolsa só fica aberta a quem tem todas as bolsas.
+  return social.todasBolsas || bolsas.some((id) => social.bolsaIds.includes(id));
+}
+
+/**
+ * Junta o membro social às comunidades das bolsas abrangidas. As comunidades guardam
+ * quem é membro; o resto do acesso decide-se na hora por acessoSocial.
+ */
+export async function juntarMembroSocialAsComunidades(usuarioId: string, db: Db = prisma) {
+  const social = await db.membroSocial.findUnique({ where: { usuarioId } });
+  if (!social?.ativo || !social.comunidades) return;
+  const comunidades = await db.community.findMany({
+    where: social.todasBolsas ? { bolsaId: { not: null } } : { bolsaId: { in: social.bolsaIds } },
+    select: { id: true },
+  });
+  for (const comunidade of comunidades) {
+    await juntarAComunidade(comunidade.id, usuarioId, db);
+  }
+}
+
+/**
+ * Depois de reduzir ou tirar o acesso social: sai das comunidades das bolsas que perdeu.
+ * Fica onde ainda tem mentoria comprada ou acesso social, e onde é moderador/dono.
+ * `antes` são as bolsas com comunidades que o acesso anterior abrangia.
+ */
+export async function retirarMembroSocialDasComunidades(usuarioId: string, antes: string[]) {
+  if (antes.length === 0 || (await eMonitor(usuarioId))) return;
+  const [compradas, sociais] = await Promise.all([
+    bolsasComMentoriaComprada(usuarioId),
+    bolsasSociais(usuarioId, "comunidades"),
+  ]);
+  const manter = new Set([...compradas, ...sociais]);
+  const perdidas = antes.filter((id) => !manter.has(id));
+  if (perdidas.length === 0) return;
+  await prisma.communityMember.deleteMany({
+    where: { usuarioId, role: "MEMBER", comunidade: { bolsaId: { in: perdidas } } },
+  });
+}
+
+/** As bolsas cujas comunidades o acesso social abre agora (para comparar depois de mudar). */
+export async function bolsasComunidadesSociais(usuarioId: string): Promise<string[]> {
+  return bolsasSociais(usuarioId, "comunidades");
 }

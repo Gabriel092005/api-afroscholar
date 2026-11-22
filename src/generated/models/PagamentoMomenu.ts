@@ -28,10 +28,14 @@ export type AggregatePagamentoMomenu = {
 
 export type PagamentoMomenuAvgAggregateOutputType = {
   valor: number | null
+  valorOriginal: number | null
+  desconto: number | null
 }
 
 export type PagamentoMomenuSumAggregateOutputType = {
   valor: number | null
+  valorOriginal: number | null
+  desconto: number | null
 }
 
 export type PagamentoMomenuMinAggregateOutputType = {
@@ -52,6 +56,9 @@ export type PagamentoMomenuMinAggregateOutputType = {
   ultimaVerificacao: Date | null
   pagoEm: Date | null
   afiliadoLinkId: string | null
+  cupomId: string | null
+  valorOriginal: number | null
+  desconto: number | null
   created_at: Date | null
   updated_at: Date | null
 }
@@ -74,6 +81,9 @@ export type PagamentoMomenuMaxAggregateOutputType = {
   ultimaVerificacao: Date | null
   pagoEm: Date | null
   afiliadoLinkId: string | null
+  cupomId: string | null
+  valorOriginal: number | null
+  desconto: number | null
   created_at: Date | null
   updated_at: Date | null
 }
@@ -96,6 +106,9 @@ export type PagamentoMomenuCountAggregateOutputType = {
   ultimaVerificacao: number
   pagoEm: number
   afiliadoLinkId: number
+  cupomId: number
+  valorOriginal: number
+  desconto: number
   created_at: number
   updated_at: number
   _all: number
@@ -104,10 +117,14 @@ export type PagamentoMomenuCountAggregateOutputType = {
 
 export type PagamentoMomenuAvgAggregateInputType = {
   valor?: true
+  valorOriginal?: true
+  desconto?: true
 }
 
 export type PagamentoMomenuSumAggregateInputType = {
   valor?: true
+  valorOriginal?: true
+  desconto?: true
 }
 
 export type PagamentoMomenuMinAggregateInputType = {
@@ -128,6 +145,9 @@ export type PagamentoMomenuMinAggregateInputType = {
   ultimaVerificacao?: true
   pagoEm?: true
   afiliadoLinkId?: true
+  cupomId?: true
+  valorOriginal?: true
+  desconto?: true
   created_at?: true
   updated_at?: true
 }
@@ -150,6 +170,9 @@ export type PagamentoMomenuMaxAggregateInputType = {
   ultimaVerificacao?: true
   pagoEm?: true
   afiliadoLinkId?: true
+  cupomId?: true
+  valorOriginal?: true
+  desconto?: true
   created_at?: true
   updated_at?: true
 }
@@ -172,6 +195,9 @@ export type PagamentoMomenuCountAggregateInputType = {
   ultimaVerificacao?: true
   pagoEm?: true
   afiliadoLinkId?: true
+  cupomId?: true
+  valorOriginal?: true
+  desconto?: true
   created_at?: true
   updated_at?: true
   _all?: true
@@ -281,6 +307,9 @@ export type PagamentoMomenuGroupByOutputType = {
   ultimaVerificacao: Date | null
   pagoEm: Date | null
   afiliadoLinkId: string | null
+  cupomId: string | null
+  valorOriginal: number | null
+  desconto: number | null
   created_at: Date
   updated_at: Date
   _count: PagamentoMomenuCountAggregateOutputType | null
@@ -326,10 +355,14 @@ export type PagamentoMomenuWhereInput = {
   ultimaVerificacao?: Prisma.DateTimeNullableFilter<"PagamentoMomenu"> | Date | string | null
   pagoEm?: Prisma.DateTimeNullableFilter<"PagamentoMomenu"> | Date | string | null
   afiliadoLinkId?: Prisma.StringNullableFilter<"PagamentoMomenu"> | string | null
+  cupomId?: Prisma.StringNullableFilter<"PagamentoMomenu"> | string | null
+  valorOriginal?: Prisma.FloatNullableFilter<"PagamentoMomenu"> | number | null
+  desconto?: Prisma.FloatNullableFilter<"PagamentoMomenu"> | number | null
   created_at?: Prisma.DateTimeFilter<"PagamentoMomenu"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"PagamentoMomenu"> | Date | string
   afiliadoLink?: Prisma.XOR<Prisma.AfiliadoLinkNullableScalarRelationFilter, Prisma.AfiliadoLinkWhereInput> | null
   afiliadoComissao?: Prisma.XOR<Prisma.AfiliadoComissaoNullableScalarRelationFilter, Prisma.AfiliadoComissaoWhereInput> | null
+  cupom?: Prisma.XOR<Prisma.CupomNullableScalarRelationFilter, Prisma.CupomWhereInput> | null
   usuario?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
 }
 
@@ -351,10 +384,14 @@ export type PagamentoMomenuOrderByWithRelationInput = {
   ultimaVerificacao?: Prisma.SortOrderInput | Prisma.SortOrder
   pagoEm?: Prisma.SortOrderInput | Prisma.SortOrder
   afiliadoLinkId?: Prisma.SortOrderInput | Prisma.SortOrder
+  cupomId?: Prisma.SortOrderInput | Prisma.SortOrder
+  valorOriginal?: Prisma.SortOrderInput | Prisma.SortOrder
+  desconto?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   afiliadoLink?: Prisma.AfiliadoLinkOrderByWithRelationInput
   afiliadoComissao?: Prisma.AfiliadoComissaoOrderByWithRelationInput
+  cupom?: Prisma.CupomOrderByWithRelationInput
   usuario?: Prisma.UserOrderByWithRelationInput
 }
 
@@ -379,10 +416,14 @@ export type PagamentoMomenuWhereUniqueInput = Prisma.AtLeast<{
   ultimaVerificacao?: Prisma.DateTimeNullableFilter<"PagamentoMomenu"> | Date | string | null
   pagoEm?: Prisma.DateTimeNullableFilter<"PagamentoMomenu"> | Date | string | null
   afiliadoLinkId?: Prisma.StringNullableFilter<"PagamentoMomenu"> | string | null
+  cupomId?: Prisma.StringNullableFilter<"PagamentoMomenu"> | string | null
+  valorOriginal?: Prisma.FloatNullableFilter<"PagamentoMomenu"> | number | null
+  desconto?: Prisma.FloatNullableFilter<"PagamentoMomenu"> | number | null
   created_at?: Prisma.DateTimeFilter<"PagamentoMomenu"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"PagamentoMomenu"> | Date | string
   afiliadoLink?: Prisma.XOR<Prisma.AfiliadoLinkNullableScalarRelationFilter, Prisma.AfiliadoLinkWhereInput> | null
   afiliadoComissao?: Prisma.XOR<Prisma.AfiliadoComissaoNullableScalarRelationFilter, Prisma.AfiliadoComissaoWhereInput> | null
+  cupom?: Prisma.XOR<Prisma.CupomNullableScalarRelationFilter, Prisma.CupomWhereInput> | null
   usuario?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
 }, "id" | "transactionId">
 
@@ -404,6 +445,9 @@ export type PagamentoMomenuOrderByWithAggregationInput = {
   ultimaVerificacao?: Prisma.SortOrderInput | Prisma.SortOrder
   pagoEm?: Prisma.SortOrderInput | Prisma.SortOrder
   afiliadoLinkId?: Prisma.SortOrderInput | Prisma.SortOrder
+  cupomId?: Prisma.SortOrderInput | Prisma.SortOrder
+  valorOriginal?: Prisma.SortOrderInput | Prisma.SortOrder
+  desconto?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   _count?: Prisma.PagamentoMomenuCountOrderByAggregateInput
@@ -434,6 +478,9 @@ export type PagamentoMomenuScalarWhereWithAggregatesInput = {
   ultimaVerificacao?: Prisma.DateTimeNullableWithAggregatesFilter<"PagamentoMomenu"> | Date | string | null
   pagoEm?: Prisma.DateTimeNullableWithAggregatesFilter<"PagamentoMomenu"> | Date | string | null
   afiliadoLinkId?: Prisma.StringNullableWithAggregatesFilter<"PagamentoMomenu"> | string | null
+  cupomId?: Prisma.StringNullableWithAggregatesFilter<"PagamentoMomenu"> | string | null
+  valorOriginal?: Prisma.FloatNullableWithAggregatesFilter<"PagamentoMomenu"> | number | null
+  desconto?: Prisma.FloatNullableWithAggregatesFilter<"PagamentoMomenu"> | number | null
   created_at?: Prisma.DateTimeWithAggregatesFilter<"PagamentoMomenu"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"PagamentoMomenu"> | Date | string
 }
@@ -454,10 +501,13 @@ export type PagamentoMomenuCreateInput = {
   falhaMotivo?: string | null
   ultimaVerificacao?: Date | string | null
   pagoEm?: Date | string | null
+  valorOriginal?: number | null
+  desconto?: number | null
   created_at?: Date | string
   updated_at?: Date | string
   afiliadoLink?: Prisma.AfiliadoLinkCreateNestedOneWithoutPagamentosInput
   afiliadoComissao?: Prisma.AfiliadoComissaoCreateNestedOneWithoutPagamentoInput
+  cupom?: Prisma.CupomCreateNestedOneWithoutPagamentosInput
   usuario?: Prisma.UserCreateNestedOneWithoutPagamentosMomenuInput
 }
 
@@ -479,6 +529,9 @@ export type PagamentoMomenuUncheckedCreateInput = {
   ultimaVerificacao?: Date | string | null
   pagoEm?: Date | string | null
   afiliadoLinkId?: string | null
+  cupomId?: string | null
+  valorOriginal?: number | null
+  desconto?: number | null
   created_at?: Date | string
   updated_at?: Date | string
   afiliadoComissao?: Prisma.AfiliadoComissaoUncheckedCreateNestedOneWithoutPagamentoInput
@@ -500,10 +553,13 @@ export type PagamentoMomenuUpdateInput = {
   falhaMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ultimaVerificacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   pagoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  valorOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  desconto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   afiliadoLink?: Prisma.AfiliadoLinkUpdateOneWithoutPagamentosNestedInput
   afiliadoComissao?: Prisma.AfiliadoComissaoUpdateOneWithoutPagamentoNestedInput
+  cupom?: Prisma.CupomUpdateOneWithoutPagamentosNestedInput
   usuario?: Prisma.UserUpdateOneWithoutPagamentosMomenuNestedInput
 }
 
@@ -525,6 +581,9 @@ export type PagamentoMomenuUncheckedUpdateInput = {
   ultimaVerificacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   pagoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   afiliadoLinkId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cupomId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valorOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  desconto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   afiliadoComissao?: Prisma.AfiliadoComissaoUncheckedUpdateOneWithoutPagamentoNestedInput
@@ -548,6 +607,9 @@ export type PagamentoMomenuCreateManyInput = {
   ultimaVerificacao?: Date | string | null
   pagoEm?: Date | string | null
   afiliadoLinkId?: string | null
+  cupomId?: string | null
+  valorOriginal?: number | null
+  desconto?: number | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -568,6 +630,8 @@ export type PagamentoMomenuUpdateManyMutationInput = {
   falhaMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ultimaVerificacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   pagoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  valorOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  desconto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -590,6 +654,9 @@ export type PagamentoMomenuUncheckedUpdateManyInput = {
   ultimaVerificacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   pagoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   afiliadoLinkId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cupomId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valorOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  desconto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -627,12 +694,17 @@ export type PagamentoMomenuCountOrderByAggregateInput = {
   ultimaVerificacao?: Prisma.SortOrder
   pagoEm?: Prisma.SortOrder
   afiliadoLinkId?: Prisma.SortOrder
+  cupomId?: Prisma.SortOrder
+  valorOriginal?: Prisma.SortOrder
+  desconto?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
 
 export type PagamentoMomenuAvgOrderByAggregateInput = {
   valor?: Prisma.SortOrder
+  valorOriginal?: Prisma.SortOrder
+  desconto?: Prisma.SortOrder
 }
 
 export type PagamentoMomenuMaxOrderByAggregateInput = {
@@ -653,6 +725,9 @@ export type PagamentoMomenuMaxOrderByAggregateInput = {
   ultimaVerificacao?: Prisma.SortOrder
   pagoEm?: Prisma.SortOrder
   afiliadoLinkId?: Prisma.SortOrder
+  cupomId?: Prisma.SortOrder
+  valorOriginal?: Prisma.SortOrder
+  desconto?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -675,12 +750,17 @@ export type PagamentoMomenuMinOrderByAggregateInput = {
   ultimaVerificacao?: Prisma.SortOrder
   pagoEm?: Prisma.SortOrder
   afiliadoLinkId?: Prisma.SortOrder
+  cupomId?: Prisma.SortOrder
+  valorOriginal?: Prisma.SortOrder
+  desconto?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
 
 export type PagamentoMomenuSumOrderByAggregateInput = {
   valor?: Prisma.SortOrder
+  valorOriginal?: Prisma.SortOrder
+  desconto?: Prisma.SortOrder
 }
 
 export type PagamentoMomenuCreateNestedManyWithoutUsuarioInput = {
@@ -785,6 +865,48 @@ export type EnumPagamentoMomenuStatusFieldUpdateOperationsInput = {
   set?: $Enums.PagamentoMomenuStatus
 }
 
+export type PagamentoMomenuCreateNestedManyWithoutCupomInput = {
+  create?: Prisma.XOR<Prisma.PagamentoMomenuCreateWithoutCupomInput, Prisma.PagamentoMomenuUncheckedCreateWithoutCupomInput> | Prisma.PagamentoMomenuCreateWithoutCupomInput[] | Prisma.PagamentoMomenuUncheckedCreateWithoutCupomInput[]
+  connectOrCreate?: Prisma.PagamentoMomenuCreateOrConnectWithoutCupomInput | Prisma.PagamentoMomenuCreateOrConnectWithoutCupomInput[]
+  createMany?: Prisma.PagamentoMomenuCreateManyCupomInputEnvelope
+  connect?: Prisma.PagamentoMomenuWhereUniqueInput | Prisma.PagamentoMomenuWhereUniqueInput[]
+}
+
+export type PagamentoMomenuUncheckedCreateNestedManyWithoutCupomInput = {
+  create?: Prisma.XOR<Prisma.PagamentoMomenuCreateWithoutCupomInput, Prisma.PagamentoMomenuUncheckedCreateWithoutCupomInput> | Prisma.PagamentoMomenuCreateWithoutCupomInput[] | Prisma.PagamentoMomenuUncheckedCreateWithoutCupomInput[]
+  connectOrCreate?: Prisma.PagamentoMomenuCreateOrConnectWithoutCupomInput | Prisma.PagamentoMomenuCreateOrConnectWithoutCupomInput[]
+  createMany?: Prisma.PagamentoMomenuCreateManyCupomInputEnvelope
+  connect?: Prisma.PagamentoMomenuWhereUniqueInput | Prisma.PagamentoMomenuWhereUniqueInput[]
+}
+
+export type PagamentoMomenuUpdateManyWithoutCupomNestedInput = {
+  create?: Prisma.XOR<Prisma.PagamentoMomenuCreateWithoutCupomInput, Prisma.PagamentoMomenuUncheckedCreateWithoutCupomInput> | Prisma.PagamentoMomenuCreateWithoutCupomInput[] | Prisma.PagamentoMomenuUncheckedCreateWithoutCupomInput[]
+  connectOrCreate?: Prisma.PagamentoMomenuCreateOrConnectWithoutCupomInput | Prisma.PagamentoMomenuCreateOrConnectWithoutCupomInput[]
+  upsert?: Prisma.PagamentoMomenuUpsertWithWhereUniqueWithoutCupomInput | Prisma.PagamentoMomenuUpsertWithWhereUniqueWithoutCupomInput[]
+  createMany?: Prisma.PagamentoMomenuCreateManyCupomInputEnvelope
+  set?: Prisma.PagamentoMomenuWhereUniqueInput | Prisma.PagamentoMomenuWhereUniqueInput[]
+  disconnect?: Prisma.PagamentoMomenuWhereUniqueInput | Prisma.PagamentoMomenuWhereUniqueInput[]
+  delete?: Prisma.PagamentoMomenuWhereUniqueInput | Prisma.PagamentoMomenuWhereUniqueInput[]
+  connect?: Prisma.PagamentoMomenuWhereUniqueInput | Prisma.PagamentoMomenuWhereUniqueInput[]
+  update?: Prisma.PagamentoMomenuUpdateWithWhereUniqueWithoutCupomInput | Prisma.PagamentoMomenuUpdateWithWhereUniqueWithoutCupomInput[]
+  updateMany?: Prisma.PagamentoMomenuUpdateManyWithWhereWithoutCupomInput | Prisma.PagamentoMomenuUpdateManyWithWhereWithoutCupomInput[]
+  deleteMany?: Prisma.PagamentoMomenuScalarWhereInput | Prisma.PagamentoMomenuScalarWhereInput[]
+}
+
+export type PagamentoMomenuUncheckedUpdateManyWithoutCupomNestedInput = {
+  create?: Prisma.XOR<Prisma.PagamentoMomenuCreateWithoutCupomInput, Prisma.PagamentoMomenuUncheckedCreateWithoutCupomInput> | Prisma.PagamentoMomenuCreateWithoutCupomInput[] | Prisma.PagamentoMomenuUncheckedCreateWithoutCupomInput[]
+  connectOrCreate?: Prisma.PagamentoMomenuCreateOrConnectWithoutCupomInput | Prisma.PagamentoMomenuCreateOrConnectWithoutCupomInput[]
+  upsert?: Prisma.PagamentoMomenuUpsertWithWhereUniqueWithoutCupomInput | Prisma.PagamentoMomenuUpsertWithWhereUniqueWithoutCupomInput[]
+  createMany?: Prisma.PagamentoMomenuCreateManyCupomInputEnvelope
+  set?: Prisma.PagamentoMomenuWhereUniqueInput | Prisma.PagamentoMomenuWhereUniqueInput[]
+  disconnect?: Prisma.PagamentoMomenuWhereUniqueInput | Prisma.PagamentoMomenuWhereUniqueInput[]
+  delete?: Prisma.PagamentoMomenuWhereUniqueInput | Prisma.PagamentoMomenuWhereUniqueInput[]
+  connect?: Prisma.PagamentoMomenuWhereUniqueInput | Prisma.PagamentoMomenuWhereUniqueInput[]
+  update?: Prisma.PagamentoMomenuUpdateWithWhereUniqueWithoutCupomInput | Prisma.PagamentoMomenuUpdateWithWhereUniqueWithoutCupomInput[]
+  updateMany?: Prisma.PagamentoMomenuUpdateManyWithWhereWithoutCupomInput | Prisma.PagamentoMomenuUpdateManyWithWhereWithoutCupomInput[]
+  deleteMany?: Prisma.PagamentoMomenuScalarWhereInput | Prisma.PagamentoMomenuScalarWhereInput[]
+}
+
 export type PagamentoMomenuCreateWithoutUsuarioInput = {
   id?: string
   transactionId?: string | null
@@ -801,10 +923,13 @@ export type PagamentoMomenuCreateWithoutUsuarioInput = {
   falhaMotivo?: string | null
   ultimaVerificacao?: Date | string | null
   pagoEm?: Date | string | null
+  valorOriginal?: number | null
+  desconto?: number | null
   created_at?: Date | string
   updated_at?: Date | string
   afiliadoLink?: Prisma.AfiliadoLinkCreateNestedOneWithoutPagamentosInput
   afiliadoComissao?: Prisma.AfiliadoComissaoCreateNestedOneWithoutPagamentoInput
+  cupom?: Prisma.CupomCreateNestedOneWithoutPagamentosInput
 }
 
 export type PagamentoMomenuUncheckedCreateWithoutUsuarioInput = {
@@ -824,6 +949,9 @@ export type PagamentoMomenuUncheckedCreateWithoutUsuarioInput = {
   ultimaVerificacao?: Date | string | null
   pagoEm?: Date | string | null
   afiliadoLinkId?: string | null
+  cupomId?: string | null
+  valorOriginal?: number | null
+  desconto?: number | null
   created_at?: Date | string
   updated_at?: Date | string
   afiliadoComissao?: Prisma.AfiliadoComissaoUncheckedCreateNestedOneWithoutPagamentoInput
@@ -876,6 +1004,9 @@ export type PagamentoMomenuScalarWhereInput = {
   ultimaVerificacao?: Prisma.DateTimeNullableFilter<"PagamentoMomenu"> | Date | string | null
   pagoEm?: Prisma.DateTimeNullableFilter<"PagamentoMomenu"> | Date | string | null
   afiliadoLinkId?: Prisma.StringNullableFilter<"PagamentoMomenu"> | string | null
+  cupomId?: Prisma.StringNullableFilter<"PagamentoMomenu"> | string | null
+  valorOriginal?: Prisma.FloatNullableFilter<"PagamentoMomenu"> | number | null
+  desconto?: Prisma.FloatNullableFilter<"PagamentoMomenu"> | number | null
   created_at?: Prisma.DateTimeFilter<"PagamentoMomenu"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"PagamentoMomenu"> | Date | string
 }
@@ -896,9 +1027,12 @@ export type PagamentoMomenuCreateWithoutAfiliadoLinkInput = {
   falhaMotivo?: string | null
   ultimaVerificacao?: Date | string | null
   pagoEm?: Date | string | null
+  valorOriginal?: number | null
+  desconto?: number | null
   created_at?: Date | string
   updated_at?: Date | string
   afiliadoComissao?: Prisma.AfiliadoComissaoCreateNestedOneWithoutPagamentoInput
+  cupom?: Prisma.CupomCreateNestedOneWithoutPagamentosInput
   usuario?: Prisma.UserCreateNestedOneWithoutPagamentosMomenuInput
 }
 
@@ -919,6 +1053,9 @@ export type PagamentoMomenuUncheckedCreateWithoutAfiliadoLinkInput = {
   falhaMotivo?: string | null
   ultimaVerificacao?: Date | string | null
   pagoEm?: Date | string | null
+  cupomId?: string | null
+  valorOriginal?: number | null
+  desconto?: number | null
   created_at?: Date | string
   updated_at?: Date | string
   afiliadoComissao?: Prisma.AfiliadoComissaoUncheckedCreateNestedOneWithoutPagamentoInput
@@ -966,9 +1103,12 @@ export type PagamentoMomenuCreateWithoutAfiliadoComissaoInput = {
   falhaMotivo?: string | null
   ultimaVerificacao?: Date | string | null
   pagoEm?: Date | string | null
+  valorOriginal?: number | null
+  desconto?: number | null
   created_at?: Date | string
   updated_at?: Date | string
   afiliadoLink?: Prisma.AfiliadoLinkCreateNestedOneWithoutPagamentosInput
+  cupom?: Prisma.CupomCreateNestedOneWithoutPagamentosInput
   usuario?: Prisma.UserCreateNestedOneWithoutPagamentosMomenuInput
 }
 
@@ -990,6 +1130,9 @@ export type PagamentoMomenuUncheckedCreateWithoutAfiliadoComissaoInput = {
   ultimaVerificacao?: Date | string | null
   pagoEm?: Date | string | null
   afiliadoLinkId?: string | null
+  cupomId?: string | null
+  valorOriginal?: number | null
+  desconto?: number | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -1026,9 +1169,12 @@ export type PagamentoMomenuUpdateWithoutAfiliadoComissaoInput = {
   falhaMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ultimaVerificacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   pagoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  valorOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  desconto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   afiliadoLink?: Prisma.AfiliadoLinkUpdateOneWithoutPagamentosNestedInput
+  cupom?: Prisma.CupomUpdateOneWithoutPagamentosNestedInput
   usuario?: Prisma.UserUpdateOneWithoutPagamentosMomenuNestedInput
 }
 
@@ -1050,8 +1196,87 @@ export type PagamentoMomenuUncheckedUpdateWithoutAfiliadoComissaoInput = {
   ultimaVerificacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   pagoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   afiliadoLinkId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cupomId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valorOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  desconto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type PagamentoMomenuCreateWithoutCupomInput = {
+  id?: string
+  transactionId?: string | null
+  operationId?: string | null
+  tipo: $Enums.TipoPagamentoMomenu
+  alvoId: string
+  valor: number
+  metodo: string
+  status?: $Enums.PagamentoMomenuStatus
+  referenceNumber?: string | null
+  entity?: string | null
+  dueDate?: Date | string | null
+  invoiceUrl?: string | null
+  falhaMotivo?: string | null
+  ultimaVerificacao?: Date | string | null
+  pagoEm?: Date | string | null
+  valorOriginal?: number | null
+  desconto?: number | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  afiliadoLink?: Prisma.AfiliadoLinkCreateNestedOneWithoutPagamentosInput
+  afiliadoComissao?: Prisma.AfiliadoComissaoCreateNestedOneWithoutPagamentoInput
+  usuario?: Prisma.UserCreateNestedOneWithoutPagamentosMomenuInput
+}
+
+export type PagamentoMomenuUncheckedCreateWithoutCupomInput = {
+  id?: string
+  transactionId?: string | null
+  operationId?: string | null
+  tipo: $Enums.TipoPagamentoMomenu
+  alvoId: string
+  usuarioId?: string | null
+  valor: number
+  metodo: string
+  status?: $Enums.PagamentoMomenuStatus
+  referenceNumber?: string | null
+  entity?: string | null
+  dueDate?: Date | string | null
+  invoiceUrl?: string | null
+  falhaMotivo?: string | null
+  ultimaVerificacao?: Date | string | null
+  pagoEm?: Date | string | null
+  afiliadoLinkId?: string | null
+  valorOriginal?: number | null
+  desconto?: number | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  afiliadoComissao?: Prisma.AfiliadoComissaoUncheckedCreateNestedOneWithoutPagamentoInput
+}
+
+export type PagamentoMomenuCreateOrConnectWithoutCupomInput = {
+  where: Prisma.PagamentoMomenuWhereUniqueInput
+  create: Prisma.XOR<Prisma.PagamentoMomenuCreateWithoutCupomInput, Prisma.PagamentoMomenuUncheckedCreateWithoutCupomInput>
+}
+
+export type PagamentoMomenuCreateManyCupomInputEnvelope = {
+  data: Prisma.PagamentoMomenuCreateManyCupomInput | Prisma.PagamentoMomenuCreateManyCupomInput[]
+  skipDuplicates?: boolean
+}
+
+export type PagamentoMomenuUpsertWithWhereUniqueWithoutCupomInput = {
+  where: Prisma.PagamentoMomenuWhereUniqueInput
+  update: Prisma.XOR<Prisma.PagamentoMomenuUpdateWithoutCupomInput, Prisma.PagamentoMomenuUncheckedUpdateWithoutCupomInput>
+  create: Prisma.XOR<Prisma.PagamentoMomenuCreateWithoutCupomInput, Prisma.PagamentoMomenuUncheckedCreateWithoutCupomInput>
+}
+
+export type PagamentoMomenuUpdateWithWhereUniqueWithoutCupomInput = {
+  where: Prisma.PagamentoMomenuWhereUniqueInput
+  data: Prisma.XOR<Prisma.PagamentoMomenuUpdateWithoutCupomInput, Prisma.PagamentoMomenuUncheckedUpdateWithoutCupomInput>
+}
+
+export type PagamentoMomenuUpdateManyWithWhereWithoutCupomInput = {
+  where: Prisma.PagamentoMomenuScalarWhereInput
+  data: Prisma.XOR<Prisma.PagamentoMomenuUpdateManyMutationInput, Prisma.PagamentoMomenuUncheckedUpdateManyWithoutCupomInput>
 }
 
 export type PagamentoMomenuCreateManyUsuarioInput = {
@@ -1071,6 +1296,9 @@ export type PagamentoMomenuCreateManyUsuarioInput = {
   ultimaVerificacao?: Date | string | null
   pagoEm?: Date | string | null
   afiliadoLinkId?: string | null
+  cupomId?: string | null
+  valorOriginal?: number | null
+  desconto?: number | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -1091,10 +1319,13 @@ export type PagamentoMomenuUpdateWithoutUsuarioInput = {
   falhaMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ultimaVerificacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   pagoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  valorOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  desconto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   afiliadoLink?: Prisma.AfiliadoLinkUpdateOneWithoutPagamentosNestedInput
   afiliadoComissao?: Prisma.AfiliadoComissaoUpdateOneWithoutPagamentoNestedInput
+  cupom?: Prisma.CupomUpdateOneWithoutPagamentosNestedInput
 }
 
 export type PagamentoMomenuUncheckedUpdateWithoutUsuarioInput = {
@@ -1114,6 +1345,9 @@ export type PagamentoMomenuUncheckedUpdateWithoutUsuarioInput = {
   ultimaVerificacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   pagoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   afiliadoLinkId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cupomId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valorOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  desconto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   afiliadoComissao?: Prisma.AfiliadoComissaoUncheckedUpdateOneWithoutPagamentoNestedInput
@@ -1136,6 +1370,9 @@ export type PagamentoMomenuUncheckedUpdateManyWithoutUsuarioInput = {
   ultimaVerificacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   pagoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   afiliadoLinkId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cupomId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valorOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  desconto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1157,6 +1394,9 @@ export type PagamentoMomenuCreateManyAfiliadoLinkInput = {
   falhaMotivo?: string | null
   ultimaVerificacao?: Date | string | null
   pagoEm?: Date | string | null
+  cupomId?: string | null
+  valorOriginal?: number | null
+  desconto?: number | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -1177,9 +1417,12 @@ export type PagamentoMomenuUpdateWithoutAfiliadoLinkInput = {
   falhaMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ultimaVerificacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   pagoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  valorOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  desconto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   afiliadoComissao?: Prisma.AfiliadoComissaoUpdateOneWithoutPagamentoNestedInput
+  cupom?: Prisma.CupomUpdateOneWithoutPagamentosNestedInput
   usuario?: Prisma.UserUpdateOneWithoutPagamentosMomenuNestedInput
 }
 
@@ -1200,6 +1443,9 @@ export type PagamentoMomenuUncheckedUpdateWithoutAfiliadoLinkInput = {
   falhaMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ultimaVerificacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   pagoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cupomId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valorOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  desconto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   afiliadoComissao?: Prisma.AfiliadoComissaoUncheckedUpdateOneWithoutPagamentoNestedInput
@@ -1222,6 +1468,107 @@ export type PagamentoMomenuUncheckedUpdateManyWithoutAfiliadoLinkInput = {
   falhaMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ultimaVerificacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   pagoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cupomId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valorOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  desconto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type PagamentoMomenuCreateManyCupomInput = {
+  id?: string
+  transactionId?: string | null
+  operationId?: string | null
+  tipo: $Enums.TipoPagamentoMomenu
+  alvoId: string
+  usuarioId?: string | null
+  valor: number
+  metodo: string
+  status?: $Enums.PagamentoMomenuStatus
+  referenceNumber?: string | null
+  entity?: string | null
+  dueDate?: Date | string | null
+  invoiceUrl?: string | null
+  falhaMotivo?: string | null
+  ultimaVerificacao?: Date | string | null
+  pagoEm?: Date | string | null
+  afiliadoLinkId?: string | null
+  valorOriginal?: number | null
+  desconto?: number | null
+  created_at?: Date | string
+  updated_at?: Date | string
+}
+
+export type PagamentoMomenuUpdateWithoutCupomInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  transactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  operationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo?: Prisma.EnumTipoPagamentoMomenuFieldUpdateOperationsInput | $Enums.TipoPagamentoMomenu
+  alvoId?: Prisma.StringFieldUpdateOperationsInput | string
+  valor?: Prisma.FloatFieldUpdateOperationsInput | number
+  metodo?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumPagamentoMomenuStatusFieldUpdateOperationsInput | $Enums.PagamentoMomenuStatus
+  referenceNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  entity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  invoiceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  falhaMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ultimaVerificacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  pagoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  valorOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  desconto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  afiliadoLink?: Prisma.AfiliadoLinkUpdateOneWithoutPagamentosNestedInput
+  afiliadoComissao?: Prisma.AfiliadoComissaoUpdateOneWithoutPagamentoNestedInput
+  usuario?: Prisma.UserUpdateOneWithoutPagamentosMomenuNestedInput
+}
+
+export type PagamentoMomenuUncheckedUpdateWithoutCupomInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  transactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  operationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo?: Prisma.EnumTipoPagamentoMomenuFieldUpdateOperationsInput | $Enums.TipoPagamentoMomenu
+  alvoId?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valor?: Prisma.FloatFieldUpdateOperationsInput | number
+  metodo?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumPagamentoMomenuStatusFieldUpdateOperationsInput | $Enums.PagamentoMomenuStatus
+  referenceNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  entity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  invoiceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  falhaMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ultimaVerificacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  pagoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  afiliadoLinkId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valorOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  desconto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  afiliadoComissao?: Prisma.AfiliadoComissaoUncheckedUpdateOneWithoutPagamentoNestedInput
+}
+
+export type PagamentoMomenuUncheckedUpdateManyWithoutCupomInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  transactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  operationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo?: Prisma.EnumTipoPagamentoMomenuFieldUpdateOperationsInput | $Enums.TipoPagamentoMomenu
+  alvoId?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valor?: Prisma.FloatFieldUpdateOperationsInput | number
+  metodo?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumPagamentoMomenuStatusFieldUpdateOperationsInput | $Enums.PagamentoMomenuStatus
+  referenceNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  entity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  invoiceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  falhaMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ultimaVerificacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  pagoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  afiliadoLinkId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  valorOriginal?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  desconto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1246,10 +1593,14 @@ export type PagamentoMomenuSelect<ExtArgs extends runtime.Types.Extensions.Inter
   ultimaVerificacao?: boolean
   pagoEm?: boolean
   afiliadoLinkId?: boolean
+  cupomId?: boolean
+  valorOriginal?: boolean
+  desconto?: boolean
   created_at?: boolean
   updated_at?: boolean
   afiliadoLink?: boolean | Prisma.PagamentoMomenu$afiliadoLinkArgs<ExtArgs>
   afiliadoComissao?: boolean | Prisma.PagamentoMomenu$afiliadoComissaoArgs<ExtArgs>
+  cupom?: boolean | Prisma.PagamentoMomenu$cupomArgs<ExtArgs>
   usuario?: boolean | Prisma.PagamentoMomenu$usuarioArgs<ExtArgs>
 }, ExtArgs["result"]["pagamentoMomenu"]>
 
@@ -1271,9 +1622,13 @@ export type PagamentoMomenuSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
   ultimaVerificacao?: boolean
   pagoEm?: boolean
   afiliadoLinkId?: boolean
+  cupomId?: boolean
+  valorOriginal?: boolean
+  desconto?: boolean
   created_at?: boolean
   updated_at?: boolean
   afiliadoLink?: boolean | Prisma.PagamentoMomenu$afiliadoLinkArgs<ExtArgs>
+  cupom?: boolean | Prisma.PagamentoMomenu$cupomArgs<ExtArgs>
   usuario?: boolean | Prisma.PagamentoMomenu$usuarioArgs<ExtArgs>
 }, ExtArgs["result"]["pagamentoMomenu"]>
 
@@ -1295,9 +1650,13 @@ export type PagamentoMomenuSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
   ultimaVerificacao?: boolean
   pagoEm?: boolean
   afiliadoLinkId?: boolean
+  cupomId?: boolean
+  valorOriginal?: boolean
+  desconto?: boolean
   created_at?: boolean
   updated_at?: boolean
   afiliadoLink?: boolean | Prisma.PagamentoMomenu$afiliadoLinkArgs<ExtArgs>
+  cupom?: boolean | Prisma.PagamentoMomenu$cupomArgs<ExtArgs>
   usuario?: boolean | Prisma.PagamentoMomenu$usuarioArgs<ExtArgs>
 }, ExtArgs["result"]["pagamentoMomenu"]>
 
@@ -1319,22 +1678,28 @@ export type PagamentoMomenuSelectScalar = {
   ultimaVerificacao?: boolean
   pagoEm?: boolean
   afiliadoLinkId?: boolean
+  cupomId?: boolean
+  valorOriginal?: boolean
+  desconto?: boolean
   created_at?: boolean
   updated_at?: boolean
 }
 
-export type PagamentoMomenuOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "transactionId" | "operationId" | "tipo" | "alvoId" | "usuarioId" | "valor" | "metodo" | "status" | "referenceNumber" | "entity" | "dueDate" | "invoiceUrl" | "falhaMotivo" | "ultimaVerificacao" | "pagoEm" | "afiliadoLinkId" | "created_at" | "updated_at", ExtArgs["result"]["pagamentoMomenu"]>
+export type PagamentoMomenuOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "transactionId" | "operationId" | "tipo" | "alvoId" | "usuarioId" | "valor" | "metodo" | "status" | "referenceNumber" | "entity" | "dueDate" | "invoiceUrl" | "falhaMotivo" | "ultimaVerificacao" | "pagoEm" | "afiliadoLinkId" | "cupomId" | "valorOriginal" | "desconto" | "created_at" | "updated_at", ExtArgs["result"]["pagamentoMomenu"]>
 export type PagamentoMomenuInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   afiliadoLink?: boolean | Prisma.PagamentoMomenu$afiliadoLinkArgs<ExtArgs>
   afiliadoComissao?: boolean | Prisma.PagamentoMomenu$afiliadoComissaoArgs<ExtArgs>
+  cupom?: boolean | Prisma.PagamentoMomenu$cupomArgs<ExtArgs>
   usuario?: boolean | Prisma.PagamentoMomenu$usuarioArgs<ExtArgs>
 }
 export type PagamentoMomenuIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   afiliadoLink?: boolean | Prisma.PagamentoMomenu$afiliadoLinkArgs<ExtArgs>
+  cupom?: boolean | Prisma.PagamentoMomenu$cupomArgs<ExtArgs>
   usuario?: boolean | Prisma.PagamentoMomenu$usuarioArgs<ExtArgs>
 }
 export type PagamentoMomenuIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   afiliadoLink?: boolean | Prisma.PagamentoMomenu$afiliadoLinkArgs<ExtArgs>
+  cupom?: boolean | Prisma.PagamentoMomenu$cupomArgs<ExtArgs>
   usuario?: boolean | Prisma.PagamentoMomenu$usuarioArgs<ExtArgs>
 }
 
@@ -1343,6 +1708,7 @@ export type $PagamentoMomenuPayload<ExtArgs extends runtime.Types.Extensions.Int
   objects: {
     afiliadoLink: Prisma.$AfiliadoLinkPayload<ExtArgs> | null
     afiliadoComissao: Prisma.$AfiliadoComissaoPayload<ExtArgs> | null
+    cupom: Prisma.$CupomPayload<ExtArgs> | null
     usuario: Prisma.$UserPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1363,6 +1729,12 @@ export type $PagamentoMomenuPayload<ExtArgs extends runtime.Types.Extensions.Int
     ultimaVerificacao: Date | null
     pagoEm: Date | null
     afiliadoLinkId: string | null
+    /**
+     * Cupão aplicado: valor é o que se cobra, valorOriginal o preço antes do desconto.
+     */
+    cupomId: string | null
+    valorOriginal: number | null
+    desconto: number | null
     created_at: Date
     updated_at: Date
   }, ExtArgs["result"]["pagamentoMomenu"]>
@@ -1761,6 +2133,7 @@ export interface Prisma__PagamentoMomenuClient<T, Null = never, ExtArgs extends 
   readonly [Symbol.toStringTag]: "PrismaPromise"
   afiliadoLink<T extends Prisma.PagamentoMomenu$afiliadoLinkArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PagamentoMomenu$afiliadoLinkArgs<ExtArgs>>): Prisma.Prisma__AfiliadoLinkClient<runtime.Types.Result.GetResult<Prisma.$AfiliadoLinkPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   afiliadoComissao<T extends Prisma.PagamentoMomenu$afiliadoComissaoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PagamentoMomenu$afiliadoComissaoArgs<ExtArgs>>): Prisma.Prisma__AfiliadoComissaoClient<runtime.Types.Result.GetResult<Prisma.$AfiliadoComissaoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  cupom<T extends Prisma.PagamentoMomenu$cupomArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PagamentoMomenu$cupomArgs<ExtArgs>>): Prisma.Prisma__CupomClient<runtime.Types.Result.GetResult<Prisma.$CupomPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   usuario<T extends Prisma.PagamentoMomenu$usuarioArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PagamentoMomenu$usuarioArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1808,6 +2181,9 @@ export interface PagamentoMomenuFieldRefs {
   readonly ultimaVerificacao: Prisma.FieldRef<"PagamentoMomenu", 'DateTime'>
   readonly pagoEm: Prisma.FieldRef<"PagamentoMomenu", 'DateTime'>
   readonly afiliadoLinkId: Prisma.FieldRef<"PagamentoMomenu", 'String'>
+  readonly cupomId: Prisma.FieldRef<"PagamentoMomenu", 'String'>
+  readonly valorOriginal: Prisma.FieldRef<"PagamentoMomenu", 'Float'>
+  readonly desconto: Prisma.FieldRef<"PagamentoMomenu", 'Float'>
   readonly created_at: Prisma.FieldRef<"PagamentoMomenu", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"PagamentoMomenu", 'DateTime'>
 }
@@ -2241,6 +2617,25 @@ export type PagamentoMomenu$afiliadoComissaoArgs<ExtArgs extends runtime.Types.E
    */
   include?: Prisma.AfiliadoComissaoInclude<ExtArgs> | null
   where?: Prisma.AfiliadoComissaoWhereInput
+}
+
+/**
+ * PagamentoMomenu.cupom
+ */
+export type PagamentoMomenu$cupomArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Cupom
+   */
+  select?: Prisma.CupomSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Cupom
+   */
+  omit?: Prisma.CupomOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CupomInclude<ExtArgs> | null
+  where?: Prisma.CupomWhereInput
 }
 
 /**

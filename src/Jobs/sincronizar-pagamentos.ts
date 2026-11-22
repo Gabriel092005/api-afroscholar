@@ -1,5 +1,5 @@
 import cron from "node-cron";
-import { encerrarMentoriasExpiradas } from "@/lib/mentoria-expiracao";
+import { encerrarAcessosSociaisExpirados, encerrarMentoriasExpiradas } from "@/lib/mentoria-expiracao";
 import { sincronizarPendentes } from "@/lib/pagamentos-momenu";
 
 export function setupSincronizacaoPagamentos() {
@@ -17,6 +17,11 @@ export function setupSincronizacaoPagamentos() {
       await encerrarMentoriasExpiradas();
     } catch (error) {
       console.error("[mentoria] falha ao encerrar mentorias expiradas", error);
+    }
+    try {
+      await encerrarAcessosSociaisExpirados();
+    } catch (error) {
+      console.error("[social] falha ao encerrar acessos sociais expirados", error);
     } finally {
       emCurso = false;
     }

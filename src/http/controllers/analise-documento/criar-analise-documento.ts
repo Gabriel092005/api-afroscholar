@@ -2,6 +2,7 @@ import crypto from "node:crypto";
 import { upload } from "@/lib/upload";
 import prisma from "@/lib/prisma";
 import {
+  cupomSchema,
   iniciarCobranca,
   metodoPagamentoSchema,
   responderErroPagamento,
@@ -21,6 +22,7 @@ const bodySchema = z.object({
   observacao: z.string().optional(),
   metodoPagamento: metodoPagamentoSchema.optional(),
   phoneNumber: telefoneSchema.optional(),
+  cupom: cupomSchema,
   tipoId: z
     .union([z.string(), z.array(z.string())])
     .transform((valor) => (Array.isArray(valor) ? valor : [valor])),
@@ -105,6 +107,7 @@ export async function criarAnaliseDocumentoController(request: FastifyRequest, r
       phoneNumber: body.phoneNumber,
       produto: `Análise de documentos (${itens.length})`,
       link: "/analise-documento",
+      cupom: body.cupom,
       persistirAlvo: (tx, cobranca) =>
         tx.analisePedido.create({
           data: {

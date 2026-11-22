@@ -449,7 +449,9 @@ export const ModelName = {
   LeadInteracao: 'LeadInteracao',
   Conversa: 'Conversa',
   MensagemConversa: 'MensagemConversa',
-  VideoExplicativo: 'VideoExplicativo'
+  VideoExplicativo: 'VideoExplicativo',
+  MembroSocial: 'MembroSocial',
+  Cupom: 'Cupom'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -465,7 +467,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "notification" | "usuario" | "notificacao" | "empresa" | "departamento" | "bot" | "botAsset" | "botEmpresa" | "folhaBot" | "transacao" | "arquivo" | "assinatura" | "carrinhoItem" | "feedback" | "mensagem" | "setting" | "whatBotCanDo" | "whatBotCanNotDo" | "bolsa" | "bolsaInscricao" | "bolsaInscricaoDocumento" | "curso" | "aula" | "cursoPagamento" | "cursoUsuario" | "documento" | "documentoCompra" | "depoimento" | "novidade" | "novidadeInscricao" | "novidadeInscricaoDocumento" | "anexo" | "perfilAcademico" | "analiseDocumento" | "community" | "communityMember" | "communityMessage" | "aulaOnline" | "aulaOnlineParticipante" | "mentoria" | "mentoriaAcesso" | "mentoriaInscricao" | "communityQuestion" | "communityAnswer" | "homeBanner" | "mapaGlobal" | "atividade" | "analiseTipoDocumento" | "analisePedido" | "afiliadoLink" | "afiliadoComissao" | "afiliadoSaque" | "pagamentoMomenu" | "emailFunil" | "lead" | "leadInteracao" | "conversa" | "mensagemConversa" | "videoExplicativo"
+    modelProps: "user" | "notification" | "usuario" | "notificacao" | "empresa" | "departamento" | "bot" | "botAsset" | "botEmpresa" | "folhaBot" | "transacao" | "arquivo" | "assinatura" | "carrinhoItem" | "feedback" | "mensagem" | "setting" | "whatBotCanDo" | "whatBotCanNotDo" | "bolsa" | "bolsaInscricao" | "bolsaInscricaoDocumento" | "curso" | "aula" | "cursoPagamento" | "cursoUsuario" | "documento" | "documentoCompra" | "depoimento" | "novidade" | "novidadeInscricao" | "novidadeInscricaoDocumento" | "anexo" | "perfilAcademico" | "analiseDocumento" | "community" | "communityMember" | "communityMessage" | "aulaOnline" | "aulaOnlineParticipante" | "mentoria" | "mentoriaAcesso" | "mentoriaInscricao" | "communityQuestion" | "communityAnswer" | "homeBanner" | "mapaGlobal" | "atividade" | "analiseTipoDocumento" | "analisePedido" | "afiliadoLink" | "afiliadoComissao" | "afiliadoSaque" | "pagamentoMomenu" | "emailFunil" | "lead" | "leadInteracao" | "conversa" | "mensagemConversa" | "videoExplicativo" | "membroSocial" | "cupom"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -4909,6 +4911,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    MembroSocial: {
+      payload: Prisma.$MembroSocialPayload<ExtArgs>
+      fields: Prisma.MembroSocialFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MembroSocialFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MembroSocialPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MembroSocialFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MembroSocialPayload>
+        }
+        findFirst: {
+          args: Prisma.MembroSocialFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MembroSocialPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MembroSocialFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MembroSocialPayload>
+        }
+        findMany: {
+          args: Prisma.MembroSocialFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MembroSocialPayload>[]
+        }
+        create: {
+          args: Prisma.MembroSocialCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MembroSocialPayload>
+        }
+        createMany: {
+          args: Prisma.MembroSocialCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MembroSocialCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MembroSocialPayload>[]
+        }
+        delete: {
+          args: Prisma.MembroSocialDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MembroSocialPayload>
+        }
+        update: {
+          args: Prisma.MembroSocialUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MembroSocialPayload>
+        }
+        deleteMany: {
+          args: Prisma.MembroSocialDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MembroSocialUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MembroSocialUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MembroSocialPayload>[]
+        }
+        upsert: {
+          args: Prisma.MembroSocialUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MembroSocialPayload>
+        }
+        aggregate: {
+          args: Prisma.MembroSocialAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMembroSocial>
+        }
+        groupBy: {
+          args: Prisma.MembroSocialGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MembroSocialGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MembroSocialCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MembroSocialCountAggregateOutputType> | number
+        }
+      }
+    }
+    Cupom: {
+      payload: Prisma.$CupomPayload<ExtArgs>
+      fields: Prisma.CupomFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CupomFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CupomPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CupomFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CupomPayload>
+        }
+        findFirst: {
+          args: Prisma.CupomFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CupomPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CupomFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CupomPayload>
+        }
+        findMany: {
+          args: Prisma.CupomFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CupomPayload>[]
+        }
+        create: {
+          args: Prisma.CupomCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CupomPayload>
+        }
+        createMany: {
+          args: Prisma.CupomCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CupomCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CupomPayload>[]
+        }
+        delete: {
+          args: Prisma.CupomDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CupomPayload>
+        }
+        update: {
+          args: Prisma.CupomUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CupomPayload>
+        }
+        deleteMany: {
+          args: Prisma.CupomDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CupomUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CupomUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CupomPayload>[]
+        }
+        upsert: {
+          args: Prisma.CupomUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CupomPayload>
+        }
+        aggregate: {
+          args: Prisma.CupomAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCupom>
+        }
+        groupBy: {
+          args: Prisma.CupomGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CupomGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CupomCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CupomCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -5816,6 +5966,9 @@ export const PagamentoMomenuScalarFieldEnum = {
   ultimaVerificacao: 'ultimaVerificacao',
   pagoEm: 'pagoEm',
   afiliadoLinkId: 'afiliadoLinkId',
+  cupomId: 'cupomId',
+  valorOriginal: 'valorOriginal',
+  desconto: 'desconto',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
@@ -5905,6 +6058,50 @@ export const VideoExplicativoScalarFieldEnum = {
 } as const
 
 export type VideoExplicativoScalarFieldEnum = (typeof VideoExplicativoScalarFieldEnum)[keyof typeof VideoExplicativoScalarFieldEnum]
+
+
+export const MembroSocialScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  todasBolsas: 'todasBolsas',
+  bolsaIds: 'bolsaIds',
+  documentos: 'documentos',
+  cursos: 'cursos',
+  comunidades: 'comunidades',
+  aulas: 'aulas',
+  ia: 'ia',
+  ativo: 'ativo',
+  expiraEm: 'expiraEm',
+  observacao: 'observacao',
+  criadoPorId: 'criadoPorId',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type MembroSocialScalarFieldEnum = (typeof MembroSocialScalarFieldEnum)[keyof typeof MembroSocialScalarFieldEnum]
+
+
+export const CupomScalarFieldEnum = {
+  id: 'id',
+  codigo: 'codigo',
+  descricao: 'descricao',
+  tipoDesconto: 'tipoDesconto',
+  valor: 'valor',
+  tipos: 'tipos',
+  itemId: 'itemId',
+  limiteUsos: 'limiteUsos',
+  limitePorUsuario: 'limitePorUsuario',
+  valorMinimo: 'valorMinimo',
+  validoDesde: 'validoDesde',
+  validoAte: 'validoAte',
+  ativo: 'ativo',
+  usos: 'usos',
+  criadoPorId: 'criadoPorId',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type CupomScalarFieldEnum = (typeof CupomScalarFieldEnum)[keyof typeof CupomScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -6352,6 +6549,20 @@ export type EnumEtapaLeadFieldRefInput<$PrismaModel> = FieldRefInputType<$Prisma
 export type ListEnumEtapaLeadFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EtapaLead[]'>
     
 
+
+/**
+ * Reference to a field of type 'TipoDescontoCupom'
+ */
+export type EnumTipoDescontoCupomFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TipoDescontoCupom'>
+    
+
+
+/**
+ * Reference to a field of type 'TipoDescontoCupom[]'
+ */
+export type ListEnumTipoDescontoCupomFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TipoDescontoCupom[]'>
+    
+
 /**
  * Batch Payload for updateMany & deleteMany & createMany
  */
@@ -6499,6 +6710,8 @@ export type GlobalOmitConfig = {
   conversa?: Prisma.ConversaOmit
   mensagemConversa?: Prisma.MensagemConversaOmit
   videoExplicativo?: Prisma.VideoExplicativoOmit
+  membroSocial?: Prisma.MembroSocialOmit
+  cupom?: Prisma.CupomOmit
 }
 
 /* Types for Logging */

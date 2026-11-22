@@ -115,7 +115,7 @@ export async function lerLeitor(req: FastifyRequest): Promise<Leitor> {
       where: { usuarioId: id, status: "APROVADO" },
       select: { documentoId: true },
     }),
-    bolsasComMentoria(id),
+    bolsasComMentoria(id, "documentos"),
   ]);
   return {
     id,

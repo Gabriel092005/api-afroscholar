@@ -5,6 +5,7 @@ import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import type { Role } from "@/generated/client";
 import { comunicar } from "@/lib/comunicar";
+import { acessoSocial } from "@/lib/mentoria-acesso";
 import prisma from "@/lib/prisma";
 import { UPLOAD_PATH } from "@/lib/upload";
 import { verifyJWT } from "../middleware/verify-jwt";
@@ -69,7 +70,10 @@ async function publicosDe(usuarioId: string): Promise<string[] | null> {
   const publicos = ["TODOS", user.role];
   // Mentorando: quem tem a mentoria activa (o monitor também vê o que os mentorandos vêem).
   if (user.role === "MONITOR") publicos.push("MENTORANDO");
-  else if ((await prisma.mentoriaAcesso.count({ where: { usuarioId, expiraEm: { gt: new Date() } } })) > 0) {
+  else if (
+    (await prisma.mentoriaAcesso.count({ where: { usuarioId, expiraEm: { gt: new Date() } } })) > 0 ||
+    (await acessoSocial(usuarioId))
+  ) {
     publicos.push("MENTORANDO");
   }
   return publicos;
@@ -78,12 +82,18 @@ async function publicosDe(usuarioId: string): Promise<string[] | null> {
 /** Quem recebe o aviso de um vídeo novo, conforme o público. */
 async function destinatarios(publico: string): Promise<string[]> {
   if (publico === "MENTORANDO") {
-    const ativos = await prisma.mentoriaAcesso.findMany({
-      where: { expiraEm: { gt: new Date() } },
-      select: { usuarioId: true },
-      distinct: ["usuarioId"],
-    });
-    return ativos.map((a) => a.usuarioId);
+    const [ativos, sociais] = await Promise.all([
+      prisma.mentoriaAcesso.findMany({
+        where: { expiraEm: { gt: new Date() } },
+        select: { usuarioId: true },
+        distinct: ["usuarioId"],
+      }),
+      prisma.membroSocial.findMany({
+        where: { ativo: true, OR: [{ expiraEm: null }, { expiraEm: { gt: new Date() } }] },
+        select: { usuarioId: true },
+      }),
+    ]);
+    return [...new Set([...ativos, ...sociais].map((a) => a.usuarioId))];
   }
   const contas = await prisma.user.findMany({
     where: { estado_conta: "ACTIVA", ...(publico === "TODOS" ? {} : { role: publico as Role }) },

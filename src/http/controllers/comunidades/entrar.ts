@@ -32,7 +32,7 @@ export async function entrar(req: FastifyRequest, res: FastifyReply) {
 
     const isAdmin = usuario?.role === "ADMIN" || usuario?.role === "GESTOR";
 
-    const temMentoria = comunidade.bolsaId ? await temMentoriaNaBolsa(usuarioId, comunidade.bolsaId) : false;
+    const temMentoria = comunidade.bolsaId ? await temMentoriaNaBolsa(usuarioId, comunidade.bolsaId, "comunidades") : false;
 
     if (comunidade.bolsaId && !isAdmin && !temMentoria) {
       return res.status(403).send({ error: "Forbidden", message: "Esta comunidade está incluída na mentoria da bolsa." });

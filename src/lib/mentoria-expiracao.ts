@@ -1,4 +1,5 @@
 import { notificar } from "@/lib/pagamentos-momenu";
+import { retirarMembroSocialDasComunidades, socialNaBolsa } from "@/lib/mentoria-acesso";
 import prisma from "@/lib/prisma";
 
 /**
@@ -16,7 +17,8 @@ export async function encerrarMentoriasExpiradas(limite = 100): Promise<number> 
   });
 
   for (const acesso of expiradas) {
-    if (acesso.bolsaId) {
+    // Quem ainda tem a comunidade pela área social fica nela.
+    if (acesso.bolsaId && !(await socialNaBolsa(acesso.usuarioId, acesso.bolsaId, "comunidades"))) {
       await prisma.communityMember.deleteMany({
         where: {
           usuarioId: acesso.usuarioId,
@@ -44,4 +46,40 @@ export async function encerrarMentoriasExpiradas(limite = 100): Promise<number> 
   }
 
   return expiradas.length;
+}
+
+/**
+ * Acessos da área social com data de fim já passada: deixam de estar ativos e saem das
+ * comunidades que só tinham por esse acesso. O resto fecha-se sozinho pela data.
+ */
+export async function encerrarAcessosSociaisExpirados(limite = 100): Promise<number> {
+  const expirados = await prisma.membroSocial.findMany({
+    where: { ativo: true, expiraEm: { lte: new Date() } },
+    take: limite,
+  });
+
+  for (const social of expirados) {
+    const antes = social.comunidades
+      ? social.todasBolsas
+        ? (await prisma.bolsa.findMany({ select: { id: true } })).map((b) => b.id)
+        : social.bolsaIds
+      : [];
+
+    const tratado = await prisma.membroSocial.updateMany({
+      where: { id: social.id, ativo: true, expiraEm: social.expiraEm },
+      data: { ativo: false },
+    });
+    if (tratado.count === 0) continue;
+
+    await retirarMembroSocialDasComunidades(social.usuarioId, antes);
+    await notificar({
+      usuarioId: social.usuarioId,
+      titulo: "O seu acesso terminou",
+      conteudo: "O período de acesso que lhe foi concedido chegou ao fim. Fale connosco se quiser renová-lo.",
+      tipo: "INFO",
+      link: "/bolsas",
+    });
+  }
+
+  return expirados.length;
 }

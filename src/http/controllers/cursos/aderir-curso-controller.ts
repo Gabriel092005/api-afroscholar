@@ -3,6 +3,7 @@ import { cursosComAcesso } from "@/lib/mentoria-acesso";
 import { codigoAfiliadoDoPedido } from "@/lib/afiliados";
 import prisma from "@/lib/prisma";
 import {
+  cupomSchema,
   iniciarCobranca,
   metodoPagamentoSchema,
   responderErroPagamento,
@@ -15,6 +16,7 @@ import { z } from "zod";
 const aderirCursoSchema = z.object({
   metodo: metodoPagamentoSchema.optional(),
   phoneNumber: telefoneSchema.optional(),
+  cupom: cupomSchema,
 });
 
 export const aderirCurso = async (
@@ -124,6 +126,7 @@ export const aderirCurso = async (
       produto: curso.titulo || "Curso",
       link: `/cursos/${id}`,
       afiliadoCodigo: codigoAfiliadoDoPedido(req),
+      cupom: body.cupom,
       persistirAlvo: (tx, cobranca) =>
         tx.cursoPagamento.upsert({
           where: chave,

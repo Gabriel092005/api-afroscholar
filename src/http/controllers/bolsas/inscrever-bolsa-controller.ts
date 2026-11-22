@@ -5,9 +5,10 @@ import { codigoAfiliadoDoPedido } from "@/lib/afiliados";
 import type { Prisma } from "@/generated/client";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
-import { concederMentoria, temMentoriaNaBolsa } from "@/lib/mentoria-acesso";
+import { concederMentoria, temMentoriaCompradaNaBolsa } from "@/lib/mentoria-acesso";
 import { duracaoEmTexto, opcoesMentoria } from "@/lib/pacotes-mentoria";
 import {
+  cupomSchema,
   iniciarCobranca,
   metodoPagamentoSchema,
   responderErroPagamento,
@@ -27,6 +28,7 @@ const inscribirSchema = z.object({
   phoneNumber: telefoneSchema.optional(),
   metodoPagamento: metodoPagamentoSchema.optional(),
   mesesMentoria: z.coerce.number().int().positive().optional(),
+  cupom: cupomSchema,
   dataAgendada: z.string().optional(),
 });
 
@@ -151,7 +153,7 @@ export const inscribirBolsa = async (
     }
 
     // Quem comprou outro serviço depois perdeu o tipo na inscrição, mas não a mentoria.
-    if (body.tipoInteresse === "MENTORIA" && (await temMentoriaNaBolsa(userId, id))) {
+    if (body.tipoInteresse === "MENTORIA" && (await temMentoriaCompradaNaBolsa(userId, id))) {
       return res.status(400).send({
         error: "Bad Request",
         message: "Já tem a mentoria desta bolsa.",
@@ -260,6 +262,7 @@ export const inscribirBolsa = async (
       produto: `${bolsa.titulo || "Bolsa"}${mesesMentoria && mesesMentoria > 1 ? ` (mentoria de ${duracaoEmTexto(mesesMentoria)})` : ""}`,
       link: `/bolsas/${id}`,
       afiliadoCodigo: codigoAfiliadoDoPedido(req),
+      cupom: body.cupom,
       persistirAlvo: (tx, cobranca) =>
         gravarInscricao(tx, alvoId, {
           status: "PENDENTE",

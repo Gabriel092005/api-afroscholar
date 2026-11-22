@@ -219,3 +219,11 @@ export const EtapaLead = {
 } as const
 
 export type EtapaLead = (typeof EtapaLead)[keyof typeof EtapaLead]
+
+
+export const TipoDescontoCupom = {
+  PERCENTAGEM: 'PERCENTAGEM',
+  VALOR_FIXO: 'VALOR_FIXO'
+} as const
+
+export type TipoDescontoCupom = (typeof TipoDescontoCupom)[keyof typeof TipoDescontoCupom]

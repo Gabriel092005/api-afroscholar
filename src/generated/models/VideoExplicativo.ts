@@ -557,7 +557,7 @@ export type $VideoExplicativoPayload<ExtArgs extends runtime.Types.Extensions.In
      */
     publico: string
     /**
-     * Onde aparece: GERAL, INICIO, BOLSAS, MENTORIA, PAGAMENTOS, CURSOS, CRM
+     * Onde aparece: GERAL (só em Como funciona), MENTORIA, PAGAMENTOS, CRM
      */
     local: string
     ordem: number

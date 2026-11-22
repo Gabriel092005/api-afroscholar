@@ -8,7 +8,7 @@ export async function listar(req: FastifyRequest, res: FastifyReply) {
     const { bolsaId } = req.query as { bolsaId?: string };
 
     const where = bolsaId ? { bolsaId } : {};
-    const [staff, minhasBolsas] = await Promise.all([eStaff(usuarioId), bolsasComMentoria(usuarioId)]);
+    const [staff, minhasBolsas] = await Promise.all([eStaff(usuarioId), bolsasComMentoria(usuarioId, "comunidades")]);
 
     const comunidades = await prisma.community.findMany({
       where,

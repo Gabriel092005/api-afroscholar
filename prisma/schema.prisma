@@ -131,23 +131,23 @@ enum MensagemTipo {
 // ═══════════════════════════════════════════════════════════════
 
 model User {
-  id               String      @id @default(uuid())
-  nome             String
-  email            String      @unique
-  phone            String?
-  password         String
-  role             Role        @default(USUARIO)
-  estado_conta     EstadoConta @default(ACTIVA)
-  image_path       String?
-  bio              String?
-  paisMentoria     String?
-  pushSubscription String?
-  resetToken      String?     @unique
-  resetTokenExpiry DateTime?
-  created_at       DateTime    @default(now())
-  last_active_at   DateTime    @default(now())
+  id                    String      @id @default(uuid())
+  nome                  String
+  email                 String      @unique
+  phone                 String?
+  password              String
+  role                  Role        @default(USUARIO)
+  estado_conta          EstadoConta @default(ACTIVA)
+  image_path            String?
+  bio                   String?
+  paisMentoria          String?
+  pushSubscription      String?
+  resetToken            String?     @unique
+  resetTokenExpiry      DateTime?
+  created_at            DateTime    @default(now())
+  last_active_at        DateTime    @default(now())
   /// Emails do funil de vendas (gatilhos diários). O utilizador pode cancelar pelo link no email.
-  recebeEmailsMarketing Boolean @default(true)
+  recebeEmailsMarketing Boolean     @default(true)
 
   notifications       Notification[]
   inscricoes          BolsaInscricao[]
@@ -178,11 +178,12 @@ model User {
   afiliadoSaques      AfiliadoSaque[]
   analisePedidos      AnalisePedido[]
   emailsFunil         EmailFunil[]
-  leadsComoCliente    Lead[]          @relation("LeadCliente")
-  leadsAtribuidos     Lead[]          @relation("LeadAtendente")
+  leadsComoCliente    Lead[]                   @relation("LeadCliente")
+  leadsAtribuidos     Lead[]                   @relation("LeadAtendente")
   interacoesLead      LeadInteracao[]
-  conversaSuporte     Conversa?        @relation("ConversaCliente")
+  conversaSuporte     Conversa?                @relation("ConversaCliente")
   mensagensSuporte    MensagemConversa[]
+  membroSocial        MembroSocial?            @relation("MembroSocial")
 }
 
 model Notification {
@@ -536,19 +537,19 @@ model Bolsa {
   modalidade       String?
   imagemBg         String?
   datasImportantes Json?
-  created_at   DateTime    @default(now())
-  updated_at   DateTime    @updatedAt
+  created_at       DateTime    @default(now())
+  updated_at       DateTime    @updatedAt
 
   criadoPorId String?
   criadoPor   User?   @relation("BolsasCriadas", fields: [criadoPorId], references: [id])
 
-  inscricoes   BolsaInscricao[]
-  aulas        AulaOnline[]
-  comunidades  Community[]
-  mentorias    Mentoria[]
-  materiais    Documento[]
+  inscricoes      BolsaInscricao[]
+  aulas           AulaOnline[]
+  comunidades     Community[]
+  mentorias       Mentoria[]
+  materiais       Documento[]
   mentoriaAcessos MentoriaAcesso[]
-  cursos       Curso[]
+  cursos          Curso[]
 }
 
 model BolsaInscricao {
@@ -570,7 +571,7 @@ model BolsaInscricao {
   comprovativoUrl     String?
   valorPago           Float?
   dataAgendada        DateTime?
-  duracaoMinutos      Int?         @default(60)
+  duracaoMinutos      Int?            @default(60)
   /// Quando a inscrição foi confirmada. tipoInteresse guarda só o último serviço pedido,
   /// e comprar depois uma consultoria não pode apagar o facto de já estar inscrito.
   inscritoEm          DateTime?
@@ -601,27 +602,27 @@ model BolsaInscricaoDocumento {
 // ═══════════════════════════════════════════════════════════════
 
 model Curso {
-  id            String      @id @default(uuid())
-  titulo        String
-  subtitulo     String?
-  categoria     String?
-  nivel         String?
-  duracao       String?
-  quantAulas    Int         @default(0)
-  estudantes    Int         @default(0)
-  rating        Float       @default(0)
-  preco         Float
+  id               String      @id @default(uuid())
+  titulo           String
+  subtitulo        String?
+  categoria        String?
+  nivel            String?
+  duracao          String?
+  quantAulas       Int         @default(0)
+  estudantes       Int         @default(0)
+  rating           Float       @default(0)
+  preco            Float
   // Sem valor, aplica-se a percentagem global de afiliados.
   comissaoAfiliado Float?
-  idioma        String?
-  tags          String[]
-  descricao     String?
-  capaUrl       String?
-  status        CursoStatus @default(RASCUNHO)
-  mentorNome    String?
-  mentorAvatar  String?
-  created_at    DateTime    @default(now())
-  updated_at    DateTime    @updatedAt
+  idioma           String?
+  tags             String[]
+  descricao        String?
+  capaUrl          String?
+  status           CursoStatus @default(RASCUNHO)
+  mentorNome       String?
+  mentorAvatar     String?
+  created_at       DateTime    @default(now())
+  updated_at       DateTime    @updatedAt
 
   criadoPorId String?
   criadoPor   User?   @relation("CursosCriados", fields: [criadoPorId], references: [id])
@@ -686,26 +687,26 @@ model CursoUsuario {
 // ═══════════════════════════════════════════════════════════════
 
 model Documento {
-  id          String          @id @default(uuid())
-  titulo      String
-  descricao   String?
-  categoria   String?
-  fileName    String?
-  fileUrl     String
-  fileType    String?
-  fileSize    Int?
-  status      DocumentoStatus @default(RASCUNHO)
-  criadoPorId String
-  criadoPor   User            @relation(fields: [criadoPorId], references: [id])
+  id               String          @id @default(uuid())
+  titulo           String
+  descricao        String?
+  categoria        String?
+  fileName         String?
+  fileUrl          String
+  fileType         String?
+  fileSize         Int?
+  status           DocumentoStatus @default(RASCUNHO)
+  criadoPorId      String
+  criadoPor        User            @relation(fields: [criadoPorId], references: [id])
   // Com bolsa, só quem tem a mentoria dessa bolsa o vê.
-  bolsaId     String?
-  bolsa       Bolsa?          @relation(fields: [bolsaId], references: [id], onDelete: Cascade)
+  bolsaId          String?
+  bolsa            Bolsa?          @relation(fields: [bolsaId], references: [id], onDelete: Cascade)
   // 0 é gratuito. Com preço, o ficheiro só se abre depois de comprado.
-  preco       Float           @default(0)
+  preco            Float           @default(0)
   // Sem valor, aplica-se a percentagem global de afiliados.
   comissaoAfiliado Float?
-  created_at  DateTime        @default(now())
-  updated_at  DateTime        @updatedAt
+  created_at       DateTime        @default(now())
+  updated_at       DateTime        @updatedAt
 
   compras DocumentoCompra[]
 
@@ -822,49 +823,49 @@ model Anexo {
 // ═══════════════════════════════════════════════════════════════
 
 model PerfilAcademico {
-  id                      String   @id @default(uuid())
-  usuarioId               String   @unique
-  nivelEnsino             String
-  instituicao             String?
-  curso                   String?
-  nivel                   String?
-  anoConclusao            String?
-  media                   String?
-  pais                    String?
-  genero                  String?
-  nacionalidade           String?
-  cidade                  String?
-  whatsapp                String?
-  idiomas                 String?
-  certificadosIdiomas     String?
-  biUrl                   String?
-  curriculumUrl           String?
-  fotoUrl                 String?
-  dataNascimento          String?
-  provincia               String?
-  municipio               String?
-  motivacoes              String?
-  experienciaProfissional String?
-  areaActuacao            String?
-  cargoOcupado            String?
-  historicoProfissional   String?
+  id                          String   @id @default(uuid())
+  usuarioId                   String   @unique
+  nivelEnsino                 String
+  instituicao                 String?
+  curso                       String?
+  nivel                       String?
+  anoConclusao                String?
+  media                       String?
+  pais                        String?
+  genero                      String?
+  nacionalidade               String?
+  cidade                      String?
+  whatsapp                    String?
+  idiomas                     String?
+  certificadosIdiomas         String?
+  biUrl                       String?
+  curriculumUrl               String?
+  fotoUrl                     String?
+  dataNascimento              String?
+  provincia                   String?
+  municipio                   String?
+  motivacoes                  String?
+  experienciaProfissional     String?
+  areaActuacao                String?
+  cargoOcupado                String?
+  historicoProfissional       String?
   atividadesExtracurriculares String?
-  descricaoAtividades     String?
-  producaoCientifica      String?
-  descricaoProducao       String?
-  bolsaIntegral           String?
-  bolsaParcial            String?
-  custeiaPassagem         String?
-  preferenciaDestino      String?
-  mudarPais               String?
-  qualquerContinente      String?
-  documentos              String?
-  areaInteresse            String?
-  cursoDesejado            String?
-  objetivosAcademicos      String?
-  quandoPretendeIniciar    String?
-  created_at              DateTime @default(now())
-  updated_at              DateTime @updatedAt
+  descricaoAtividades         String?
+  producaoCientifica          String?
+  descricaoProducao           String?
+  bolsaIntegral               String?
+  bolsaParcial                String?
+  custeiaPassagem             String?
+  preferenciaDestino          String?
+  mudarPais                   String?
+  qualquerContinente          String?
+  documentos                  String?
+  areaInteresse               String?
+  cursoDesejado               String?
+  objetivosAcademicos         String?
+  quandoPretendeIniciar       String?
+  created_at                  DateTime @default(now())
+  updated_at                  DateTime @updatedAt
 
   usuario User @relation(fields: [usuarioId], references: [id])
 }
@@ -874,7 +875,7 @@ model PerfilAcademico {
 // ═══════════════════════════════════════════════════════════════
 
 model AnaliseDocumento {
-  id             String   @id @default(uuid())
+  id             String         @id @default(uuid())
   usuarioId      String
   nome           String
   email          String
@@ -882,15 +883,15 @@ model AnaliseDocumento {
   tipoDocumento  String
   areaPretendida String
   observacao     String?
-  status         String   @default("PENDENTE")
+  status         String         @default("PENDENTE")
   feedback       String?
   arquivoUrl     String?
   // Preço do documento no momento do pedido. Vazio nos pedidos anteriores à cobrança.
   valor          Float?
   pedidoId       String?
   pedido         AnalisePedido? @relation(fields: [pedidoId], references: [id], onDelete: Cascade)
-  created_at     DateTime @default(now())
-  updated_at     DateTime @updatedAt
+  created_at     DateTime       @default(now())
+  updated_at     DateTime       @updatedAt
 
   usuario User @relation(fields: [usuarioId], references: [id])
 }
@@ -919,10 +920,10 @@ model Community {
 }
 
 model CommunityMember {
-  id        String        @id @default(uuid())
-  role      CommunityRole @default(MEMBER)
-  status    JoinStatus    @default(APROVADO)
-  joined_at DateTime      @default(now())
+  id                  String        @id @default(uuid())
+  role                CommunityRole @default(MEMBER)
+  status              JoinStatus    @default(APROVADO)
+  joined_at           DateTime      @default(now())
   /// Quando os monitores foram avisados para dar as boas-vindas (uma vez por membro).
   monitoresAvisadosEm DateTime?
 
@@ -1020,15 +1021,15 @@ model Mentoria {
 
 /// Acesso de quem pagou uma mentoria: não se perde ao comprar outro serviço da mesma bolsa.
 model MentoriaAcesso {
-  id         String   @id @default(uuid())
-  usuarioId  String
-  bolsaId    String?
-  mentoriaId String?
+  id          String    @id @default(uuid())
+  usuarioId   String
+  bolsaId     String?
+  mentoriaId  String?
   /// Uma mentoria gratuita abre o que lhe está ligado, mas não a IA.
-  pago       Boolean  @default(true)
-  created_at DateTime @default(now())
+  pago        Boolean   @default(true)
+  created_at  DateTime  @default(now())
   /// A mentoria dura o pacote comprado. Depois disto, deixa de abrir o que lhe está ligado.
-  expiraEm   DateTime
+  expiraEm    DateTime
   /// Quando o fim do acesso já foi tratado (aviso e saída das comunidades). Renovar limpa-o.
   encerradoEm DateTime?
 
@@ -1061,16 +1062,16 @@ model MentoriaInscricao {
 }
 
 model CommunityQuestion {
-  id          String   @id @default(uuid())
-  titulo      String
-  conteudo    String
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
+  id         String   @id @default(uuid())
+  titulo     String
+  conteudo   String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 
   comunidadeId String
-  comunidade   Community          @relation(fields: [comunidadeId], references: [id], onDelete: Cascade)
+  comunidade   Community         @relation(fields: [comunidadeId], references: [id], onDelete: Cascade)
   usuarioId    String
-  usuario      User               @relation(fields: [usuarioId], references: [id])
+  usuario      User              @relation(fields: [usuarioId], references: [id])
   respostas    CommunityAnswer[]
 
   @@map("comunidade_duvida")
@@ -1082,10 +1083,10 @@ model CommunityAnswer {
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  duvidaId String
-  duvida   CommunityQuestion @relation(fields: [duvidaId], references: [id], onDelete: Cascade)
+  duvidaId  String
+  duvida    CommunityQuestion @relation(fields: [duvidaId], references: [id], onDelete: Cascade)
   usuarioId String
-  usuario   User             @relation(fields: [usuarioId], references: [id])
+  usuario   User              @relation(fields: [usuarioId], references: [id])
 
   @@map("comunidade_resposta")
 }
@@ -1266,6 +1267,11 @@ model PagamentoMomenu {
   afiliadoLinkId    String?
   afiliadoLink      AfiliadoLink?         @relation(fields: [afiliadoLinkId], references: [id], onDelete: SetNull)
   afiliadoComissao  AfiliadoComissao?
+  /// Cupão aplicado: valor é o que se cobra, valorOriginal o preço antes do desconto.
+  cupomId           String?
+  cupom             Cupom?                @relation(fields: [cupomId], references: [id], onDelete: SetNull)
+  valorOriginal     Float?
+  desconto          Float?
   created_at        DateTime              @default(now())
   updated_at        DateTime              @updatedAt
 
@@ -1273,6 +1279,7 @@ model PagamentoMomenu {
 
   @@index([tipo, alvoId])
   @@index([status, ultimaVerificacao])
+  @@index([cupomId])
   @@map("pagamentos_momenu")
 }
 
@@ -1307,20 +1314,20 @@ enum EtapaLead {
 /// Um cliente a acompanhar pela equipa de atendimento. Um lead por cliente: novos eventos
 /// (outro pagamento falhado, mentoria expirada) actualizam o mesmo lead e reabrem-no.
 model Lead {
-  id               String    @id @default(uuid())
-  usuarioId        String    @unique
-  atendenteId      String?
-  etapa            EtapaLead @default(NOVO)
+  id              String    @id @default(uuid())
+  usuarioId       String    @unique
+  atendenteId     String?
+  etapa           EtapaLead @default(NOVO)
   /// PAGAMENTO_FALHADO, PAGAMENTO_PENDENTE, REGISTO, MENTORIA_EXPIRADA
-  origem           String
-  produto          String?
+  origem          String
+  produto         String?
   /// Caminho no site onde o cliente pode retomar a compra.
-  caminho          String?
-  valorPotencial   Float?
-  proximoContacto  DateTime?
-  ultimoContacto   DateTime?
-  created_at       DateTime  @default(now())
-  updated_at       DateTime  @updatedAt
+  caminho         String?
+  valorPotencial  Float?
+  proximoContacto DateTime?
+  ultimoContacto  DateTime?
+  created_at      DateTime  @default(now())
+  updated_at      DateTime  @updatedAt
 
   usuario    User            @relation("LeadCliente", fields: [usuarioId], references: [id], onDelete: Cascade)
   atendente  User?           @relation("LeadAtendente", fields: [atendenteId], references: [id], onDelete: SetNull)
@@ -1411,4 +1418,66 @@ model VideoExplicativo {
 
   @@index([publicado, local])
   @@map("videos_explicativos")
+}
+
+/// Área social: pessoas a quem o admin dá, sem pagamento, o acesso de quem tem a mentoria.
+/// O admin escolhe as bolsas abrangidas e, dentro delas, o que fica aberto.
+model MembroSocial {
+  id          String    @id @default(uuid())
+  usuarioId   String    @unique
+  /// Todas as bolsas (incluindo as criadas depois) ou só as de bolsaIds.
+  todasBolsas Boolean   @default(true)
+  bolsaIds    String[]  @default([])
+  documentos  Boolean   @default(true)
+  cursos      Boolean   @default(true)
+  comunidades Boolean   @default(true)
+  aulas       Boolean   @default(true)
+  ia          Boolean   @default(true)
+  ativo       Boolean   @default(true)
+  /// Sem data, o acesso não expira.
+  expiraEm    DateTime?
+  observacao  String?
+  criadoPorId String?
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+
+  usuario User @relation("MembroSocial", fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  @@map("membros_sociais")
+}
+
+enum TipoDescontoCupom {
+  PERCENTAGEM
+  VALOR_FIXO
+}
+
+/// Cupão de desconto aplicado no pagamento. Só conta como usado quando o pagamento é confirmado.
+model Cupom {
+  id               String                @id @default(uuid())
+  /// Guardado em maiúsculas; o cliente pode escrever como quiser.
+  codigo           String                @unique
+  descricao        String?
+  tipoDesconto     TipoDescontoCupom     @default(PERCENTAGEM)
+  /// Percentagem (1 a 100) ou valor em Kz.
+  valor            Float
+  /// Vazio: vale para todos os pagamentos.
+  tipos            TipoPagamentoMomenu[] @default([])
+  /// Opcional: só para este item (curso, bolsa, documento ou mentoria).
+  itemId           String?
+  /// Usos confirmados no total; sem valor, ilimitado.
+  limiteUsos       Int?
+  /// Quantas vezes a mesma pessoa o pode usar.
+  limitePorUsuario Int                   @default(1)
+  valorMinimo      Float?
+  validoDesde      DateTime?
+  validoAte        DateTime?
+  ativo            Boolean               @default(true)
+  usos             Int                   @default(0)
+  criadoPorId      String?
+  created_at       DateTime              @default(now())
+  updated_at       DateTime              @updatedAt
+
+  pagamentos PagamentoMomenu[]
+
+  @@map("cupons")
 }

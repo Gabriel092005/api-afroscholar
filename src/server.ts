@@ -21,6 +21,8 @@ import { atendimentoRoutes } from "./http/controllers/atendimento/routes";
 import { funilRoutes } from "./http/controllers/funil/routes";
 import { crmRoutes } from "./http/controllers/crm/routes";
 import { videosRoutes } from "./http/controllers/videos/routes";
+import { areaSocialRoutes } from "./http/controllers/area-social/routes";
+import { cuponsRoutes } from "./http/controllers/cupons/routes";
 import { gestorRoutes } from "./http/controllers/gestor/routes";import { NovidadesRoutes } from "./http/controllers/novidades/routes";
 import { analiseDocumentoRoutes } from "./http/controllers/analise-documento/routes";
 import { perfilAcademicoRoutes } from "./http/controllers/perfil-academico/routes";
@@ -129,6 +131,8 @@ app.register(atendimentoRoutes)
 app.register(funilRoutes)
 app.register(crmRoutes)
 app.register(videosRoutes)
+app.register(areaSocialRoutes)
+app.register(cuponsRoutes)
 app.register(gestorRoutes)
 app.register(NovidadesRoutes)
 app.register(analiseDocumentoRoutes)

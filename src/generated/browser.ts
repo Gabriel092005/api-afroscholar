@@ -319,3 +319,14 @@ export type MensagemConversa = Prisma.MensagemConversaModel
  * 
  */
 export type VideoExplicativo = Prisma.VideoExplicativoModel
+/**
+ * Model MembroSocial
+ * Área social: pessoas a quem o admin dá, sem pagamento, o acesso de quem tem a mentoria.
+ * O admin escolhe as bolsas abrangidas e, dentro delas, o que fica aberto.
+ */
+export type MembroSocial = Prisma.MembroSocialModel
+/**
+ * Model Cupom
+ * Cupão de desconto aplicado no pagamento. Só conta como usado quando o pagamento é confirmado.
+ */
+export type Cupom = Prisma.CupomModel

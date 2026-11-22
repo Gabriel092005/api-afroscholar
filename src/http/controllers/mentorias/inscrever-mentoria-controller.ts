@@ -2,6 +2,7 @@ import { concederMentoria, temMentoriaAtiva } from "@/lib/mentoria-acesso";
 import crypto from "node:crypto";
 import prisma from "@/lib/prisma";
 import {
+  cupomSchema,
   iniciarCobranca,
   metodoPagamentoSchema,
   responderErroPagamento,
@@ -14,6 +15,7 @@ import { z } from "zod";
 const inscreverSchema = z.object({
   metodoPagamento: metodoPagamentoSchema.optional(),
   phoneNumber: telefoneSchema.optional(),
+  cupom: cupomSchema,
 });
 
 export async function inscreverMentoria(req: FastifyRequest, res: FastifyReply) {
@@ -58,6 +60,7 @@ export async function inscreverMentoria(req: FastifyRequest, res: FastifyReply) 
       phoneNumber: body.phoneNumber,
       produto: mentoria.nome || "Mentoria",
       link: "/mentorias",
+      cupom: body.cupom,
       persistirAlvo: (tx, cobranca) =>
         tx.mentoriaInscricao.upsert({
           where: chave,

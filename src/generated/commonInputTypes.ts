@@ -708,6 +708,23 @@ export type EnumEtapaLeadWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumEtapaLeadFilter<$PrismaModel>
 }
 
+export type EnumTipoDescontoCupomFilter<$PrismaModel = never> = {
+  equals?: $Enums.TipoDescontoCupom | Prisma.EnumTipoDescontoCupomFieldRefInput<$PrismaModel>
+  in?: $Enums.TipoDescontoCupom[] | Prisma.ListEnumTipoDescontoCupomFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TipoDescontoCupom[] | Prisma.ListEnumTipoDescontoCupomFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTipoDescontoCupomFilter<$PrismaModel> | $Enums.TipoDescontoCupom
+}
+
+export type EnumTipoDescontoCupomWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TipoDescontoCupom | Prisma.EnumTipoDescontoCupomFieldRefInput<$PrismaModel>
+  in?: $Enums.TipoDescontoCupom[] | Prisma.ListEnumTipoDescontoCupomFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TipoDescontoCupom[] | Prisma.ListEnumTipoDescontoCupomFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTipoDescontoCupomWithAggregatesFilter<$PrismaModel> | $Enums.TipoDescontoCupom
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTipoDescontoCupomFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTipoDescontoCupomFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -1364,6 +1381,23 @@ export type NestedEnumEtapaLeadWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumEtapaLeadFilter<$PrismaModel>
   _max?: Prisma.NestedEnumEtapaLeadFilter<$PrismaModel>
+}
+
+export type NestedEnumTipoDescontoCupomFilter<$PrismaModel = never> = {
+  equals?: $Enums.TipoDescontoCupom | Prisma.EnumTipoDescontoCupomFieldRefInput<$PrismaModel>
+  in?: $Enums.TipoDescontoCupom[] | Prisma.ListEnumTipoDescontoCupomFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TipoDescontoCupom[] | Prisma.ListEnumTipoDescontoCupomFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTipoDescontoCupomFilter<$PrismaModel> | $Enums.TipoDescontoCupom
+}
+
+export type NestedEnumTipoDescontoCupomWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TipoDescontoCupom | Prisma.EnumTipoDescontoCupomFieldRefInput<$PrismaModel>
+  in?: $Enums.TipoDescontoCupom[] | Prisma.ListEnumTipoDescontoCupomFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TipoDescontoCupom[] | Prisma.ListEnumTipoDescontoCupomFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTipoDescontoCupomWithAggregatesFilter<$PrismaModel> | $Enums.TipoDescontoCupom
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTipoDescontoCupomFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTipoDescontoCupomFilter<$PrismaModel>
 }
 
 

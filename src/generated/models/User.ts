@@ -304,6 +304,7 @@ export type UserWhereInput = {
   interacoesLead?: Prisma.LeadInteracaoListRelationFilter
   conversaSuporte?: Prisma.XOR<Prisma.ConversaNullableScalarRelationFilter, Prisma.ConversaWhereInput> | null
   mensagensSuporte?: Prisma.MensagemConversaListRelationFilter
+  membroSocial?: Prisma.XOR<Prisma.MembroSocialNullableScalarRelationFilter, Prisma.MembroSocialWhereInput> | null
 }
 
 export type UserOrderByWithRelationInput = {
@@ -357,6 +358,7 @@ export type UserOrderByWithRelationInput = {
   interacoesLead?: Prisma.LeadInteracaoOrderByRelationAggregateInput
   conversaSuporte?: Prisma.ConversaOrderByWithRelationInput
   mensagensSuporte?: Prisma.MensagemConversaOrderByRelationAggregateInput
+  membroSocial?: Prisma.MembroSocialOrderByWithRelationInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -413,6 +415,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   interacoesLead?: Prisma.LeadInteracaoListRelationFilter
   conversaSuporte?: Prisma.XOR<Prisma.ConversaNullableScalarRelationFilter, Prisma.ConversaWhereInput> | null
   mensagensSuporte?: Prisma.MensagemConversaListRelationFilter
+  membroSocial?: Prisma.XOR<Prisma.MembroSocialNullableScalarRelationFilter, Prisma.MembroSocialWhereInput> | null
 }, "id" | "email" | "resetToken">
 
 export type UserOrderByWithAggregationInput = {
@@ -510,6 +513,7 @@ export type UserCreateInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -563,6 +567,7 @@ export type UserUncheckedCreateInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUpdateInput = {
@@ -616,6 +621,7 @@ export type UserUpdateInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -669,6 +675,7 @@ export type UserUncheckedUpdateInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -1313,6 +1320,20 @@ export type UserUpdateOneWithoutMensagensSuporteNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMensagensSuporteInput, Prisma.UserUpdateWithoutMensagensSuporteInput>, Prisma.UserUncheckedUpdateWithoutMensagensSuporteInput>
 }
 
+export type UserCreateNestedOneWithoutMembroSocialInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMembroSocialInput, Prisma.UserUncheckedCreateWithoutMembroSocialInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMembroSocialInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutMembroSocialNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMembroSocialInput, Prisma.UserUncheckedCreateWithoutMembroSocialInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMembroSocialInput
+  upsert?: Prisma.UserUpsertWithoutMembroSocialInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMembroSocialInput, Prisma.UserUpdateWithoutMembroSocialInput>, Prisma.UserUncheckedUpdateWithoutMembroSocialInput>
+}
+
 export type UserCreateWithoutNotificationsInput = {
   id?: string
   nome: string
@@ -1363,6 +1384,7 @@ export type UserCreateWithoutNotificationsInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -1415,6 +1437,7 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -1483,6 +1506,7 @@ export type UserUpdateWithoutNotificationsInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -1535,6 +1559,7 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutBolsasCriadasInput = {
@@ -1587,6 +1612,7 @@ export type UserCreateWithoutBolsasCriadasInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutBolsasCriadasInput = {
@@ -1639,6 +1665,7 @@ export type UserUncheckedCreateWithoutBolsasCriadasInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutBolsasCriadasInput = {
@@ -1707,6 +1734,7 @@ export type UserUpdateWithoutBolsasCriadasInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBolsasCriadasInput = {
@@ -1759,6 +1787,7 @@ export type UserUncheckedUpdateWithoutBolsasCriadasInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutInscricoesInput = {
@@ -1811,6 +1840,7 @@ export type UserCreateWithoutInscricoesInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutInscricoesInput = {
@@ -1863,6 +1893,7 @@ export type UserUncheckedCreateWithoutInscricoesInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutInscricoesInput = {
@@ -1931,6 +1962,7 @@ export type UserUpdateWithoutInscricoesInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInscricoesInput = {
@@ -1983,6 +2015,7 @@ export type UserUncheckedUpdateWithoutInscricoesInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutCursosCriadosInput = {
@@ -2035,6 +2068,7 @@ export type UserCreateWithoutCursosCriadosInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutCursosCriadosInput = {
@@ -2087,6 +2121,7 @@ export type UserUncheckedCreateWithoutCursosCriadosInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutCursosCriadosInput = {
@@ -2155,6 +2190,7 @@ export type UserUpdateWithoutCursosCriadosInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCursosCriadosInput = {
@@ -2207,6 +2243,7 @@ export type UserUncheckedUpdateWithoutCursosCriadosInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutPagamentosInput = {
@@ -2259,6 +2296,7 @@ export type UserCreateWithoutPagamentosInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutPagamentosInput = {
@@ -2311,6 +2349,7 @@ export type UserUncheckedCreateWithoutPagamentosInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutPagamentosInput = {
@@ -2379,6 +2418,7 @@ export type UserUpdateWithoutPagamentosInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPagamentosInput = {
@@ -2431,6 +2471,7 @@ export type UserUncheckedUpdateWithoutPagamentosInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutCursosCompradosInput = {
@@ -2483,6 +2524,7 @@ export type UserCreateWithoutCursosCompradosInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutCursosCompradosInput = {
@@ -2535,6 +2577,7 @@ export type UserUncheckedCreateWithoutCursosCompradosInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutCursosCompradosInput = {
@@ -2603,6 +2646,7 @@ export type UserUpdateWithoutCursosCompradosInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCursosCompradosInput = {
@@ -2655,6 +2699,7 @@ export type UserUncheckedUpdateWithoutCursosCompradosInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutDocumentosInput = {
@@ -2707,6 +2752,7 @@ export type UserCreateWithoutDocumentosInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutDocumentosInput = {
@@ -2759,6 +2805,7 @@ export type UserUncheckedCreateWithoutDocumentosInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutDocumentosInput = {
@@ -2827,6 +2874,7 @@ export type UserUpdateWithoutDocumentosInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDocumentosInput = {
@@ -2879,6 +2927,7 @@ export type UserUncheckedUpdateWithoutDocumentosInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutDocumentosCompradosInput = {
@@ -2931,6 +2980,7 @@ export type UserCreateWithoutDocumentosCompradosInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutDocumentosCompradosInput = {
@@ -2983,6 +3033,7 @@ export type UserUncheckedCreateWithoutDocumentosCompradosInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutDocumentosCompradosInput = {
@@ -3051,6 +3102,7 @@ export type UserUpdateWithoutDocumentosCompradosInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDocumentosCompradosInput = {
@@ -3103,6 +3155,7 @@ export type UserUncheckedUpdateWithoutDocumentosCompradosInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutDepoimentosInput = {
@@ -3155,6 +3208,7 @@ export type UserCreateWithoutDepoimentosInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutDepoimentosInput = {
@@ -3207,6 +3261,7 @@ export type UserUncheckedCreateWithoutDepoimentosInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutDepoimentosInput = {
@@ -3275,6 +3330,7 @@ export type UserUpdateWithoutDepoimentosInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDepoimentosInput = {
@@ -3327,6 +3383,7 @@ export type UserUncheckedUpdateWithoutDepoimentosInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutNovidadesInput = {
@@ -3379,6 +3436,7 @@ export type UserCreateWithoutNovidadesInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutNovidadesInput = {
@@ -3431,6 +3489,7 @@ export type UserUncheckedCreateWithoutNovidadesInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutNovidadesInput = {
@@ -3499,6 +3558,7 @@ export type UserUpdateWithoutNovidadesInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNovidadesInput = {
@@ -3551,6 +3611,7 @@ export type UserUncheckedUpdateWithoutNovidadesInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutNovidadeInscricoesInput = {
@@ -3603,6 +3664,7 @@ export type UserCreateWithoutNovidadeInscricoesInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutNovidadeInscricoesInput = {
@@ -3655,6 +3717,7 @@ export type UserUncheckedCreateWithoutNovidadeInscricoesInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutNovidadeInscricoesInput = {
@@ -3723,6 +3786,7 @@ export type UserUpdateWithoutNovidadeInscricoesInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNovidadeInscricoesInput = {
@@ -3775,6 +3839,7 @@ export type UserUncheckedUpdateWithoutNovidadeInscricoesInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutPerfilAcademicoInput = {
@@ -3827,6 +3892,7 @@ export type UserCreateWithoutPerfilAcademicoInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutPerfilAcademicoInput = {
@@ -3879,6 +3945,7 @@ export type UserUncheckedCreateWithoutPerfilAcademicoInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutPerfilAcademicoInput = {
@@ -3947,6 +4014,7 @@ export type UserUpdateWithoutPerfilAcademicoInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPerfilAcademicoInput = {
@@ -3999,6 +4067,7 @@ export type UserUncheckedUpdateWithoutPerfilAcademicoInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutAnalisesInput = {
@@ -4051,6 +4120,7 @@ export type UserCreateWithoutAnalisesInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutAnalisesInput = {
@@ -4103,6 +4173,7 @@ export type UserUncheckedCreateWithoutAnalisesInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutAnalisesInput = {
@@ -4171,6 +4242,7 @@ export type UserUpdateWithoutAnalisesInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAnalisesInput = {
@@ -4223,6 +4295,7 @@ export type UserUncheckedUpdateWithoutAnalisesInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutComunidadesInput = {
@@ -4275,6 +4348,7 @@ export type UserCreateWithoutComunidadesInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutComunidadesInput = {
@@ -4327,6 +4401,7 @@ export type UserUncheckedCreateWithoutComunidadesInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutComunidadesInput = {
@@ -4395,6 +4470,7 @@ export type UserUpdateWithoutComunidadesInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutComunidadesInput = {
@@ -4447,6 +4523,7 @@ export type UserUncheckedUpdateWithoutComunidadesInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutMembroEmInput = {
@@ -4499,6 +4576,7 @@ export type UserCreateWithoutMembroEmInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutMembroEmInput = {
@@ -4551,6 +4629,7 @@ export type UserUncheckedCreateWithoutMembroEmInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutMembroEmInput = {
@@ -4619,6 +4698,7 @@ export type UserUpdateWithoutMembroEmInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMembroEmInput = {
@@ -4671,6 +4751,7 @@ export type UserUncheckedUpdateWithoutMembroEmInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutMensagensInput = {
@@ -4723,6 +4804,7 @@ export type UserCreateWithoutMensagensInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutMensagensInput = {
@@ -4775,6 +4857,7 @@ export type UserUncheckedCreateWithoutMensagensInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutMensagensInput = {
@@ -4843,6 +4926,7 @@ export type UserUpdateWithoutMensagensInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMensagensInput = {
@@ -4895,6 +4979,7 @@ export type UserUncheckedUpdateWithoutMensagensInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutAulasOnlineInput = {
@@ -4947,6 +5032,7 @@ export type UserCreateWithoutAulasOnlineInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutAulasOnlineInput = {
@@ -4999,6 +5085,7 @@ export type UserUncheckedCreateWithoutAulasOnlineInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutAulasOnlineInput = {
@@ -5067,6 +5154,7 @@ export type UserUpdateWithoutAulasOnlineInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAulasOnlineInput = {
@@ -5119,6 +5207,7 @@ export type UserUncheckedUpdateWithoutAulasOnlineInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutAulasParticipadasInput = {
@@ -5171,6 +5260,7 @@ export type UserCreateWithoutAulasParticipadasInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutAulasParticipadasInput = {
@@ -5223,6 +5313,7 @@ export type UserUncheckedCreateWithoutAulasParticipadasInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutAulasParticipadasInput = {
@@ -5291,6 +5382,7 @@ export type UserUpdateWithoutAulasParticipadasInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAulasParticipadasInput = {
@@ -5343,6 +5435,7 @@ export type UserUncheckedUpdateWithoutAulasParticipadasInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutMentoriaAcessosInput = {
@@ -5395,6 +5488,7 @@ export type UserCreateWithoutMentoriaAcessosInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutMentoriaAcessosInput = {
@@ -5447,6 +5541,7 @@ export type UserUncheckedCreateWithoutMentoriaAcessosInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutMentoriaAcessosInput = {
@@ -5515,6 +5610,7 @@ export type UserUpdateWithoutMentoriaAcessosInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMentoriaAcessosInput = {
@@ -5567,6 +5663,7 @@ export type UserUncheckedUpdateWithoutMentoriaAcessosInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutMentoriasInscricoesInput = {
@@ -5619,6 +5716,7 @@ export type UserCreateWithoutMentoriasInscricoesInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutMentoriasInscricoesInput = {
@@ -5671,6 +5769,7 @@ export type UserUncheckedCreateWithoutMentoriasInscricoesInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutMentoriasInscricoesInput = {
@@ -5739,6 +5838,7 @@ export type UserUpdateWithoutMentoriasInscricoesInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMentoriasInscricoesInput = {
@@ -5791,6 +5891,7 @@ export type UserUncheckedUpdateWithoutMentoriasInscricoesInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutDuvidasInput = {
@@ -5843,6 +5944,7 @@ export type UserCreateWithoutDuvidasInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutDuvidasInput = {
@@ -5895,6 +5997,7 @@ export type UserUncheckedCreateWithoutDuvidasInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutDuvidasInput = {
@@ -5963,6 +6066,7 @@ export type UserUpdateWithoutDuvidasInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDuvidasInput = {
@@ -6015,6 +6119,7 @@ export type UserUncheckedUpdateWithoutDuvidasInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutRespostasDuvidasInput = {
@@ -6067,6 +6172,7 @@ export type UserCreateWithoutRespostasDuvidasInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutRespostasDuvidasInput = {
@@ -6119,6 +6225,7 @@ export type UserUncheckedCreateWithoutRespostasDuvidasInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutRespostasDuvidasInput = {
@@ -6187,6 +6294,7 @@ export type UserUpdateWithoutRespostasDuvidasInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRespostasDuvidasInput = {
@@ -6239,6 +6347,7 @@ export type UserUncheckedUpdateWithoutRespostasDuvidasInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutAtividadesInput = {
@@ -6291,6 +6400,7 @@ export type UserCreateWithoutAtividadesInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutAtividadesInput = {
@@ -6343,6 +6453,7 @@ export type UserUncheckedCreateWithoutAtividadesInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutAtividadesInput = {
@@ -6411,6 +6522,7 @@ export type UserUpdateWithoutAtividadesInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAtividadesInput = {
@@ -6463,6 +6575,7 @@ export type UserUncheckedUpdateWithoutAtividadesInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutAnalisePedidosInput = {
@@ -6515,6 +6628,7 @@ export type UserCreateWithoutAnalisePedidosInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutAnalisePedidosInput = {
@@ -6567,6 +6681,7 @@ export type UserUncheckedCreateWithoutAnalisePedidosInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutAnalisePedidosInput = {
@@ -6635,6 +6750,7 @@ export type UserUpdateWithoutAnalisePedidosInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAnalisePedidosInput = {
@@ -6687,6 +6803,7 @@ export type UserUncheckedUpdateWithoutAnalisePedidosInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutAfiliadoLinksInput = {
@@ -6739,6 +6856,7 @@ export type UserCreateWithoutAfiliadoLinksInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutAfiliadoLinksInput = {
@@ -6791,6 +6909,7 @@ export type UserUncheckedCreateWithoutAfiliadoLinksInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutAfiliadoLinksInput = {
@@ -6859,6 +6978,7 @@ export type UserUpdateWithoutAfiliadoLinksInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAfiliadoLinksInput = {
@@ -6911,6 +7031,7 @@ export type UserUncheckedUpdateWithoutAfiliadoLinksInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutAfiliadoComissoesInput = {
@@ -6963,6 +7084,7 @@ export type UserCreateWithoutAfiliadoComissoesInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutAfiliadoComissoesInput = {
@@ -7015,6 +7137,7 @@ export type UserUncheckedCreateWithoutAfiliadoComissoesInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutAfiliadoComissoesInput = {
@@ -7083,6 +7206,7 @@ export type UserUpdateWithoutAfiliadoComissoesInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAfiliadoComissoesInput = {
@@ -7135,6 +7259,7 @@ export type UserUncheckedUpdateWithoutAfiliadoComissoesInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutAfiliadoSaquesInput = {
@@ -7187,6 +7312,7 @@ export type UserCreateWithoutAfiliadoSaquesInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutAfiliadoSaquesInput = {
@@ -7239,6 +7365,7 @@ export type UserUncheckedCreateWithoutAfiliadoSaquesInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutAfiliadoSaquesInput = {
@@ -7307,6 +7434,7 @@ export type UserUpdateWithoutAfiliadoSaquesInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAfiliadoSaquesInput = {
@@ -7359,6 +7487,7 @@ export type UserUncheckedUpdateWithoutAfiliadoSaquesInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutPagamentosMomenuInput = {
@@ -7411,6 +7540,7 @@ export type UserCreateWithoutPagamentosMomenuInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutPagamentosMomenuInput = {
@@ -7463,6 +7593,7 @@ export type UserUncheckedCreateWithoutPagamentosMomenuInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutPagamentosMomenuInput = {
@@ -7531,6 +7662,7 @@ export type UserUpdateWithoutPagamentosMomenuInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPagamentosMomenuInput = {
@@ -7583,6 +7715,7 @@ export type UserUncheckedUpdateWithoutPagamentosMomenuInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutEmailsFunilInput = {
@@ -7635,6 +7768,7 @@ export type UserCreateWithoutEmailsFunilInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutEmailsFunilInput = {
@@ -7687,6 +7821,7 @@ export type UserUncheckedCreateWithoutEmailsFunilInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutEmailsFunilInput = {
@@ -7755,6 +7890,7 @@ export type UserUpdateWithoutEmailsFunilInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEmailsFunilInput = {
@@ -7807,6 +7943,7 @@ export type UserUncheckedUpdateWithoutEmailsFunilInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutLeadsComoClienteInput = {
@@ -7859,6 +7996,7 @@ export type UserCreateWithoutLeadsComoClienteInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutLeadsComoClienteInput = {
@@ -7911,6 +8049,7 @@ export type UserUncheckedCreateWithoutLeadsComoClienteInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutLeadsComoClienteInput = {
@@ -7968,6 +8107,7 @@ export type UserCreateWithoutLeadsAtribuidosInput = {
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutLeadsAtribuidosInput = {
@@ -8020,6 +8160,7 @@ export type UserUncheckedCreateWithoutLeadsAtribuidosInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutLeadsAtribuidosInput = {
@@ -8088,6 +8229,7 @@ export type UserUpdateWithoutLeadsComoClienteInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLeadsComoClienteInput = {
@@ -8140,6 +8282,7 @@ export type UserUncheckedUpdateWithoutLeadsComoClienteInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUpsertWithoutLeadsAtribuidosInput = {
@@ -8203,6 +8346,7 @@ export type UserUpdateWithoutLeadsAtribuidosInput = {
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLeadsAtribuidosInput = {
@@ -8255,6 +8399,7 @@ export type UserUncheckedUpdateWithoutLeadsAtribuidosInput = {
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutInteracoesLeadInput = {
@@ -8307,6 +8452,7 @@ export type UserCreateWithoutInteracoesLeadInput = {
   leadsAtribuidos?: Prisma.LeadCreateNestedManyWithoutAtendenteInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutInteracoesLeadInput = {
@@ -8359,6 +8505,7 @@ export type UserUncheckedCreateWithoutInteracoesLeadInput = {
   leadsAtribuidos?: Prisma.LeadUncheckedCreateNestedManyWithoutAtendenteInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutInteracoesLeadInput = {
@@ -8427,6 +8574,7 @@ export type UserUpdateWithoutInteracoesLeadInput = {
   leadsAtribuidos?: Prisma.LeadUpdateManyWithoutAtendenteNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInteracoesLeadInput = {
@@ -8479,6 +8627,7 @@ export type UserUncheckedUpdateWithoutInteracoesLeadInput = {
   leadsAtribuidos?: Prisma.LeadUncheckedUpdateManyWithoutAtendenteNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutConversaSuporteInput = {
@@ -8531,6 +8680,7 @@ export type UserCreateWithoutConversaSuporteInput = {
   leadsAtribuidos?: Prisma.LeadCreateNestedManyWithoutAtendenteInput
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutConversaSuporteInput = {
@@ -8583,6 +8733,7 @@ export type UserUncheckedCreateWithoutConversaSuporteInput = {
   leadsAtribuidos?: Prisma.LeadUncheckedCreateNestedManyWithoutAtendenteInput
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutConversaSuporteInput = {
@@ -8651,6 +8802,7 @@ export type UserUpdateWithoutConversaSuporteInput = {
   leadsAtribuidos?: Prisma.LeadUpdateManyWithoutAtendenteNestedInput
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutConversaSuporteInput = {
@@ -8703,6 +8855,7 @@ export type UserUncheckedUpdateWithoutConversaSuporteInput = {
   leadsAtribuidos?: Prisma.LeadUncheckedUpdateManyWithoutAtendenteNestedInput
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserCreateWithoutMensagensSuporteInput = {
@@ -8755,6 +8908,7 @@ export type UserCreateWithoutMensagensSuporteInput = {
   leadsAtribuidos?: Prisma.LeadCreateNestedManyWithoutAtendenteInput
   interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
+  membroSocial?: Prisma.MembroSocialCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserUncheckedCreateWithoutMensagensSuporteInput = {
@@ -8807,6 +8961,7 @@ export type UserUncheckedCreateWithoutMensagensSuporteInput = {
   leadsAtribuidos?: Prisma.LeadUncheckedCreateNestedManyWithoutAtendenteInput
   interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
   conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
+  membroSocial?: Prisma.MembroSocialUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
 export type UserCreateOrConnectWithoutMensagensSuporteInput = {
@@ -8875,6 +9030,7 @@ export type UserUpdateWithoutMensagensSuporteInput = {
   leadsAtribuidos?: Prisma.LeadUpdateManyWithoutAtendenteNestedInput
   interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
+  membroSocial?: Prisma.MembroSocialUpdateOneWithoutUsuarioNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMensagensSuporteInput = {
@@ -8927,6 +9083,235 @@ export type UserUncheckedUpdateWithoutMensagensSuporteInput = {
   leadsAtribuidos?: Prisma.LeadUncheckedUpdateManyWithoutAtendenteNestedInput
   interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
   conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
+  membroSocial?: Prisma.MembroSocialUncheckedUpdateOneWithoutUsuarioNestedInput
+}
+
+export type UserCreateWithoutMembroSocialInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  recebeEmailsMarketing?: boolean
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoCreateNestedManyWithoutUsuarioInput
+  emailsFunil?: Prisma.EmailFunilCreateNestedManyWithoutUsuarioInput
+  leadsComoCliente?: Prisma.LeadCreateNestedManyWithoutUsuarioInput
+  leadsAtribuidos?: Prisma.LeadCreateNestedManyWithoutAtendenteInput
+  interacoesLead?: Prisma.LeadInteracaoCreateNestedManyWithoutAutorInput
+  conversaSuporte?: Prisma.ConversaCreateNestedOneWithoutClienteInput
+  mensagensSuporte?: Prisma.MensagemConversaCreateNestedManyWithoutAutorInput
+}
+
+export type UserUncheckedCreateWithoutMembroSocialInput = {
+  id?: string
+  nome: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  estado_conta?: $Enums.EstadoConta
+  image_path?: string | null
+  bio?: string | null
+  paisMentoria?: string | null
+  pushSubscription?: string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  created_at?: Date | string
+  last_active_at?: Date | string
+  recebeEmailsMarketing?: boolean
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedCreateNestedManyWithoutUsuarioInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedCreateNestedManyWithoutUsuarioInput
+  comunidades?: Prisma.CommunityUncheckedCreateNestedManyWithoutCriadorInput
+  membroEm?: Prisma.CommunityMemberUncheckedCreateNestedManyWithoutUsuarioInput
+  mensagens?: Prisma.CommunityMessageUncheckedCreateNestedManyWithoutUsuarioInput
+  depoimentos?: Prisma.DepoimentoUncheckedCreateNestedManyWithoutUsuarioInput
+  novidades?: Prisma.NovidadeUncheckedCreateNestedManyWithoutUsuarioInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  analises?: Prisma.AnaliseDocumentoUncheckedCreateNestedManyWithoutUsuarioInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedCreateNestedOneWithoutUsuarioInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedCreateNestedManyWithoutHostInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedCreateNestedManyWithoutUsuarioInput
+  duvidas?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUsuarioInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUsuarioInput
+  atividades?: Prisma.AtividadeUncheckedCreateNestedManyWithoutCriadoPorInput
+  bolsasCriadas?: Prisma.BolsaUncheckedCreateNestedManyWithoutCriadoPorInput
+  cursosCriados?: Prisma.CursoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentos?: Prisma.DocumentoUncheckedCreateNestedManyWithoutCriadoPorInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedCreateNestedManyWithoutUsuarioInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedCreateNestedManyWithoutUsuarioInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedCreateNestedManyWithoutUsuarioInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedCreateNestedManyWithoutAfiliadoInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedCreateNestedManyWithoutUsuarioInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedCreateNestedManyWithoutUsuarioInput
+  emailsFunil?: Prisma.EmailFunilUncheckedCreateNestedManyWithoutUsuarioInput
+  leadsComoCliente?: Prisma.LeadUncheckedCreateNestedManyWithoutUsuarioInput
+  leadsAtribuidos?: Prisma.LeadUncheckedCreateNestedManyWithoutAtendenteInput
+  interacoesLead?: Prisma.LeadInteracaoUncheckedCreateNestedManyWithoutAutorInput
+  conversaSuporte?: Prisma.ConversaUncheckedCreateNestedOneWithoutClienteInput
+  mensagensSuporte?: Prisma.MensagemConversaUncheckedCreateNestedManyWithoutAutorInput
+}
+
+export type UserCreateOrConnectWithoutMembroSocialInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutMembroSocialInput, Prisma.UserUncheckedCreateWithoutMembroSocialInput>
+}
+
+export type UserUpsertWithoutMembroSocialInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutMembroSocialInput, Prisma.UserUncheckedUpdateWithoutMembroSocialInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutMembroSocialInput, Prisma.UserUncheckedCreateWithoutMembroSocialInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutMembroSocialInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutMembroSocialInput, Prisma.UserUncheckedUpdateWithoutMembroSocialInput>
+}
+
+export type UserUpdateWithoutMembroSocialInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  recebeEmailsMarketing?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUpdateManyWithoutUsuarioNestedInput
+  emailsFunil?: Prisma.EmailFunilUpdateManyWithoutUsuarioNestedInput
+  leadsComoCliente?: Prisma.LeadUpdateManyWithoutUsuarioNestedInput
+  leadsAtribuidos?: Prisma.LeadUpdateManyWithoutAtendenteNestedInput
+  interacoesLead?: Prisma.LeadInteracaoUpdateManyWithoutAutorNestedInput
+  conversaSuporte?: Prisma.ConversaUpdateOneWithoutClienteNestedInput
+  mensagensSuporte?: Prisma.MensagemConversaUpdateManyWithoutAutorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutMembroSocialInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  estado_conta?: Prisma.EnumEstadoContaFieldUpdateOperationsInput | $Enums.EstadoConta
+  image_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paisMentoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushSubscription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  last_active_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  recebeEmailsMarketing?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  inscricoes?: Prisma.BolsaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentos?: Prisma.CursoPagamentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  cursosComprados?: Prisma.CursoUsuarioUncheckedUpdateManyWithoutUsuarioNestedInput
+  comunidades?: Prisma.CommunityUncheckedUpdateManyWithoutCriadorNestedInput
+  membroEm?: Prisma.CommunityMemberUncheckedUpdateManyWithoutUsuarioNestedInput
+  mensagens?: Prisma.CommunityMessageUncheckedUpdateManyWithoutUsuarioNestedInput
+  depoimentos?: Prisma.DepoimentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidades?: Prisma.NovidadeUncheckedUpdateManyWithoutUsuarioNestedInput
+  novidadeInscricoes?: Prisma.NovidadeInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  analises?: Prisma.AnaliseDocumentoUncheckedUpdateManyWithoutUsuarioNestedInput
+  perfilAcademico?: Prisma.PerfilAcademicoUncheckedUpdateOneWithoutUsuarioNestedInput
+  aulasOnline?: Prisma.AulaOnlineUncheckedUpdateManyWithoutHostNestedInput
+  aulasParticipadas?: Prisma.AulaOnlineParticipanteUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriasInscricoes?: Prisma.MentoriaInscricaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  duvidas?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUsuarioNestedInput
+  respostasDuvidas?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUsuarioNestedInput
+  atividades?: Prisma.AtividadeUncheckedUpdateManyWithoutCriadoPorNestedInput
+  bolsasCriadas?: Prisma.BolsaUncheckedUpdateManyWithoutCriadoPorNestedInput
+  cursosCriados?: Prisma.CursoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentos?: Prisma.DocumentoUncheckedUpdateManyWithoutCriadoPorNestedInput
+  documentosComprados?: Prisma.DocumentoCompraUncheckedUpdateManyWithoutUsuarioNestedInput
+  pagamentosMomenu?: Prisma.PagamentoMomenuUncheckedUpdateManyWithoutUsuarioNestedInput
+  mentoriaAcessos?: Prisma.MentoriaAcessoUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoLinks?: Prisma.AfiliadoLinkUncheckedUpdateManyWithoutUsuarioNestedInput
+  afiliadoComissoes?: Prisma.AfiliadoComissaoUncheckedUpdateManyWithoutAfiliadoNestedInput
+  afiliadoSaques?: Prisma.AfiliadoSaqueUncheckedUpdateManyWithoutUsuarioNestedInput
+  analisePedidos?: Prisma.AnalisePedidoUncheckedUpdateManyWithoutUsuarioNestedInput
+  emailsFunil?: Prisma.EmailFunilUncheckedUpdateManyWithoutUsuarioNestedInput
+  leadsComoCliente?: Prisma.LeadUncheckedUpdateManyWithoutUsuarioNestedInput
+  leadsAtribuidos?: Prisma.LeadUncheckedUpdateManyWithoutAtendenteNestedInput
+  interacoesLead?: Prisma.LeadInteracaoUncheckedUpdateManyWithoutAutorNestedInput
+  conversaSuporte?: Prisma.ConversaUncheckedUpdateOneWithoutClienteNestedInput
+  mensagensSuporte?: Prisma.MensagemConversaUncheckedUpdateManyWithoutAutorNestedInput
 }
 
 
@@ -9290,6 +9675,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   interacoesLead?: boolean | Prisma.User$interacoesLeadArgs<ExtArgs>
   conversaSuporte?: boolean | Prisma.User$conversaSuporteArgs<ExtArgs>
   mensagensSuporte?: boolean | Prisma.User$mensagensSuporteArgs<ExtArgs>
+  membroSocial?: boolean | Prisma.User$membroSocialArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -9386,6 +9772,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   interacoesLead?: boolean | Prisma.User$interacoesLeadArgs<ExtArgs>
   conversaSuporte?: boolean | Prisma.User$conversaSuporteArgs<ExtArgs>
   mensagensSuporte?: boolean | Prisma.User$mensagensSuporteArgs<ExtArgs>
+  membroSocial?: boolean | Prisma.User$membroSocialArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -9428,6 +9815,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     interacoesLead: Prisma.$LeadInteracaoPayload<ExtArgs>[]
     conversaSuporte: Prisma.$ConversaPayload<ExtArgs> | null
     mensagensSuporte: Prisma.$MensagemConversaPayload<ExtArgs>[]
+    membroSocial: Prisma.$MembroSocialPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -9877,6 +10265,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   interacoesLead<T extends Prisma.User$interacoesLeadArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$interacoesLeadArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeadInteracaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   conversaSuporte<T extends Prisma.User$conversaSuporteArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$conversaSuporteArgs<ExtArgs>>): Prisma.Prisma__ConversaClient<runtime.Types.Result.GetResult<Prisma.$ConversaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   mensagensSuporte<T extends Prisma.User$mensagensSuporteArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$mensagensSuporteArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MensagemConversaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  membroSocial<T extends Prisma.User$membroSocialArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$membroSocialArgs<ExtArgs>>): Prisma.Prisma__MembroSocialClient<runtime.Types.Result.GetResult<Prisma.$MembroSocialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11113,6 +11502,25 @@ export type User$mensagensSuporteArgs<ExtArgs extends runtime.Types.Extensions.I
   take?: number
   skip?: number
   distinct?: Prisma.MensagemConversaScalarFieldEnum | Prisma.MensagemConversaScalarFieldEnum[]
+}
+
+/**
+ * User.membroSocial
+ */
+export type User$membroSocialArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MembroSocial
+   */
+  select?: Prisma.MembroSocialSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MembroSocial
+   */
+  omit?: Prisma.MembroSocialOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MembroSocialInclude<ExtArgs> | null
+  where?: Prisma.MembroSocialWhereInput
 }
 
 /**
